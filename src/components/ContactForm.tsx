@@ -36,8 +36,8 @@ const ContactForm = () => {
 
       <div className="flex flex-col gap-2 mb-6">
         <label className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 ml-1">Project Type</label>
-        <select className={inputClasses} required>
-          <option value="" disabled selected className="bg-[#020617]">Select Industry</option>
+        <select className={inputClasses} defaultValue="" required>
+          <option value="" disabled className="bg-[#020617]">Select Industry</option>
           <option value="web" className="bg-[#020617]">Web Platform</option>
           <option value="ai" className="bg-[#020617]">AI Engineering</option>
           <option value="systems" className="bg-[#020617]">Systems Optimization</option>
