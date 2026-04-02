@@ -722,16 +722,36 @@ footer {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     gap: 60px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+}
+
+/* Hero DNA Logo - God Mode Scaling */
+.hero-dna-logo {
+    width: 320px !important;
+    height: 320px !important;
+    filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.2));
+    animation: rotate-dna 20s linear infinite;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    cursor: pointer;
+    pointer-events: auto !important;
+}
+
+.hero-dna-logo:hover {
+    transform: scale(1.15) rotate(5deg) !important;
+    filter: drop-shadow(0 0 50px rgba(100, 255, 218, 0.8)) !important;
 }
 
 @media (max-width: 768px) {
     .hero-main-flex {
         flex-direction: column-reverse !important;
-        gap: 30px;
+        gap: 40px;
+    }
+    .hero-dna-logo {
+        width: 200px !important;
+        height: 200px !important;
     }
 }
