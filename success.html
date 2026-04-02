@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Briefing Recibido! | M&C Web Solutions</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto+Mono&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0A192F;
+            --accent: #64FFDA;
+            --text-main: #E6F1FF;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .success-card {
+            padding: 3rem;
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            background: rgba(100, 255, 218, 0.05);
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-box {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+            color: #FFFFFF;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        h1 { font-family: 'Montserrat'; font-size: 2rem; margin-bottom: 1rem; }
+        p { color: #8892B0; line-height: 1.6; margin-bottom: 2rem; }
+        .btn-back {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Roboto Mono';
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: rgba(100, 255, 218, 0.1); transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="success-card">
+        <div class="logo-box">
+            <img src="logo.svg" alt="M&C Logo" style="width: 100%; height: 100%;">
+        </div>
+        <div class="icon">✓</div>
+        <h1>¡Briefing Recibido!</h1>
+        <p>Juan y Marc ya tienen tus datos en el sistema. El motor de IA ha comenzado el pre-procesamiento. Nos pondremos en contacto contigo en las próximas 24 horas.</p>
+        <a href="/" class="btn-back">Volver a la Web</a>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#64FFDA" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.35, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#64FFDA", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

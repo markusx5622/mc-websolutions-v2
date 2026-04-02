@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&C Web Solutions | Digital Card</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0A192F;
+            --bg-light: #112240;
+            --accent: #64FFDA;
+            --text: #E6F1FF;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Contenedor del logo animado */
+        .logo-box {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.45));
+            color: #FFFFFF;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        h1 {
+            font-family: 'Montserrat';
+            font-size: 2.8rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-family: 'Roboto Mono';
+            color: var(--accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2.5rem;
+        }
+
+        .links-grid {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-btn {
+            display: block;
+            padding: 18px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Roboto Mono';
+            font-size: 0.9rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            background: rgba(100, 255, 218, 0.03);
+        }
+
+        .card-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+
+        .btn-main {
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 800;
+        }
+
+        .footer-info {
+            margin-top: 4rem;
+            font-family: 'Roboto Mono';
+            font-size: 0.65rem;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="content-wrapper">
+        <div class="logo-box">
+            <img src="logo.svg" alt="M&C Logo" style="width: 100%; height: 100%;">
+        </div>
+
+        <h1>M&C<span style="color: var(--accent);">.</span></h1>
+        <div class="tagline">Ingeniería Web UEV</div>
+
+        <div class="links-grid">
+            <a href="/#briefing-form" class="card-btn btn-main">🚀 INICIAR MI PROYECTO</a>
+            
+            <a href="/" class="card-btn">🌐 Visitar Web Oficial</a>
+            <a href="mailto:mandcwebsolutions@gmail.com" class="card-btn">📧 Enviar Email Directo</a>
+        </div>
+
+        <div class="footer-info">
+            Soluciones en 48h con IA
+        </div>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#64FFDA" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.35, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#64FFDA", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1.2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

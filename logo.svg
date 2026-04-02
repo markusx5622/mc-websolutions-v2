@@ -1,0 +1,127 @@
+<svg width="680" height="680" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.18; r: 3; }
+        50% { opacity: 0.55; r: 4.5; }
+      }
+      @keyframes orbitA {
+        from { transform: rotate(0deg) translateX(82px) rotate(0deg); }
+        to   { transform: rotate(360deg) translateX(82px) rotate(-360deg); }
+      }
+      @keyframes orbitB {
+        from { transform: rotate(180deg) translateX(56px) rotate(-180deg); }
+        to   { transform: rotate(540deg) translateX(56px) rotate(-540deg); }
+      }
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0.07; }
+        50% { opacity: 0.18; }
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 40; }
+        to   { stroke-dashoffset: 0; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .orbit-a, .orbit-b, .dot-pulse, .dash-flow { animation: none !important; }
+      }
+    </style>
+    <filter id="coreGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+
+  <!-- Ambient glow -->
+  <circle cx="340" cy="340" r="160" fill="#FFFFFF" opacity="0.06" style="animation: glowPulse 4s ease-in-out infinite;"/>
+
+  <!-- Outer hexagon -->
+  <polygon
+    points="340,130 521.9,235 521.9,445 340,550 158.1,445 158.1,235"
+    fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Inner hexagon -->
+  <polygon
+    points="340,198 477.4,277 477.4,437 340,516 202.6,437 202.6,277"
+    fill="none" stroke="#FFFFFF" stroke-width="1.0" opacity="0.2"/>
+
+  <!-- Radial spokes -->
+  <line x1="340" y1="340" x2="340" y2="130" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+  <line x1="340" y1="340" x2="521.9" y2="235" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+  <line x1="340" y1="340" x2="521.9" y2="445" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+  <line x1="340" y1="340" x2="340" y2="550" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+  <line x1="340" y1="340" x2="158.1" y2="445" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+  <line x1="340" y1="340" x2="158.1" y2="235" stroke="#FFFFFF" stroke-width="1.0" opacity="0.25"/>
+
+  <!-- Animated dashed spokes -->
+  <line x1="340" y1="303" x2="340" y2="130"
+    stroke="#FFFFFF" stroke-width="1.8" opacity="0.7"
+    stroke-dasharray="6 6" class="dash-flow"
+    style="animation: dashFlow 2.2s linear infinite;"/>
+  <line x1="340" y1="377" x2="340" y2="550"
+    stroke="#FFFFFF" stroke-width="1.8" opacity="0.7"
+    stroke-dasharray="6 6" class="dash-flow"
+    style="animation: dashFlow 2.2s linear infinite; animation-delay: -1.1s;"/>
+
+  <!-- Outer hex vertex nodes -->
+  <circle cx="340" cy="130" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+  <circle cx="521.9" cy="235" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+  <circle cx="521.9" cy="445" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+  <circle cx="340" cy="550" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+  <circle cx="158.1" cy="445" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+  <circle cx="158.1" cy="235" r="5" fill="#0A192F" stroke="#FFFFFF" stroke-width="1.8" opacity="1"/>
+
+  <!-- Pulsing dots at outer nodes -->
+  <circle cx="340" cy="130" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 0s;"/>
+  <circle cx="521.9" cy="235" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 0.5s;"/>
+  <circle cx="521.9" cy="445" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 1.0s;"/>
+  <circle cx="340" cy="550" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 1.5s;"/>
+  <circle cx="158.1" cy="445" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 2.0s;"/>
+  <circle cx="158.1" cy="235" r="3" fill="#FFFFFF" class="dot-pulse" style="animation: pulse 3.0s ease-in-out infinite; animation-delay: 2.5s;"/>
+
+  <!-- Inner hex vertex nodes -->
+  <circle cx="340" cy="198" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+  <circle cx="477.4" cy="277" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+  <circle cx="477.4" cy="437" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+  <circle cx="340" cy="516" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+  <circle cx="202.6" cy="437" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+  <circle cx="202.6" cy="277" r="3.5" fill="#FFFFFF" opacity="0.65"/>
+
+  <!-- Orbiting nodes -->
+  <g style="transform-origin: 340px 340px;">
+    <g class="orbit-a" style="animation: orbitA 12s linear infinite; transform-origin: 340px 340px;">
+      <circle r="6" cx="340" cy="340" fill="#FFFFFF" opacity="1" filter="url(#softGlow)"/>
+    </g>
+  </g>
+  <g style="transform-origin: 340px 340px;">
+    <g class="orbit-b" style="animation: orbitB 8s linear infinite; transform-origin: 340px 340px;">
+      <circle r="4" cx="340" cy="340" fill="#FFFFFF" opacity="0.75"/>
+    </g>
+  </g>
+
+  <!-- Center hexagon -->
+  <polygon
+    points="340,290 383.3,315 383.3,365 340,390 296.7,365 296.7,315"
+    fill="#0A192F" stroke="#FFFFFF" stroke-width="2.5" opacity="1"
+    filter="url(#coreGlow)"/>
+  <polygon
+    points="340,290 383.3,315 383.3,365 340,390 296.7,365 296.7,315"
+    fill="#FFFFFF" opacity="0.1"/>
+
+  <!-- Center core node -->
+  <circle cx="340" cy="340" r="18" fill="#FFFFFF" opacity="0.15" filter="url(#softGlow)"/>
+  <circle cx="340" cy="340" r="10" fill="#FFFFFF" opacity="1" filter="url(#coreGlow)"/>
+  <circle cx="340" cy="340" r="5" fill="#0A192F"/>
+
+  <!-- Cross connectors -->
+  <line x1="340" y1="198" x2="477.4" y2="277" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12"/>
+  <line x1="477.4" y1="437" x2="340" y2="516" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12"/>
+  <line x1="202.6" y1="277" x2="340" y2="516" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12"/>
+  <line x1="477.4" y1="277" x2="202.6" y2="437" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12"/>
+  <line x1="340" y1="198" x2="202.6" y2="437" stroke="#FFFFFF" stroke-width="0.6" opacity="0.12"/>
+  <line x1="477.4" y1="437" x2="158.1" y2="235" stroke="#FFFFFF" stroke-width="0.6" opacity="0.08"/>
+</svg>
