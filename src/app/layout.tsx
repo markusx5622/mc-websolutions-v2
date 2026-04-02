@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark antialiased`}>
+    <html lang="en" className={`${inter.variable} dark antialiased`} suppressHydrationWarning>
       <body className="bg-background text-foreground min-h-screen selection:bg-cyan-500/30">
         <div className="grid-background" aria-hidden="true" />
         <Navbar />
