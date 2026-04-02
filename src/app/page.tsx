@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, Variants } from 'framer-motion';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioBento from '@/components/PortfolioBento';
+import ContactForm from '@/components/ContactForm';
 
 type Service = {
   title: string;
@@ -182,6 +183,63 @@ export default function Home() {
 
         <PortfolioBento />
       </section>
+
+      {/* Command Center Section */}
+      <section id="contact" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start">
+          <div className="flex flex-col">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-cyan-400 text-xs font-bold uppercase tracking-[0.3em] mb-4"
+            >
+              03 // Command Center
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6"
+            >
+              Ready to optimize your <span className="text-gradient">digital ecosystem?</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-lg text-zinc-400 leading-relaxed max-w-md"
+            >
+              Let's engineer something great together. Our team is ready to deploy specialized solutions for your most complex challenges.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ContactForm />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative z-10 w-full border-t border-white/5 py-12 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-[10px] tracking-[0.2em] font-bold text-zinc-600 uppercase">
+            © 2026 M&C Web Solutions | Engineered by Marc & Juan
+          </p>
+          <div className="flex items-center gap-8">
+            <a href="#" className="text-[10px] tracking-[0.2em] font-bold text-zinc-600 uppercase hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="text-[10px] tracking-[0.2em] font-bold text-zinc-600 uppercase hover:text-white transition-colors">Terms</a>
+            <a href="#" className="text-[10px] tracking-[0.2em] font-bold text-zinc-600 uppercase hover:text-white transition-colors">GitHub</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
