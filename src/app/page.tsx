@@ -143,24 +143,22 @@ export default function Home() {
 
       <section className="hero">
         <div className="container">
-          <div className="hero-content reveal active" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '40px', textAlign: 'center' }}>
-            <div className="hero-branding-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
-              <div className="md-flex-row" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '40px' }}>
-                <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
-                <div className="hero-text-container" style={{ textAlign: 'center' }}>
-                  <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px' }}>M&C WEB SOLUTIONS</span>
-                  <h1 className="hero-title" style={{ margin: 0 }}>
-                    <span className="typewriter">Tu Idea</span> + <br />
-                    Nuestra IA = <br />
-                    <span className="gradient-text">Tu Web Mañana.</span>
-                  </h1>
-                </div>
+          <div className="hero-content reveal active" style={{ textAlign: 'center' }}>
+            <div className="hero-flex-layout" style={{ marginBottom: '40px' }}>
+              <div className="hero-text-container" style={{ textAlign: 'center' }}>
+                <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px' }}>M&C WEB SOLUTIONS</span>
+                <h1 className="hero-title" style={{ margin: 0 }}>
+                  <span className="typewriter">Tu Idea</span> + <br />
+                  Nuestra IA = <br />
+                  <span className="gradient-text">Tu Web Mañana.</span>
+                </h1>
               </div>
-              <p className="hero-subtitle" style={{ maxWidth: '700px', margin: '0 auto 2.5rem' }}>
-                Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
-              </p>
-              <a href="#briefing-form" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
+              <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
+            <p className="hero-subtitle" style={{ maxWidth: '700px', margin: '0 auto 2.5rem' }}>
+              Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
+            </p>
+            <a href="#briefing-form" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
           </div>
         </div>
       </section>

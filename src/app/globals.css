@@ -700,3 +700,19 @@ footer {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+/* Hero Responsive Flex Layout */
+.hero-flex-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .hero-flex-layout {
+        flex-direction: row;
+    }
+}
