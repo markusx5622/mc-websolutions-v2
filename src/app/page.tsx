@@ -143,22 +143,22 @@ export default function Home() {
 
       <section className="hero">
         <div className="container">
-          <div className="hero-content reveal active" style={{ textAlign: 'center' }}>
-            <div className="hero-flex-layout" style={{ marginBottom: '40px' }}>
-              <div className="hero-text-container" style={{ textAlign: 'center' }}>
+          <div className="hero-content reveal active">
+            <div className="hero-main-flex">
+              <div className="hero-text-block" style={{ textAlign: 'left', flex: '1' }}>
                 <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px' }}>M&C WEB SOLUTIONS</span>
-                <h1 className="hero-title" style={{ margin: 0 }}>
+                <h1 className="hero-title" style={{ margin: '0 0 1.5rem 0', lineHeight: '1.1' }}>
                   <span className="typewriter">Tu Idea</span> + <br />
                   Nuestra IA = <br />
                   <span className="gradient-text">Tu Web Mañana.</span>
                 </h1>
+                <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
+                  Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
+                </p>
+                <a href="#briefing-form" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
               </div>
               <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
-            <p className="hero-subtitle" style={{ maxWidth: '700px', margin: '0 auto 2.5rem' }}>
-              Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
-            </p>
-            <a href="#briefing-form" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
           </div>
         </div>
       </section>

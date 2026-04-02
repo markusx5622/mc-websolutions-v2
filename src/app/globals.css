@@ -716,3 +716,22 @@ footer {
         flex-direction: row;
     }
 }
+
+/* Hero Emergency Fix - Hammer Logic */
+.hero-main-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hero-main-flex {
+        flex-direction: column-reverse !important;
+        gap: 30px;
+    }
+}
