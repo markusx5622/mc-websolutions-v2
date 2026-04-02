@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, Variants } from 'framer-motion';
 import ServiceCard from '@/components/ServiceCard';
+import PortfolioBento from '@/components/PortfolioBento';
 
 type Service = {
   title: string;
@@ -155,6 +156,31 @@ export default function Home() {
             />
           ))}
         </div>
+      </section>
+
+      {/* Innovation Lab Section */}
+      <section id="lab" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-32">
+        <div className="flex flex-col mb-12 md:mb-16">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-cyan-400 text-xs font-bold uppercase tracking-[0.3em] mb-4"
+          >
+            02 // Innovation Lab
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold tracking-tight text-white"
+          >
+            Engineering <span className="text-zinc-500">Excellence.</span>
+          </motion.h2>
+        </div>
+
+        <PortfolioBento />
       </section>
     </div>
   );
