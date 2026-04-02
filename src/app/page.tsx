@@ -84,6 +84,11 @@ export default function Home() {
       point.addEventListener('mouseenter', handleMouseEnter);
     });
 
+    // Re-initialize particles on client-side navigation
+    if ((window as any).particlesJS) {
+      initParticles();
+    }
+
     return () => {
       window.removeEventListener("scroll", reveal);
       window.removeEventListener("scroll", handleScroll);
@@ -413,8 +418,8 @@ export default function Home() {
       </section>
 
       <footer>
-        <div className="container">
-          <img src="/logo.svg" alt="M&C Logo" className="footer-logo" />
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <img src="/logo.svg" alt="M&C Logo" className="footer-logo" style={{ height: '160px', width: 'auto', marginBottom: '1.5rem' }} />
           <p className="mono-text" style={{ fontSize: "0.8rem", opacity: 0.7 }}>
             Ingeniería aplicada al diseño web. <br />
             Diseñado & Construido por <strong>M&C Web Solutions</strong> © 2026

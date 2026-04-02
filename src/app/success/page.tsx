@@ -27,6 +27,12 @@ export default function SuccessPage() {
     }
   };
 
+  useEffect(() => {
+    if ((window as any).particlesJS) {
+      initParticles();
+    }
+  }, []);
+
   return (
     <>
       <Script 

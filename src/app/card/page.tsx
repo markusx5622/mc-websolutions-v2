@@ -27,6 +27,12 @@ export default function CardPage() {
     }
   };
 
+  useEffect(() => {
+    if ((window as any).particlesJS) {
+      initParticles();
+    }
+  }, []);
+
   return (
     <>
       <Script 
