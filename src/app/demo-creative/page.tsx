@@ -1,218 +1,281 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Instagram, 
+  Twitter, 
+  Linkedin, 
+  ChevronRight, 
+  ShoppingBag, 
+  Zap, 
+  RefreshCw, 
+  Heart, 
+  Trophy, 
+  CheckCircle,
+  FileText,
+  Mail,
+  ArrowRight
+} from 'lucide-react';
+import './nano.css';
+import { ASSETS } from './assets';
 
-export default function DemoCreativePage() {
-  const [mounted, setMounted] = useState(false);
+export default function NanoBananaDemo() {
+    const [view, setView] = useState('home');
+    const [cans, setCans] = useState(4);
+    const [impact, setImpact] = useState({ money: '0', co2: '0' });
+    const [orderStep, setOrderStep] = useState('idle');
+    const [filter, setFilter] = useState('All');
 
-  useEffect(() => {
-    setMounted(true);
-    // Reset any possible global CSS side-effects
-    document.body.style.cursor = 'auto';
-    return () => {};
-  }, []);
+    const projects = [
+        { id: 1, cat: 'Circular', title: 'VLC-Core v4', stats: '98% Recycled' },
+        { id: 2, cat: 'B2B', title: 'Club Tenis Turia', stats: 'Partner Elite' },
+        { id: 3, cat: 'Tech', title: 'Smart-Box Vending', stats: 'IoT Enabled' },
+        { id: 4, cat: 'B2B', title: 'Valencia Tenis Center (VTC)', stats: 'Hub Logístico' },
+        { id: 5, cat: 'Circular', title: 'Club de Tenis Burriana', stats: 'Residuo Cero' },
+        { id: 6, cat: 'Tech', title: 'Academy Performance', stats: 'Data Tracking' }
+    ];
 
-  if (!mounted) return null;
+    useEffect(() => { 
+        setImpact({
+            money: (cans * 2.50 * 12).toFixed(2),
+            co2: (cans * 0.45 * 12).toFixed(1)
+        });
+    }, [cans]);
 
-  return (
-    <div className="studio-kaizen-scope min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#E0FF00] selection:text-black overflow-x-hidden">
-      
-      <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+    const handleOrder = (e: React.FormEvent) => {
+        e.preventDefault();
+        setOrderStep('submitting');
+        setTimeout(() => setOrderStep('success'), 1500);
+    };
 
-        .studio-kaizen-scope {
-          font-family: 'Inter', sans-serif;
-        }
-        
-        .kaizen-serif {
-          font-family: 'Playfair Display', serif;
-        }
+    const toggleDossier = (e?: React.MouseEvent) => {
+        if(e) e.preventDefault();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        setTimeout(() => setView(view === 'home' ? 'dossier' : 'home'), 300);
+    };
 
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 20px 0;
-            white-space: nowrap;
-        }
-
-        .marquee {
-          display: inline-block;
-          animation: marquee 30s linear infinite;
-        }
-
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        /* Responsive Grid fixes */
-        .kaizen-grid {
-          display: grid;
-          gap: 24px;
-        }
-
-        .mask-text {
-          overflow: hidden;
-          display: block;
-        }
-      `}} />
-
-      {/* --- TASK 1: NAVBAR --- */}
-      <nav className="fixed top-0 w-full p-6 md:p-10 flex justify-between items-center z-50 bg-black/20 backdrop-blur-md border-b border-white/5">
-        <Link href="/#portfolio" className="text-xl md:text-2xl font-black tracking-tighter hover:text-[#E0FF00] transition-colors">
-          STUDIO KAIZEN<span className="text-[#E0FF00]">_</span>
-        </Link>
-        <div className="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase opacity-70">
-          <a href="#work" className="hover:text-[#E0FF00] transition-colors">Work</a>
-          <a href="#expertise" className="hover:text-[#E0FF00] transition-colors">Expertise</a>
-          <a href="#contact" className="hover:text-[#E0FF00] transition-colors">Contact</a>
-        </div>
-        <div className="md:hidden text-[#E0FF00] font-bold text-xs uppercase tracking-widest">MENU</div>
-      </nav>
-
-      {/* --- TASK 2: HERO & MARQUEE --- */}
-      <header className="pt-40 pb-20 px-6 md:px-20 min-h-[70vh] flex flex-col justify-center">
-        <div className="mask-text mb-4">
-          <motion.p 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-[#E0FF00] font-black tracking-[0.3em] uppercase text-[10px] md:text-xs"
-          >
-            Digital Excellence Studio — 2026
-          </motion.p>
-        </div>
-        
-        <h1 className="text-5xl md:text-[8vw] font-black leading-[0.9] tracking-tighter uppercase mb-10">
-          We build <br />
-          <span className="kaizen-serif italic font-normal text-transparent" style={{ WebkitTextStroke: '1px #F5F5F5' }}>Creative</span> <br />
-          Benchmarks.
-        </h1>
-      </header>
-
-      <div className="marquee-container mb-32">
-        <div className="marquee text-4xl md:text-6xl font-black italic tracking-tighter uppercase opacity-20">
-          DIGITAL DESIGN — MOTION GRAPHICS — BRAND IDENTITY — FULLSTACK ENGINEERING — 
-          DIGITAL DESIGN — MOTION GRAPHICS — BRAND IDENTITY — FULLSTACK ENGINEERING — 
-        </div>
-      </div>
-
-      {/* --- TASK 3: EXPERTISE --- */}
-      <section id="expertise" className="py-24 px-6 md:px-20 border-b border-white/5">
-        <div className="max-w-7xl mx-auto">
-            <h2 className="text-xs font-bold tracking-[0.5em] uppercase opacity-30 mb-20">&gt; Our Expertise.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-                <div className="expertise-card">
-                    <h3 className="text-2xl font-bold mb-6">Digital Design</h3>
-                    <p className="text-sm leading-relaxed opacity-50">Crafting high-end user interfaces that bridge the gap between human intuition and technical complex systems.</p>
-                </div>
-                <div className="expertise-card">
-                    <h3 className="text-2xl font-bold mb-6">Motion Graphics</h3>
-                    <p className="text-sm leading-relaxed opacity-50">Bringing brands to life through physics-based motion and sophisticated visual storytelling.</p>
-                </div>
-                <div className="expertise-card">
-                    <h3 className="text-2xl font-bold mb-6">Brand Identity</h3>
-                    <p className="text-sm leading-relaxed opacity-50">Defining the visual DNA of futuristic companies to ensure absolute market authority and recognition.</p>
-                </div>
+    const SocialIcons = () => (
+        <div className="flex gap-8">
+            <div className="w-16 h-16 glass rounded-full flex items-center justify-center border border-white/10 text-white hover:text-black hover:bg-accent transition-all cursor-pointer group shadow-xl">
+                <Instagram className="w-7 h-7 transition-transform group-hover:scale-110" />
+            </div>
+            <div className="w-16 h-16 glass rounded-full flex items-center justify-center border border-white/10 text-white hover:text-black hover:bg-accent transition-all cursor-pointer group shadow-xl">
+                <Twitter className="w-7 h-7 transition-transform group-hover:scale-110" />
+            </div>
+            <div className="w-16 h-16 glass rounded-full flex items-center justify-center border border-white/10 text-white hover:text-black hover:bg-accent transition-all cursor-pointer group shadow-xl">
+                <Linkedin className="w-7 h-7 transition-transform group-hover:scale-110" />
             </div>
         </div>
-      </section>
+    );
 
-      {/* --- TASK 4: SELECTED WORKS (BENTO FIX) --- */}
-      <section id="work" className="py-32 px-6 md:px-20 bg-[#080808]">
-        <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-end mb-20">
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Selected <br />Works</h2>
-                <div className="hidden md:block text-right opacity-30 text-xs tracking-widest leading-relaxed">
-                    [DISPLAYING_LATEST_CASE_STUDIES]<br />
-                    M&C_ENGINEERING_CORE_V.2
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Project 1 */}
-                <motion.div 
-                    whileHover="hover"
-                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5"
-                >
-                    <Image 
-                        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
-                        alt="Project One" 
-                        fill 
-                        unoptimized={true}
-                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                    <div className="absolute bottom-10 left-10">
-                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">Architecture / 3D</span>
-                        <h3 className="text-2xl font-black tracking-tighter uppercase">Minimal_Structure</h3>
-                    </div>
-                </motion.div>
-
-                {/* Project 2 */}
-                <motion.div 
-                    whileHover="hover"
-                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5 md:translate-y-20"
-                >
-                    <Image 
-                        src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop" 
-                        alt="Project Two" 
-                        fill 
-                        unoptimized={true}
-                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                    <div className="absolute bottom-10 left-10">
-                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">System / Interface</span>
-                        <h3 className="text-2xl font-black tracking-tighter uppercase">Neon_Vanguard</h3>
-                    </div>
-                </motion.div>
-
-                {/* Project 3 */}
-                <motion.div 
-                    whileHover="hover"
-                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5"
-                >
-                    <Image 
-                        src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" 
-                        alt="Project Three" 
-                        fill 
-                        unoptimized={true}
-                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                    <div className="absolute bottom-10 left-10">
-                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">Botany / Luxury</span>
-                        <h3 className="text-2xl font-black tracking-tighter uppercase">Aura_Nature</h3>
-                    </div>
-                </motion.div>
-            </div>
+    const FinalAnimatedCredit = () => (
+        <div className="border-t border-white/5 pt-16 flex flex-col items-center justify-center">
+            <motion.p 
+                animate={{ opacity: [0.5, 1, 0.5], scale: [0.98, 1, 0.98] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="shimmer-text text-xl md:text-2xl font-black font-mono tracking-[0.4em] uppercase italic text-center"
+            >
+                2026 NANO BANANA LABS // ENGINEERED BY M&C WEB SOLUTIONS
+            </motion.p>
         </div>
-      </section>
+    );
 
-      {/* --- TASK 5: FOOTER & CTA --- */}
-      <footer id="contact" className="py-40 px-6 md:px-20 text-center border-t border-white/5">
-        <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-16">Ready to <br />stand out?</h2>
-            <Link href="/#contact" className="inline-block group bg-transparent border-2 border-[#E0FF00] px-12 py-5 rounded-full overflow-hidden relative">
-                <span className="relative z-10 text-[#E0FF00] group-hover:text-black font-black uppercase tracking-widest transition-colors duration-300">
-                    Start a Project
-                </span>
-                <div className="absolute inset-0 bg-[#E0FF00] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </Link>
-            
-            <div className="mt-40 pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-30 text-[10px] tracking-[0.4em] uppercase gap-10">
-                <div>M&C_WEB_SOLUTIONS — 2026</div>
-                <Link href="/#portfolio" className="hover:text-[#E0FF00] transition-colors tracking-widest">[BACK_TO_CORE_ENGINE]</Link>
-                <div>ALL_RIGHTS_RESERVED</div>
-            </div>
+    return (
+        <div className="nano-banana-container">
+            <AnimatePresence mode="wait">
+                {view === 'home' ? (
+                    <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -20 }}>
+                        
+                        {/* --- NAVIGATION --- */}
+                        <header className="fixed w-full z-[100] p-6 top-0">
+                            <nav className="max-w-7xl mx-auto glass rounded-full p-4 px-10 flex justify-between items-center shadow-2xl border border-white/10">
+                                <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({top:0, behavior:'smooth'})}>
+                                    <img src={ASSETS.LOGO} className="h-10 w-10 rounded-full object-cover p-1 bg-white/5 border border-white/10" alt="Nano Banana" />
+                                    <span className="font-mono font-extrabold tracking-tighter text-2xl uppercase italic accent-green leading-none">nano banana</span>
+                                </div>
+                                <div className="hidden lg:flex gap-10 text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 font-mono italic">
+                                    <a href="#mision" className="hover:text-white transition">Misión</a>
+                                    <a href="#tecnologia" className="hover:text-white transition">Tecnología</a>
+                                    <a href="#lab" className="hover:text-white transition">The_Lab</a>
+                                    <a href="#suscripcion" className="hover:text-white transition">Loop</a>
+                                    <a href="#portfolio" className="hover:text-white transition">Éxitos</a>
+                                </div>
+                                <a href="#lote" className="bg-accent text-black px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-lg">Pedir Lote</a>
+                            </nav>
+                        </header>
+
+                        {/* --- HERO --- */}
+                        <section className="min-h-screen flex items-center pt-32 px-6 relative bg-[#030303]">
+                            <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 text-left">
+                                <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                                    <span className="accent-orange font-mono font-extrabold tracking-[0.4em] uppercase block mb-6 italic text-sm">Engineering VLC // 2026</span>
+                                    <h1 className="text-7xl lg:text-[8.5rem] font-black leading-[0.8] mb-10 tracking-tighter italic uppercase text-white">EL SET <br/><span className="accent-green">QUE CAMBIA</span> <br/>EL CICLO.</h1>
+                                    <p className="text-gray-400 text-2xl mb-12 lg:max-w-xl leading-relaxed font-light">Reinventamos el mercado. Pelotas Pro fabricadas en Valencia con caucho recuperado local. <span className="text-white font-bold italic">Mismo rebote, coste disruptivo.</span></p>
+                                    <div className="flex flex-col sm:flex-row gap-6">
+                                        <a href="#tecnologia" className="bg-accent text-black px-12 py-6 font-black uppercase text-xs tracking-widest hover:bg-white transition-all text-center italic">Explorar "La Naranja"</a>
+                                        <a href="#impacto" className="border border-accent text-accent px-12 py-6 font-black uppercase text-xs tracking-widest hover:bg-accent hover:text-black transition-all text-center">Calculadora de Impacto</a>
+                                    </div>
+                                </motion.div>
+                                <div className="relative p-4 bg-white/5 rounded-[4rem] border border-white/10 shadow-2xl">
+                                    <img src={ASSETS.HERO} className="w-full h-auto rounded-[3.5rem] object-cover" alt="The Nano Banana Set" />
+                                    <div className="absolute -bottom-8 -right-8 bg-accent text-black p-10 rounded-full shadow-2xl animate-bounce">
+                                        <Zap className="w-10 h-10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* --- CALCULADORA --- */}
+                        <section id="impacto" className="py-32 px-6 bg-black relative">
+                            <div className="max-w-4xl mx-auto glass p-16 rounded-[3rem] text-center border-white/5">
+                                <h2 className="text-5xl font-black mb-16 italic uppercase tracking-tighter">Impacto Loop 2026</h2>
+                                <div className="space-y-12 mb-20">
+                                    <div className="flex justify-between text-xs font-mono uppercase text-gray-500 tracking-[0.3em]">
+                                        <span>Consumo: {cans} tubos/mes</span>
+                                        <span className="accent-green">{impact.money}€ ahorro</span>
+                                    </div>
+                                    <input type="range" min="1" max="25" value={cans} onChange={(e) => setCans(parseInt(e.target.value))} />
+                                </div>
+                                <div className="grid grid-cols-2 gap-10">
+                                    <div className="bento-card p-12 rounded-[2rem]">
+                                        <RefreshCw className="w-12 h-12 accent-green mb-6 mx-auto" />
+                                        <div className="text-5xl font-black mb-2 italic">-{impact.co2}kg</div>
+                                        <div className="text-[10px] uppercase font-mono tracking-widest text-gray-400">CO2 Evitado/Año</div>
+                                    </div>
+                                    <div className="bento-card p-12 rounded-[2rem]">
+                                        <Heart className="w-12 h-12 text-pink-500 mb-6 mx-auto" />
+                                        <div className="text-5xl font-black mb-2 italic">100%</div>
+                                        <div className="text-[10px] uppercase font-mono tracking-widest text-gray-400">Circular VLC</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* --- PORTFOLIO --- */}
+                        <section id="portfolio" className="py-32 px-6 bg-[#030303]">
+                            <div className="max-w-7xl mx-auto">
+                                <div className="flex justify-between items-end mb-24">
+                                    <h2 className="text-6xl font-black italic uppercase tracking-tighter">Casos <br/>de Éxito</h2>
+                                    <div className="flex gap-4">
+                                        {['All', 'B2B', 'Tech', 'Circular'].map(f => (
+                                            <button key={f} onClick={() => setFilter(f)} className={`px-8 py-3 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all ${filter === f ? 'bg-accent text-black' : 'glass text-gray-500'}`}>{f}</button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="grid md:grid-cols-3 gap-8">
+                                    {projects.filter(p => filter === 'All' || p.cat === filter).map((p, idx) => (
+                                        <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: idx * 0.1 }} key={p.id} className="bento-card p-10 rounded-[2.5rem] group h-[400px] flex flex-col justify-between relative overflow-hidden">
+                                            <div className="relative z-10">
+                                                <span className="text-[10px] font-mono text-accent uppercase tracking-[0.4em] mb-4 block italic">{p.cat} // 0x{p.id}</span>
+                                                <h3 className="text-3xl font-black uppercase italic leading-tight mb-4">{p.title}</h3>
+                                                <div className="text-gray-400 font-light">{p.stats}</div>
+                                            </div>
+                                            <div className="relative z-10 flex justify-end">
+                                                <div className="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:bg-accent group-hover:text-black transition-all">
+                                                    <ChevronRight className="w-6 h-6" />
+                                                </div>
+                                            </div>
+                                            {/* Decorative backgrounds handled by ASSETS.PROJECTS */}
+                                            {ASSETS.PROJECTS[idx] && (
+                                                <img src={ASSETS.PROJECTS[idx]} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt="Project Deco" />
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* --- FOOTER --- */}
+                        <footer className="py-32 px-6 bg-black border-t border-white/5">
+                            <div className="max-w-7xl mx-auto flex flex-col items-center">
+                                <h2 className="text-[10vw] font-black italic uppercase shimmer-text tracking-tighter mb-20 leading-none">NANO BANANA</h2>
+                                <SocialIcons />
+                                <div className="mt-20 flex gap-20 text-[10px] font-mono tracking-widest uppercase text-gray-600">
+                                    <a href="#" onClick={toggleDossier} className="hover:text-accent transition flex items-center gap-2"><FileText className="w-4 h-4" /> Dossier_2026</a>
+                                    <a href="#lab" className="hover:text-accent transition flex items-center gap-2"><Trophy className="w-4 h-4" /> Partnership</a>
+                                    <a href="mailto:info@nanobanana.vlc" className="hover:text-accent transition flex items-center gap-2"><Mail className="w-4 h-4" /> Lab_Inquiry</a>
+                                </div>
+                                <div className="mt-40 w-full">
+                                    <FinalAnimatedCredit />
+                                </div>
+                            </div>
+                        </footer>
+
+                        {/* --- ORDER FORM SECTION --- */}
+                        <section id="lote" className="py-32 px-6 bg-[#030303]">
+                            <div className="max-w-4xl mx-auto bento-card p-16 rounded-[3rem] border border-accent/20">
+                                {orderStep === 'success' ? (
+                                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-20">
+                                        <CheckCircle className="w-24 h-24 accent-green mx-auto mb-8" />
+                                        <h3 className="text-4xl font-black italic uppercase mb-4">Lote Reservado</h3>
+                                        <p className="text-gray-400 uppercase tracking-widest font-mono text-sm leading-relaxed">Nuestro equipo de ingeniería de Valencia <br/>te contactará en menos de 24h.</p>
+                                        <button onClick={() => setOrderStep('idle')} className="mt-12 text-accent font-mono text-xs uppercase tracking-[0.5em] border-b border-accent pb-2">Hacer otro pedido</button>
+                                    </motion.div>
+                                ) : (
+                                    <>
+                                        <div className="text-center mb-16">
+                                            <span className="accent-orange font-mono text-xs uppercase tracking-[0.5em]">Direct to Club // B2B</span>
+                                            <h3 className="text-5xl font-black italic uppercase mt-4">Pide tu primer lote</h3>
+                                        </div>
+                                        <form onSubmit={handleOrder} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <input type="text" placeholder="Club / Empresa" required className="bg-white/5 border border-white/10 p-6 rounded-2xl outline-none focus:border-accent transition font-mono uppercase text-xs tracking-widest" />
+                                            <input type="email" placeholder="Email corporativo" required className="bg-white/5 border border-white/10 p-6 rounded-2xl outline-none focus:border-accent transition font-mono uppercase text-xs tracking-widest" />
+                                            <div className="md:col-span-2">
+                                                <select className="w-full bg-white/5 border border-white/10 p-6 rounded-2xl outline-none focus:border-accent transition font-mono uppercase text-xs tracking-widest appearance-none">
+                                                    <option>Pack Inicio (24 Tubos)</option>
+                                                    <option>Pack Club (72 Tubos)</option>
+                                                    <option>Pack Pro (144 Tubos)</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" disabled={orderStep === 'submitting'} className="md:col-span-2 bg-accent text-black font-black uppercase p-8 rounded-full tracking-[0.5em] hover:bg-white transition-all transform hover:scale-[1.02] flex items-center justify-center gap-4">
+                                                {orderStep === 'submitting' ? 'PROCESANDO...' : (
+                                                    <>CONFIRMAR_PEDIDO <ArrowRight className="w-6 h-6" /></>
+                                                )}
+                                            </button>
+                                        </form>
+                                    </>
+                                )}
+                            </div>
+                        </section>
+
+                    </motion.div>
+                ) : (
+                    <motion.div key="dossier" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="min-h-screen pt-32 px-6 pb-20 max-w-5xl mx-auto">
+                         <div className="flex justify-between items-center mb-20">
+                            <div className="flex items-center gap-4">
+                                <img src={ASSETS.LOGO} className="h-10 w-10 rounded-full" alt="Icon" />
+                                <h1 className="text-3xl font-black italic uppercase tracking-tighter">The Nano Dossier</h1>
+                            </div>
+                            <button onClick={() => setView('home')} className="glass px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-accent hover:text-black transition-all">← Volver</button>
+                         </div>
+
+                         <div className="space-y-10">
+                            <div className="bento-card p-12 rounded-[2.5rem]">
+                                <h2 className="text-accent font-mono text-xs uppercase mb-6 tracking-[0.4em]">01_Visión</h2>
+                                <p className="text-3xl font-light leading-relaxed">Nuestra meta es cerrar el círculo del caucho en España. Cada pelota Nano Banana es una unidad de ingeniería circular fabricada con un 40% menos de huella hídrica.</p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-10">
+                                <div className="bento-card p-12 rounded-[2.5rem]">
+                                    <h2 className="text-accent font-mono text-xs uppercase mb-6 tracking-[0.4em]">02_Performance</h2>
+                                    <p className="text-gray-400 leading-relaxed mb-8">Testeadas por jugadores ATP en academia de alto rendimiento VLC. Estabilidad de presión un 15% superior a la media industrial.</p>
+                                    <CheckCircle className="w-12 h-12 text-green-500" />
+                                </div>
+                                <div className="bento-card p-12 rounded-[2.5rem]">
+                                    <h2 className="text-accent font-mono text-xs uppercase mb-6 tracking-[0.4em]">03_Logística</h2>
+                                    <p className="text-gray-400 leading-relaxed mb-8">Hub central en Valencia. Distribución optimizada bajo demanda eliminando intermediarios innecesarios.</p>
+                                    <ShoppingBag className="w-12 h-12 text-blue-500" />
+                                </div>
+                            </div>
+                         </div>
+                         
+                         <div className="mt-20">
+                            <FinalAnimatedCredit />
+                         </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
-      </footer>
-    </div>
-  );
+    );
 }
