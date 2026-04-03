@@ -587,12 +587,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" 
                             alt="Landing Speed" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                             priority
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
@@ -613,12 +612,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" 
                             alt="Nano Banana Engineering" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[NANO_BANANA_ENGINEERING]</h3>
@@ -628,6 +626,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
+
                       {/* DEMO 3 */}
                       <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
                         <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
@@ -637,12 +636,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800" 
                             alt="Negocio Local" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
@@ -662,12 +660,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" 
                             alt="Aura Wellness & Spa" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>
@@ -687,12 +684,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?q=80&w=2080&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?auto=format&fit=crop&q=80&w=800" 
                             alt="Artesanía Digital VLC" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ARTESANÍA_DIGITAL_VLC]</h3>
@@ -712,12 +708,11 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?auto=format&fit=crop&q=80&w=800" 
                             alt="Elite Padel System" 
                             fill
-                            style={{ objectFit: 'cover' }}
                             unoptimized={true}
-                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
