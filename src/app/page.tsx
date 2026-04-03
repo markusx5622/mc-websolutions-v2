@@ -707,12 +707,7 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <img 
-                            src="https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop" 
-                            alt="Elite Padel System" 
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', top: 0, left: 0, zIndex: 0 }}
-                          />
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=1000&auto=format&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
                             <span className="mono-text text-accent text-xs mb-4">&gt; SPORT: Performance &amp; Booking</span>
