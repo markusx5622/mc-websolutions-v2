@@ -707,14 +707,11 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden" style={{ background: 'red' }}>
-                          <Image 
-                            src="https://images.unsplash.com/photo-1518112166137-859063283281?q=80&w=2000&auto=format&fit=crop" 
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                          <img 
+                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?q=80&w=2070&auto=format&fit=crop" 
                             alt="Elite Padel System" 
-                            fill
-                            unoptimized={true}
-                            style={{ opacity: 1, visibility: 'visible', display: 'block', zIndex: 1 }}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500 block" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
