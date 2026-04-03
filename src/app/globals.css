@@ -996,3 +996,121 @@ footer {
         height: 250px !important;
     }
 }
+
+/* Terminal Form Styles */
+.terminal-window {
+    background: #020C1B;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.terminal-header {
+    background: rgba(100, 255, 218, 0.1);
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.3);
+}
+
+.terminal-body {
+    padding: 2.5rem;
+}
+
+.terminal-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+}
+
+.terminal-prompt {
+    color: var(--accent);
+    white-space: nowrap;
+    font-size: 0.85rem;
+    padding-top: 2px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-main);
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    caret-color: var(--accent);
+}
+
+.terminal-input::placeholder {
+    color: rgba(100, 255, 218, 0.2);
+}
+
+.terminal-execute-btn {
+    width: 100%;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-execute-btn:hover {
+    background: var(--accent-glow);
+    box-shadow: 0 0 20px var(--accent-glow);
+    animation: terminal-flicker 0.15s infinite;
+}
+
+@keyframes terminal-flicker {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.terminal-status-msg {
+    margin-top: 1.5rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .terminal-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .terminal-body {
+        padding: 1.5rem;
+    }
+}

@@ -559,42 +559,66 @@ export default function Home() {
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
             Cuéntanos tu idea y sube tus archivos. Nos pondremos en contacto en menos de 24h.
           </p>
-          <form name="briefing-mc" method="POST" action="/success" data-netlify="true" style={{ maxWidth: "800px", margin: "0 auto", background: "var(--bg-color)", padding: "3rem", borderRadius: "12px", border: "1px solid rgba(100, 255, 218, 0.1)" }}>
-            <input type="hidden" name="form-name" value="briefing-mc" />
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "25px" }}>
-              <div className="form-group">
-                <label style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", display: "block", marginBottom: "8px" }}>NOMBRE COMPLETO</label>
-                <input type="text" name="nombre" required style={{ width: "100%", padding: "12px", background: "var(--bg-light)", border: "1px solid #233554", color: "white", borderRadius: "4px" }} />
-              </div>
-              <div className="form-group">
-                <label style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", display: "block", marginBottom: "8px" }}>WHATSAPP / TELÉFONO</label>
-                <input type="tel" name="telefono" required style={{ width: "100%", padding: "12px", background: "var(--bg-light)", border: "1px solid #233554", color: "white", borderRadius: "4px" }} />
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="terminal-title">[COMMAND_PROMPT: BRIEFING_INIT_V.01]</div>
+              <div className="terminal-controls">
+                <div className="terminal-dot"></div>
+                <div className="terminal-dot"></div>
+                <div className="terminal-dot"></div>
               </div>
             </div>
-            <div className="form-group" style={{ marginBottom: "25px" }}>
-              <label style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", display: "block", marginBottom: "8px" }}>EMAIL DE CONTACTO</label>
-              <input type="email" name="email" required style={{ width: "100%", padding: "12px", background: "var(--bg-light)", border: "1px solid #233554", color: "white", borderRadius: "4px" }} />
+            
+            <div className="terminal-body">
+              <form name="briefing-mc" method="POST" action="/success" data-netlify="true">
+                <input type="hidden" name="form-name" value="briefing-mc" />
+                
+                <div className="terminal-row">
+                  <span className="terminal-prompt">[INPUT_USER] &gt; NAME:</span>
+                  <input type="text" name="nombre" required placeholder="_type_here..." className="terminal-input" />
+                </div>
+
+                <div className="terminal-row">
+                  <span className="terminal-prompt">[INPUT_USER] &gt; CONTACT:</span>
+                  <input type="tel" name="telefono" required placeholder="_whatsapp_or_phone..." className="terminal-input" />
+                </div>
+
+                <div className="terminal-row">
+                  <span className="terminal-prompt">[INPUT_USER] &gt; EMAIL:</span>
+                  <input type="email" name="email" required placeholder="_secure_connection_at..." className="terminal-input" />
+                </div>
+
+                <div className="terminal-row">
+                  <span className="terminal-prompt">[INPUT_USER] &gt; PACKAGE:</span>
+                  <select name="paquete" defaultValue="emprendedor" className="terminal-input" style={{ appearance: 'none', cursor: 'pointer' }}>
+                    <option value="emprendedor">Pack Emprendedor (100€)</option>
+                    <option value="profesional">Pack Profesional (250€)</option>
+                    <option value="beca-uev">Beca M&C (Descuento Colega)</option>
+                  </select>
+                </div>
+
+                <div className="terminal-row" style={{ flexDirection: 'column', gap: '10px' }}>
+                  <span className="terminal-prompt">[INPUT_USER] &gt; PROJECT_DESCRIPTION:</span>
+                  <textarea name="descripcion" rows={4} required placeholder="_abstract_of_your_vision..." className="terminal-input" style={{ resize: 'none' }}></textarea>
+                </div>
+
+                <div style={{ margin: "2rem 0", padding: "1.5rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
+                  <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "10px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
+                  <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
+                    Please transmit all high-resolution visual assets to <a href="mailto:mandcwebsolutions@gmail.com" style={{ color: "var(--accent)" }}>mandcwebsolutions@gmail.com</a> post-initialization.
+                  </p>
+                </div>
+
+                <button type="submit" className="terminal-execute-btn">
+                  EXECUTE_STRATEGY_INITIALIZATION
+                </button>
+
+                <div className="terminal-status-msg">
+                  [SYSTEM] &gt; Standby for secure handshake...
+                </div>
+              </form>
             </div>
-            <div className="form-group" style={{ marginBottom: "25px" }}>
-              <label style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", display: "block", marginBottom: "8px" }}>PAQUETE SELECCIONADO</label>
-              <select name="paquete" defaultValue="emprendedor" style={{ width: "100%", padding: "12px", background: "var(--bg-light)", border: "1px solid #233554", color: "white", borderRadius: "4px" }}>
-                <option value="emprendedor">Pack Emprendedor (100€)</option>
-                <option value="profesional">Pack Profesional (250€)</option>
-                <option value="beca-uev">Beca M&C (Descuento Colega)</option>
-              </select>
-            </div>
-            <div className="form-group" style={{ marginBottom: "25px" }}>
-              <label style={{ color: "var(--accent)", fontFamily: "var(--font-mono)", fontSize: "0.8rem", display: "block", marginBottom: "8px" }}>CUÉNTANOS TU IDEA (DESCRIPCIÓN)</label>
-              <textarea name="descripcion" rows={5} required placeholder="¿Qué quieres conseguir con tu web? ¿Qué secciones necesitas?" style={{ width: "100%", padding: "12px", background: "var(--bg-light)", border: "1px solid #233554", color: "white", borderRadius: "4px", resize: "none" }}></textarea>
-            </div>
-            <div className="form-group" style={{ marginBottom: "35px", border: "1px dashed var(--accent)", padding: "25px", borderRadius: "8px", textAlign: "center", background: "rgba(100, 255, 218, 0.02)" }}>
-              <p className="mono-text" style={{ color: "var(--accent)", fontSize: "0.8rem", marginBottom: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>Envío de Recursos</p>
-              <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", lineHeight: 1.6, margin: 0 }}>
-                Para garantizar la máxima calidad visual, por favor envía tus recursos directamente a <a href="mailto:mandcwebsolutions@gmail.com" style={{ color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}>mandcwebsolutions@gmail.com</a> tras completar este formulario.
-              </p>
-            </div>
-            <button type="submit" className="btn btn-solid" style={{ width: "100%", letterSpacing: "2px" }}>ENVIAR BRIEFING A M&C</button>
-          </form>
+          </div>
         </div>
       </motion.section>
 

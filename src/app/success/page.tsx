@@ -120,14 +120,34 @@ export default function SuccessPage() {
       <div className="success-body">
         <div id="particles-js" suppressHydrationWarning></div>
 
-        <div className="success-card">
-            <div className="logo-box">
-                <img src="/logo.svg" alt="M&C Logo" style={{ width: "100%", height: "100%" }} />
+        <div className="terminal-window" style={{ maxWidth: '600px', width: '90%', textAlign: 'left' }}>
+          <div className="terminal-header">
+            <div className="terminal-title">[SYSTEM] &gt; SUCCESS_INITIALIZATION_V.01</div>
+            <div className="terminal-controls">
+              <div className="terminal-dot"></div>
+              <div className="terminal-dot"></div>
+              <div className="terminal-dot"></div>
             </div>
-            <div className="success-icon">✓</div>
-            <h1 className="success-h1">¡Briefing Recibido!</h1>
-            <p className="success-p">Juan y Marc ya tienen tus datos en el sistema. El motor de IA ha comenzado el pre-procesamiento. Nos pondremos en contacto contigo en las próximas 24 horas.</p>
-            <Link href="/" className="btn-back">Volver a la Web</Link>
+          </div>
+          
+          <div className="terminal-body" style={{ padding: '2rem' }}>
+            <div style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+               <img src="/logo.svg" alt="M&C Logo" style={{ width: "80px", height: "80px", marginBottom: "1rem", filter: "drop-shadow(0 0 10px var(--accent))" }} />
+               <div style={{ color: 'var(--accent)', fontSize: '2rem', marginBottom: '1rem' }}>✓</div>
+            </div>
+
+            <p className="mono-text" style={{ fontSize: '1.1rem', color: 'var(--accent)', marginBottom: '1.5rem' }}>
+              [SYSTEM] &gt; Data encrypted and sent. Connection established.
+            </p>
+
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+              Handshake complete. Your project coordinates have been logged into our neural engine. M&C engineers will contact you at the specified secure endpoint within 24 hours.
+            </p>
+
+            <Link href="/" className="terminal-execute-btn" style={{ textAlign: 'center', textDecoration: 'none', display: 'block' }}>
+              RETURN_TO_BASE_INTERFACE
+            </Link>
+          </div>
         </div>
       </div>
     </>
