@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
@@ -114,6 +114,14 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
   };
 
+  const methodologyRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: methodologyRef,
+    offset: ["start center", "end center"]
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <>
       <Script 
@@ -194,29 +202,70 @@ export default function Home() {
       <motion.section 
         id="methodology" 
         className="section"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1 }}
+        ref={methodologyRef}
       >
         <div className="container">
-          <h2 className="section-title">Nuestra Metodología</h2>
-          <div className="steps-grid">
-            <div className="step-card">
-              <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-              <h3 className="step-title">1. Briefing Express</h3>
-              <p className="step-desc">Completa un formulario estructurado de 5 minutos. Extraemos la esencia de tu negocio con precisión de ingeniería.</p>
+          <h2 className="section-title">Visual Engineering Pipeline</h2>
+          
+          <div className="pipeline-container">
+            <div className="pipeline-line">
+              <motion.div 
+                className="pipeline-fill"
+                style={{ height: lineHeight }}
+              />
             </div>
-            <div className="step-card">
-              <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-              <h3 className="step-title">2. Generación IA</h3>
-              <p className="step-desc">Nuestros modelos de IA procesan tus datos para generar una estructura, copy y diseño base altamente optimizados.</p>
-            </div>
-            <div className="step-card">
-              <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-              <h3 className="step-title">3. Despliegue & Curación</h3>
-              <p className="step-desc">Revisión humana experta. Ajustamos detalles visuales, optimizamos el rendimiento y lanzamos tu web al mundo.</p>
-            </div>
+
+            {/* STEP 1 */}
+            <motion.div 
+              className="pipeline-step"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="pipeline-node"></div>
+              <div className="pipeline-content">
+                <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                <h3 className="pipeline-title">01. BRIEFING EXPRESS</h3>
+                <p className="pipeline-desc">Captura de requisitos técnicos en 5 minutos. Ingeniería de requisitos optimizada para la velocidad.</p>
+              </div>
+            </motion.div>
+
+            {/* STEP 2 */}
+            <motion.div 
+              className="pipeline-step"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="pipeline-node"></div>
+              <div className="pipeline-content">
+                <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <h3 className="pipeline-title">02. GENERACIÓN IA</h3>
+                <p className="pipeline-desc">Nuestros modelos procedimentales generan el 90% del código y diseño en segundos, reduciendo drásticamente los plazos.</p>
+              </div>
+            </motion.div>
+
+            {/* STEP 3 */}
+            <motion.div 
+              className="pipeline-step"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="pipeline-node"></div>
+              <div className="pipeline-content">
+                <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                <h3 className="pipeline-title">03. DESPLIEGUE & CURACIÓN</h3>
+                <p className="pipeline-desc">Supervisión humana experta para el pulido de precisión y despliegue global en 48 horas.</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.section>
