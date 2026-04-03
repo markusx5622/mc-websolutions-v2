@@ -526,39 +526,34 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
-          <h2 className="section-title">Transparencia Total</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3 className="pricing-title">Pack Emprendedor</h3>
-              <div className="pricing-price">100€<span>/pago único</span></div>
-              <ul className="pricing-features">
-                <li>Landing Page (1 página)</li>
-                <li>Diseño Responsive</li>
-                <li>Copywriting generado por IA</li>
-                <li>Formulario de Contacto</li>
-                <li>Entrega en 48 horas</li>
-              </ul>
-              <a href="#contact" className="btn btn-primary" style={{ width: "100%" }}>Seleccionar</a>
+        <div className="container" style={{ position: 'relative' }}>
+          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '0 0 10px var(--accent-glow)' }}>
+            [SYSTEM_SPECS: TRANSPARENCY_PROTOCOL]
+          </h2>
+          
+          <div className="specs-table-container">
+            <div className="verified-stamp">SYSTEM_VERIFIED_2026</div>
+            
+            <div className="specs-row">
+              <span className="specs-key">&gt; DEPLOYMENT_SPEED:</span>
+              <span className="specs-value">Standard deployment in 1-7 days depending on system complexity.</span>
             </div>
-            <div className="pricing-card featured">
-              <h3 className="pricing-title">Pack Profesional</h3>
-              <div className="pricing-price">250€<span>/pago único</span></div>
-              <ul className="pricing-features">
-                <li>Web Multi-página (hasta 4)</li>
-                <li>Diseño Premium Personalizado</li>
-                <li>Optimización SEO Básica</li>
-                <li>Integración WhatsApp/Redes</li>
-                <li>Entrega en 72 horas</li>
-              </ul>
-              <a href="#contact" className="btn btn-solid" style={{ width: "100%" }}>Seleccionar</a>
+            
+            <div className="specs-row">
+              <span className="specs-key">&gt; COST_TRANSPARENCY:</span>
+              <span className="specs-value">Fixed-price modules. No hidden processing fees.</span>
+            </div>
+            
+            <div className="specs-row">
+              <span className="specs-key">&gt; EVOLUTIONARY_SUPPORT:</span>
+              <span className="specs-value">Direct access to lead engineers (Marc &amp; Juan) for system updates.</span>
             </div>
           </div>
-          <div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "4rem" }}>
-            <div style={{ display: "inline-block", padding: "1.5rem 2.5rem", background: "rgba(100, 255, 218, 0.1)", borderRadius: "50px", border: "1px solid var(--accent)" }}>
+
+          <div style={{ textAlign: "center", marginTop: "4rem" }}>
+            <div style={{ display: "inline-block", padding: "1.5rem 2.5rem", background: "rgba(100, 255, 218, 0.1)", borderRadius: "12px", border: "1px dashed var(--accent)" }}>
               <p className="mono-text" style={{ color: "var(--accent)", margin: 0, fontSize: "1rem" }}>
-                🎓 <strong>BECA M&C:</strong> ¿Compañero de la UEV o marca personal emergente? <br />
-                Tenemos un descuento especial del <strong>20%</strong> para proyectos universitarios.
+                🎓 🛡️ <strong>SECURITY_MAINTENANCE:</strong> Active monitoring and hosting protocols available for all systems post-deployment.
               </p>
             </div>
           </div>
