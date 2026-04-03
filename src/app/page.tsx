@@ -677,6 +677,56 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
+
+                      {/* DEMO 5 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                          <Image 
+                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?q=80&w=2080&auto=format&fit=crop" 
+                            alt="Artesanía Digital VLC" 
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                          />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ARTESANÍA_DIGITAL_VLC]</h3>
+                            <span className="mono-text text-accent text-xs mb-4">&gt; FASHION: Bespoke Tailoring Experience</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Plataforma de alta costura con gestión de citas premium y catálogo artesanal interactivo.</p>
+                            <a href="/demo-sastre" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* DEMO 6 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                          <Image 
+                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Elite Padel System" 
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
+                          />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
+                            <span className="mono-text text-accent text-xs mb-4">&gt; SPORT: Performance &amp; Booking</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Gestión avanzada de pistas, estadísticas de juego y comunidad deportiva de alto rendimiento.</p>
+                            <a href="/demo-padel" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
