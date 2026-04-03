@@ -684,13 +684,14 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1" 
                             alt="Artesanía Digital VLC" 
                             fill
                             unoptimized={true}
+                            style={{ opacity: 1, visibility: 'visible', display: 'block', zIndex: 1 }}
                             className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ARTESANÍA_DIGITAL_VLC]</h3>
                             <span className="mono-text text-accent text-xs mb-4">&gt; FASHION: Bespoke Tailoring Experience</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Plataforma de alta costura con gestión de citas premium y catálogo artesanal interactivo.</p>
@@ -708,13 +709,14 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?q=80&w=2070&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1593110050241-ee7ce35869ef?q=80&w=1000&auto=format&fit=crop&v=1" 
                             alt="Elite Padel System" 
                             fill
                             unoptimized={true}
+                            style={{ opacity: 1, visibility: 'visible', display: 'block', zIndex: 1 }}
                             className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
                             <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
                             <span className="mono-text text-accent text-xs mb-4">&gt; SPORT: Performance &amp; Booking</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Gestión avanzada de pistas, estadísticas de juego y comunidad deportiva de alto rendimiento.</p>
