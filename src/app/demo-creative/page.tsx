@@ -1,123 +1,49 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
-
-// --- CURSOR COMPONENT ---
-const CustomCursor = () => {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-  const [isPointer, setIsPointer] = useState(false);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      
-      const target = e.target as HTMLElement;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === 'pointer' || 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON'
-      );
-    };
-    window.addEventListener('mousemove', moveCursor);
-    return () => window.removeEventListener('mousemove', moveCursor);
-  }, [cursorX, cursorY]);
-
-  return (
-    <motion.div
-      style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
-        left: -10,
-        top: -10,
-      }}
-      animate={{
-        scale: isPointer ? 3 : 1,
-        backgroundColor: isPointer ? '#E0FF00' : '#F5F5F5',
-      }}
-      className="fixed pointer-events-none z-[9999] w-5 h-5 rounded-full mix-blend-difference"
-    />
-  );
-};
-
-// --- MAGNETIC BUTTON ---
-const MagneticButton = ({ children, className }: { children: React.ReactNode, className?: string }) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { damping: 15, stiffness: 150 });
-  const springY = useSpring(y, { damping: 15, stiffness: 150 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
-    x.set(distanceX * 0.35);
-    y.set(distanceY * 0.35);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-      className={className}
-    >
-      {children}
-    </motion.button>
-  );
-};
+import { motion } from 'framer-motion';
 
 export default function DemoCreativePage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Hide default cursor in this route
-    document.body.style.cursor = 'none';
-    return () => {
-      document.body.style.cursor = 'auto';
-    };
+    // Reset any possible global CSS side-effects
+    document.body.style.cursor = 'auto';
+    return () => {};
   }, []);
 
   if (!mounted) return null;
 
   return (
-    <div className="creative-v2-scope min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#E0FF00] selection:text-black">
-      <CustomCursor />
+    <div className="studio-kaizen-scope min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#E0FF00] selection:text-black overflow-x-hidden">
       
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
 
-        .creative-v2-scope {
+        .studio-kaizen-scope {
           font-family: 'Inter', sans-serif;
         }
         
-        .creative-serif {
+        .kaizen-serif {
           font-family: 'Playfair Display', serif;
         }
 
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 0;
+            white-space: nowrap;
+        }
+
         .marquee {
-          white-space: nowrap;
-          overflow: hidden;
           display: inline-block;
-          animation: marquee 20s linear infinite;
+          animation: marquee 30s linear infinite;
         }
 
         @keyframes marquee {
@@ -125,173 +51,167 @@ export default function DemoCreativePage() {
           100% { transform: translateX(-50%); }
         }
 
-        .bento-grid {
+        /* Responsive Grid fixes */
+        .kaizen-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          grid-auto-rows: 250px;
-          gap: 20px;
+          gap: 24px;
         }
 
         .mask-text {
           overflow: hidden;
           display: block;
         }
-
-        /* Standard CSS Overrides for this Demo */
-        .creative-v2-scope * {
-          cursor: none !important;
-        }
       `}} />
 
-      {/* --- NAVBAR --- */}
-      <nav className="fixed top-0 w-full p-8 flex justify-between items-center z-50">
-        <Link href="/#portfolio" className="text-xl font-black tracking-tighter hover:text-[#E0FF00] transition-colors">
-          VISIONARY<span className="text-[#E0FF00]">.</span>
+      {/* --- TASK 1: NAVBAR --- */}
+      <nav className="fixed top-0 w-full p-6 md:p-10 flex justify-between items-center z-50 bg-black/20 backdrop-blur-md border-b border-white/5">
+        <Link href="/#portfolio" className="text-xl md:text-2xl font-black tracking-tighter hover:text-[#E0FF00] transition-colors">
+          STUDIO KAIZEN<span className="text-[#E0FF00]">_</span>
         </Link>
-        <div className="flex gap-12 text-sm font-bold tracking-widest uppercase opacity-40">
-          <span className="hover:opacity-100 transition-opacity">Work</span>
-          <span className="hover:opacity-100 transition-opacity">Studio</span>
-          <span className="hover:opacity-100 transition-opacity">Contact</span>
+        <div className="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase opacity-70">
+          <a href="#work" className="hover:text-[#E0FF00] transition-colors">Work</a>
+          <a href="#expertise" className="hover:text-[#E0FF00] transition-colors">Expertise</a>
+          <a href="#contact" className="hover:text-[#E0FF00] transition-colors">Contact</a>
         </div>
+        <div className="md:hidden text-[#E0FF00] font-bold text-xs uppercase tracking-widest">MENU</div>
       </nav>
 
-      {/* --- HERO --- */}
-      <header className="h-[90vh] flex flex-col justify-center px-4 md:px-20">
-        <div className="mask-text">
-          <motion.h1 
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase"
+      {/* --- TASK 2: HERO & MARQUEE --- */}
+      <header className="pt-40 pb-20 px-6 md:px-20 min-h-[70vh] flex flex-col justify-center">
+        <div className="mask-text mb-4">
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-[#E0FF00] font-black tracking-[0.3em] uppercase text-[10px] md:text-xs"
           >
-            Creative
-          </motion.h1>
-        </div>
-        <div className="mask-text ml-[10%]">
-          <motion.h1 
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
-            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase italic text-transparent"
-            style={{ WebkitTextStroke: '2px #F5F5F5' }}
-          >
-            Visionary
-          </motion.h1>
-        </div>
-        <div className="mask-text ml-[20%]">
-          <motion.h1 
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
-            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase text-[#E0FF00]"
-          >
-            System.
-          </motion.h1>
-        </div>
-      </header>
-
-      {/* --- MARQUEE --- */}
-      <section className="py-12 border-y border-[#F5F5F5]/10 overflow-hidden">
-        <div className="marquee text-4xl md:text-6xl font-black italic tracking-widest uppercase opacity-20">
-          ART DIRECTION — 3D MOTION — WEB EXPERIENCES — BRAND IDENTITY — BRUTALIST AESTHETICS — 
-          ART DIRECTION — 3D MOTION — WEB EXPERIENCES — BRAND IDENTITY — BRUTALIST AESTHETICS — 
-        </div>
-      </section>
-
-      {/* --- BENTO GALLERY --- */}
-      <section className="py-32 px-4 md:px-20">
-        <div className="bento-grid">
-          {/* Item 1 */}
-          <motion.div 
-            whileHover="hover"
-            className="col-span-2 row-span-2 relative overflow-hidden group border border-[#F5F5F5]/10"
-          >
-            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=90" 
-                alt="Architecture" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-              />
-            </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
-              <h3 className="creative-serif text-3xl font-black">Minimal Complexity</h3>
-              <p className="text-sm opacity-60 mb-4">Architecture / 2026</p>
-              <button className="bg-[#E0FF00] text-black text-xs font-bold px-6 py-2 w-max">VIEW CASE</button>
-            </div>
-          </motion.div>
-
-          {/* Item 2 */}
-          <motion.div 
-            whileHover="hover"
-            className="col-span-1 row-span-1 relative overflow-hidden group border border-[#F5F5F5]/10"
-          >
-            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" 
-                alt="UI" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-              />
-            </motion.div>
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-center items-center text-center">
-              <h3 className="creative-serif text-xl font-bold">Liquid Interface</h3>
-              <button className="text-[#E0FF00] text-[10px] font-black mt-2 tracking-widest">DISCOVER</button>
-            </div>
-          </motion.div>
-
-          {/* Item 3 */}
-          <motion.div 
-            whileHover="hover"
-            className="col-span-1 row-span-2 relative overflow-hidden group border border-[#F5F5F5]/10"
-          >
-            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=90" 
-                alt="Product" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-              />
-            </motion.div>
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
-              <h3 className="creative-serif text-2xl font-bold">Industrial Soul</h3>
-            </div>
-          </motion.div>
-
-          {/* Item 4 */}
-          <motion.div 
-            whileHover="hover"
-            className="col-span-1 row-span-1 relative overflow-hidden group border border-[#F5F5F5]/10"
-          >
-            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
-              <Image 
-                src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800&q=90" 
-                alt="Abstract" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* --- FOOTER CTA --- */}
-      <footer className="h-screen flex flex-col justify-center items-center text-center gap-12 border-t border-[#F5F5F5]/05">
-        <div className="mask-text">
-          <motion.h2 
-            initial={{ y: "100%" }}
-            whileInView={{ y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="creative-serif text-[8vw] font-black leading-none"
-          >
-            HAVE A VISION?
-          </motion.h2>
+            Digital Excellence Studio — 2026
+          </motion.p>
         </div>
         
-        <MagneticButton className="group relative px-20 py-10 bg-[#F5F5F5] text-black creative-serif text-4xl font-black italic transform transition-colors hover:bg-[#E0FF00] overflow-hidden">
-          <span className="relative z-10 transition-transform group-hover:scale-110 block">LET&apos;S TALK</span>
-          <motion.div className="absolute inset-0 bg-[#FF3366] opacity-0 group-hover:opacity-10 transition-opacity" />
-        </MagneticButton>
+        <h1 className="text-5xl md:text-[8vw] font-black leading-[0.9] tracking-tighter uppercase mb-10">
+          We build <br />
+          <span className="kaizen-serif italic font-normal text-transparent" style={{ WebkitTextStroke: '1px #F5F5F5' }}>Creative</span> <br />
+          Benchmarks.
+        </h1>
+      </header>
 
-        <div className="mt-20 opacity-30 text-xs font-bold tracking-[0.3em] uppercase">
-          M&C WEB SOLUTIONS — 2026 REWRITING THE CODE
+      <div className="marquee-container mb-32">
+        <div className="marquee text-4xl md:text-6xl font-black italic tracking-tighter uppercase opacity-20">
+          DIGITAL DESIGN — MOTION GRAPHICS — BRAND IDENTITY — FULLSTACK ENGINEERING — 
+          DIGITAL DESIGN — MOTION GRAPHICS — BRAND IDENTITY — FULLSTACK ENGINEERING — 
         </div>
+      </div>
 
-        <Link href="/#portfolio" className="text-sm border border-[#F5F5F5]/20 px-8 py-3 hover:bg-[#F5F5F5] hover:text-black transition-all">
-          ← BACK TO CORE
-        </Link>
+      {/* --- TASK 3: EXPERTISE --- */}
+      <section id="expertise" className="py-24 px-6 md:px-20 border-b border-white/5">
+        <div className="max-w-7xl mx-auto">
+            <h2 className="text-xs font-bold tracking-[0.5em] uppercase opacity-30 mb-20">&gt; Our Expertise.</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <div className="expertise-card">
+                    <h3 className="text-2xl font-bold mb-6">Digital Design</h3>
+                    <p className="text-sm leading-relaxed opacity-50">Crafting high-end user interfaces that bridge the gap between human intuition and technical complex systems.</p>
+                </div>
+                <div className="expertise-card">
+                    <h3 className="text-2xl font-bold mb-6">Motion Graphics</h3>
+                    <p className="text-sm leading-relaxed opacity-50">Bringing brands to life through physics-based motion and sophisticated visual storytelling.</p>
+                </div>
+                <div className="expertise-card">
+                    <h3 className="text-2xl font-bold mb-6">Brand Identity</h3>
+                    <p className="text-sm leading-relaxed opacity-50">Defining the visual DNA of futuristic companies to ensure absolute market authority and recognition.</p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* --- TASK 4: SELECTED WORKS (BENTO FIX) --- */}
+      <section id="work" className="py-32 px-6 md:px-20 bg-[#080808]">
+        <div className="max-w-7xl mx-auto">
+            <div className="flex justify-between items-end mb-20">
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Selected <br />Works</h2>
+                <div className="hidden md:block text-right opacity-30 text-xs tracking-widest leading-relaxed">
+                    [DISPLAYING_LATEST_CASE_STUDIES]<br />
+                    M&C_ENGINEERING_CORE_V.2
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Project 1 */}
+                <motion.div 
+                    whileHover="hover"
+                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5"
+                >
+                    <Image 
+                        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
+                        alt="Project One" 
+                        fill 
+                        unoptimized={true}
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute bottom-10 left-10">
+                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">Architecture / 3D</span>
+                        <h3 className="text-2xl font-black tracking-tighter uppercase">Minimal_Structure</h3>
+                    </div>
+                </motion.div>
+
+                {/* Project 2 */}
+                <motion.div 
+                    whileHover="hover"
+                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5 md:translate-y-20"
+                >
+                    <Image 
+                        src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop" 
+                        alt="Project Two" 
+                        fill 
+                        unoptimized={true}
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute bottom-10 left-10">
+                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">System / Interface</span>
+                        <h3 className="text-2xl font-black tracking-tighter uppercase">Neon_Vanguard</h3>
+                    </div>
+                </motion.div>
+
+                {/* Project 3 */}
+                <motion.div 
+                    whileHover="hover"
+                    className="relative h-[450px] overflow-hidden rounded-2xl group border border-white/5"
+                >
+                    <Image 
+                        src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" 
+                        alt="Project Three" 
+                        fill 
+                        unoptimized={true}
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute bottom-10 left-10">
+                        <span className="text-[#E0FF00] font-bold text-[10px] tracking-widest uppercase mb-2 block">Botany / Luxury</span>
+                        <h3 className="text-2xl font-black tracking-tighter uppercase">Aura_Nature</h3>
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+      </section>
+
+      {/* --- TASK 5: FOOTER & CTA --- */}
+      <footer id="contact" className="py-40 px-6 md:px-20 text-center border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-16">Ready to <br />stand out?</h2>
+            <Link href="/#contact" className="inline-block group bg-transparent border-2 border-[#E0FF00] px-12 py-5 rounded-full overflow-hidden relative">
+                <span className="relative z-10 text-[#E0FF00] group-hover:text-black font-black uppercase tracking-widest transition-colors duration-300">
+                    Start a Project
+                </span>
+                <div className="absolute inset-0 bg-[#E0FF00] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </Link>
+            
+            <div className="mt-40 pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-30 text-[10px] tracking-[0.4em] uppercase gap-10">
+                <div>M&C_WEB_SOLUTIONS — 2026</div>
+                <Link href="/#portfolio" className="hover:text-[#E0FF00] transition-colors tracking-widest">[BACK_TO_CORE_ENGINE]</Link>
+                <div>ALL_RIGHTS_RESERVED</div>
+            </div>
+        </div>
       </footer>
     </div>
   );
