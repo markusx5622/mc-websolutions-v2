@@ -5,6 +5,85 @@ import Script from 'next/script';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
+function SpeedAuditWidget() {
+  const [status, setStatus] = React.useState('idle');
+  const [progress, setProgress] = React.useState(0);
+
+  const startAudit = () => {
+    setStatus('scanning');
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setStatus('results');
+          return 100;
+        }
+        return prev + 5;
+      });
+    }, 100);
+  };
+
+  return (
+    <div className="aether-highlight" style={{ minHeight: '300px' }}>
+      <div className="flex flex-col items-center">
+        {status === 'idle' && (
+           <div className="text-center">
+             <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; X-RAY_SPEED_ANALYZER</h3>
+             <button onClick={startAudit} className="terminal-execute-btn" style={{ padding: '1rem 3rem' }}>
+                EXECUTE_X-RAY_AUDIT
+             </button>
+             <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+               Hacemos que tu web cargue en la mitad de tiempo o te devolvemos el dinero.
+             </p>
+           </div>
+        )}
+
+        {status === 'scanning' && (
+          <div className="w-full max-w-lg text-center relative py-12">
+            <div className="scan-line"></div>
+            <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>ANALYZING_CORE_WEB_VITALS...</h3>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill-active" style={{ width: `${progress}%` }}></div>
+            </div>
+            <p className="mono-text" style={{ marginTop: '1rem', fontSize: '0.7rem', color: 'var(--accent)' }}>PROGRESS: {progress}%</p>
+          </div>
+        )}
+
+        {status === 'results' && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="w-full text-center"
+          >
+            <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '3rem' }}>AUDIT_REPORT_V.01: HANDSHAKE_SECURITY_READY</h3>
+            
+            <div className="flex justify-center gap-12 flex-wrap items-center">
+              <div className="result-before text-center">
+                <div className="score-circle" style={{ color: '#ff4d4d', margin: '0 auto 1rem' }}>42</div>
+                <p className="mono-text" style={{ fontSize: '0.7rem' }}>BEFORE_OPTIMIZATION</p>
+              </div>
+
+              <div className="mono-text" style={{ fontSize: '1.5rem', color: 'var(--accent)' }}>➤</div>
+
+              <div className="result-after text-center">
+                <div className="score-circle" style={{ color: 'var(--accent)', margin: '0 auto 1rem', boxShadow: '0 0 10px var(--accent-glow)' }}>100</div>
+                <p className="mono-text" style={{ fontSize: '0.7rem', color: 'var(--accent)' }}>AFTER_M&amp;C_ENGINEERING</p>
+              </div>
+            </div>
+
+            <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: 'var(--accent)', fontWeight: 600 }}>OPTIMIZATION_DELTA: +138% PERFORMANCE_GAIN</p>
+            
+            <button onClick={() => setStatus('idle')} className="mono-text" style={{ marginTop: '2rem', background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}>
+               RESTART_AUDIT
+            </button>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   useEffect(() => {
     // Header Scroll Effect
@@ -123,6 +202,7 @@ export default function Home() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState('[01_WEBS]');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -141,7 +221,81 @@ export default function Home() {
     }
   };
 
-  const [activeTab, setActiveTab] = React.useState('[01_WEBS]');
+  useEffect(() => {
+    // Header Scroll Effect
+    const handleScroll = () => {
+      const header = document.getElementById("header");
+      if (header) {
+        if (window.scrollY > 50) {
+          header.style.boxShadow = "0 10px 30px -10px rgba(2, 12, 27, 0.7)";
+          header.style.padding = "1rem 0";
+        } else {
+          header.style.boxShadow = "none";
+          header.style.padding = "1.5rem 0";
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // Typewriter Effect
+    const textStr = "Tu Idea";
+    const el = document.querySelector('.typewriter');
+    if (el) {
+      let i = 0;
+      el.textContent = '';
+      const typeWriter = () => {
+        if (i < textStr.length) {
+          el.textContent += textStr.charAt(i);
+          i++;
+          setTimeout(typeWriter, 150);
+        }
+      };
+      setTimeout(typeWriter, 500);
+    }
+
+    // Hexagon Interaction Logic
+    const points = document.querySelectorAll('.hexagon-point');
+    const hexTitle = document.getElementById('hex-title');
+    const hexDesc = document.getElementById('hex-desc');
+    
+    if (hexTitle && hexDesc) {
+      hexTitle.style.transition = 'opacity 0.3s ease';
+      hexDesc.style.transition = 'opacity 0.3s ease';
+    }
+
+    const handleMouseEnter = (e: Event) => {
+      const point = e.currentTarget as HTMLElement;
+      points.forEach(p => p.classList.remove('active'));
+      point.classList.add('active');
+      
+      if (hexTitle && hexDesc) {
+        hexTitle.style.opacity = '0';
+        hexDesc.style.opacity = '0';
+        
+        setTimeout(() => {
+          hexTitle.innerText = point.getAttribute('data-title') || '';
+          hexDesc.innerText = point.getAttribute('data-desc') || '';
+          hexTitle.style.opacity = '1';
+          hexDesc.style.opacity = '1';
+        }, 200);
+      }
+    };
+
+    points.forEach(point => {
+      point.addEventListener('mouseenter', handleMouseEnter);
+    });
+
+    // Re-initialize particles on client-side navigation
+    if ((window as any).particlesJS) {
+      initParticles();
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      points.forEach(point => point.removeEventListener('mouseenter', handleMouseEnter));
+    };
+  }, []);
+
 
   return (
     <>
@@ -493,25 +647,55 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 {activeTab === '[01_WEBS]' && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="service-card-v2">
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; LANDING_SPEED</h3>
-                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Conversión extrema y carga instantánea para campañas agresivas.</p>
-                      <span className="price-tag">299€ - 399€</span>
-                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 48H</div>
-                    </div>
-                    <div className="service-card-v2">
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; CORPORATE_CORE</h3>
-                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Estructura multipágina robusta para posicionamiento de marca.</p>
-                      <span className="price-tag">499€ - 799€</span>
-                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 7D</div>
-                    </div>
-                    <div className="service-card-v2">
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; MASTER_ECOMMERCE</h3>
-                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Sistemas de venta escalables con gestión de inventario IA.</p>
-                      <span className="price-tag">999€+</span>
-                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 15D</div>
-                    </div>
+                  <div className="portfolio-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
+                    <Link href="/demo-speed" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
+                      <div className="browser-frame">
+                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
+                      </div>
+                      <div className="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Landing Speed" className="portfolio-img" referrerPolicy="no-referrer" />
+                        <div className="portfolio-overlay">
+                          <h3 className="portfolio-title">Landing &quot;Speed&quot;</h3>
+                          <span className="mono-text">Optimización de Conversión</span>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link href="/demo-creative" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
+                      <div className="browser-frame">
+                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
+                      </div>
+                      <div className="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" alt="Portfolio Creativo" className="portfolio-img" referrerPolicy="no-referrer" />
+                        <div className="portfolio-overlay">
+                          <h3 className="portfolio-title">Portfolio Creativo</h3>
+                          <span className="mono-text">Fotógrafos / Diseñadores</span>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link href="/demo-local" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
+                      <div className="browser-frame">
+                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
+                      </div>
+                      <div className="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" alt="Negocio Local" className="portfolio-img" referrerPolicy="no-referrer" />
+                        <div className="portfolio-overlay">
+                          <h3 className="portfolio-title">Negocio Local</h3>
+                          <span className="mono-text">Cafeterías / Tiendas</span>
+                        </div>
+                      </div>
+                    </Link>
+                    <Link href="/demo-premium" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
+                      <div className="browser-frame">
+                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
+                      </div>
+                      <div className="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" alt="Aura Wellness &amp; Spa" className="portfolio-img" referrerPolicy="no-referrer" />
+                        <div className="portfolio-overlay">
+                          <h3 className="portfolio-title">Aura Wellness &amp; Spa</h3>
+                          <span className="mono-text">Proyecto Premium Real</span>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
                 )}
 
@@ -519,54 +703,90 @@ export default function Home() {
                   <div className="aether-highlight">
                     <div className="aether-glow-ring"></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                      <div>
-                        <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_DASHBOARD_V.01</h3>
-                        <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '1rem' }}>
-                          "Tus ventas y clientes en una sola pantalla"
-                        </p>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                          Herramienta de Business Intelligence en tiempo real. Tracking de leads, integración con Google Maps API y visualización de datos neurales para toma de decisiones ejecutivas.
-                        </p>
-                        <div style={{ marginTop: '2rem' }}>
-                          <Link href="#briefing-form" className="btn btn-solid">RESERVAR_HANDSHAKE</Link>
+                      <div className="dashboard-sim-left">
+                        <div className="flex items-center gap-3 mb-6">
+                           <div className="pulse-dot"></div>
+                           <span className="mono-text" style={{ fontSize: '0.7rem', color: 'var(--accent)' }}>LIVE_HANDSHAKE: ACTIVE</span>
                         </div>
+                        <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_ANALYTICS_V.01</h3>
+                        <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '1rem' }}>
+                          &quot;Tus ventas y clientes en una sola pantalla&quot;
+                        </p>
+                        
+                        <div className="dashboard-stats-bars flex items-end gap-2 h-32 mb-8">
+                          {[40, 70, 45, 90, 65, 80, 50, 95].map((h, i) => (
+                            <motion.div 
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
+                              style={{ flex: 1, background: 'var(--accent)', opacity: 0.8 }}
+                            />
+                          ))}
+                        </div>
+
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                          Simulación de Business Intelligence en tiempo real. Tracking de leads mediante Google Maps API y visualización de carga por nodo.
+                        </p>
                       </div>
-                      <div style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B' }}>
-                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Aether UI Interface" style={{ width: '100%', filter: 'hue-rotate(120deg)' }} />
+                      <div style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B', position: 'relative' }}>
+                         <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 8px', background: 'rgba(100, 255, 218, 0.1)', color: 'var(--accent)', fontSize: '0.6rem', border: '1px solid var(--accent)', borderRadius: '2px', zIndex: 1 }}>MAP_INDEX: 40.4168° N</div>
+                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Dashboard Simulation" style={{ width: '100%', filter: 'hue-rotate(120deg) contrast(1.2)' }} />
                       </div>
                     </div>
                   </div>
                 )}
 
                 {activeTab === '[03_BRAND_ID]' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="service-card-v2">
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; RESTYLING_IA</h3>
-                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Actualización técnica de logos y paletas mediante algoritmos generativos.</p>
-                      <span className="price-tag">49€ - 89€</span>
-                    </div>
-                    <div className="service-card-v2" style={{ border: '1px solid var(--accent)' }}>
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; FULL_IDENTITY_SYSTEM</h3>
-                      <p style={{ fontStyle: 'italic', color: 'var(--accent)', marginBottom: '1rem' }}>"La cara de tu negocio, diseñada con paciencia y alma"</p>
-                      <p style={{ fontSize: '0.85rem' }}>Diseño completo de ecosistema visual, manual de marca y activos digitales.</p>
-                      <span className="price-tag">149€ - 189€</span>
+                  <div className="brand-playground flex flex-col items-center">
+                    <div className="service-card-v2 group w-full max-w-2xl text-center" style={{ cursor: 'pointer', position: 'relative' }}>
+                      <div className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; BRAND_RESTYLING_ENGINE</div>
+                      
+                      <div className="flex justify-center flex-col items-center gap-10">
+                        <div className="brand-comparison flex items-center justify-center gap-12 flex-wrap">
+                          <div className="brand-before text-center">
+                             <div style={{ width: '150px', height: '150px', border: '1px solid #333', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.4, filter: 'grayscale(1)' }}>
+                               <div style={{ width: '60%', height: '2px', background: '#333', transform: 'rotate(45deg)' }}></div>
+                             </div>
+                             <p className="mono-text" style={{ fontSize: '0.7rem', marginTop: '1rem', opacity: 0.5 }}>BEFORE_RESTYLING</p>
+                          </div>
+
+                          <div className="mono-flex" style={{ color: 'var(--accent)', fontSize: '1.5rem' }}>↠</div>
+
+                          <div className="brand-after group-hover:scale-110 transition-transform duration-500">
+                             <div style={{ 
+                               width: '150px', 
+                               height: '150px', 
+                               border: '1px solid var(--accent)', 
+                               background: 'rgba(100, 255, 218, 0.05)', 
+                               display: 'flex', 
+                               alignItems: 'center', 
+                               justifyContent: 'center',
+                               boxShadow: '0 0 20px rgba(100, 255, 218, 0.2)'
+                             }}>
+                               <svg viewBox="0 0 100 100" style={{ width: '70%', fill: 'var(--accent)', filter: 'drop-shadow(0 0 5px var(--accent))' }}>
+                                 <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="none" stroke="currentColor" strokeWidth="2" />
+                                 <text x="50" y="55" textAnchor="middle" fill="currentColor" fontSize="24" style={{ fontFamily: 'var(--font-mono)' }}>M&amp;C</text>
+                               </svg>
+                             </div>
+                             <p className="mono-text" style={{ fontSize: '0.7rem', marginTop: '1rem', color: 'var(--accent)' }}>AI_OPTIMIZED</p>
+                          </div>
+                        </div>
+
+                        <div className="branding-quote p-6 border-l-2 border-accent bg-accent/5 italic" style={{ fontSize: '1.1rem', color: 'var(--accent)', maxWidth: '500px' }}>
+                          &quot;La cara de tu negocio, diseñada con paciencia y alma&quot;
+                        </div>
+                        
+                        <div className="price-tag">49€ - 189€</div>
+                        <p className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>HOVER_TO_ACTIVATE_ENGINE</p>
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {activeTab === '[04_PERFORMANCE]' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="service-card-v2">
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; AUDITORÍA_RAYOS_X</h3>
-                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Análisis profundo de cuellos de botella y fugas de conversión.</p>
-                      <span className="price-tag">99€</span>
-                    </div>
-                    <div className="service-card-v2" style={{ background: 'rgba(100, 255, 218, 0.05)' }}>
-                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; INYECCIÓN_DE_VELOCIDAD</h3>
-                      <p style={{ fontWeight: 800, marginBottom: '1rem' }}>"Hacemos que tu web cargue en la mitad de tiempo o te devolvemos el dinero"</p>
-                      <p style={{ fontSize: '0.85rem' }}>Optimización de Core Web Vitals, compresión de assets y refactor de scripts.</p>
-                      <span className="price-tag">199€+</span>
-                    </div>
+                  <div className="speed-playground">
+                    <SpeedAuditWidget />
                   </div>
                 )}
               </motion.div>
