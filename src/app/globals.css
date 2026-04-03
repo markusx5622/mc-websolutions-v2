@@ -547,9 +547,30 @@ header {
 
 /* Portfolio */
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.demo-isolate {
+  isolation: isolate;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demo-isolate:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -12px rgba(100, 255, 218, 0.15), 0 18px 36px -18px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent) !important;
+}
+
+.portfolio-overlay p {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.portfolio-overlay .btn {
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
 }
 
 .portfolio-item {

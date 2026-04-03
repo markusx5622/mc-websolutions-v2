@@ -647,55 +647,82 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 {activeTab === '[01_WEBS]' && (
-                  <div className="portfolio-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
-                    <Link href="/demo-speed" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-                      <div className="browser-frame">
-                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-                      </div>
-                      <div className="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Landing Speed" className="portfolio-img" referrerPolicy="no-referrer" />
-                        <div className="portfolio-overlay">
-                          <h3 className="portfolio-title">Landing &quot;Speed&quot;</h3>
-                          <span className="mono-text">Optimización de Conversión</span>
+                  <div>
+                    <div className="mono-text" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
+                      &gt; SYSTEM_SELECT: Deploying high-conversion architectural patterns. Each module is optimized for Core Web Vitals and industrial scalability.
+                    </div>
+                    <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* DEMO 1 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
+                          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Landing Speed" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2">Landing &quot;Speed&quot;</h3>
+                            <span className="mono-text text-accent text-xs mb-4">Optimización de Conversión // 48H_DEPLOY</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Arquitectura ultraligera diseñada para maximizar el ROI en campañas de marketing.</p>
+                            <a href="/demo-speed" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
                         </div>
                       </div>
-                    </Link>
-                    <Link href="/demo-creative" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-                      <div className="browser-frame">
-                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-                      </div>
-                      <div className="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" alt="Portfolio Creativo" className="portfolio-img" referrerPolicy="no-referrer" />
-                        <div className="portfolio-overlay">
-                          <h3 className="portfolio-title">Portfolio Creativo</h3>
-                          <span className="mono-text">Fotógrafos / Diseñadores</span>
+
+                      {/* DEMO 2 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
+                          <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" alt="Portfolio Creativo" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2">Portfolio Creativo</h3>
+                            <span className="mono-text text-accent text-xs mb-4">Diseño de Vanguardia // 3D_INTEGRATION</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Escaparate digital para artistas y diseñadores que buscan destacar por estética y fluidez.</p>
+                            <a href="/demo-creative" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
                         </div>
                       </div>
-                    </Link>
-                    <Link href="/demo-local" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-                      <div className="browser-frame">
-                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-                      </div>
-                      <div className="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" alt="Negocio Local" className="portfolio-img" referrerPolicy="no-referrer" />
-                        <div className="portfolio-overlay">
-                          <h3 className="portfolio-title">Negocio Local</h3>
-                          <span className="mono-text">Cafeterías / Tiendas</span>
+                      {/* DEMO 3 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
+                          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" alt="Negocio Local" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
+                            <span className="mono-text text-accent text-xs mb-4">SEO Optimization // GOOGLE_MAPS</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Sistemas robustos para cafeterías y pymes que necesitan atraer clientes de proximidad.</p>
+                            <a href="/demo-local" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
                         </div>
                       </div>
-                    </Link>
-                    <Link href="/demo-premium" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-                      <div className="browser-frame">
-                        <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-                      </div>
-                      <div className="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" alt="Aura Wellness &amp; Spa" className="portfolio-img" referrerPolicy="no-referrer" />
-                        <div className="portfolio-overlay">
-                          <h3 className="portfolio-title">Aura Wellness &amp; Spa</h3>
-                          <span className="mono-text">Proyecto Premium Real</span>
+
+                      {/* DEMO 4 */}
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                        </div>
+                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
+                          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" alt="Aura Wellness & Spa" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
+                            <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>
+                            <span className="mono-text text-accent text-xs mb-4">Premium Real // UX_ENGINEERING</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Experiencia inmersiva para marcas de lujo con enfoque en la conversión emocional.</p>
+                            <a href="/demo-premium" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                          </div>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 )}
 
@@ -708,7 +735,9 @@ export default function Home() {
                            <div className="pulse-dot"></div>
                            <span className="mono-text" style={{ fontSize: '0.7rem', color: 'var(--accent)' }}>LIVE_HANDSHAKE: ACTIVE</span>
                         </div>
-                        <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_ANALYTICS_V.01</h3>
+                        <a href="https://aether-insights.vercel.app/" target="_blank" style={{ textDecoration: 'none' }}>
+                          <h3 className="mono-text hover:text-white transition-colors" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_ANALYTICS_V.01</h3>
+                        </a>
                         <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '1rem' }}>
                           &quot;Tus ventas y clientes en una sola pantalla&quot;
                         </p>
@@ -731,7 +760,9 @@ export default function Home() {
                       </div>
                       <div style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B', position: 'relative' }}>
                          <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 8px', background: 'rgba(100, 255, 218, 0.1)', color: 'var(--accent)', fontSize: '0.6rem', border: '1px solid var(--accent)', borderRadius: '2px', zIndex: 1 }}>MAP_INDEX: 40.4168° N</div>
-                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Dashboard Simulation" style={{ width: '100%', filter: 'hue-rotate(120deg) contrast(1.2)' }} />
+                         <a href="https://aether-insights.vercel.app/" target="_blank">
+                           <img src="/aether-dashboard.png" alt="Aether Dashboard Elite" style={{ width: '100%', borderRadius: '4px', border: '1px solid rgba(100, 255, 218, 0.2)', filter: 'brightness(0.9) contrast(1.1)' }} />
+                         </a>
                       </div>
                     </div>
                   </div>
