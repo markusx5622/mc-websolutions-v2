@@ -14,7 +14,6 @@ import {
   Mail,
   ArrowRight
 } from 'lucide-react';
-import './nano.css';
 import { ASSETS } from './assets';
 
 export default function NanoBananaDemo() {
@@ -79,7 +78,40 @@ export default function NanoBananaDemo() {
     );
 
     return (
-        <div className="nano-banana-container">
+        <div className="min-h-screen w-full bg-[#050505] text-white overflow-x-hidden font-sans relative">
+            <style dangerouslySetInnerHTML={{ __html: `
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;800&display=swap');
+                
+                .font-mono { font-family: 'JetBrains Mono', monospace !important; }
+                .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+                .accent-green { color: #DFFF00; }
+                .accent-orange { color: #FF8C00; }
+                .bg-accent { background-color: #DFFF00; }
+                .bento-card { background: #0f0f0f; border: 1px solid #1a1a1a; transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; }
+                .bento-card:hover { border-color: #DFFF00; transform: translateY(-10px); box-shadow: 0 30px 60px -15px rgba(223, 255, 0, 0.15); }
+                
+                input[type="range"] { accent-color: #DFFF00; width: 100%; height: 8px; appearance: none; background: #222; border-radius: 20px; outline: none; }
+                input[type="range"]::-webkit-slider-thumb { appearance: none; width: 28px; height: 28px; background: white; border-radius: 50%; cursor: pointer; border: 4px solid #DFFF00; }
+                
+                @keyframes shimmer {
+                    0% { background-position: -200% center; }
+                    100% { background-position: 200% center; }
+                }
+                .shimmer-text {
+                    background: linear-gradient(90deg, #555, #fff, #DFFF00, #fff, #555);
+                    background-size: 200% auto;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: shimmer 5s linear infinite;
+                }
+
+                /* Custom Scrollbar */
+                ::-webkit-scrollbar { width: 8px; }
+                ::-webkit-scrollbar-track { background: #050505; }
+                ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
+                ::-webkit-scrollbar-thumb:hover { background: #DFFF00; }
+            `}} />
+
             <AnimatePresence mode="wait">
                 {view === 'home' ? (
                     <motion.div key="home" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -20 }}>
