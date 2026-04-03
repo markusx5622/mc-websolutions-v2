@@ -104,6 +104,16 @@ export default function Home() {
     }
   };
 
+  const staggerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
   return (
     <>
       <Script 
@@ -273,13 +283,102 @@ export default function Home() {
               </p>
             </div>
             <div style={{ marginTop: "4rem" }}>
-              <p className="mono-text" style={{ marginBottom: "2rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 2 }}>STACK TECNOLÓGICO DE M&C:</p>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1.5rem" }}>
-                <div className="tech-badge"><span>⚡</span> HTML5 / CSS3</div>
-                <div className="tech-badge"><span>🤖</span> Google AI Studio</div>
-                <div className="tech-badge"><span>🚀</span> Vercel / Netlify</div>
-                <div className="tech-badge"><span>📱</span> Mobile First Design</div>
-              </div>
+              <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Stack Tecnológico M&C</p>
+              
+              <motion.div 
+                className="tech-showcase-grid"
+                variants={staggerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {/* FRAMEWORKS */}
+                <div className="tech-column">
+                  <h4 className="tech-category-title">Frameworks</h4>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 12L20 4H17L11 10.8V13.2L17 20H20L13 12ZM7 12L0 4H3L9 10.8V13.2L3 20H0L7 12Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">Next.js</span>
+                      <span className="tech-desc">SSR Optimization</span>
+                    </div>
+                  </motion.div>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">React</span>
+                      <span className="tech-desc">Dynamic Architectures</span>
+                    </div>
+                  </motion.div>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">Tailwind</span>
+                      <span className="tech-desc">Utility First Styling</span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* INTELLIGENCE */}
+                <div className="tech-column">
+                  <h4 className="tech-category-title">Intelligence</h4>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2M15.5 13H14.5L14 12.5C14.7 11.6 15.1 10.5 15.1 9.3 15.1 6.1 12.5 3.5 9.3 3.5S3.5 6.1 3.5 9.3 6.1 15.1 9.3 15.1C10.5 15.1 11.6 14.7 12.5 14L13 14.5V15.5L19 21.5 20.5 20L15.5 13Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">OpenAI</span>
+                      <span className="tech-desc">AI Logic Core</span>
+                    </div>
+                  </motion.div>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">TypeScript</span>
+                      <span className="tech-desc">Industrial Scalability</span>
+                    </div>
+                  </motion.div>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21H23L12 2Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">Framer</span>
+                      <span className="tech-desc">H-F Interactions</span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* INFRASTRUCTURE */}
+                <div className="tech-column">
+                  <h4 className="tech-category-title">Infrastructure</h4>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">Vercel</span>
+                      <span className="tech-desc">Global Deployment</span>
+                    </div>
+                  </motion.div>
+                  <motion.div className="tech-card" variants={itemVariants}>
+                    <div className="tech-icon-wrapper">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12C2 17.03 5.71 21.2 10.59 21.89V14.89H8.07V12H10.59V9.79C10.59 7.33 12.06 5.95 14.32 5.95C15.4 5.95 16.36 6.03 16.63 6.06V8.69H15.08C13.88 8.69 13.65 9.26 13.65 10.09V12H16.57L16.19 14.89H13.65V21.97C18.42 21.43 22 17.13 22 12C22 6.47 17.53 2 12 2Z"/></svg>
+                    </div>
+                    <div className="tech-info">
+                      <span className="tech-name">GitHub</span>
+                      <span className="tech-desc">CI/CD Pipeline</span>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
