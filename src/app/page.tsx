@@ -637,7 +637,7 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1950&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" 
                             alt="Negocio Local" 
                             fill
                             style={{ objectFit: 'cover' }}

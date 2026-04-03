@@ -105,7 +105,7 @@ export default function DemoLocalPage() {
         .hero-local {
             height: 80vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1950&auto=format&fit=crop');
+                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
