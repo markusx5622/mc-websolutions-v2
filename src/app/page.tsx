@@ -709,7 +709,7 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1593110050241-ee7ce35869ef?q=80&w=1000&auto=format&fit=crop&v=1" 
+                            src="https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop&v=final_fix" 
                             alt="Elite Padel System" 
                             fill
                             unoptimized={true}
