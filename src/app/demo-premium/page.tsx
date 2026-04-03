@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function DemoPremiumPage() {
   const [activeTab, setActiveTab] = useState('masajes');
@@ -64,11 +65,20 @@ export default function DemoPremiumPage() {
       <style dangerouslySetInnerHTML={{ __html: `
         .demo-premium-body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #F9F7F2;
-            color: #4A4A4A;
+            background-color: #F9F7F2 !important; /* Force reset */
+            color: #4A4A4A !important;
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+
+        .demo-premium-body * {
+            font-family: 'Montserrat', sans-serif;
+            border-color: #E0D8C3;
+        }
+
+        .luxury-serif {
+            font-family: 'Cormorant Garamond', serif !important;
         }
 
         .container {
@@ -221,18 +231,25 @@ export default function DemoPremiumPage() {
             transform: translateY(0);
         }
 
-        .filter-btn {
-            padding: 8px 20px;
-            background: none;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
         .filter-btn.active {
             background: #C5A059;
             color: white;
+            border-color: #C5A059;
+        }
+
+        .booking-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E0D8C3;
+            background: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+        }
+
+        .booking-input:focus {
+            outline: none;
             border-color: #C5A059;
         }
       `}} />
@@ -252,9 +269,9 @@ export default function DemoPremiumPage() {
 
         <section className="hero-premium">
             <div className="hero-content" style={{ opacity: 0, transform: "translateY(30px)", animation: "fadeIn 1.5s forwards 0.5s" }}>
-                <p>Experiencia de Lujo</p>
-                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "5rem", color: "white", marginBottom: "20px", fontWeight: 300 }}>Renace en Aura</h1>
-                <a href="#reserve" className="btn-gold">Reservar Ahora</a>
+                <p className="luxury-serif" style={{ fontSize: '1.2rem', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '20px' }}>Experiencia de Lujo</p>
+                <h1 className="luxury-serif" style={{ fontSize: "5.5rem", color: "white", marginBottom: "30px", fontWeight: 300 }}>Renace en Aura</h1>
+                <a href="#reserve" className="btn-gold transform-gpu">Reservar Ahora</a>
             </div>
         </section>
 
@@ -269,8 +286,8 @@ export default function DemoPremiumPage() {
                     </div>
 
                     <div style={{ display: activeTab === 'masajes' ? 'grid' : 'none', gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px", alignItems: "center" }}>
-                        <div className="tab-image">
-                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=90" alt="Masaje Terapéutico Profesional" style={{ width: "100%", borderRadius: "5px", boxShadow: "20px 20px 0 #C5A059" }} referrerPolicy="no-referrer" />
+                        <div className="tab-image" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '5px' }}>
+                            <Image src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=90" alt="Masaje Terapéutico Profesional" fill className="object-cover" style={{ boxShadow: "20px 20px 0 #C5A059" }} priority />
                         </div>
                         <div className="tab-text">
                             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A1A" }}>Masajes Terapéuticos</h3>
@@ -279,8 +296,8 @@ export default function DemoPremiumPage() {
                     </div>
 
                     <div style={{ display: activeTab === 'faciales' ? 'grid' : 'none', gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px", alignItems: "center" }}>
-                        <div className="tab-image">
-                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=90" alt="Tratamiento Facial de Lujo" style={{ width: "100%", borderRadius: "5px", boxShadow: "20px 20px 0 #C5A059" }} referrerPolicy="no-referrer" />
+                        <div className="tab-image" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '5px' }}>
+                            <Image src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=90" alt="Tratamiento Facial de Lujo" fill className="object-cover" style={{ boxShadow: "20px 20px 0 #C5A059" }} />
                         </div>
                         <div className="tab-text">
                             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A1A" }}>Cuidado Facial Avanzado</h3>
@@ -325,21 +342,33 @@ export default function DemoPremiumPage() {
             </div>
         </section>
 
-        <section id="gallery" className="section reveal" style={{ padding: "100px 0" }}>
-            <div className="container">
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", textAlign: "center", fontSize: "3rem", marginBottom: "50px", color: "#1A1A1A" }}>Nuestras Instalaciones</h2>
-                <div className="filter-btns" style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "40px" }}>
-                    <button className={`filter-btn ${galleryFilter === 'all' ? 'active' : ''}`} onClick={() => setGalleryFilter('all')}>Todos</button>
-                    <button className={`filter-btn ${galleryFilter === 'spa' ? 'active' : ''}`} onClick={() => setGalleryFilter('spa')}>Spa</button>
-                    <button className={`filter-btn ${galleryFilter === 'rooms' ? 'active' : ''}`} onClick={() => setGalleryFilter('rooms')}>Salas</button>
-                </div>
-                <div className="gallery-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" }}>
-                    {filteredGallery.map(item => (
-                        <div key={item.id} className={`gallery-item ${item.category}`} style={{ position: "relative", overflow: "hidden", height: "300px", borderRadius: "5px" }}>
-                            <img src={item.img} alt={item.alt} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <section id="reserve" className="section reveal" style={{ padding: "100px 0", background: "#fdfdfd" }}>
+            <div className="container" style={{ maxWidth: "600px" }}>
+                <h2 className="luxury-serif" style={{ textAlign: "center", fontSize: "3rem", marginBottom: "15px", color: "#1A1A1A" }}>Cita de Bienestar</h2>
+                <p style={{ textAlign: "center", marginBottom: "50px", fontSize: "0.9rem", color: "#666" }}>Permítanos diseñar su momento de desconexión absoluta.</p>
+                
+                <form onSubmit={handleFormSubmit} style={{ background: "white", padding: "40px", boxShadow: "0 20px 40px rgba(0,0,0,0.03)" }}>
+                    <label style={{ display: "block", marginBottom: "8px", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 700 }}>Nombre Completo</label>
+                    <input type="text" className="booking-input" required placeholder="Ej: Elena Martínez" />
+                    
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                        <div>
+                            <label style={{ display: "block", marginBottom: "8px", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 700 }}>Fecha</label>
+                            <input type="date" className="booking-input" required />
                         </div>
-                    ))}
-                </div>
+                        <div>
+                            <label style={{ display: "block", marginBottom: "8px", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 700 }}>Servicio</label>
+                            <select className="booking-input" style={{ width: "100%" }}>
+                                <option>Masaje Ritual</option>
+                                <option>Facial Aura</option>
+                                <option>Circuito Spa</option>
+                                <option>Tratamiento Signature</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" className="btn-gold transform-gpu" style={{ width: "100%", marginTop: "20px" }}>Confirmar Disponibilidad</button>
+                </form>
             </div>
         </section>
 

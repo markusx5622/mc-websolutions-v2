@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function DemoLocalPage() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -201,8 +202,8 @@ export default function DemoLocalPage() {
             <div className="container">
                 <h2 style={{ fontFamily: "'Libre Baskerville', serif", textAlign: "center", fontSize: "2.5rem", marginBottom: "50px", color: "#5D4037" }} className="reveal">Nuestra Selección</h2>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "60px", alignItems: "center", marginBottom: "60px" }} className="reveal">
-                    <div className="menu-img">
-                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=90" alt="Coffee" style={{ width: "100%", borderRadius: "15px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }} referrerPolicy="no-referrer" />
+                    <div className="menu-img" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '15px' }}>
+                        <Image src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=90" alt="Coffee" fill className="object-cover" style={{ boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }} priority />
                     </div>
                     <div className="menu-grid" style={{ display: "grid", gap: "40px" }}>
                         <div>

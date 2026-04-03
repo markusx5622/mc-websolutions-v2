@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
     --bg-color: #0A192F;
     --bg-light: #112240;
@@ -1328,7 +1334,27 @@ select.terminal-input option {
     height: 100%;
     background: var(--accent);
     box-shadow: 0 0 10px var(--accent-glow);
+    will-change: transform;
+    transform: translateZ(0); /* GPU acceleration */
     transition: width 0.1s linear;
+}
+
+/* Elite Polish: Performance Utilities */
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.portfolio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.demo-isolate {
+  padding: 0 !important; /* Task 1: Zero gap fit */
+  margin: 0 !important;
 }
 
 .score-circle {

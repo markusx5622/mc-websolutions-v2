@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function DemoCreativePage() {
   const [activeTab, setActiveTab] = useState('filosofia');
@@ -47,11 +48,20 @@ export default function DemoCreativePage() {
       <style dangerouslySetInnerHTML={{ __html: `
         .demo-creative-body {
             font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
-            color: #111111;
+            background-color: #FFFFFF !important; /* Force reset */
+            color: #111111 !important;
             line-height: 1.4;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+
+        .demo-creative-body * {
+            font-family: 'Inter', sans-serif;
+            border-color: #EEEEEE;
+        }
+
+        .creative-serif {
+            font-family: 'Playfair Display', serif !important;
         }
 
         .container {
@@ -149,7 +159,7 @@ export default function DemoCreativePage() {
         }
 
         .hero-creative h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif !important;
             font-size: 10vw;
             line-height: 0.85;
             margin-bottom: 30px;
@@ -203,6 +213,24 @@ export default function DemoCreativePage() {
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .btn-creative {
+            background: #111111;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            padding: 20px 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-creative:hover {
+            background: #FF3E00;
         }
 
         .gallery-grid {
@@ -291,14 +319,14 @@ export default function DemoCreativePage() {
         <section className="hero-creative">
             <div className="hero-split">
                 <div className="hero-text">
-                    <p className="reveal">Estudio de Diseño Visual</p>
-                    <h1 className="reveal">Visionary<br />Design.</h1>
+                    <p className="reveal transform-gpu">Estudio de Diseño Visual</p>
+                    <h1 className="reveal creative-serif transform-gpu">Visionary<br />Design.</h1>
                     <div className="reveal" style={{ maxWidth: "400px", opacity: 0.6, fontSize: "0.9rem", lineHeight: 1.8 }}>
                         Transformamos conceptos abstractos en experiencias visuales memorables que trascienden el tiempo.
                     </div>
                 </div>
-                <div className="hero-img reveal">
-                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Studio" referrerPolicy="no-referrer" />
+                <div className="hero-img reveal transform-gpu" style={{ position: 'relative' }}>
+                    <Image src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Studio" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" priority />
                 </div>
             </div>
         </section>
@@ -307,22 +335,22 @@ export default function DemoCreativePage() {
             <div className="container">
                 <h2 className="section-title reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", marginBottom: "80px", textAlign: "center", fontWeight: 400 }}>Proyectos Seleccionados</h2>
                 <div className="gallery-grid">
-                    <div className="gallery-item reveal">
-                        <div className="img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1200&q=90" alt="Photography Project" referrerPolicy="no-referrer" />
+                    <div className="gallery-item reveal transform-gpu">
+                        <div className="img-wrapper" style={{ position: 'relative' }}>
+                            <Image src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1200&q=90" alt="Photography Project" fill className="object-cover" />
                         </div>
                         <div className="item-info" style={{ marginTop: "20px" }}>
                             <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Fotografía / Moda</span>
-                            <h3 className="item-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 400 }}>Minimalismo Urbano</h3>
+                            <h3 className="item-title creative-serif" style={{ fontSize: "1.5rem", fontWeight: 400 }}>Minimalismo Urbano</h3>
                         </div>
                     </div>
-                    <div className="gallery-item reveal" style={{ marginTop: "100px" }}>
-                        <div className="img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=90" alt="Branding Project" referrerPolicy="no-referrer" />
+                    <div className="gallery-item reveal transform-gpu" style={{ marginTop: "100px" }}>
+                        <div className="img-wrapper" style={{ position: 'relative' }}>
+                            <Image src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=90" alt="Branding Project" fill className="object-cover" />
                         </div>
                         <div className="item-info" style={{ marginTop: "20px" }}>
                             <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Branding / Identidad</span>
-                            <h3 className="item-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 400 }}>Esencia Pura</h3>
+                            <h3 className="item-title creative-serif" style={{ fontSize: "1.5rem", fontWeight: 400 }}>Esencia Pura</h3>
                         </div>
                     </div>
                 </div>
@@ -385,7 +413,7 @@ export default function DemoCreativePage() {
                             <label style={{ display: "block", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "15px" }}>Email</label>
                             <input type="email" required style={{ width: "100%", padding: "15px 0", background: "transparent", border: "none", borderBottom: "1px solid #ddd", fontFamily: "inherit", fontSize: "1.1rem" }} />
                         </div>
-                        <button type="submit" className="btn-creative" style={{ background: "#111111", color: "white", textTransform: "uppercase", letterSpacing: "3px", fontSize: "0.8rem", padding: "20px 50px", border: "none", cursor: "pointer" }}>Enviar Propuesta</button>
+                        <button type="submit" className="btn-creative transform-gpu">Enviar Propuesta</button>
                     </form>
                 </div>
             </div>

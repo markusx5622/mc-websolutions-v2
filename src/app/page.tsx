@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 function SpeedAuditWidget() {
@@ -659,66 +660,87 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
-                          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Landing Speed" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                          <Image 
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" 
+                            alt="Landing Speed" 
+                            fill
+                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            priority
+                          />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Landing &quot;Speed&quot;</h3>
                             <span className="mono-text text-accent text-xs mb-4">Optimización de Conversión // 48H_DEPLOY</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Arquitectura ultraligera diseñada para maximizar el ROI en campañas de marketing.</p>
-                            <a href="/demo-speed" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                            <a href="/demo-speed" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
                           </div>
                         </div>
                       </div>
 
                       {/* DEMO 2 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
                         <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
-                          <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" alt="Portfolio Creativo" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                          <Image 
+                            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" 
+                            alt="Portfolio Creativo" 
+                            fill
+                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                          />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Portfolio Creativo</h3>
                             <span className="mono-text text-accent text-xs mb-4">Diseño de Vanguardia // 3D_INTEGRATION</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Escaparate digital para artistas y diseñadores que buscan destacar por estética y fluidez.</p>
-                            <a href="/demo-creative" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                            <a href="/demo-creative" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
                           </div>
                         </div>
                       </div>
                       {/* DEMO 3 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
                         <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
-                          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" alt="Negocio Local" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                          <Image 
+                            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" 
+                            alt="Negocio Local" 
+                            fill
+                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                          />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
                             <span className="mono-text text-accent text-xs mb-4">SEO Optimization // GOOGLE_MAPS</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Sistemas robustos para cafeterías y pymes que necesitan atraer clientes de proximidad.</p>
-                            <a href="/demo-local" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                            <a href="/demo-local" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
                           </div>
                         </div>
                       </div>
 
                       {/* DEMO 4 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
                         <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item" style={{ height: '240px', overflow: 'hidden' }}>
-                          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" alt="Aura Wellness & Spa" className="portfolio-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                          <Image 
+                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" 
+                            alt="Aura Wellness & Spa" 
+                            fill
+                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                          />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>
                             <span className="mono-text text-accent text-xs mb-4">Premium Real // UX_ENGINEERING</span>
                             <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Experiencia inmersiva para marcas de lujo con enfoque en la conversión emocional.</p>
-                            <a href="/demo-premium" target="_blank" className="btn btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                            <a href="/demo-premium" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
                           </div>
                         </div>
                       </div>
@@ -758,10 +780,15 @@ export default function Home() {
                           Simulación de Business Intelligence en tiempo real. Tracking de leads mediante Google Maps API y visualización de carga por nodo.
                         </p>
                       </div>
-                      <div style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B', position: 'relative' }}>
+                      <div className="transform-gpu" style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B', position: 'relative', overflow: 'hidden' }}>
                          <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 8px', background: 'rgba(100, 255, 218, 0.1)', color: 'var(--accent)', fontSize: '0.6rem', border: '1px solid var(--accent)', borderRadius: '2px', zIndex: 1 }}>MAP_INDEX: 40.4168° N</div>
-                         <a href="https://aether-insights.vercel.app/" target="_blank">
-                           <img src="/aether-dashboard.png" alt="Aether Dashboard Elite" style={{ width: '100%', borderRadius: '4px', border: '1px solid rgba(100, 255, 218, 0.2)', filter: 'brightness(0.9) contrast(1.1)' }} />
+                         <a href="https://aether-insights.vercel.app/" target="_blank" style={{ display: 'block', height: '100%', position: 'relative', minHeight: '200px' }}>
+                           <Image 
+                             src="/aether-dashboard.png" 
+                             alt="Aether Dashboard Elite" 
+                             fill
+                             className="object-cover rounded-sm border border-accent/20 brightness-90 contrast-110"
+                           />
                          </a>
                       </div>
                     </div>
