@@ -631,12 +631,33 @@ export default function Home() {
                             <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                           </div>
                           <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                            <img 
-                              src={demo.image} 
-                              alt={demo.title} 
-                              className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
-                            />
-                            <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
+                            {idx === 5 ? (
+                              <img 
+                                src="https://images.unsplash.com/photo-1592910129881-892b7b392e81?q=80&w=1000&auto=format&fit=crop" 
+                                alt="Elite Padel System" 
+                                style={{ 
+                                  opacity: 1, 
+                                  visibility: 'visible', 
+                                  display: 'block', 
+                                  position: 'absolute', 
+                                  inset: 0, 
+                                  width: '100%', 
+                                  height: '100%', 
+                                  objectFit: 'cover', 
+                                  zIndex: 1 
+                                }} 
+                              />
+                            ) : (
+                              <img 
+                                src={demo.image} 
+                                alt={demo.title} 
+                                className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
+                              />
+                            )}
+                            <div 
+                              className={`portfolio-overlay absolute inset-0 bg-black/${idx === 5 ? '40' : '60'} opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all`} 
+                              style={{ zIndex: 2 }}
+                            >
                               <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
                               <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
                               <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
