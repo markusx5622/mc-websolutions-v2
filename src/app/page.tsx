@@ -142,7 +142,7 @@ export default function Home() {
       </header>
 
       <section className="hero">
-        <div className="container" style={{ maxWidth: '1800px', padding: '0 5%' }}>
+        <div className="container" style={{ maxWidth: '1500px', padding: '0 5%' }}>
           <div className="hero-content reveal active">
             <div className="hero-main-flex">
               <div className="hero-text-block" style={{ textAlign: 'left', flex: '1' }}>

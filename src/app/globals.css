@@ -725,14 +725,14 @@ footer {
     justify-content: space-between !important;
     gap: 60px;
     width: 95vw !important;
-    max-width: 1800px !important;
+    max-width: 1500px !important;
     margin: 0 auto;
 }
 
 /* Hero DNA Logo - God Mode Scaling */
 .hero-dna-logo {
-    width: 320px !important;
-    height: 320px !important;
+    width: 240px !important;
+    height: 240px !important;
     filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.2));
     animation: rotate-dna 20s linear infinite;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
@@ -741,7 +741,7 @@ footer {
 }
 
 .hero-dna-logo:hover {
-    transform: scale(1.15) rotate(5deg) !important;
+    transform: scale(1.1) rotate(5deg) !important;
     filter: drop-shadow(0 0 50px rgba(100, 255, 218, 0.8)) !important;
 }
 
@@ -752,7 +752,7 @@ footer {
         gap: 40px;
     }
     .hero-dna-logo {
-        width: 200px !important;
-        height: 200px !important;
+        width: 180px !important;
+        height: 180px !important;
     }
 }
