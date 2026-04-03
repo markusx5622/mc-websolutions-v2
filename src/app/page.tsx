@@ -613,17 +613,17 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
-                            alt="Portfolio Creativo" 
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Nano Banana Engineering" 
                             fill
                             style={{ objectFit: 'cover' }}
                             unoptimized={true}
                             className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
-                            <h3 className="portfolio-title text-xl font-bold mb-2">Portfolio Creativo</h3>
-                            <span className="mono-text text-accent text-xs mb-4">Diseño de Vanguardia // 3D_INTEGRATION</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Escaparate digital para artistas y diseñadores que buscan destacar por estética y fluidez.</p>
+                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[NANO_BANANA_ENGINEERING]</h3>
+                            <span className="mono-text text-accent text-xs mb-4">&gt; SISTEMA B2B: Ultra-Circular Engineering</span>
+                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Interfaz interactiva de alto rendimiento, pesaje inteligente y logística circular avanzada.</p>
                             <a href="/demo-creative" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
                           </div>
                         </div>

@@ -1,10 +1,15 @@
 "use client";
 
-import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
+  const pathname = usePathname();
+
+  // Hide Navbar on demo routes
+  if (pathname.startsWith('/demo-')) return null;
+
   return (
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
