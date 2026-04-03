@@ -85,6 +85,51 @@ function SpeedAuditWidget() {
   );
 }
 
+const MODULAR_ENGINEERING_DEMOS = [
+  {
+    title: "Landing \"Speed\"",
+    subtitle: "Optimización de Conversión // 48H_DEPLOY",
+    description: "Arquitectura ultraligera diseñada para maximizar el ROI en campañas de marketing.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    link: "/demo-speed"
+  },
+  {
+    title: "[NANO_BANANA_ENGINEERING]",
+    subtitle: "> SISTEMA B2B: Ultra-Circular Engineering",
+    description: "Interfaz interactiva de alto rendimiento, pesaje inteligente y logística circular avanzada.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    link: "/demo-creative"
+  },
+  {
+    title: "Negocio Local",
+    subtitle: "SEO Optimization // GOOGLE_MAPS",
+    description: "Sistemas robustos para cafeterías y pymes que necesitan atraer clientes de proximidad.",
+    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
+    link: "/demo-local"
+  },
+  {
+    title: "Aura Wellness & Spa",
+    subtitle: "Premium Real // UX_ENGINEERING",
+    description: "Experiencia inmersiva para marcas de lujo con enfoque en la conversión emocional.",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
+    link: "/demo-premium"
+  },
+  {
+    title: "[ARTESANÍA_DIGITAL_VLC]",
+    subtitle: "> FASHION: Bespoke Tailoring Experience",
+    description: "Plataforma de alta costura con gestión de citas premium y catálogo artesanal interactivo.",
+    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
+    link: "/demo-sastre"
+  },
+  {
+    title: "[ELITE_PADEL_SYSTEM]",
+    subtitle: "> SPORT: Performance & Booking.",
+    description: "Gestión avanzada de pistas, estadísticas de juego y comunidad deportiva de alto rendimiento.",
+    image: "https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop",
+    link: "/demo-padel"
+  }
+];
+
 export default function Home() {
   useEffect(() => {
     // Header Scroll Effect
@@ -577,145 +622,29 @@ export default function Home() {
                     <div className="mono-text" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
                       &gt; SYSTEM_SELECT: Deploying high-conversion architectural patterns. Each module is optimized for Core Web Vitals and industrial scalability.
                     </div>
-                    <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {/* DEMO 1 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" 
-                            alt="Landing Speed" 
-                            fill
-                            unoptimized={true}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
-                            priority
-                          />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
-                            <h3 className="portfolio-title text-xl font-bold mb-2">Landing &quot;Speed&quot;</h3>
-                            <span className="mono-text text-accent text-xs mb-4">Optimización de Conversión // 48H_DEPLOY</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Arquitectura ultraligera diseñada para maximizar el ROI en campañas de marketing.</p>
-                            <a href="/demo-speed" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                    <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {MODULAR_ENGINEERING_DEMOS.map((demo, idx) => (
+                        <div key={idx} className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                          <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                          </div>
+                          <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                            <img 
+                              src={demo.image} 
+                              alt={demo.title} 
+                              className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            />
+                            <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
+                              <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
+                              <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
+                              <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
+                              <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      {/* DEMO 2 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" 
-                            alt="Nano Banana Engineering" 
-                            fill
-                            unoptimized={true}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
-                          />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
-                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[NANO_BANANA_ENGINEERING]</h3>
-                            <span className="mono-text text-accent text-xs mb-4">&gt; SISTEMA B2B: Ultra-Circular Engineering</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Interfaz interactiva de alto rendimiento, pesaje inteligente y logística circular avanzada.</p>
-                            <a href="/demo-creative" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* DEMO 3 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800" 
-                            alt="Negocio Local" 
-                            fill
-                            unoptimized={true}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
-                          />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
-                            <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
-                            <span className="mono-text text-accent text-xs mb-4">SEO Optimization // GOOGLE_MAPS</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Sistemas robustos para cafeterías y pymes que necesitan atraer clientes de proximidad.</p>
-                            <a href="/demo-local" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* DEMO 4 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" 
-                            alt="Aura Wellness & Spa" 
-                            fill
-                            unoptimized={true}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
-                          />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
-                            <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>
-                            <span className="mono-text text-accent text-xs mb-4">Premium Real // UX_ENGINEERING</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Experiencia inmersiva para marcas de lujo con enfoque en la conversión emocional.</p>
-                            <a href="/demo-premium" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* DEMO 5 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1" 
-                            alt="Artesanía Digital VLC" 
-                            fill
-                            unoptimized={true}
-                            style={{ opacity: 1, visibility: 'visible', display: 'block', zIndex: 1 }}
-                            className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
-                          />
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
-                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ARTESANÍA_DIGITAL_VLC]</h3>
-                            <span className="mono-text text-accent text-xs mb-4">&gt; FASHION: Bespoke Tailoring Experience</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Plataforma de alta costura con gestión de citas premium y catálogo artesanal interactivo.</p>
-                            <a href="/demo-sastre" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* DEMO 6 */}
-                      <div className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                        <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                          <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                        </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=1000&auto=format&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-                          <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
-                            <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">[ELITE_PADEL_SYSTEM]</h3>
-                            <span className="mono-text text-accent text-xs mb-4">&gt; SPORT: Performance &amp; Booking</span>
-                            <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">Gestión avanzada de pistas, estadísticas de juego y comunidad deportiva de alto rendimiento.</p>
-                            <a href="/demo-padel" target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 )}
