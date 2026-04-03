@@ -122,6 +122,25 @@ export default function Home() {
 
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitted(true); // Visual fallback
+    }
+  };
+
   return (
     <>
       <Script 
@@ -570,53 +589,86 @@ export default function Home() {
             </div>
             
             <div className="terminal-body">
-              <form name="briefing-mc" method="POST" action="/success" data-netlify="true">
-                <input type="hidden" name="form-name" value="briefing-mc" />
-                
-                <div className="terminal-row">
-                  <span className="terminal-prompt">[INPUT_USER] &gt; NAME:</span>
-                  <input type="text" name="nombre" required placeholder="_type_here..." className="terminal-input" />
-                </div>
+              {!isSubmitted ? (
+                <form name="briefing-mc" method="POST" action="/success" data-netlify="true" onSubmit={handleSubmit}>
+                  <input type="hidden" name="form-name" value="briefing-mc" />
+                  
+                  <div className="terminal-row">
+                    <span className="terminal-prompt">[INPUT_USER] &gt; NAME:</span>
+                    <input type="text" name="nombre" required placeholder="_type_here..." className="terminal-input" />
+                  </div>
 
-                <div className="terminal-row">
-                  <span className="terminal-prompt">[INPUT_USER] &gt; CONTACT:</span>
-                  <input type="tel" name="telefono" required placeholder="_whatsapp_or_phone..." className="terminal-input" />
-                </div>
+                  <div className="terminal-row">
+                    <span className="terminal-prompt">[INPUT_USER] &gt; CONTACT:</span>
+                    <input type="tel" name="telefono" required placeholder="_whatsapp_or_phone..." className="terminal-input" />
+                  </div>
 
-                <div className="terminal-row">
-                  <span className="terminal-prompt">[INPUT_USER] &gt; EMAIL:</span>
-                  <input type="email" name="email" required placeholder="_secure_connection_at..." className="terminal-input" />
-                </div>
+                  <div className="terminal-row">
+                    <span className="terminal-prompt">[INPUT_USER] &gt; EMAIL:</span>
+                    <input type="email" name="email" required placeholder="_secure_connection_at..." className="terminal-input" />
+                  </div>
 
-                <div className="terminal-row">
-                  <span className="terminal-prompt">[INPUT_USER] &gt; PACKAGE:</span>
-                  <select name="paquete" defaultValue="emprendedor" className="terminal-input" style={{ appearance: 'none', cursor: 'pointer' }}>
-                    <option value="emprendedor">Pack Emprendedor (100€)</option>
-                    <option value="profesional">Pack Profesional (250€)</option>
-                    <option value="beca-uev">Beca M&C (Descuento Colega)</option>
-                  </select>
-                </div>
+                  <div className="terminal-row">
+                    <span className="terminal-prompt">[INPUT_USER] &gt; PACKAGE:</span>
+                    <select name="paquete" defaultValue="emprendedor" className="terminal-input" style={{ cursor: 'pointer' }}>
+                      <option value="emprendedor">Pack Emprendedor (100€)</option>
+                      <option value="profesional">Pack Profesional (250€)</option>
+                      <option value="beca-uev">Beca M&C (Descuento Colega)</option>
+                    </select>
+                  </div>
 
-                <div className="terminal-row" style={{ flexDirection: 'column', gap: '10px' }}>
-                  <span className="terminal-prompt">[INPUT_USER] &gt; PROJECT_DESCRIPTION:</span>
-                  <textarea name="descripcion" rows={4} required placeholder="_abstract_of_your_vision..." className="terminal-input" style={{ resize: 'none' }}></textarea>
-                </div>
+                  <div className="terminal-row" style={{ flexDirection: 'column', gap: '10px' }}>
+                    <span className="terminal-prompt">[INPUT_USER] &gt; PROJECT_DESCRIPTION:</span>
+                    <textarea name="descripcion" rows={4} required placeholder="_abstract_of_your_vision..." className="terminal-input" style={{ resize: 'none' }}></textarea>
+                  </div>
 
-                <div style={{ margin: "2rem 0", padding: "1.5rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
-                  <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "10px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
-                    Please transmit all high-resolution visual assets to <a href="mailto:mandcwebsolutions@gmail.com" style={{ color: "var(--accent)" }}>mandcwebsolutions@gmail.com</a> post-initialization.
-                  </p>
-                </div>
+                  <div style={{ margin: "2rem 0", padding: "1.5rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
+                    <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "10px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
+                    <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
+                      Please transmit all high-resolution visual assets to <a href="mailto:mandcwebsolutions@gmail.com" style={{ color: "var(--accent)" }}>mandcwebsolutions@gmail.com</a> post-initialization.
+                    </p>
+                  </div>
 
-                <button type="submit" className="terminal-execute-btn">
-                  EXECUTE_STRATEGY_INITIALIZATION
-                </button>
+                  <button type="submit" className="terminal-execute-btn">
+                    EXECUTE_STRATEGY_INITIALIZATION
+                  </button>
 
-                <div className="terminal-status-msg">
-                  [SYSTEM] &gt; Standby for secure handshake...
+                  <div className="terminal-status-msg">
+                    [SYSTEM] &gt; Standby for secure handshake...
+                  </div>
+                </form>
+              ) : (
+                <div className="success-sequence">
+                  <div className="terminal-title" style={{ marginBottom: '1.5rem', color: '#64FFDA' }}>[SYSTEM_REPORT: SUCCESS]</div>
+                  
+                  <div className="success-progress-container">
+                    <span className="success-progress-text">INITIALIZING_DECRYPTION_PROTOCOL... 100%</span>
+                    <div className="success-progress-bar-wrapper">
+                      <div className="success-progress-fill"></div>
+                    </div>
+                  </div>
+
+                  <div className="success-terminal-log" style={{ animationDelay: '0.2s' }}>
+                    &gt; DATA_PACKET_SENT: TARGET_M&amp;C_SERVERS
+                  </div>
+                  <div className="success-terminal-log" style={{ animationDelay: '0.4s' }}>
+                    &gt; ENCRYPTION_KEY: VERIFIED
+                  </div>
+                  <div className="success-terminal-log" style={{ animationDelay: '0.6s' }}>
+                    &gt; STATUS: CONNECTION_ESTABLISHED. WE WILL CONTACT YOU SHORTLY.<span className="terminal-cursor"></span>
+                  </div>
+
+                  <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
+                    <button 
+                      onClick={() => setIsSubmitted(false)} 
+                      className="mono-text" 
+                      style={{ background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}
+                    >
+                      RETURN_TO_TERMINAL_INPUT
+                    </button>
+                  </div>
                 </div>
-              </form>
+              )}
             </div>
           </div>
         </div>

@@ -1066,6 +1066,26 @@ footer {
     caret-color: var(--accent);
 }
 
+select.terminal-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364FFDA'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 40px;
+    background-color: #020C1B;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+select.terminal-input option {
+    background-color: #020C1B;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    padding: 10px;
+}
+
 .terminal-input::placeholder {
     color: rgba(100, 255, 218, 0.2);
 }
@@ -1103,6 +1123,53 @@ footer {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     opacity: 0.7;
+}
+
+/* Success Progress Bar Styling */
+.success-progress-container {
+    margin: 2rem 0;
+    font-family: var(--font-mono);
+    color: var(--accent);
+}
+
+.success-progress-text {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.success-progress-bar-wrapper {
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    padding: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.success-progress-fill {
+    height: 12px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+    animation: progress-fill 2s ease-out forwards;
+    width: 0%;
+}
+
+@keyframes progress-fill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.success-terminal-log {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: log-slide-in 0.5s ease-out forwards;
+}
+
+@keyframes log-slide-in {
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 600px) {
