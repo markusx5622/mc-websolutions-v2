@@ -102,7 +102,7 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
 
-    // Typewriter Effect
+    // Typewriter Effect (Consolidated to prevent text duplication)
     const textStr = "Tu Idea";
     const el = document.querySelector('.typewriter');
     if (el) {
@@ -221,81 +221,6 @@ export default function Home() {
       setIsSubmitted(true); // Visual fallback
     }
   };
-
-  useEffect(() => {
-    // Header Scroll Effect
-    const handleScroll = () => {
-      const header = document.getElementById("header");
-      if (header) {
-        if (window.scrollY > 50) {
-          header.style.boxShadow = "0 10px 30px -10px rgba(2, 12, 27, 0.7)";
-          header.style.padding = "1rem 0";
-        } else {
-          header.style.boxShadow = "none";
-          header.style.padding = "1.5rem 0";
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Typewriter Effect
-    const textStr = "Tu Idea";
-    const el = document.querySelector('.typewriter');
-    if (el) {
-      let i = 0;
-      el.textContent = '';
-      const typeWriter = () => {
-        if (i < textStr.length) {
-          el.textContent += textStr.charAt(i);
-          i++;
-          setTimeout(typeWriter, 150);
-        }
-      };
-      setTimeout(typeWriter, 500);
-    }
-
-    // Hexagon Interaction Logic
-    const points = document.querySelectorAll('.hexagon-point');
-    const hexTitle = document.getElementById('hex-title');
-    const hexDesc = document.getElementById('hex-desc');
-    
-    if (hexTitle && hexDesc) {
-      hexTitle.style.transition = 'opacity 0.3s ease';
-      hexDesc.style.transition = 'opacity 0.3s ease';
-    }
-
-    const handleMouseEnter = (e: Event) => {
-      const point = e.currentTarget as HTMLElement;
-      points.forEach(p => p.classList.remove('active'));
-      point.classList.add('active');
-      
-      if (hexTitle && hexDesc) {
-        hexTitle.style.opacity = '0';
-        hexDesc.style.opacity = '0';
-        
-        setTimeout(() => {
-          hexTitle.innerText = point.getAttribute('data-title') || '';
-          hexDesc.innerText = point.getAttribute('data-desc') || '';
-          hexTitle.style.opacity = '1';
-          hexDesc.style.opacity = '1';
-        }, 200);
-      }
-    };
-
-    points.forEach(point => {
-      point.addEventListener('mouseenter', handleMouseEnter);
-    });
-
-    // Re-initialize particles on client-side navigation
-    if ((window as any).particlesJS) {
-      initParticles();
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      points.forEach(point => point.removeEventListener('mouseenter', handleMouseEnter));
-    };
-  }, []);
 
 
   return (
@@ -660,12 +585,12 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
                           <Image 
                             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" 
                             alt="Landing Speed" 
                             fill
-                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
                             priority
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
@@ -684,12 +609,12 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
                           <Image 
                             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" 
                             alt="Portfolio Creativo" 
                             fill
-                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Portfolio Creativo</h3>
@@ -706,12 +631,12 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
                           <Image 
                             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" 
                             alt="Negocio Local" 
                             fill
-                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
@@ -729,12 +654,12 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu" style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
                           <Image 
                             src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" 
                             alt="Aura Wellness & Spa" 
                             fill
-                            className="portfolio-img object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>
