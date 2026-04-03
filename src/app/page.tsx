@@ -683,11 +683,9 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?auto=format&fit=crop&q=80&w=800" 
+                          <img 
+                            src="https://images.unsplash.com/photo-1594932224828-b4b057bfe4f1?auto=format&fit=crop&q=80&w=1000" 
                             alt="Artesanía Digital VLC" 
-                            fill
-                            unoptimized={true}
                             className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
@@ -707,11 +705,9 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?auto=format&fit=crop&q=80&w=800" 
+                          <img 
+                            src="https://images.unsplash.com/photo-1626224484214-4051d152f559?auto=format&fit=crop&q=80&w=1000" 
                             alt="Elite Padel System" 
-                            fill
-                            unoptimized={true}
                             className="object-cover w-full h-full portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
