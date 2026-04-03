@@ -45,12 +45,12 @@ export default function DemoPremiumPage() {
   }, []);
 
   const galleryItems = [
-    { id: 1, category: 'spa', img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90', alt: 'Piscina de Hidroterapia' },
-    { id: 2, category: 'rooms', img: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=90', alt: 'Sala de Masaje Premium' },
-    { id: 3, category: 'relax', img: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&fit=crop&w=800&q=90', alt: 'Zona de Meditación' },
-    { id: 4, category: 'spa', img: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=90', alt: 'Circuito de Aguas' },
-    { id: 5, category: 'rooms', img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=90', alt: 'Suite de Tratamiento' },
-    { id: 6, category: 'relax', img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=90', alt: 'Lounge de Descanso' },
+    { id: 1, category: 'spa', img: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop', alt: 'Piscina de Hidroterapia' },
+    { id: 2, category: 'rooms', img: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=2070&auto=format&fit=crop', alt: 'Sala de Masaje Premium' },
+    { id: 3, category: 'relax', img: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?q=80&w=2070&auto=format&fit=crop', alt: 'Zona de Meditación' },
+    { id: 4, category: 'spa', img: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?q=80&w=2070&auto=format&fit=crop', alt: 'Circuito de Aguas' },
+    { id: 5, category: 'rooms', img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop', alt: 'Suite de Tratamiento' },
+    { id: 6, category: 'relax', img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=2070&auto=format&fit=crop', alt: 'Lounge de Descanso' },
   ];
 
   const filteredGallery = galleryFilter === 'all' ? galleryItems : galleryItems.filter(item => item.category === galleryFilter);
@@ -157,8 +157,7 @@ export default function DemoPremiumPage() {
 
         .hero-premium {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), 
-                        url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=90');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -286,8 +285,15 @@ export default function DemoPremiumPage() {
                     </div>
 
                     <div style={{ display: activeTab === 'masajes' ? 'grid' : 'none', gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px", alignItems: "center" }}>
-                        <div className="tab-image" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '5px' }}>
-                            <Image src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=90" alt="Masaje Terapéutico Profesional" fill className="object-cover" style={{ boxShadow: "20px 20px 0 #C5A059" }} priority />
+                        <div className="relative w-full h-full min-h-[250px] overflow-hidden" style={{ borderRadius: '5px', boxShadow: "20px 20px 0 #C5A059" }}>
+                            <Image 
+                              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop" 
+                              alt="Masaje Terapéutico Profesional" 
+                              fill 
+                              style={{ objectFit: 'cover' }} 
+                              unoptimized={true}
+                              priority 
+                            />
                         </div>
                         <div className="tab-text">
                             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A1A" }}>Masajes Terapéuticos</h3>
@@ -296,8 +302,14 @@ export default function DemoPremiumPage() {
                     </div>
 
                     <div style={{ display: activeTab === 'faciales' ? 'grid' : 'none', gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "50px", alignItems: "center" }}>
-                        <div className="tab-image" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '5px' }}>
-                            <Image src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=90" alt="Tratamiento Facial de Lujo" fill className="object-cover" style={{ boxShadow: "20px 20px 0 #C5A059" }} />
+                        <div className="relative w-full h-full min-h-[250px] overflow-hidden" style={{ borderRadius: '5px', boxShadow: "20px 20px 0 #C5A059" }}>
+                            <Image 
+                              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop" 
+                              alt="Tratamiento Facial de Lujo" 
+                              fill 
+                              style={{ objectFit: 'cover' }} 
+                              unoptimized={true}
+                            />
                         </div>
                         <div className="tab-text">
                             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A1A" }}>Cuidado Facial Avanzado</h3>

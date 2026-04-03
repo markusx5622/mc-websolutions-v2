@@ -105,7 +105,7 @@ export default function DemoLocalPage() {
         .hero-local {
             height: 80vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=90');
+                        url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1950&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -202,8 +202,15 @@ export default function DemoLocalPage() {
             <div className="container">
                 <h2 style={{ fontFamily: "'Libre Baskerville', serif", textAlign: "center", fontSize: "2.5rem", marginBottom: "50px", color: "#5D4037" }} className="reveal">Nuestra Selección</h2>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "60px", alignItems: "center", marginBottom: "60px" }} className="reveal">
-                    <div className="menu-img" style={{ position: 'relative', height: '400px', overflow: 'hidden', borderRadius: '15px' }}>
-                        <Image src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=90" alt="Coffee" fill className="object-cover" style={{ boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }} priority />
+                    <div className="relative w-full h-full min-h-[250px] overflow-hidden" style={{ borderRadius: '15px', boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}>
+                        <Image 
+                          src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=2070&auto=format&fit=crop" 
+                          alt="Coffee" 
+                          fill 
+                          style={{ objectFit: 'cover' }} 
+                          unoptimized={true}
+                          priority 
+                        />
                     </div>
                     <div className="menu-grid" style={{ display: "grid", gap: "40px" }}>
                         <div>

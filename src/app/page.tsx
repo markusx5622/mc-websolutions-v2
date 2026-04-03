@@ -585,12 +585,14 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" 
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
                             alt="Landing Speed" 
                             fill
-                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                             priority
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
@@ -609,12 +611,14 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" 
+                            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
                             alt="Portfolio Creativo" 
                             fill
-                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Portfolio Creativo</h3>
@@ -631,12 +635,14 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" 
+                            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1950&auto=format&fit=crop" 
                             alt="Negocio Local" 
                             fill
-                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Negocio Local</h3>
@@ -654,12 +660,14 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative" style={{ height: '240px', overflow: 'hidden' }}>
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <Image 
-                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" 
+                            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" 
                             alt="Aura Wellness & Spa" 
                             fill
-                            className="portfolio-img object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            style={{ objectFit: 'cover' }}
+                            unoptimized={true}
+                            className="portfolio-img grayscale group-hover:grayscale-0 transition-all duration-500" 
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all">
                             <h3 className="portfolio-title text-xl font-bold mb-2">Aura Wellness &amp; Spa</h3>

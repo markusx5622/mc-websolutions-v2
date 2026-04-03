@@ -325,8 +325,16 @@ export default function DemoCreativePage() {
                         Transformamos conceptos abstractos en experiencias visuales memorables que trascienden el tiempo.
                     </div>
                 </div>
-                <div className="hero-img reveal transform-gpu" style={{ position: 'relative' }}>
-                    <Image src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=90" alt="Studio" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-1000" priority />
+                <div className="relative w-full h-full min-h-[250px] overflow-hidden" style={{ minWidth: '300px' }}>
+                    <Image 
+                      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
+                      alt="Studio" 
+                      fill 
+                      style={{ objectFit: 'cover' }} 
+                      unoptimized={true}
+                      className="grayscale hover:grayscale-0 transition-all duration-1000" 
+                      priority 
+                    />
                 </div>
             </div>
         </section>
@@ -336,8 +344,14 @@ export default function DemoCreativePage() {
                 <h2 className="section-title reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", marginBottom: "80px", textAlign: "center", fontWeight: 400 }}>Proyectos Seleccionados</h2>
                 <div className="gallery-grid">
                     <div className="gallery-item reveal transform-gpu">
-                        <div className="img-wrapper" style={{ position: 'relative' }}>
-                            <Image src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=1200&q=90" alt="Photography Project" fill className="object-cover" />
+                        <div className="relative w-full h-full min-h-[250px] overflow-hidden">
+                            <Image 
+                              src="https://images.unsplash.com/photo-1554080353-a576cf803bda?q=80&w=2070&auto=format&fit=crop" 
+                              alt="Photography Project" 
+                              fill 
+                              style={{ objectFit: 'cover' }} 
+                              unoptimized={true}
+                            />
                         </div>
                         <div className="item-info" style={{ marginTop: "20px" }}>
                             <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Fotografía / Moda</span>
@@ -345,8 +359,14 @@ export default function DemoCreativePage() {
                         </div>
                     </div>
                     <div className="gallery-item reveal transform-gpu" style={{ marginTop: "100px" }}>
-                        <div className="img-wrapper" style={{ position: 'relative' }}>
-                            <Image src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=90" alt="Branding Project" fill className="object-cover" />
+                        <div className="relative w-full h-full min-h-[250px] overflow-hidden">
+                            <Image 
+                              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop" 
+                              alt="Branding Project" 
+                              fill 
+                              style={{ objectFit: 'cover' }} 
+                              unoptimized={true}
+                            />
                         </div>
                         <div className="item-info" style={{ marginTop: "20px" }}>
                             <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Branding / Identidad</span>
