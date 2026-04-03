@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
@@ -140,6 +140,8 @@ export default function Home() {
       setIsSubmitted(true); // Visual fallback
     }
   };
+
+  const [activeTab, setActiveTab] = React.useState('[01_WEBS]');
 
   return (
     <>
@@ -461,59 +463,114 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <h2 className="section-title">Demostración</h2>
+          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>[MODULAR_ENGINEERING_DEMOS]</h2>
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
-            Explora nuestras capacidades técnicas a través de proyectos reales optimizados.
+            Explore our high-performance modules designed for 2,000+ request/second industrial scalability.
           </p>
-          <div className="portfolio-grid">
-            <Link href="/demo-speed" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-              <div className="browser-frame">
-                <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-              </div>
-              <div className="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Landing Speed" className="portfolio-img" referrerPolicy="no-referrer" />
-                <div className="portfolio-overlay">
-                  <h3 className="portfolio-title">Landing "Speed"</h3>
-                  <span className="mono-text">Optimización de Conversión</span>
-                </div>
-              </div>
-            </Link>
-            <Link href="/demo-creative" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-              <div className="browser-frame">
-                <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-              </div>
-              <div className="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=90" alt="Portfolio Creativo" className="portfolio-img" referrerPolicy="no-referrer" />
-                <div className="portfolio-overlay">
-                  <h3 className="portfolio-title">Portfolio Creativo</h3>
-                  <span className="mono-text">Fotógrafos / Diseñadores</span>
-                </div>
-              </div>
-            </Link>
-            <Link href="/demo-local" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-              <div className="browser-frame">
-                <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-              </div>
-              <div className="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=90" alt="Negocio Local" className="portfolio-img" referrerPolicy="no-referrer" />
-                <div className="portfolio-overlay">
-                  <h3 className="portfolio-title">Negocio Local</h3>
-                  <span className="mono-text">Cafeterías / Tiendas</span>
-                </div>
-              </div>
-            </Link>
-            <Link href="/demo-premium" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
-              <div className="browser-frame">
-                <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
-              </div>
-              <div className="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=90" alt="Aura Wellness & Spa" className="portfolio-img" referrerPolicy="no-referrer" />
-                <div className="portfolio-overlay">
-                  <h3 className="portfolio-title">Aura Wellness & Spa</h3>
-                  <span className="mono-text">Proyecto Premium Real</span>
-                </div>
-              </div>
-            </Link>
+
+          <div className="tabs-nav">
+            {['[01_WEBS]', '[02_DASHBOARDS]', '[03_BRAND_ID]', '[04_PERFORMANCE]'].map((tab) => (
+              <button
+                key={tab}
+                className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab)}
+              >
+                {tab}
+                {activeTab === tab && (
+                  <motion.div layoutId="active-indicator" className="active-indicator" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          <div className="tab-content-area" style={{ minHeight: '450px' }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {activeTab === '[01_WEBS]' && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="service-card-v2">
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; LANDING_SPEED</h3>
+                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Conversión extrema y carga instantánea para campañas agresivas.</p>
+                      <span className="price-tag">299€ - 399€</span>
+                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 48H</div>
+                    </div>
+                    <div className="service-card-v2">
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; CORPORATE_CORE</h3>
+                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Estructura multipágina robusta para posicionamiento de marca.</p>
+                      <span className="price-tag">499€ - 799€</span>
+                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 7D</div>
+                    </div>
+                    <div className="service-card-v2">
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; MASTER_ECOMMERCE</h3>
+                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Sistemas de venta escalables con gestión de inventario IA.</p>
+                      <span className="price-tag">999€+</span>
+                      <div className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>ENGINEERING_TIME: 15D</div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === '[02_DASHBOARDS]' && (
+                  <div className="aether-highlight">
+                    <div className="aether-glow-ring"></div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                      <div>
+                        <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_DASHBOARD_V.01</h3>
+                        <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '1rem' }}>
+                          "Tus ventas y clientes en una sola pantalla"
+                        </p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                          Herramienta de Business Intelligence en tiempo real. Tracking de leads, integración con Google Maps API y visualización de datos neurales para toma de decisiones ejecutivas.
+                        </p>
+                        <div style={{ marginTop: '2rem' }}>
+                          <Link href="#briefing-form" className="btn btn-solid">RESERVAR_HANDSHAKE</Link>
+                        </div>
+                      </div>
+                      <div style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B' }}>
+                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" alt="Aether UI Interface" style={{ width: '100%', filter: 'hue-rotate(120deg)' }} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === '[03_BRAND_ID]' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="service-card-v2">
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; RESTYLING_IA</h3>
+                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Actualización técnica de logos y paletas mediante algoritmos generativos.</p>
+                      <span className="price-tag">49€ - 89€</span>
+                    </div>
+                    <div className="service-card-v2" style={{ border: '1px solid var(--accent)' }}>
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; FULL_IDENTITY_SYSTEM</h3>
+                      <p style={{ fontStyle: 'italic', color: 'var(--accent)', marginBottom: '1rem' }}>"La cara de tu negocio, diseñada con paciencia y alma"</p>
+                      <p style={{ fontSize: '0.85rem' }}>Diseño completo de ecosistema visual, manual de marca y activos digitales.</p>
+                      <span className="price-tag">149€ - 189€</span>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === '[04_PERFORMANCE]' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="service-card-v2">
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; AUDITORÍA_RAYOS_X</h3>
+                      <p style={{ fontSize: '0.85rem', margin: '1rem 0' }}>Análisis profundo de cuellos de botella y fugas de conversión.</p>
+                      <span className="price-tag">99€</span>
+                    </div>
+                    <div className="service-card-v2" style={{ background: 'rgba(100, 255, 218, 0.05)' }}>
+                      <h3 className="mono-text" style={{ color: 'var(--accent)' }}>&gt; INYECCIÓN_DE_VELOCIDAD</h3>
+                      <p style={{ fontWeight: 800, marginBottom: '1rem' }}>"Hacemos que tu web cargue en la mitad de tiempo o te devolvemos el dinero"</p>
+                      <p style={{ fontSize: '0.85rem' }}>Optimización de Core Web Vitals, compresión de assets y refactor de scripts.</p>
+                      <span className="price-tag">199€+</span>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </motion.section>
