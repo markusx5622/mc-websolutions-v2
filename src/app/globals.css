@@ -203,6 +203,49 @@ header {
     overflow: hidden;
 }
 
+/* Selection Color */
+::selection {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+    border: 2px solid var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4cd9b9;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+    padding: 1.5rem 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
+    70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
+    100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+}
+
 #particles-js {
     position: fixed;
     top: 0;

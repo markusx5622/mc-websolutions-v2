@@ -3,24 +3,10 @@
 import React, { useEffect } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
-    // Scroll Reveal Animation logic
-    function reveal() {
-      const reveals = document.querySelectorAll(".reveal");
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
-      }
-    }
-    window.addEventListener("scroll", reveal);
-    reveal(); // Trigger on load
-
     // Header Scroll Effect
     const handleScroll = () => {
       const header = document.getElementById("header");
@@ -90,7 +76,6 @@ export default function Home() {
     }
 
     return () => {
-      window.removeEventListener("scroll", reveal);
       window.removeEventListener("scroll", handleScroll);
       points.forEach(point => point.removeEventListener('mouseenter', handleMouseEnter));
     };
@@ -141,9 +126,15 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero">
+      <motion.section 
+        className="hero"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container" style={{ maxWidth: '1350px', padding: '0 5%' }}>
-          <div className="hero-content reveal active">
+          <div className="hero-content active">
             <div className="hero-main-flex">
               <div className="hero-text-block" style={{ textAlign: 'left', flex: '1' }}>
                 <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px' }}>M&C WEB SOLUTIONS</span>
@@ -161,10 +152,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <div className="container">
-        <div className="stats-bar reveal">
+      <motion.div 
+        className="container"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <div className="stats-bar">
           <div style={{ textAlign: "center" }}>
             <span className="stat-number">48h</span>
             <span className="stat-label">Tiempo Medio de Entrega</span>
@@ -182,39 +179,53 @@ export default function Home() {
             <span className="stat-label">Tecnología de Vanguardia</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <section id="methodology" className="section">
+      <motion.section 
+        id="methodology" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <h2 className="section-title reveal">Nuestra Metodología</h2>
+          <h2 className="section-title">Nuestra Metodología</h2>
           <div className="steps-grid">
-            <div className="step-card reveal">
+            <div className="step-card">
               <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
               <h3 className="step-title">1. Briefing Express</h3>
               <p className="step-desc">Completa un formulario estructurado de 5 minutos. Extraemos la esencia de tu negocio con precisión de ingeniería.</p>
             </div>
-            <div className="step-card reveal">
+            <div className="step-card">
               <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
               <h3 className="step-title">2. Generación IA</h3>
               <p className="step-desc">Nuestros modelos de IA procesan tus datos para generar una estructura, copy y diseño base altamente optimizados.</p>
             </div>
-            <div className="step-card reveal">
+            <div className="step-card">
               <svg className="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
               <h3 className="step-title">3. Despliegue & Curación</h3>
               <p className="step-desc">Revisión humana experta. Ajustamos detalles visuales, optimizamos el rendimiento y lanzamos tu web al mundo.</p>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="dna" className="hexagon-section">
+      <motion.section 
+        id="dna" 
+        className="hexagon-section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <h2 className="section-title reveal">El ADN de M&C</h2>
-          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "4rem", marginTop: "-2rem" }} className="reveal">
+          <h2 className="section-title">El ADN de M&C</h2>
+          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "4rem", marginTop: "-2rem" }}>
             Nuestro logo no es solo una forma; es la estructura de nuestra ingeniería. Interactúa con sus vértices para descubrir nuestra esencia.
           </p>
           
-          <div className="hexagon-container reveal">
+          <div className="hexagon-container">
             <div className="hexagon-bg-text">ENGINEERING</div>
             <div className="hexagon-wrapper">
               <svg className="main-hexagon" viewBox="0 0 100 100">
@@ -239,11 +250,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="about" className="section">
+      <motion.section 
+        id="about" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <div className="reveal" style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
             <h2 className="section-title">Ingeniería en cada Píxel</h2>
             <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2rem" }}>
               M&C Web Solutions nace en las aulas de la <span style={{ color: "var(--accent)", fontWeight: 600 }}>Universidad Europea de Valencia</span>. Como alumnos de Ingeniería en Organización Industrial, no solo diseñamos webs; optimizamos tu presencia digital para que sea eficiente, rápida y rentable.
@@ -254,7 +272,7 @@ export default function Home() {
                 <strong>Tu web en 48 horas. Sin excusas.</strong>
               </p>
             </div>
-            <div style={{ marginTop: "4rem" }} className="reveal">
+            <div style={{ marginTop: "4rem" }}>
               <p className="mono-text" style={{ marginBottom: "2rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 2 }}>STACK TECNOLÓGICO DE M&C:</p>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1.5rem" }}>
                 <div className="tech-badge"><span>⚡</span> HTML5 / CSS3</div>
@@ -265,16 +283,23 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="portfolio" className="section">
+      <motion.section 
+        id="portfolio" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <h2 className="section-title reveal">Demostración</h2>
-          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }} className="reveal">
+          <h2 className="section-title">Demostración</h2>
+          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
             Explora nuestras capacidades técnicas a través de proyectos reales optimizados.
           </p>
           <div className="portfolio-grid">
-            <Link href="/demo-speed" className="portfolio-card reveal" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="/demo-speed" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
               <div className="browser-frame">
                 <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
               </div>
@@ -286,7 +311,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            <Link href="/demo-creative" className="portfolio-card reveal" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="/demo-creative" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
               <div className="browser-frame">
                 <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
               </div>
@@ -298,7 +323,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            <Link href="/demo-local" className="portfolio-card reveal" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="/demo-local" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
               <div className="browser-frame">
                 <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
               </div>
@@ -310,7 +335,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            <Link href="/demo-premium" className="portfolio-card reveal" style={{ textDecoration: "none", display: "block" }}>
+            <Link href="/demo-premium" className="portfolio-card" style={{ textDecoration: "none", display: "block" }}>
               <div className="browser-frame">
                 <div className="dot"></div><div className="dot yellow"></div><div className="dot green"></div>
               </div>
@@ -324,13 +349,20 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="pricing" className="section">
+      <motion.section 
+        id="pricing" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <h2 className="section-title reveal">Transparencia Total</h2>
+          <h2 className="section-title">Transparencia Total</h2>
           <div className="pricing-grid">
-            <div className="pricing-card reveal">
+            <div className="pricing-card">
               <h3 className="pricing-title">Pack Emprendedor</h3>
               <div className="pricing-price">100€<span>/pago único</span></div>
               <ul className="pricing-features">
@@ -342,7 +374,7 @@ export default function Home() {
               </ul>
               <a href="#contact" className="btn btn-primary" style={{ width: "100%" }}>Seleccionar</a>
             </div>
-            <div className="pricing-card featured reveal">
+            <div className="pricing-card featured">
               <h3 className="pricing-title">Pack Profesional</h3>
               <div className="pricing-price">250€<span>/pago único</span></div>
               <ul className="pricing-features">
@@ -355,7 +387,7 @@ export default function Home() {
               <a href="#contact" className="btn btn-solid" style={{ width: "100%" }}>Seleccionar</a>
             </div>
           </div>
-          <div className="reveal" style={{ textAlign: "center", marginTop: "4rem", marginBottom: "4rem" }}>
+          <div style={{ textAlign: "center", marginTop: "4rem", marginBottom: "4rem" }}>
             <div style={{ display: "inline-block", padding: "1.5rem 2.5rem", background: "rgba(100, 255, 218, 0.1)", borderRadius: "50px", border: "1px solid var(--accent)" }}>
               <p className="mono-text" style={{ color: "var(--accent)", margin: 0, fontSize: "1rem" }}>
                 🎓 <strong>BECA M&C:</strong> ¿Compañero de la UEV o marca personal emergente? <br />
@@ -364,11 +396,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="briefing-form" className="section">
+      <motion.section 
+        id="briefing-form" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <h2 className="section-title reveal">Configura tu Proyecto</h2>
+          <h2 className="section-title">Configura tu Proyecto</h2>
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
             Cuéntanos tu idea y sube tus archivos. Nos pondremos en contacto en menos de 24h.
           </p>
@@ -409,22 +448,33 @@ export default function Home() {
             <button type="submit" className="btn btn-solid" style={{ width: "100%", letterSpacing: "2px" }}>ENVIAR BRIEFING A M&C</button>
           </form>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="contact" className="section">
+      <motion.section 
+        id="contact" 
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <div className="contact reveal">
+          <div className="contact">
             <h2 className="section-title">Inicia tu Proyecto</h2>
             <p className="contact-desc">No pierdas tiempo con agencias tradicionales. Escríbenos y ten tu web lista para el lunes.</p>
             <a href="mailto:mandcwebsolutions@gmail.com?subject=Interés%20en%20Pack%20Web&body=Hola%20M&C,%20me%20gustaría%20saber%20más%20sobre..." className="btn btn-solid" style={{ fontSize: "1.2rem", padding: "1.2rem 3rem" }}>Contactar por Email</a>
             <p className="mono-text" style={{ marginTop: "2rem", opacity: 0.7 }}>mandcwebsolutions@gmail.com <br /> 📍 Valencia, España.</p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <footer>
+      <footer style={{ borderTop: "1px solid rgba(100, 255, 218, 0.05)", paddingTop: "4rem", paddingBottom: "4rem" }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <img src="/logo.svg" alt="M&C Logo" className="footer-logo" style={{ height: '160px', width: 'auto', marginBottom: '1.5rem' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem', background: 'rgba(100, 255, 218, 0.05)', padding: '6px 12px', borderRadius: '50px', border: '1px solid rgba(100, 255, 218, 0.1)' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#64FFDA', boxShadow: '0 0 10px #64FFDA', animation: 'pulse 2s infinite' }}></span>
+            <span className="mono-text" style={{ fontSize: '0.65rem', color: 'var(--accent)', letterSpacing: '1px' }}>SYSTEM STATUS: OPTIMAL</span>
+          </div>
           <p className="mono-text" style={{ fontSize: "0.8rem", opacity: 0.7 }}>
             Ingeniería aplicada al diseño web. <br />
             Diseñado & Construido por <strong>M&C Web Solutions</strong> © 2026
