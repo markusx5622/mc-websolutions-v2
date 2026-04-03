@@ -1079,11 +1079,23 @@ select.terminal-input {
     padding: 8px 12px;
 }
 
-select.terminal-input option {
+select.terminal-input optgroup {
     background-color: #020C1B;
     color: var(--accent);
     font-family: var(--font-mono);
-    padding: 10px;
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(100, 255, 218, 0.1);
+}
+
+select.terminal-input option {
+    background-color: #020C1B;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    padding: 12px;
 }
 
 .terminal-input::placeholder {
@@ -1126,6 +1138,29 @@ select.terminal-input option {
 }
 
 /* Success Progress Bar Styling */
+.terminal-window.terminal-success-neon {
+    border-color: #00ff7f;
+    box-shadow: 0 0 30px rgba(0, 255, 127, 0.2);
+}
+
+.terminal-success-neon .terminal-header {
+    background: rgba(0, 255, 127, 0.05);
+    border-bottom: 1px solid rgba(0, 255, 127, 0.2);
+}
+
+.terminal-success-neon .terminal-title {
+    color: #00ff7f;
+}
+
+.terminal-success-neon .success-progress-fill {
+    background: #00ff7f;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+.terminal-success-neon .success-terminal-log {
+    color: #00ff7f;
+}
+
 .success-progress-container {
     margin: 2rem 0;
     font-family: var(--font-mono);
@@ -1170,6 +1205,48 @@ select.terminal-input option {
 
 @keyframes log-slide-in {
     100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Terminal Checkbox */
+.terminal-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    margin: 1.5rem 0;
+    font-family: var(--font-mono);
+}
+
+.terminal-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.terminal-checkbox:checked {
+    background: var(--accent);
+}
+
+.terminal-checkbox:checked::after {
+    content: 'X';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-color);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.terminal-checkbox-label {
+    font-size: 0.85rem;
+    color: var(--accent);
+    opacity: 0.8;
 }
 
 @media (max-width: 600px) {

@@ -578,9 +578,9 @@ export default function Home() {
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
             Cuéntanos tu idea y sube tus archivos. Nos pondremos en contacto en menos de 24h.
           </p>
-          <div className="terminal-window">
+          <div className={`terminal-window ${isSubmitted ? 'terminal-success-neon' : ''}`}>
             <div className="terminal-header">
-              <div className="terminal-title">[COMMAND_PROMPT: BRIEFING_INIT_V.01]</div>
+              <div className="terminal-title">{isSubmitted ? '[SYSTEM_REPORT: SUCCESS]' : '[COMMAND_PROMPT: BRIEFING_INIT_V.01]'}</div>
               <div className="terminal-controls">
                 <div className="terminal-dot"></div>
                 <div className="terminal-dot"></div>
@@ -609,11 +609,22 @@ export default function Home() {
                   </div>
 
                   <div className="terminal-row">
-                    <span className="terminal-prompt">[INPUT_USER] &gt; PACKAGE:</span>
-                    <select name="paquete" defaultValue="emprendedor" className="terminal-input" style={{ cursor: 'pointer' }}>
-                      <option value="emprendedor">Pack Emprendedor (100€)</option>
-                      <option value="profesional">Pack Profesional (250€)</option>
-                      <option value="beca-uev">Beca M&C (Descuento Colega)</option>
+                    <span className="terminal-prompt">[INPUT_USER] &gt; SERVICE_CATALOG:</span>
+                    <select name="paquete" defaultValue="" className="terminal-input" style={{ cursor: 'pointer' }} required>
+                      <option value="" disabled>_select_engineering_module...</option>
+                      <optgroup label="[WEB_ENGINEERING]">
+                        <option value="web-basica">Web Básica: €299-€399 (48h)</option>
+                        <option value="web-profesional">Web Pro: €499-€799 (7d)</option>
+                        <option value="e-commerce">E-Commerce: €999+ (15d)</option>
+                      </optgroup>
+                      <optgroup label="[DATA_DASHBOARDS]">
+                        <option value="analytics-hub">Analytics Hub: €599+ (7d)</option>
+                        <option value="ai-integration">AI Pipeline: €899+ (10d)</option>
+                      </optgroup>
+                      <optgroup label="[BRAND_ID]">
+                        <option value="visual-identity">Visual Identity: €399+ (5d)</option>
+                        <option value="ui-ux-audit">UI/UX Engineering: €299 (48h)</option>
+                      </optgroup>
                     </select>
                   </div>
 
@@ -622,10 +633,15 @@ export default function Home() {
                     <textarea name="descripcion" rows={4} required placeholder="_abstract_of_your_vision..." className="terminal-input" style={{ resize: 'none' }}></textarea>
                   </div>
 
-                  <div style={{ margin: "2rem 0", padding: "1.5rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
-                    <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "10px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
-                    <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
-                      Please transmit all high-resolution visual assets to <a href="mailto:mandcwebsolutions@gmail.com" style={{ color: "var(--accent)" }}>mandcwebsolutions@gmail.com</a> post-initialization.
+                  <label className="terminal-checkbox-wrapper">
+                    <input type="checkbox" name="maintenance-shield" className="terminal-checkbox" />
+                    <span className="terminal-checkbox-label">[ ] ACTIVATE_SHIELD: Add 24/7 Security &amp; Hosting? (+39€/mo)</span>
+                  </label>
+
+                  <div style={{ margin: "1.5rem 0", padding: "1rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
+                    <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "5px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
+                    <p style={{ fontSize: "0.80rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
+                      Handshake security active. M&amp;C protocols ensure end-to-end data integrity.
                     </p>
                   </div>
 
@@ -639,23 +655,24 @@ export default function Home() {
                 </form>
               ) : (
                 <div className="success-sequence">
-                  <div className="terminal-title" style={{ marginBottom: '1.5rem', color: '#64FFDA' }}>[SYSTEM_REPORT: SUCCESS]</div>
-                  
                   <div className="success-progress-container">
-                    <span className="success-progress-text">INITIALIZING_DECRYPTION_PROTOCOL... 100%</span>
+                    <span className="success-progress-text">HANDSHAKE_SEQUENCE... 100%</span>
                     <div className="success-progress-bar-wrapper">
                       <div className="success-progress-fill"></div>
                     </div>
                   </div>
 
                   <div className="success-terminal-log" style={{ animationDelay: '0.2s' }}>
-                    &gt; DATA_PACKET_SENT: TARGET_M&amp;C_SERVERS
+                    [SYSTEM] &gt; VALIDATING_DATA... DONE.
                   </div>
                   <div className="success-terminal-log" style={{ animationDelay: '0.4s' }}>
-                    &gt; ENCRYPTION_KEY: VERIFIED
+                    [SYSTEM] &gt; ENCRYPTING_BRIEFING... DONE.
                   </div>
                   <div className="success-terminal-log" style={{ animationDelay: '0.6s' }}>
-                    &gt; STATUS: CONNECTION_ESTABLISHED. WE WILL CONTACT YOU SHORTLY.<span className="terminal-cursor"></span>
+                    [SYSTEM] &gt; PACKET_SENT_TO_M&amp;C_SERVERS.
+                  </div>
+                  <div className="success-terminal-log" style={{ animationDelay: '0.8s', marginTop: '1rem' }}>
+                    [MESSAGE] &gt; ¡Recibido, Marc y Juan se pondrán en contacto contigo en menos de 24h!<span className="terminal-cursor"></span>
                   </div>
 
                   <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
@@ -664,7 +681,7 @@ export default function Home() {
                       className="mono-text" 
                       style={{ background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}
                     >
-                      RETURN_TO_TERMINAL_INPUT
+                      RETURN_TO_BASE_INTERFACE
                     </button>
                   </div>
                 </div>
