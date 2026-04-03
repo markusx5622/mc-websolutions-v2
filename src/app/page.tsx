@@ -707,9 +707,9 @@ export default function Home() {
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
                           <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
                         </div>
-                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                        <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden" style={{ background: 'red' }}>
                           <Image 
-                            src="https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop&v=final_fix" 
+                            src="https://images.unsplash.com/photo-1518112166137-859063283281?q=80&w=2000&auto=format&fit=crop" 
                             alt="Elite Padel System" 
                             fill
                             unoptimized={true}
