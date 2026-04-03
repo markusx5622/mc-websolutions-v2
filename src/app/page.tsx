@@ -709,8 +709,8 @@ export default function Home() {
                         </div>
                         <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                           <img 
-                            src="https://images.pexels.com/photos/6203521/pexels-photo-6203521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                            alt="Padel System" 
+                            src="https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Elite Padel System" 
                             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', top: 0, left: 0, zIndex: 0 }}
                           />
                           <div className="portfolio-overlay absolute inset-0 bg-black/60 opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all" style={{ zIndex: 2 }}>
