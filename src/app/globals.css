@@ -724,8 +724,8 @@ footer {
     align-items: center !important;
     justify-content: space-between !important;
     gap: 60px;
-    width: 100%;
-    max-width: 1400px;
+    width: 95vw !important;
+    max-width: 1800px !important;
     margin: 0 auto;
 }
 
@@ -748,6 +748,7 @@ footer {
 @media (max-width: 768px) {
     .hero-main-flex {
         flex-direction: column-reverse !important;
+        justify-content: center !important;
         gap: 40px;
     }
     .hero-dna-logo {
