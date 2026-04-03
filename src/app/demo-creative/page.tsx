@@ -1,472 +1,298 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 
-export default function DemoCreativePage() {
-  const [activeTab, setActiveTab] = useState('filosofia');
-  const [showSuccess, setShowSuccess] = useState(false);
+// --- CURSOR COMPONENT ---
+const CustomCursor = () => {
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+  const [isPointer, setIsPointer] = useState(false);
 
   useEffect(() => {
-    const handleReveal = () => {
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-          el.classList.add('active');
-        }
-      });
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+      
+      const target = e.target as HTMLElement;
+      setIsPointer(
+        window.getComputedStyle(target).cursor === 'pointer' || 
+        target.tagName === 'A' || 
+        target.tagName === 'BUTTON'
+      );
     };
-    window.addEventListener('scroll', handleReveal);
-    handleReveal(); // Trigger on load
+    window.addEventListener('mousemove', moveCursor);
+    return () => window.removeEventListener('mousemove', moveCursor);
+  }, [cursorX, cursorY]);
 
-    const handleNavScroll = () => {
-      const nav = document.getElementById('navbar');
-      if (nav) {
-        if (window.pageYOffset > 50) nav.classList.add('scrolled');
-        else nav.classList.remove('scrolled');
-      }
-    };
-    window.addEventListener('scroll', handleNavScroll);
+  return (
+    <motion.div
+      style={{
+        translateX: cursorXSpring,
+        translateY: cursorYSpring,
+        left: -10,
+        top: -10,
+      }}
+      animate={{
+        scale: isPointer ? 3 : 1,
+        backgroundColor: isPointer ? '#E0FF00' : '#F5F5F5',
+      }}
+      className="fixed pointer-events-none z-[9999] w-5 h-5 rounded-full mix-blend-difference"
+    />
+  );
+};
 
-    return () => {
-      window.removeEventListener('scroll', handleReveal);
-      window.removeEventListener('scroll', handleNavScroll);
-    };
-  }, []);
+// --- MAGNETIC BUTTON ---
+const MagneticButton = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { damping: 15, stiffness: 150 });
+  const springY = useSpring(y, { damping: 15, stiffness: 150 });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setShowSuccess(true);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    const distanceX = e.clientX - centerX;
+    const distanceY = e.clientY - centerY;
+    x.set(distanceX * 0.35);
+    y.set(distanceY * 0.35);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <>
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x: springX, y: springY }}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+export default function DemoCreativePage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Hide default cursor in this route
+    document.body.style.cursor = 'none';
+    return () => {
+      document.body.style.cursor = 'auto';
+    };
+  }, []);
+
+  if (!mounted) return null;
+
+  return (
+    <div className="creative-v2-scope min-h-screen bg-[#050505] text-[#F5F5F5] selection:bg-[#E0FF00] selection:text-black">
+      <CustomCursor />
+      
       <style dangerouslySetInnerHTML={{ __html: `
-        .demo-creative-body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF !important; /* Force reset */
-            color: #111111 !important;
-            line-height: 1.4;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
 
-        .demo-creative-body * {
-            font-family: 'Inter', sans-serif;
-            border-color: #EEEEEE;
+        .creative-v2-scope {
+          font-family: 'Inter', sans-serif;
         }
-
+        
         .creative-serif {
-            font-family: 'Playfair Display', serif !important;
+          font-family: 'Playfair Display', serif;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
+        .marquee {
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+          animation: marquee 20s linear infinite;
         }
 
-        #navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 40px 0;
-            z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
-        #navbar.scrolled {
-            padding: 20px 0;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(10px);
+        .bento-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: 250px;
+          gap: 20px;
         }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .mask-text {
+          overflow: hidden;
+          display: block;
         }
 
-        .logo-creative {
-            font-size: 1.5rem;
-            text-decoration: none;
-            color: #111111;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-creative::before {
-            content: '←';
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .logo-creative:hover::before {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #111111;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.5;
-            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        .hero-creative {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: #f9f9f9;
-        }
-
-        .hero-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 100%;
-            width: 100%;
-        }
-
-        .hero-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 10%;
-            z-index: 2;
-        }
-
-        .hero-creative h1 {
-            font-family: 'Playfair Display', serif !important;
-            font-size: 10vw;
-            line-height: 0.85;
-            margin-bottom: 30px;
-            letter-spacing: -5px;
-            font-weight: 400;
-        }
-
-        .hero-img {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: transform 2s ease;
-        }
-
-        .hero-creative:hover .hero-img img {
-            transform: scale(1.1);
-        }
-
-        .experience-widget {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            background: #111111;
-            color: white;
-            padding: 20px;
-            border-radius: 4px;
-            z-index: 100;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .experience-widget span { font-weight: 800; font-size: 1.2rem; color: #FF3E00; }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .btn-creative {
-            background: #111111;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            padding: 20px 50px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-creative:hover {
-            background: #FF3E00;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .gallery-item {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .img-wrapper {
-            overflow: hidden;
-            aspect-ratio: 4/5;
-            background: #f5f5f5;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .tab-btn {
-            padding: 20px 0;
-            background: none;
-            border: none;
-            font-family: inherit;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            color: #888888;
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .tab-btn.active {
-            color: #111111;
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #111111;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tab-content {
-          animation: fadeIn 1s forwards;
+        /* Standard CSS Overrides for this Demo */
+        .creative-v2-scope * {
+          cursor: none !important;
         }
       `}} />
 
-      <div className="demo-creative-body">
-        <div className="experience-widget reveal">
-            <span>12+</span>
-            Años de Visión Creativa
+      {/* --- NAVBAR --- */}
+      <nav className="fixed top-0 w-full p-8 flex justify-between items-center z-50">
+        <Link href="/#portfolio" className="text-xl font-black tracking-tighter hover:text-[#E0FF00] transition-colors">
+          VISIONARY<span className="text-[#E0FF00]">.</span>
+        </Link>
+        <div className="flex gap-12 text-sm font-bold tracking-widest uppercase opacity-40">
+          <span className="hover:opacity-100 transition-opacity">Work</span>
+          <span className="hover:opacity-100 transition-opacity">Studio</span>
+          <span className="hover:opacity-100 transition-opacity">Contact</span>
+        </div>
+      </nav>
+
+      {/* --- HERO --- */}
+      <header className="h-[90vh] flex flex-col justify-center px-4 md:px-20">
+        <div className="mask-text">
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase"
+          >
+            Creative
+          </motion.h1>
+        </div>
+        <div className="mask-text ml-[10%]">
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase italic text-transparent"
+            style={{ WebkitTextStroke: '2px #F5F5F5' }}
+          >
+            Visionary
+          </motion.h1>
+        </div>
+        <div className="mask-text ml-[20%]">
+          <motion.h1 
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
+            className="creative-serif text-[12vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase text-[#E0FF00]"
+          >
+            System.
+          </motion.h1>
+        </div>
+      </header>
+
+      {/* --- MARQUEE --- */}
+      <section className="py-12 border-y border-[#F5F5F5]/10 overflow-hidden">
+        <div className="marquee text-4xl md:text-6xl font-black italic tracking-widest uppercase opacity-20">
+          ART DIRECTION — 3D MOTION — WEB EXPERIENCES — BRAND IDENTITY — BRUTALIST AESTHETICS — 
+          ART DIRECTION — 3D MOTION — WEB EXPERIENCES — BRAND IDENTITY — BRUTALIST AESTHETICS — 
+        </div>
+      </section>
+
+      {/* --- BENTO GALLERY --- */}
+      <section className="py-32 px-4 md:px-20">
+        <div className="bento-grid">
+          {/* Item 1 */}
+          <motion.div 
+            whileHover="hover"
+            className="col-span-2 row-span-2 relative overflow-hidden group border border-[#F5F5F5]/10"
+          >
+            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
+              <Image 
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=90" 
+                alt="Architecture" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+              <h3 className="creative-serif text-3xl font-black">Minimal Complexity</h3>
+              <p className="text-sm opacity-60 mb-4">Architecture / 2026</p>
+              <button className="bg-[#E0FF00] text-black text-xs font-bold px-6 py-2 w-max">VIEW CASE</button>
+            </div>
+          </motion.div>
+
+          {/* Item 2 */}
+          <motion.div 
+            whileHover="hover"
+            className="col-span-1 row-span-1 relative overflow-hidden group border border-[#F5F5F5]/10"
+          >
+            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
+              <Image 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=90" 
+                alt="UI" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-center items-center text-center">
+              <h3 className="creative-serif text-xl font-bold">Liquid Interface</h3>
+              <button className="text-[#E0FF00] text-[10px] font-black mt-2 tracking-widest">DISCOVER</button>
+            </div>
+          </motion.div>
+
+          {/* Item 3 */}
+          <motion.div 
+            whileHover="hover"
+            className="col-span-1 row-span-2 relative overflow-hidden group border border-[#F5F5F5]/10"
+          >
+            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
+              <Image 
+                src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=90" 
+                alt="Product" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+              />
+            </motion.div>
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+              <h3 className="creative-serif text-2xl font-bold">Industrial Soul</h3>
+            </div>
+          </motion.div>
+
+          {/* Item 4 */}
+          <motion.div 
+            whileHover="hover"
+            className="col-span-1 row-span-1 relative overflow-hidden group border border-[#F5F5F5]/10"
+          >
+            <motion.div variants={{ hover: { scale: 1.05 } }} className="w-full h-full relative">
+              <Image 
+                src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800&q=90" 
+                alt="Abstract" fill unoptimized className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- FOOTER CTA --- */}
+      <footer className="h-screen flex flex-col justify-center items-center text-center gap-12 border-t border-[#F5F5F5]/05">
+        <div className="mask-text">
+          <motion.h2 
+            initial={{ y: "100%" }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="creative-serif text-[8vw] font-black leading-none"
+          >
+            HAVE A VISION?
+          </motion.h2>
+        </div>
+        
+        <MagneticButton className="group relative px-20 py-10 bg-[#F5F5F5] text-black creative-serif text-4xl font-black italic transform transition-colors hover:bg-[#E0FF00] overflow-hidden">
+          <span className="relative z-10 transition-transform group-hover:scale-110 block">LET&apos;S TALK</span>
+          <motion.div className="absolute inset-0 bg-[#FF3366] opacity-0 group-hover:opacity-10 transition-opacity" />
+        </MagneticButton>
+
+        <div className="mt-20 opacity-30 text-xs font-bold tracking-[0.3em] uppercase">
+          M&C WEB SOLUTIONS — 2026 REWRITING THE CODE
         </div>
 
-        <nav id="navbar">
-            <div className="container nav-content">
-                <Link href="/#portfolio" className="logo-creative" title="Volver a M&C">VISION<span>.</span></Link>
-                <ul className="nav-links">
-                    <li><a href="#work">Trabajo</a></li>
-                    <li><a href="#about">Estudio</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <section className="hero-creative">
-            <div className="hero-split">
-                <div className="hero-text">
-                    <p className="reveal transform-gpu">Estudio de Diseño Visual</p>
-                    <h1 className="reveal creative-serif transform-gpu">Visionary<br />Design.</h1>
-                    <div className="reveal" style={{ maxWidth: "400px", opacity: 0.6, fontSize: "0.9rem", lineHeight: 1.8 }}>
-                        Transformamos conceptos abstractos en experiencias visuales memorables que trascienden el tiempo.
-                    </div>
-                </div>
-                <div className="relative w-full h-full min-h-[250px] overflow-hidden" style={{ minWidth: '300px' }}>
-                    <Image 
-                      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2059&auto=format&fit=crop" 
-                      alt="Studio" 
-                      fill 
-                      style={{ objectFit: 'cover' }} 
-                      unoptimized={true}
-                      className="grayscale hover:grayscale-0 transition-all duration-1000" 
-                      priority 
-                    />
-                </div>
-            </div>
-        </section>
-
-        <section id="work" className="section" style={{ padding: "150px 0" }}>
-            <div className="container">
-                <h2 className="section-title reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", marginBottom: "80px", textAlign: "center", fontWeight: 400 }}>Proyectos Seleccionados</h2>
-                <div className="gallery-grid">
-                    <div className="gallery-item reveal transform-gpu">
-                        <div className="relative w-full h-full min-h-[250px] overflow-hidden">
-                            <Image 
-                              src="https://images.unsplash.com/photo-1554080353-a576cf803bda?q=80&w=2070&auto=format&fit=crop" 
-                              alt="Photography Project" 
-                              fill 
-                              style={{ objectFit: 'cover' }} 
-                              unoptimized={true}
-                            />
-                        </div>
-                        <div className="item-info" style={{ marginTop: "20px" }}>
-                            <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Fotografía / Moda</span>
-                            <h3 className="item-title creative-serif" style={{ fontSize: "1.5rem", fontWeight: 400 }}>Minimalismo Urbano</h3>
-                        </div>
-                    </div>
-                    <div className="gallery-item reveal transform-gpu" style={{ marginTop: "100px" }}>
-                        <div className="relative w-full h-full min-h-[250px] overflow-hidden">
-                            <Image 
-                              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop" 
-                              alt="Branding Project" 
-                              fill 
-                              style={{ objectFit: 'cover' }} 
-                              unoptimized={true}
-                            />
-                        </div>
-                        <div className="item-info" style={{ marginTop: "20px" }}>
-                            <span className="item-category" style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", color: "#888888", marginBottom: "5px", display: "block" }}>Branding / Identidad</span>
-                            <h3 className="item-title creative-serif" style={{ fontSize: "1.5rem", fontWeight: 400 }}>Esencia Pura</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" className="section" style={{ padding: "150px 0", background: "#fafafa" }}>
-            <div className="container">
-                <div className="tabs-container reveal" style={{ maxWidth: "900px", margin: "0 auto" }}>
-                    <div className="tabs-header" style={{ display: "flex", justifyContent: "center", gap: "60px", marginBottom: "60px", borderBottom: "1px solid #eee" }}>
-                        <button className={`tab-btn ${activeTab === 'filosofia' ? 'active' : ''}`} onClick={() => setActiveTab('filosofia')}>Filosofía</button>
-                        <button className={`tab-btn ${activeTab === 'proceso' ? 'active' : ''}`} onClick={() => setActiveTab('proceso')}>Proceso</button>
-                        <button className={`tab-btn ${activeTab === 'equipo' ? 'active' : ''}`} onClick={() => setActiveTab('equipo')}>Equipo</button>
-                    </div>
-
-                    {activeTab === 'filosofia' && (
-                    <div id="filosofia" className="tab-content active">
-                        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", marginBottom: "30px", fontWeight: 400 }}>Creemos en la simplicidad como máxima sofisticación.</h3>
-                        <p style={{ fontSize: "1.2rem", opacity: 0.7, maxWidth: "600px" }}>Cada píxel, cada espacio en blanco, tiene un propósito. No decoramos, comunicamos a través de la forma y la función.</p>
-                    </div>
-                    )}
-
-                    {activeTab === 'proceso' && (
-                    <div id="proceso" className="tab-content active">
-                        <div className="process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "40px", marginTop: "80px" }}>
-                            <div className="process-item" style={{ position: "relative", paddingTop: "40px", borderTop: "1px solid #eee" }}>
-                                <span className="process-num" style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", color: "#eee", position: "absolute", top: "-20px", left: 0, zIndex: -1 }}>01</span>
-                                <h4>Descubrimiento</h4>
-                                <p style={{ fontSize: "0.8rem", opacity: 0.6, marginTop: "10px" }}>Entendemos tu ADN de marca y objetivos.</p>
-                            </div>
-                            <div className="process-item" style={{ position: "relative", paddingTop: "40px", borderTop: "1px solid #eee" }}>
-                                <span className="process-num" style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", color: "#eee", position: "absolute", top: "-20px", left: 0, zIndex: -1 }}>02</span>
-                                <h4>Concepto</h4>
-                                <p style={{ fontSize: "0.8rem", opacity: 0.6, marginTop: "10px" }}>Exploramos rutas visuales disruptivas.</p>
-                            </div>
-                        </div>
-                    </div>
-                    )}
-
-                    {activeTab === 'equipo' && (
-                    <div id="equipo" className="tab-content active">
-                        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", marginBottom: "30px", fontWeight: 400 }}>Mentes creativas unidas por la visión.</h3>
-                        <p style={{ fontSize: "1.2rem", opacity: 0.7, maxWidth: "600px" }}>Un colectivo de diseñadores, fotógrafos y desarrolladores que desafían los límites de lo convencional.</p>
-                    </div>
-                    )}
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" className="section" style={{ padding: "150px 0" }}>
-            <div className="container">
-                <h2 className="section-title reveal" style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", marginBottom: "80px", textAlign: "center", fontWeight: 400 }}>Hablemos de tu Visión</h2>
-                <div className="contact-form reveal" style={{ maxWidth: "600px", margin: "0 auto" }}>
-                    <form id="creativeForm" onSubmit={handleFormSubmit}>
-                        <div className="form-group" style={{ marginBottom: "40px" }}>
-                            <label style={{ display: "block", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "15px" }}>Nombre</label>
-                            <input type="text" required style={{ width: "100%", padding: "15px 0", background: "transparent", border: "none", borderBottom: "1px solid #ddd", fontFamily: "inherit", fontSize: "1.1rem" }} />
-                        </div>
-                        <div className="form-group" style={{ marginBottom: "40px" }}>
-                            <label style={{ display: "block", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", marginBottom: "15px" }}>Email</label>
-                            <input type="email" required style={{ width: "100%", padding: "15px 0", background: "transparent", border: "none", borderBottom: "1px solid #ddd", fontFamily: "inherit", fontSize: "1.1rem" }} />
-                        </div>
-                        <button type="submit" className="btn-creative transform-gpu">Enviar Propuesta</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <section className="return-section reveal" style={{ padding: "150px 0", textAlign: "center", background: "#111111", color: "white" }}>
-            <div className="container">
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "4rem", marginBottom: "40px", fontWeight: 400 }}>¿Creamos algo icónico?</h2>
-                <p style={{ marginBottom: "60px", opacity: 0.5, maxWidth: "500px", marginLeft: "auto", marginRight: "auto" }}>
-                    Esta demo representa nuestra capacidad para fusionar arte y tecnología en una sola visión coherente.
-                </p>
-                <Link href="/#portfolio" className="btn-return">
-                    <span>← Volver a M&C Web Solutions</span>
-                </Link>
-            </div>
-        </section>
-
-        <footer style={{ padding: "100px 0", textAlign: "center", borderTop: "1px solid #eee" }}>
-            <div className="container">
-                <p>Demo técnica de Portfolio Creativo por <Link href="/" style={{ color: "#111111", fontWeight: 700, textDecoration: "none" }}>M&C Web Solutions</Link>.</p>
-            </div>
-        </footer>
-
-        {showSuccess && (
-          <div id="successOverlay" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "white", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2000, textAlign: "center" }}>
-              <div className="success-content">
-                  <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "5rem", marginBottom: "20px", fontWeight: 400 }}>Gracias.</h2>
-                  <p>Tu visión ha sido recibida. Así es como tus clientes experimentarán tu profesionalidad.</p>
-                  <button onClick={() => setShowSuccess(false)} className="btn-creative" style={{ background: "#111111", color: "white", textTransform: "uppercase", letterSpacing: "3px", fontSize: "0.8rem", padding: "20px 50px", border: "none", cursor: "pointer", marginTop: "40px" }}>Cerrar Demo</button>
-              </div>
-          </div>
-        )}
-      </div>
-    </>
+        <Link href="/#portfolio" className="text-sm border border-[#F5F5F5]/20 px-8 py-3 hover:bg-[#F5F5F5] hover:text-black transition-all">
+          ← BACK TO CORE
+        </Link>
+      </footer>
+    </div>
   );
 }
