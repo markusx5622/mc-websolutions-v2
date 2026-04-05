@@ -45,6 +45,11 @@ export default function SastreVlcDemo() {
 
   return (
     <>
+      <head>
+        <title>Atelier Valencia — Alta Costura a Medida</title>
+        <meta name="description" content="Sastrería artesanal en el corazón de Valencia. Trajes bespoke, camisería y alta costura femenina hechos a mano con tejidos mediterráneos." />
+      </head>
+
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;600&display=swap');
 
@@ -411,7 +416,7 @@ export default function SastreVlcDemo() {
       <div className="sastre-body">
         <nav id="navbar-sastre">
           <div className="container nav-content">
-            <Link href="/" className="logo-sastre">ATELIER VALENCIA</Link>
+            <Link href="#top" className="logo-sastre">ATELIER VALENCIA</Link>
             <ul className="nav-links">
               <li><a href="#filosofia">Filosofía</a></li>
               <li><a href="#experiencia">Experiencia</a></li>
@@ -487,18 +492,18 @@ export default function SastreVlcDemo() {
 
         <section id="creaciones" className="section-padding">
            <div className="container">
-              <h2 className="section-title serif">Nuestras Creaciones</h2>
+              <h2 className="section-title serif" style={{ marginBottom: '15px' }}>Nuestras Creaciones</h2>
               <div className="gallery-grid">
                  {[
-                   "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7",
-                   "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633",
-                   "https://images.unsplash.com/photo-1558171813-4c088753af8f",
-                   "https://images.unsplash.com/photo-1489370321024-e0410ad08da4",
-                   "https://images.unsplash.com/photo-1507679799987-c73779587ccf",
-                   "https://images.unsplash.com/photo-1594938298603-c8148c4dae35"
-                 ].map((url, i) => (
+                   { url: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7", alt: "Traje bespoke en lana italiana" },
+                   { url: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633", alt: "Camisas artesanales de lino" },
+                   { url: "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc", alt: "Selección de tejidos premium" },
+                   { url: "https://images.unsplash.com/photo-1489370321024-e0410ad08da4", alt: "Detalle de costura a mano" },
+                   { url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf", alt: "Traje de ceremonia a medida" },
+                   { url: "https://images.unsplash.com/photo-1592878849122-facb97520f9e", alt: "Proceso de patronaje artesanal" }
+                 ].map((img, i) => (
                    <div key={i} className="gallery-item reveal">
-                      <img src={`${url}?auto=format&fit=crop&q=80&w=600`} alt={`Obra del Atelier ${i + 1}`} />
+                      <img src={`${img.url}?auto=format&fit=crop&q=80&w=600`} alt={img.alt} title={img.alt} />
                    </div>
                  ))}
               </div>
@@ -545,7 +550,7 @@ export default function SastreVlcDemo() {
             <div className="form-container reveal">
               <form onSubmit={handleFormSubmit}>
                 <input type="text" placeholder="Nombre completo" className="sastre-input" required />
-                <input type="email" placeholder="Correo electrónico" className="sastre-input" required />
+                <input type="text" placeholder="Teléfono o email" className="sastre-input" required />
                 <select className="sastre-input" required>
                   <option value="">Tipo de servicio</option>
                   <option>Traje Bespoke (Tres pruebas)</option>
@@ -553,7 +558,7 @@ export default function SastreVlcDemo() {
                   <option>Alta Costura Femenina</option>
                   <option>Ceremonia</option>
                 </select>
-                <textarea placeholder="Mensaje o detalles adicionales" className="sastre-input" rows={3}></textarea>
+                <textarea placeholder="Mensaje o preferencias adicionales (opcional)" className="sastre-input" rows={3}></textarea>
                 <button type="submit" className="btn-gold">SOLICITAR CONSULTA</button>
               </form>
             </div>
@@ -562,13 +567,13 @@ export default function SastreVlcDemo() {
 
         <footer className="sastre-footer">
           <div className="container">
-            <p className="serif" style={{ fontSize: '1.2rem', marginBottom: '20px', letterSpacing: '2px' }}>ATELIER VALENCIA</p>
-            <p style={{ fontSize: '0.8rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>
-              Calle de la Paz, Valencia · Sastrería de Tradición Mediterránea
+            <p className="serif" style={{ fontSize: '1.2rem', marginBottom: '10px', letterSpacing: '2px' }}>ATELIER VALENCIA</p>
+            <p style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '30px' }}>
+              © 2026 Atelier Valencia · Calle de la Paz 12, Valencia · Tel: 960 000 000 · Lunes a Viernes 10:00 - 19:00
             </p>
-            <div style={{ marginTop: '40px' }}>
-              <Link href="/#portfolio" style={{ color: 'var(--sastre-gold)', textDecoration: 'none', fontSize: '0.8rem', borderBottom: '1px solid' }}>
-                VOLVER A M&C WEB SOLUTIONS
+            <div style={{ marginTop: '20px', opacity: 0.5 }}>
+              <Link href="/#portfolio" style={{ color: 'var(--sastre-charcoal)', textDecoration: 'none', fontSize: '0.7rem' }}>
+                Demo creada por M&C Web Solutions
               </Link>
             </div>
           </div>
