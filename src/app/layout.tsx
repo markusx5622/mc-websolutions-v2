@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,8 +20,6 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} dark antialiased`} suppressHydrationWarning>
       <body className="bg-background text-foreground min-h-screen selection:bg-cyan-500/30">
-        <div className="grid-background" aria-hidden="true" />
-        <Navbar />
         {children}
       </body>
     </html>

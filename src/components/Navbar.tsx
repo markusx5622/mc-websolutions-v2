@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const pathname = usePathname();
 
-  // Hide Navbar on demo routes
-  if (pathname.startsWith('/demo-')) return null;
 
   return (
     <motion.nav 
