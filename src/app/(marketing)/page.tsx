@@ -582,8 +582,8 @@ export default function Home() {
             </div>
 
             {/* CARD 2: WEB PRO (HIGHLIGHTED) */}
-            <div className="pricing-card featured" style={{ background: 'rgba(100, 255, 218, 0.03)', padding: '2.5rem', borderRadius: '16px', border: '2px solid var(--accent)', boxShadow: '0 0 30px rgba(100, 255, 218, 0.1)', position: 'relative', transform: 'scale(1.05)', display: 'flex', flexDirection: 'column', zIndex: 10 }}>
-              <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#000', padding: '4px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Recomendado</div>
+            <div className="pricing-card" style={{ background: 'rgba(100, 255, 218, 0.03)', padding: '2.5rem', borderRadius: '16px', border: '2px solid var(--accent)', boxShadow: '0 0 30px rgba(100, 255, 218, 0.1)', position: 'relative', transform: 'scale(1.05)', display: 'flex', flexDirection: 'column', zIndex: 10 }}>
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#64ffda] text-[#0a192f] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">Recomendado</div>
               <h3 className="mono-text" style={{ fontSize: '0.85rem', color: 'var(--accent)', marginBottom: '1rem', letterSpacing: '2px' }}>WEB PRO</h3>
               <div className="price-value" style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '2rem' }}>
                 <span style={{ fontSize: '1rem', verticalAlign: 'middle', fontWeight: 600, color: 'var(--text-muted)' }}>Desde</span> 499€
