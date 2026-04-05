@@ -87,7 +87,7 @@ function SpeedAuditWidget() {
 
 const MODULAR_ENGINEERING_DEMOS = [
   {
-    title: "Landing de marketing",
+    title: "Nano Banana Engineering",
     subtitle: "Web de una página · Máxima conversión",
     description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
@@ -115,14 +115,14 @@ const MODULAR_ENGINEERING_DEMOS = [
     link: "/demo-premium"
   },
   {
-    title: "Moda / Atelier",
+    title: "Artesanía Digital Valencia",
     subtitle: "Moda · Diseño · Gestión de citas",
     description: "Web para moda y diseño con catálogo de colecciones y sistema de gestión de citas.",
     image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
     link: "/demo-sastre"
   },
   {
-    title: "Club deportivo",
+    title: "Elite Padel System",
     subtitle: "Clubes de pádel · Reservas online",
     description: "Web para clubes de pádel con reserva de pistas online, estadísticas y comunidad deportiva.",
     image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
@@ -239,7 +239,7 @@ export default function Home() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const [isSubmitted, setIsSubmitted] = React.useState(false);
-  const [activeTab, setActiveTab] = React.useState('[01_WEBS]');
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -498,189 +498,55 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>[NUESTRO_PORTFOLIO]</h2>
+          <h2 className="section-title">Nuestro Portfolio</h2>
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
             Explora nuestros proyectos de alto rendimiento diseñados para máxima escalabilidad y conversión.
           </p>
 
-          <div className="tabs-nav">
-            {['[01_WEBS]', '[02_PLATAFORMAS]', '[03_IDENTIDAD]', '[04_RENDIMIENTO]'].map((tab) => (
-              <button
-                key={tab}
-                className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-                {activeTab === tab && (
-                  <motion.div layoutId="active-indicator" className="active-indicator" />
-                )}
-              </button>
+          <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            {MODULAR_ENGINEERING_DEMOS.map((demo, idx) => (
+              <div key={idx} className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
+                <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
+                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
+                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
+                </div>
+                <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
+                  {idx === 5 ? (
+                    <img 
+                      src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800" 
+                      alt="Club deportivo - Reserva de pistas de pádel" 
+                      style={{ 
+                        opacity: 1, 
+                        visibility: 'visible', 
+                        display: 'block', 
+                        position: 'absolute', 
+                        inset: 0, 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover', 
+                        zIndex: 1 
+                      }} 
+                    />
+                  ) : (
+                    <img 
+                      src={demo.image} 
+                      alt={demo.title} 
+                      className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
+                    />
+                  )}
+                  <div 
+                    className={`portfolio-overlay absolute inset-0 bg-black/${idx === 5 ? '40' : '60'} opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all`} 
+                    style={{ zIndex: 2 }}
+                  >
+                    <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
+                    <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
+                    <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
+                    <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VER_PROYECTO]</a>
+                  </div>
+                </div>
+              </div>
             ))}
-          </div>
-
-          <div className="tab-content-area" style={{ minHeight: '450px' }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                {activeTab === '[01_WEBS]' && (
-                  <div>
-                    <div className="mono-text" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
-                      &gt; SISTEMA_ACTIVO: Desplegando patrones de alta conversión. Cada proyecto está optimizado para SEO y máxima velocidad.
-                    </div>
-                    <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {MODULAR_ENGINEERING_DEMOS.map((demo, idx) => (
-                        <div key={idx} className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                          <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                            <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                          </div>
-                          <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                            {idx === 5 ? (
-                              <img 
-                                src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800" 
-                                alt="Club deportivo - Reserva de pistas de pádel" 
-                                style={{ 
-                                  opacity: 1, 
-                                  visibility: 'visible', 
-                                  display: 'block', 
-                                  position: 'absolute', 
-                                  inset: 0, 
-                                  width: '100%', 
-                                  height: '100%', 
-                                  objectFit: 'cover', 
-                                  zIndex: 1 
-                                }} 
-                              />
-                            ) : (
-                              <img 
-                                src={demo.image} 
-                                alt={demo.title} 
-                                className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
-                              />
-                            )}
-                            <div 
-                              className={`portfolio-overlay absolute inset-0 bg-black/${idx === 5 ? '40' : '60'} opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all`} 
-                              style={{ zIndex: 2 }}
-                            >
-                              <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
-                              <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
-                              <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
-                              <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VER_PROYECTO]</a>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === '[02_PLATAFORMAS]' && (
-                  <div className="aether-highlight">
-                    <div className="aether-glow-ring"></div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                      <div className="dashboard-sim-left">
-                        <div className="flex items-center gap-3 mb-6">
-                           <div className="pulse-dot"></div>
-                           <span className="mono-text" style={{ fontSize: '0.7rem', color: 'var(--accent)' }}>LIVE_HANDSHAKE: ACTIVE</span>
-                        </div>
-                        <a href="https://aether-insights.vercel.app/" target="_blank" style={{ textDecoration: 'none' }}>
-                          <h3 className="mono-text hover:text-white transition-colors" style={{ color: 'var(--accent)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>&gt; AETHER_ANALYTICS_V.01</h3>
-                        </a>
-                        <p style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '1rem' }}>
-                          &quot;Tus ventas y clientes en una sola pantalla&quot;
-                        </p>
-                        
-                        <div className="dashboard-stats-bars flex items-end gap-2 h-32 mb-8">
-                          {[40, 70, 45, 90, 65, 80, 50, 95].map((h, i) => (
-                            <motion.div 
-                              key={i}
-                              initial={{ height: 0 }}
-                              animate={{ height: `${h}%` }}
-                              transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
-                              style={{ flex: 1, background: 'var(--accent)', opacity: 0.8 }}
-                            />
-                          ))}
-                        </div>
-
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                          Simulación de Business Intelligence en tiempo real. Tracking de leads mediante Google Maps API y visualización de carga por nodo.
-                        </p>
-                      </div>
-                      <div className="transform-gpu" style={{ border: '1px solid var(--accent)', padding: '1rem', borderRadius: '4px', background: '#020C1B', position: 'relative', overflow: 'hidden' }}>
-                         <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 8px', background: 'rgba(100, 255, 218, 0.1)', color: 'var(--accent)', fontSize: '0.6rem', border: '1px solid var(--accent)', borderRadius: '2px', zIndex: 1 }}>MAP_INDEX: 40.4168° N</div>
-                         <a href="https://aether-insights.vercel.app/" target="_blank" style={{ display: 'block', height: '100%', position: 'relative', minHeight: '200px' }}>
-                           <Image 
-                             src="/aether-dashboard.png" 
-                             alt="Aether Dashboard Elite" 
-                             fill
-                             className="object-cover rounded-sm border border-accent/20 brightness-90 contrast-110"
-                           />
-                         </a>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === '[03_IDENTIDAD]' && (
-                  <div className="brand-playground flex flex-col items-center">
-                    <div className="service-card-v2 group w-full max-w-2xl text-center" style={{ cursor: 'pointer', position: 'relative' }}>
-                      <div className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; BRAND_RESTYLING_ENGINE</div>
-                      
-                      <div className="flex justify-center flex-col items-center gap-10">
-                        <div className="brand-comparison flex items-center justify-center gap-12 flex-wrap">
-                          <div className="brand-before text-center">
-                             <div style={{ width: '150px', height: '150px', border: '1px solid #333', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.4, filter: 'grayscale(1)' }}>
-                               <div style={{ width: '60%', height: '2px', background: '#333', transform: 'rotate(45deg)' }}></div>
-                             </div>
-                             <p className="mono-text" style={{ fontSize: '0.7rem', marginTop: '1rem', opacity: 0.5 }}>BEFORE_RESTYLING</p>
-                          </div>
-
-                          <div className="mono-flex" style={{ color: 'var(--accent)', fontSize: '1.5rem' }}>↠</div>
-
-                          <div className="brand-after group-hover:scale-110 transition-transform duration-500">
-                             <div style={{ 
-                               width: '150px', 
-                               height: '150px', 
-                               border: '1px solid var(--accent)', 
-                               background: 'rgba(100, 255, 218, 0.05)', 
-                               display: 'flex', 
-                               alignItems: 'center', 
-                               justifyContent: 'center',
-                               boxShadow: '0 0 20px rgba(100, 255, 218, 0.2)'
-                             }}>
-                               <svg viewBox="0 0 100 100" style={{ width: '70%', fill: 'var(--accent)', filter: 'drop-shadow(0 0 5px var(--accent))' }}>
-                                 <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-                                 <text x="50" y="55" textAnchor="middle" fill="currentColor" fontSize="24" style={{ fontFamily: 'var(--font-mono)' }}>M&amp;C</text>
-                               </svg>
-                             </div>
-                             <p className="mono-text" style={{ fontSize: '0.7rem', marginTop: '1rem', color: 'var(--accent)' }}>AI_OPTIMIZED</p>
-                          </div>
-                        </div>
-
-                        <div className="branding-quote p-6 border-l-2 border-accent bg-accent/5 italic" style={{ fontSize: '1.1rem', color: 'var(--accent)', maxWidth: '500px' }}>
-                          &quot;La cara de tu negocio, diseñada con paciencia y alma&quot;
-                        </div>
-                        
-                        <div className="price-tag">49€ - 189€</div>
-                        <p className="mono-text" style={{ fontSize: '0.7rem', opacity: 0.6 }}>HOVER_TO_ACTIVATE_ENGINE</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === '[04_RENDIMIENTO]' && (
-                  <div className="speed-playground">
-                    <SpeedAuditWidget />
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
           </div>
         </div>
       </motion.section>
