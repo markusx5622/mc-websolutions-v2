@@ -251,12 +251,80 @@ export default function DemoPremiumPage() {
             outline: none;
             border-color: #C5A059;
         }
+
+        /* Gallery Sections */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text {
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-text {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
       `}} />
 
       <div className="demo-premium-body">
         <nav id="navbar">
             <div className="container nav-content">
-                <Link href="/#portfolio" className="logo-premium" title="Volver a M&C Web Solutions">AURA</Link>
+                <Link href="/demo-premium" className="logo-premium" title="Experiencia Aura Wellness">AURA</Link>
                 <ul className="nav-links">
                     <li><a href="#services">Servicios</a></li>
                     <li><a href="#calculator">Presupuesto</a></li>
@@ -350,6 +418,34 @@ export default function DemoPremiumPage() {
                             Presupuesto generado por el motor de optimización de M&C
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" className="section reveal" style={{ padding: "100px 0" }}>
+            <div className="container">
+                <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                    <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3.5rem", color: "#1A1A1A", marginBottom: "10px" }}>Nuestro Espacio</h2>
+                    <p style={{ letterSpacing: "2px", textTransform: "uppercase", fontSize: "0.8rem", opacity: 0.6 }}>Un refugio diseñado para despertar los sentidos</p>
+                </div>
+                <div className="gallery-grid">
+                    {[
+                        { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef", aspect: "3/4", alt: "Piscina termal interior", label: "Circuito de Aguas" },
+                        { src: "https://images.unsplash.com/photo-1600334129128-685c5582fd35", aspect: "4/3", alt: "Sala de masajes privada", label: "Cabinas Privadas" },
+                        { src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881", aspect: "4/3", alt: "Productos naturales de spa", label: "Cosmética Natural" },
+                        { src: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd", aspect: "3/4", alt: "Ambiente zen con velas aromáticas", label: "Aromaterapia" },
+                        { src: "https://images.unsplash.com/photo-1554244933-d876deb6b2ff", aspect: "3/4", alt: "Zona de sauna y vapor", label: "Sauna Finlandesa" },
+                        { src: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2", aspect: "4/3", alt: "Tratamiento facial profesional", label: "Facial Premium" },
+                        { src: "https://images.unsplash.com/photo-1545205597-3d9d02c29597", aspect: "4/3", alt: "Zona de relajación", label: "Sala de Reposo" },
+                        { src: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1", aspect: "3/4", alt: "Terapia con piedras volcánicas", label: "Piedras Volcánicas" },
+                    ].map((item, idx) => (
+                        <div key={idx} className="gallery-item" style={{ aspectRatio: item.aspect }}>
+                            <img src={`${item.src}?auto=format&fit=crop&q=80&w=600`} alt={item.alt} />
+                            <div className="gallery-overlay">
+                                <span className="gallery-text">{item.label}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
