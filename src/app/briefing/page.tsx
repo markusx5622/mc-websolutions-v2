@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { ReactNode } from "react";
+import Script from "next/script";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxI6BUgFReyKA1tNdApd981fUDGKIs3xFqPp0j8-PR0bwPcT5DUkqNi7pxKhzhaDZ28Zg/exec";
@@ -292,6 +293,34 @@ export default function BriefingPage() {
   const [copied, setCopied] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).particlesJS) {
+      initParticles();
+    }
+  }, []);
+
+  const initParticles = () => {
+    if (typeof window !== 'undefined' && (window as any).particlesJS) {
+      (window as any).particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+          "color": { "value": "#64FFDA" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.35, "random": false },
+          "size": { "value": 3, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#64FFDA", "opacity": 0.2, "width": 1 },
+          "move": { "enable": true, "speed": 1.2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
+        },
+        "retina_detect": true
+      });
+    }
+  };
+
   const set = (field: keyof FormData) => (val: string | string[]) =>
     setData(prev => ({ ...prev, [field]: val }));
 
@@ -580,6 +609,11 @@ export default function BriefingPage() {
   if (submitted) {
     return (
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-space-grotesk)", padding: 24 }}>
+        <Script 
+          src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" 
+          onLoad={initParticles}
+        />
+        <div id="particles-js" suppressHydrationWarning style={{ position: 'fixed', inset: 0, zIndex: -1 }}></div>
         <div style={{ textAlign: "center", maxWidth: 480 }}>
           <div style={{ fontSize: 80, marginBottom: 20 }}>🎉</div>
           <h1 style={{ fontSize: 32, fontWeight: 800, color: "#f0f1f3", margin: "0 0 16px" }}>¡Briefing enviado!</h1>
@@ -607,6 +641,11 @@ export default function BriefingPage() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }} onKeyDown={handleKeyDown}>
+      <Script 
+        src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" 
+        onLoad={initParticles}
+      />
+      <div id="particles-js" suppressHydrationWarning style={{ position: 'fixed', inset: 0, zIndex: -1 }}></div>
       <style>{`
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         * { box-sizing: border-box; }
@@ -616,9 +655,9 @@ export default function BriefingPage() {
         ::selection { background: rgba(0,229,160,0.25); }
       `}</style>
 
-      {/* Sticky header */}
-      <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "20px" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
+      {/* Sticky full-width header */}
+      <div className="w-full px-6 md:px-12 pt-6 pb-4 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>M&C<span style={{ color: "#00e5a0" }}>.</span> <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span></a>
@@ -648,7 +687,7 @@ export default function BriefingPage() {
 
       {/* Content wrapper with vertical centering */}
       <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "40px 20px 160px" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto", width: "100%" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", width: "100%" }}>
           {renderStep()}
         </div>
       </div>
