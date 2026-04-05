@@ -125,7 +125,7 @@ const MODULAR_ENGINEERING_DEMOS = [
     title: "Club deportivo",
     subtitle: "Clubes de pádel · Reservas online",
     description: "Web para clubes de pádel con reserva de pistas online, estadísticas y comunidad deportiva.",
-    image: "https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
     link: "/demo-padel"
   }
 ];
@@ -543,8 +543,8 @@ export default function Home() {
                           <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
                             {idx === 5 ? (
                               <img 
-                                src="https://images.unsplash.com/photo-1592910129881-892b7b392e81?q=80&w=1000&auto=format&fit=crop" 
-                                alt="Elite Padel System" 
+                                src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800" 
+                                alt="Club deportivo - Reserva de pistas de pádel" 
                                 style={{ 
                                   opacity: 1, 
                                   visibility: 'visible', 
