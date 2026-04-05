@@ -62,9 +62,9 @@ const PricingArchitecture = () => {
   const [isStudent, setIsStudent] = useState(false);
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 py-12">
+    <div className="w-full max-w-6xl mx-auto px-6">
       {/* Student Toggle */}
-      <div className="flex justify-center mb-12">
+      <div className="flex justify-center mb-14">
         <motion.button
           onClick={() => setIsStudent(!isStudent)}
           whileHover={{ scale: 1.05 }}
@@ -90,7 +90,7 @@ const PricingArchitecture = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
         {PACKS.map((pack) => {
           const Icon = pack.icon;
           return (
@@ -99,14 +99,14 @@ const PricingArchitecture = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`relative group p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] ${
+              className={`relative group p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] flex flex-col ${
                 pack.recommended
                   ? 'border-cyan-500/40 bg-cyan-500/5 hover:border-cyan-500/70'
                   : 'border-white/5 bg-white/[0.02] hover:border-white/15'
               }`}
             >
               {pack.recommended && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-background px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(100,255,218,0.4)]">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-[#0A192F] px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(100,255,218,0.4)]">
                   Más popular
                 </span>
               )}
@@ -156,9 +156,9 @@ const PricingArchitecture = () => {
 
               <a
                 href="/briefing"
-                className={`block w-full py-3.5 rounded-xl font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${
+                className={`mt-auto block w-full py-3.5 rounded-xl font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${
                   pack.recommended
-                    ? 'bg-cyan-500 text-background hover:shadow-[0_0_30px_rgba(100,255,218,0.3)] hover:scale-[1.02]'
+                    ? 'bg-cyan-500 text-[#0A192F] hover:shadow-[0_0_30px_rgba(100,255,218,0.3)] hover:scale-[1.02]'
                     : 'bg-white/5 text-white hover:bg-white/10'
                 }`}
               >

@@ -26,7 +26,7 @@ const ContactForm = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12 p-10 rounded-[2rem] border border-cyan-500/20 bg-cyan-500/5"
+        className="text-center mb-16 p-10 rounded-[2rem] border border-cyan-500/20 bg-cyan-500/5"
         style={{ boxShadow: '0 0 60px rgba(100, 255, 218, 0.05)' }}
       >
         <div className="text-4xl mb-4">🚀</div>
@@ -39,7 +39,7 @@ const ContactForm = () => {
         <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
           <Link
             href="/briefing"
-            className="inline-block px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm bg-cyan-500 text-background hover:shadow-[0_0_30px_rgba(100,255,218,0.4)] transition-all"
+            className="inline-block px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm bg-cyan-500 text-[#0A192F] hover:shadow-[0_0_30px_rgba(100,255,218,0.4)] transition-all"
           >
             Iniciar mi proyecto — 5 minutos
           </Link>
@@ -47,7 +47,7 @@ const ContactForm = () => {
       </motion.div>
 
       {/* Formulario rápido de contacto */}
-      <p className="text-center text-zinc-500 text-xs uppercase tracking-widest mb-6">— o escríbenos directamente —</p>
+      <p className="text-center text-zinc-500 text-xs uppercase tracking-widest mb-8">— o escríbenos directamente —</p>
       <motion.form
         onSubmit={handleSubmit}
         className="w-full bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 md:p-10"
@@ -81,7 +81,7 @@ const ContactForm = () => {
           className="w-full group relative py-4 rounded-xl font-bold tracking-widest uppercase overflow-hidden text-sm"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-400 opacity-90 group-hover:opacity-100 transition-opacity" />
-          <div className="relative z-10 flex items-center justify-center gap-2 text-background">
+          <div className="relative z-10 flex items-center justify-center gap-2 text-[#0A192F]">
             <AnimatePresence mode="wait">
               {status === 'idle' && (
                 <motion.div key="idle" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex items-center gap-2">
