@@ -53,6 +53,11 @@ export default function SastreVlcDemo() {
           --sastre-gold: #C5A059;
           --sastre-ivory: #FDFCF8;
           --sastre-text: #2C2C2C;
+          --sastre-overlay: rgba(26, 26, 27, 0.6);
+        }
+
+        html {
+          scroll-behavior: smooth;
         }
 
         .sastre-body {
@@ -137,10 +142,11 @@ export default function SastreVlcDemo() {
           justify-content: center;
           text-align: center;
           position: relative;
-          background: linear-gradient(rgba(26, 26, 27, 0.4), rgba(26, 26, 27, 0.4)), 
-                      url('https://images.unsplash.com/photo-1598501022234-7965b3f1a610?auto=format&fit=crop&w=1920&q=90');
+          background: linear-gradient(var(--sastre-overlay), var(--sastre-overlay)), 
+                      url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1600');
           background-size: cover;
           background-position: center;
+          background-attachment: fixed;
           color: var(--sastre-ivory);
         }
 
@@ -180,6 +186,18 @@ export default function SastreVlcDemo() {
           margin-bottom: 50px;
           text-align: center;
           color: var(--sastre-charcoal);
+          position: relative;
+        }
+
+        .section-title::after {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 2px;
+          background: var(--sastre-gold);
         }
 
         .philosophy-grid {
@@ -193,12 +211,14 @@ export default function SastreVlcDemo() {
           position: relative;
           overflow: hidden;
           border-radius: 4px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .image-wrapper img {
           width: 100%;
           display: block;
           transition: transform 1.5s;
+          object-fit: cover;
         }
 
         .image-wrapper:hover img {
@@ -218,12 +238,13 @@ export default function SastreVlcDemo() {
           padding: 40px 20px;
           background: #fff;
           border: 1px solid #f0f0f0;
-          transition: all 0.4s;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .step-card:hover {
           border-color: var(--sastre-gold);
-          transform: translateY(-10px);
+          transform: translateY(-8px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
         .step-number {
@@ -246,13 +267,90 @@ export default function SastreVlcDemo() {
           color: #666;
         }
 
+        /* Gallery */
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 40px;
+        }
+
+        .gallery-item {
+          aspect-ratio: 1;
+          overflow: hidden;
+          border-radius: 4px;
+          cursor: zoom-in;
+          position: relative;
+        }
+
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+          transform: scale(1.08);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 30px;
+        }
+
+        .testimonial-card {
+           background: rgba(26, 26, 27, 0.02);
+           padding: 40px;
+           border: 1px solid rgba(0,0,0,0.05);
+           position: relative;
+           text-align: center;
+           border-radius: 8px;
+        }
+
+        .quote-icon {
+          font-family: 'Bodoni Moda', serif;
+          font-size: 4rem;
+          color: var(--sastre-gold);
+          line-height: 1;
+          display: block;
+          margin-bottom: 20px;
+          opacity: 0.3;
+        }
+
+        .testimonial-text {
+          font-size: 1.05rem;
+          font-style: italic;
+          margin-bottom: 25px;
+          color: var(--sastre-text);
+        }
+
+        .testimonial-author {
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          color: var(--sastre-gold);
+          font-weight: 600;
+        }
+
         /* Form */
+        .cita-section {
+          background: linear-gradient(var(--sastre-overlay), var(--sastre-overlay)), 
+                      url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1600');
+          background-size: cover;
+          background-position: center;
+          color: var(--sastre-ivory);
+        }
+
         .form-container {
           max-width: 700px;
           margin: 0 auto;
-          background: var(--sastre-charcoal);
+          background: rgba(26, 26, 27, 0.9);
           padding: 60px;
-          color: var(--sastre-ivory);
+          border: 1px solid rgba(253, 252, 248, 0.1);
+          backdrop-filter: blur(10px);
         }
 
         .sastre-input {
@@ -289,6 +387,7 @@ export default function SastreVlcDemo() {
         .btn-gold:hover {
           background: #d4ae6a;
           transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         /* Footer */
@@ -300,9 +399,10 @@ export default function SastreVlcDemo() {
         }
 
         @media (max-width: 768px) {
-          .philosophy-grid, .steps-grid {
+          .philosophy-grid, .steps-grid, .gallery-grid, .testimonials-grid {
             grid-template-columns: 1fr;
           }
+          .gallery-grid { grid-template-columns: repeat(2, 1fr); }
           .nav-links { display: none; }
           .hero-content h1 { font-size: 3rem; }
         }
@@ -315,6 +415,7 @@ export default function SastreVlcDemo() {
             <ul className="nav-links">
               <li><a href="#filosofia">Filosofía</a></li>
               <li><a href="#experiencia">Experiencia</a></li>
+              <li><a href="#creaciones">Creaciones</a></li>
               <li><a href="#cita">Cita Privada</a></li>
             </ul>
           </div>
@@ -322,12 +423,12 @@ export default function SastreVlcDemo() {
 
         <section className="hero-sastre">
           <div className="hero-content reveal">
-            <h1 className="serif">Elegancia Mediterránea.</h1>
+            <h1 className="serif">Atelier Valencia — Alta Costura a Medida</h1>
             <p className="serif" style={{ fontStyle: 'italic' }}>
-              Grabada en cada costura, inspirada en la luz de Valencia. 
+              La esencia del Mediterráneo capturada en cada puntada. 
               Sastrería artesanal que perdura en el tiempo.
             </p>
-            <a href="#cita" className="btn-gold" style={{ width: 'auto', display: 'inline-block' }}>RESERVAR CITA</a>
+            <a href="#cita" className="btn-gold" style={{ width: 'auto', display: 'inline-block' }}>SOLICITAR CITA</a>
           </div>
         </section>
 
@@ -343,8 +444,8 @@ export default function SastreVlcDemo() {
                   Utilizamos linos y lanas que respiran con el Mediterráneo, seleccionados de las tejedurías más prestigiosas para garantizar una caída impecable bajo el sol de nuestra tierra.
                 </p>
               </div>
-              <div className="image-wrapper reveal">
-                <img src="https://images.unsplash.com/photo-1594932224828-b4b057b69b3f?auto=format&fit=crop&w=800&q=80" alt="Sastrería Artesanal" />
+              <div className="image-wrapper reveal" style={{ height: '500px' }}>
+                <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&q=80&w=800" alt="Detalle de Telas Premium" style={{ height: '100%' }} />
               </div>
             </div>
           </div>
@@ -353,6 +454,12 @@ export default function SastreVlcDemo() {
         <section id="experiencia" className="section-padding" style={{ background: '#fff' }}>
           <div className="container">
             <h2 className="section-title serif">La Experiencia a Medida</h2>
+            
+            <div className="image-wrapper reveal" style={{ height: '400px', marginBottom: '60px' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)', zIndex: 1 }}></div>
+                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=1200" alt="Sastre trabajando" style={{ height: '100%' }} />
+            </div>
+
             <div className="steps-grid">
               <div className="step-card reveal">
                 <span className="step-number">01</span>
@@ -378,11 +485,62 @@ export default function SastreVlcDemo() {
           </div>
         </section>
 
-        <section id="cita" className="section-padding">
+        <section id="creaciones" className="section-padding">
+           <div className="container">
+              <h2 className="section-title serif">Nuestras Creaciones</h2>
+              <div className="gallery-grid">
+                 {[
+                   "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7",
+                   "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633",
+                   "https://images.unsplash.com/photo-1558171813-4c088753af8f",
+                   "https://images.unsplash.com/photo-1489370321024-e0410ad08da4",
+                   "https://images.unsplash.com/photo-1507679799987-c73779587ccf",
+                   "https://images.unsplash.com/photo-1594938298603-c8148c4dae35"
+                 ].map((url, i) => (
+                   <div key={i} className="gallery-item reveal">
+                      <img src={`${url}?auto=format&fit=crop&q=80&w=600`} alt={`Obra del Atelier ${i + 1}`} />
+                   </div>
+                 ))}
+              </div>
+           </div>
+        </section>
+
+        <section id="testimonios" className="section-padding" style={{ background: '#fff' }}>
+           <div className="container">
+              <h2 className="section-title serif">Lo que dicen de nosotros</h2>
+              <div className="testimonials-grid">
+                 {[
+                   { 
+                     name: "Alejandro M.", 
+                     role: "Empresario", 
+                     text: "Cada prenda que me han confeccionado refleja exactamente lo que tenía en mente. El nivel de detalle es extraordinario." 
+                   },
+                   { 
+                     name: "Lucía R.", 
+                     role: "Valencia", 
+                     text: "Mi vestido de novia fue una obra de arte. El equipo entendió mi visión desde el primer momento." 
+                   },
+                   { 
+                     name: "Carlos V.", 
+                     role: "Arquitecto", 
+                     text: "Llevo años buscando un sastre que combine tradición con un estilo actual. Por fin lo encontré." 
+                   }
+                 ].map((t, i) => (
+                   <div key={i} className="testimonial-card reveal">
+                      <span className="quote-icon">“</span>
+                      <p className="testimonial-text">{t.text}</p>
+                      <span className="testimonial-author">{t.name}, {t.role}</span>
+                   </div>
+                 ))}
+              </div>
+           </div>
+        </section>
+
+        <section id="cita" className="section-padding cita-section">
           <div className="container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '60px' }}>
-              <h2 className="section-title serif" style={{ marginBottom: '10px' }}>Reserva tu Cita</h2>
-              <p style={{ opacity: 0.6 }}>Atención exclusiva en nuestro atelier de Valencia.</p>
+              <h2 className="serif" style={{ fontSize: '3rem', color: 'var(--sastre-ivory)', marginBottom: '15px' }}>Reserva tu Cita</h2>
+              <p style={{ opacity: 0.8, color: 'var(--sastre-ivory)' }}>Atención exclusiva en nuestro atelier de Valencia.</p>
             </div>
             <div className="form-container reveal">
               <form onSubmit={handleFormSubmit}>
