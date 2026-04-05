@@ -346,7 +346,7 @@ export default function Home() {
         ref={methodologyRef}
       >
         <div className="container">
-          <h2 className="section-title">Visual Engineering Pipeline</h2>
+          <h2 className="section-title">Nuestra Metodología de Trabajo</h2>
           
           <div className="pipeline-container">
             <div className="pipeline-line">
@@ -498,13 +498,13 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>[MODULAR_ENGINEERING_DEMOS]</h2>
+          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>[NUESTRO_PORTFOLIO]</h2>
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
-            Explore our high-performance modules designed for 2,000+ request/second industrial scalability.
+            Explora nuestros proyectos de alto rendimiento diseñados para máxima escalabilidad y conversión.
           </p>
 
           <div className="tabs-nav">
-            {['[01_WEBS]', '[02_DASHBOARDS]', '[03_BRAND_ID]', '[04_PERFORMANCE]'].map((tab) => (
+            {['[01_WEBS]', '[02_PLATAFORMAS]', '[03_IDENTIDAD]', '[04_RENDIMIENTO]'].map((tab) => (
               <button
                 key={tab}
                 className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
@@ -530,7 +530,7 @@ export default function Home() {
                 {activeTab === '[01_WEBS]' && (
                   <div>
                     <div className="mono-text" style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '2rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto 2rem auto' }}>
-                      &gt; SYSTEM_SELECT: Deploying high-conversion architectural patterns. Each module is optimized for Core Web Vitals and industrial scalability.
+                      &gt; SISTEMA_ACTIVO: Desplegando patrones de alta conversión. Cada proyecto está optimizado para SEO y máxima velocidad.
                     </div>
                     <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-4">
                       {MODULAR_ENGINEERING_DEMOS.map((demo, idx) => (
@@ -571,7 +571,7 @@ export default function Home() {
                               <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
                               <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
                               <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
-                              <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VIEW_LIVE_SYSTEM]</a>
+                              <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VER_PROYECTO]</a>
                             </div>
                           </div>
                         </div>
@@ -580,7 +580,7 @@ export default function Home() {
                   </div>
                 )}
 
-                {activeTab === '[02_DASHBOARDS]' && (
+                {activeTab === '[02_PLATAFORMAS]' && (
                   <div className="aether-highlight">
                     <div className="aether-glow-ring"></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -627,7 +627,7 @@ export default function Home() {
                   </div>
                 )}
 
-                {activeTab === '[03_BRAND_ID]' && (
+                {activeTab === '[03_IDENTIDAD]' && (
                   <div className="brand-playground flex flex-col items-center">
                     <div className="service-card-v2 group w-full max-w-2xl text-center" style={{ cursor: 'pointer', position: 'relative' }}>
                       <div className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; BRAND_RESTYLING_ENGINE</div>
@@ -674,7 +674,7 @@ export default function Home() {
                   </div>
                 )}
 
-                {activeTab === '[04_PERFORMANCE]' && (
+                {activeTab === '[04_RENDIMIENTO]' && (
                   <div className="speed-playground">
                     <SpeedAuditWidget />
                   </div>
