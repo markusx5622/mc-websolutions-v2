@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "M&C Web Solutions | Architecting the Digital Future",
-  description: "High-end engineering and digital solutions for the next generation.",
+  title: "M&C Web Solutions | Tu web profesional en 48 horas",
+  description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark antialiased`} suppressHydrationWarning>
+    <html lang="es" className={`${inter.variable} dark antialiased`} suppressHydrationWarning>
       <body className="bg-background text-foreground min-h-screen selection:bg-cyan-500/30">
         <div className="grid-background" aria-hidden="true" />
         <Navbar />

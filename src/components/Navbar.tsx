@@ -42,9 +42,9 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="px-6 py-2 text-[10px] items-center gap-2 font-black uppercase tracking-[0.2em] rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 hover:bg-cyan-500/10 transition-all">
-          Beca UEV
-        </button>
+        <Link href="/briefing" className="px-6 py-2 text-[10px] items-center gap-2 font-black uppercase tracking-[0.2em] rounded-full bg-cyan-500 text-background hover:shadow-[0_0_20px_rgba(100,255,218,0.4)] transition-all">
+          Iniciar proyecto
+        </Link>
       </div>
     </motion.nav>
   );

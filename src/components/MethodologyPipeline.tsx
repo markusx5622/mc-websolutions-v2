@@ -70,12 +70,7 @@ const MethodologyPipeline = () => {
               {step.desc}
             </p>
 
-            {/* Industrial "ID Badge" style footer */}
-            <div className="mt-8 pt-4 border-t border-white/5 w-full max-w-[200px]">
-              <span className="text-[10px] font-mono tracking-widest text-zinc-600 uppercase">
-                Pipeline_System_Ready_V.0{step.id}
-              </span>
-            </div>
+
           </motion.div>
         ))}
       </div>

@@ -2,49 +2,70 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Info, GraduationCap } from 'lucide-react';
+import { Check, GraduationCap, Clock, Globe, ShoppingCart } from 'lucide-react';
 
 const PACKS = [
   {
-    id: "emprendedor",
-    title: "Pack Emprendedor",
-    price: 100,
+    id: "basica",
+    title: "Web Básica",
+    price: "desde 299€",
+    delivery: "Entrega en 48 horas",
+    pages: "1 a 3 páginas",
+    icon: Globe,
     features: [
-      "Landing Page (1 página)",
-      "Diseño Responsive",
-      "IA Copywriting Core",
-      "Formulario Contacto",
-      "Entrega 48h Reales"
+      "Diseño personalizado y moderno",
+      "Adaptada a móvil y tablet",
+      "Formulario de contacto",
+      "SEO básico para Google",
+      "Hosting gratuito incluido",
     ],
-    recommended: false
+    recommended: false,
+    cta: "Empezar con lo básico"
   },
   {
-    id: "profesional",
-    title: "Pack Profesional",
-    price: 250,
+    id: "pro",
+    title: "Web Pro",
+    price: "desde 499€",
+    delivery: "Entrega en 7 días",
+    pages: "4 a 8 páginas",
+    icon: Clock,
     features: [
-      "Web Multi-página (hasta 4)",
-      "Diseño Premium Personalizado",
-      "Optimización SEO Básica",
-      "Integración WhatsApp/Redes",
-      "Entrega 72h Reales"
+      "Todo lo de Web Básica",
+      "Hasta 8 páginas o secciones",
+      "Galería, blog o catálogo",
+      "Integración WhatsApp y redes",
+      "Google Analytics configurado",
     ],
-    recommended: true
+    recommended: true,
+    cta: "Elegir Web Pro"
+  },
+  {
+    id: "ecommerce",
+    title: "E-Commerce",
+    price: "desde 999€",
+    delivery: "Entrega en 15 días",
+    pages: "Tienda online completa",
+    icon: ShoppingCart,
+    features: [
+      "Todo lo de Web Pro",
+      "Tienda online con carrito de compra",
+      "Pasarela de pago integrada",
+      "Gestión de productos y stock",
+      "Panel de administración",
+    ],
+    recommended: false,
+    cta: "Montar mi tienda"
   }
 ];
 
 const PricingArchitecture = () => {
   const [isStudent, setIsStudent] = useState(false);
 
-  const calculatePrice = (price: number) => {
-    return isStudent ? Math.floor(price * 0.8) : price;
-  };
-
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 py-24">
-      {/* Student Advantage Toggle */}
-      <div className="flex justify-center mb-16">
-        <motion.button 
+    <div className="w-full max-w-6xl mx-auto px-6 py-12">
+      {/* Student Toggle */}
+      <div className="flex justify-center mb-12">
+        <motion.button
           onClick={() => setIsStudent(!isStudent)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -55,12 +76,12 @@ const PricingArchitecture = () => {
           </div>
           <div className="text-left">
             <span className={`block text-xs font-black uppercase tracking-widest ${isStudent ? 'text-cyan-400' : 'text-zinc-500'}`}>
-              Beca M&C (UEV Advantage)
+              Descuento Estudiantes UEV
             </span>
-            <span className="text-[10px] text-zinc-500">¿Eres estudiante de la Universidad Europea?</span>
+            <span className="text-[10px] text-zinc-500">¿Eres estudiante de la Universidad Europea de Valencia? — 20% dto.</span>
           </div>
           <div className={`w-12 h-6 rounded-full p-1 transition-colors ${isStudent ? 'bg-cyan-500' : 'bg-white/10'}`}>
-            <motion.div 
+            <motion.div
               animate={{ x: isStudent ? 24 : 0 }}
               className="w-4 h-4 bg-white rounded-full shadow-lg"
             />
@@ -68,69 +89,98 @@ const PricingArchitecture = () => {
         </motion.button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {PACKS.map((pack) => (
-          <motion.div
-            key={pack.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`relative group p-10 rounded-[2.5rem] bg-card-bg border ${pack.recommended ? 'border-cyan-500/30' : 'border-white/5'} transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)]`}
-          >
-            {pack.recommended && (
-              <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-background px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(100,255,218,0.4)]">
-                Recomendado
-              </span>
-            )}
-
-            <h3 className="text-2xl font-black uppercase tracking-widest text-foreground mb-8">
-              {pack.title}
-            </h3>
-
-            <div className="flex items-end gap-2 mb-10 overflow-hidden h-[60px]">
-              <AnimatePresence mode="wait">
-                <motion.span 
-                  key={calculatePrice(pack.price)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className={`text-6xl font-black ${isStudent ? 'text-cyan-400' : 'text-foreground'}`}
-                >
-                  {calculatePrice(pack.price)}€
-                </motion.span>
-              </AnimatePresence>
-              <span className="text-zinc-500 text-xs mb-2 uppercase tracking-widest font-bold">Pago Único</span>
-              {isStudent && (
-                <motion.span 
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded text-[8px] font-bold mb-8 uppercase"
-                >
-                  -20% UEV
-                </motion.span>
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {PACKS.map((pack) => {
+          const Icon = pack.icon;
+          return (
+            <motion.div
+              key={pack.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={`relative group p-8 rounded-[2rem] border transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] ${
+                pack.recommended
+                  ? 'border-cyan-500/40 bg-cyan-500/5 hover:border-cyan-500/70'
+                  : 'border-white/5 bg-white/[0.02] hover:border-white/15'
+              }`}
+            >
+              {pack.recommended && (
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-background px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(100,255,218,0.4)]">
+                  Más popular
+                </span>
               )}
-            </div>
 
-            <ul className="space-y-4 mb-12">
-              {pack.features.map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-muted">
-                  <Check className="w-4 h-4 text-cyan-500" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
+              <div className="mb-6">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${pack.recommended ? 'bg-cyan-500/20' : 'bg-white/5'}`}>
+                  <Icon className={`w-6 h-6 ${pack.recommended ? 'text-cyan-400' : 'text-zinc-400'}`} />
+                </div>
+                <h3 className="text-xl font-black text-white mb-1">{pack.title}</h3>
+                <p className="text-zinc-500 text-xs">{pack.pages}</p>
+              </div>
 
-            <button className={`w-full py-4 rounded-xl font-black uppercase tracking-widest text-xs transition-all duration-300 ${pack.recommended ? 'bg-cyan-500 text-background hover:shadow-[0_0_30px_rgba(100,255,218,0.3)] hover:scale-[1.02]' : 'bg-white/5 text-foreground hover:bg-white/10'}`}>
-              Configurar Proyecto
-            </button>
+              <div className="mb-6">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={isStudent ? 'student' : 'normal'}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-end gap-2"
+                  >
+                    <span className={`text-3xl font-black ${pack.recommended ? 'text-cyan-400' : 'text-white'}`}>
+                      {pack.price}
+                    </span>
+                    {isStudent && (
+                      <motion.span
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded text-[9px] font-bold mb-1 uppercase"
+                      >
+                        −20%
+                      </motion.span>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+                <p className="text-zinc-500 text-xs mt-1 font-semibold">{pack.delivery}</p>
+              </div>
 
-            <div className="mt-6 flex items-center justify-center gap-2 opacity-30 hover:opacity-100 transition-opacity">
-              <Info className="w-4 h-4" />
-              <span className="text-[10px] font-mono tracking-widest uppercase">No recurring fees. Pure Ownership.</span>
-            </div>
-          </motion.div>
-        ))}
+              <ul className="space-y-3 mb-8">
+                {pack.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-zinc-400">
+                    <Check className="w-4 h-4 text-cyan-500 flex-shrink-0 mt-0.5" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/briefing"
+                className={`block w-full py-3.5 rounded-xl font-black uppercase tracking-widest text-xs text-center transition-all duration-300 ${
+                  pack.recommended
+                    ? 'bg-cyan-500 text-background hover:shadow-[0_0_30px_rgba(100,255,218,0.3)] hover:scale-[1.02]'
+                    : 'bg-white/5 text-white hover:bg-white/10'
+                }`}
+              >
+                {pack.cta}
+              </a>
+            </motion.div>
+          );
+        })}
       </div>
+
+      {/* Nota mantenimiento */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-8 text-center py-4 px-6 rounded-2xl border border-white/5 bg-white/[0.02]"
+      >
+        <p className="text-zinc-500 text-sm">
+          🛡️ <span className="text-zinc-300 font-semibold">Mantenimiento y soporte: 39€/mes</span>{' '}
+          <span className="text-zinc-600">(opcional)</span> — Incluye hosting premium, actualizaciones, soporte técnico y copias de seguridad.
+        </p>
+      </motion.div>
     </div>
   );
 };

@@ -87,44 +87,44 @@ function SpeedAuditWidget() {
 
 const MODULAR_ENGINEERING_DEMOS = [
   {
-    title: "Landing \"Speed\"",
-    subtitle: "Optimización de Conversión // 48H_DEPLOY",
-    description: "Arquitectura ultraligera diseñada para maximizar el ROI en campañas de marketing.",
+    title: "Landing de marketing",
+    subtitle: "Web de una página · Máxima conversión",
+    description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     link: "/demo-speed"
   },
   {
-    title: "[NANO_BANANA_ENGINEERING]",
-    subtitle: "> SISTEMA B2B: Ultra-Circular Engineering",
-    description: "Interfaz interactiva de alto rendimiento, pesaje inteligente y logística circular avanzada.",
+    title: "Web B2B / Industria",
+    subtitle: "Empresas · Catálogo de productos",
+    description: "Web para empresas con catálogo de productos, logística y formulario de contacto profesional.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
     link: "/demo-creative"
   },
   {
-    title: "Negocio Local",
-    subtitle: "SEO Optimization // GOOGLE_MAPS",
-    description: "Sistemas robustos para cafeterías y pymes que necesitan atraer clientes de proximidad.",
+    title: "Negocio local",
+    subtitle: "Cafeterías y comercios · SEO local",
+    description: "Web para cafeterías y comercios de barrio con posicionamiento en Google Maps y SEO local.",
     image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
     link: "/demo-local"
   },
   {
-    title: "Aura Wellness & Spa",
-    subtitle: "Premium Real // UX_ENGINEERING",
-    description: "Experiencia inmersiva para marcas de lujo con enfoque en la conversión emocional.",
+    title: "Centro de bienestar",
+    subtitle: "Spas · Yoga · Salud",
+    description: "Web premium para spas, centros de yoga y bienestar con reservas online y diseño exclusivo.",
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
     link: "/demo-premium"
   },
   {
-    title: "[ARTESANÍA_DIGITAL_VLC]",
-    subtitle: "> FASHION: Bespoke Tailoring Experience",
-    description: "Plataforma de alta costura con gestión de citas premium y catálogo artesanal interactivo.",
+    title: "Moda / Atelier",
+    subtitle: "Moda · Diseño · Gestión de citas",
+    description: "Web para moda y diseño con catálogo de colecciones y sistema de gestión de citas.",
     image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
     link: "/demo-sastre"
   },
   {
-    title: "[ELITE_PADEL_SYSTEM]",
-    subtitle: "> SPORT: Performance & Booking.",
-    description: "Gestión avanzada de pistas, estadísticas de juego y comunidad deportiva de alto rendimiento.",
+    title: "Club deportivo",
+    subtitle: "Clubes de pádel · Reservas online",
+    description: "Web para clubes de pádel con reserva de pistas online, estadísticas y comunidad deportiva.",
     image: "https://images.unsplash.com/photo-1554063517-0245ed927f08?q=80&w=2070&auto=format&fit=crop",
     link: "/demo-padel"
   }
@@ -229,15 +229,6 @@ export default function Home() {
     }
   };
 
-  const staggerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
-  };
 
   const methodologyRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -310,7 +301,7 @@ export default function Home() {
                 <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
                   Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
                 </p>
-                <a href="#briefing-form" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
+                <a href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
               </div>
               <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
@@ -336,11 +327,11 @@ export default function Home() {
           </div>
           <div style={{ textAlign: "center" }}>
             <span className="stat-number">0€</span>
-            <span className="stat-label">Coste de Mantenimiento</span>
+            <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
           <div style={{ textAlign: "center" }}>
             <span className="stat-number">IA+</span>
-            <span className="stat-label">Tecnología de Vanguardia</span>
+            <span className="stat-label">Tecnología de última generación</span>
           </div>
         </div>
       </motion.div>
@@ -467,113 +458,32 @@ export default function Home() {
       >
         <div className="container">
           <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
-            <h2 className="section-title">Ingeniería en cada Píxel</h2>
+            <h2 className="section-title">¿Quiénes somos?</h2>
             <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2rem" }}>
-              M&C Web Solutions nace en las aulas de la <span style={{ color: "var(--accent)", fontWeight: 600 }}>Universidad Europea de Valencia</span>. Como alumnos de Ingeniería en Organización Industrial, no solo diseñamos webs; optimizamos tu presencia digital para que sea eficiente, rápida y rentable.
+              M&C Web Solutions nace en las aulas de la <span style={{ color: "var(--accent)", fontWeight: 600 }}>Universidad Europea de Valencia</span>. Somos ingenieros especializados en diseño web que combinamos tecnología, estética y velocidad para darte la web que tu negocio merece.
             </p>
             <div style={{ background: "rgba(100, 255, 218, 0.05)", padding: "2.5rem", borderRadius: "12px", border: "1px dashed var(--accent)" }}>
               <p style={{ color: "var(--text-main)", lineHeight: 1.8 }}>
-                <strong>¿Nuestra filosofía?</strong> Menos burocracia, más resultados. Utilizamos herramientas de IA de última generación para reducir costes y tiempos de entrega, sin perder el criterio técnico de un ingeniero. <br />
-                <strong>Tu web en 48 horas. Sin excusas.</strong>
+                Usamos las mismas tecnologías que <strong>Netflix, Uber y Airbnb</strong>. Tu web será rápida, segura, moderna y siempre visible en Google. <br />
+                <strong style={{ color: "var(--accent)" }}>Tu web en 48 horas. Sin sorpresas de precio.</strong>
               </p>
             </div>
             <div style={{ marginTop: "4rem" }}>
-              <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Stack Tecnológico M&C</p>
+              <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Tecnología que usamos</p>
               
-              <motion.div 
-                className="tech-showcase-grid"
-                variants={staggerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                {/* FRAMEWORKS */}
-                <div className="tech-column">
-                  <h4 className="tech-category-title">Frameworks</h4>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 12L20 4H17L11 10.8V13.2L17 20H20L13 12ZM7 12L0 4H3L9 10.8V13.2L3 20H0L7 12Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">Next.js</span>
-                      <span className="tech-desc">SSR Optimization</span>
-                    </div>
-                  </motion.div>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">React</span>
-                      <span className="tech-desc">Dynamic Architectures</span>
-                    </div>
-                  </motion.div>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">Tailwind</span>
-                      <span className="tech-desc">Utility First Styling</span>
-                    </div>
-                  </motion.div>
+              <div className="tech-card" style={{ justifyContent: 'center', textAlign: 'center', padding: '2rem', flexDirection: 'column', gap: '1rem' }}>
+                <div className="flex gap-6 justify-center flex-wrap" style={{ fontSize: '2rem' }}>
+                  <span title="Next.js">⚛️</span>
+                  <span title="React">🔷</span>
+                  <span title="Vercel">▲</span>
+                  <span title="TypeScript">🛡️</span>
+                  <span title="OpenAI">🤖</span>
                 </div>
-
-                {/* INTELLIGENCE */}
-                <div className="tech-column">
-                  <h4 className="tech-category-title">Intelligence</h4>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2M15.5 13H14.5L14 12.5C14.7 11.6 15.1 10.5 15.1 9.3 15.1 6.1 12.5 3.5 9.3 3.5S3.5 6.1 3.5 9.3 6.1 15.1 9.3 15.1C10.5 15.1 11.6 14.7 12.5 14L13 14.5V15.5L19 21.5 20.5 20L15.5 13Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">OpenAI</span>
-                      <span className="tech-desc">AI Logic Core</span>
-                    </div>
-                  </motion.div>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">TypeScript</span>
-                      <span className="tech-desc">Industrial Scalability</span>
-                    </div>
-                  </motion.div>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21H23L12 2Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">Framer</span>
-                      <span className="tech-desc">H-F Interactions</span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* INFRASTRUCTURE */}
-                <div className="tech-column">
-                  <h4 className="tech-category-title">Infrastructure</h4>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">Vercel</span>
-                      <span className="tech-desc">Global Deployment</span>
-                    </div>
-                  </motion.div>
-                  <motion.div className="tech-card" variants={itemVariants}>
-                    <div className="tech-icon-wrapper">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12C2 17.03 5.71 21.2 10.59 21.89V14.89H8.07V12H10.59V9.79C10.59 7.33 12.06 5.95 14.32 5.95C15.4 5.95 16.36 6.03 16.63 6.06V8.69H15.08C13.88 8.69 13.65 9.26 13.65 10.09V12H16.57L16.19 14.89H13.65V21.97C18.42 21.43 22 17.13 22 12C22 6.47 17.53 2 12 2Z"/></svg>
-                    </div>
-                    <div className="tech-info">
-                      <span className="tech-name">GitHub</span>
-                      <span className="tech-desc">CI/CD Pipeline</span>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.8 }}>
+                  Usamos las mismas tecnologías que <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Netflix, Uber y Airbnb</span>.
+                  Tu web será rápida, segura y moderna.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -784,41 +694,41 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container" style={{ position: 'relative' }}>
-          <h2 className="section-title" style={{ fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '0 0 10px var(--accent-glow)' }}>
-            [SYSTEM_SPECS: TRANSPARENCY_PROTOCOL]
+          <h2 className="section-title">
+            Transparencia total
           </h2>
           
           <div className="specs-table-container">
-            <div className="verified-stamp">SYSTEM_VERIFIED_2026</div>
+            <div className="verified-stamp">Verificado 2026</div>
             
             <div className="specs-row">
-              <span className="specs-key">&gt; DEPLOYMENT_SPEED:</span>
-              <span className="specs-value">Standard deployment in 1-7 days depending on system complexity.</span>
+              <span className="specs-key">Rapidez:</span>
+              <span className="specs-value">Entrega estándar en 1-7 días según la complejidad del proyecto.</span>
             </div>
             
             <div className="specs-row">
-              <span className="specs-key">&gt; COST_TRANSPARENCY:</span>
-              <span className="specs-value">Fixed-price modules. No hidden processing fees.</span>
+              <span className="specs-key">Precios cerrados:</span>
+              <span className="specs-value">Precio fijo acordado antes de empezar. Sin costes ocultos ni sorpresas.</span>
             </div>
             
             <div className="specs-row">
-              <span className="specs-key">&gt; EVOLUTIONARY_SUPPORT:</span>
-              <span className="specs-value">Direct access to lead engineers (Marc &amp; Juan) for system updates.</span>
+              <span className="specs-key">Soporte directo:</span>
+              <span className="specs-value">Acceso directo a Marc y Juan para cualquier duda o actualización.</span>
             </div>
           </div>
 
           <div style={{ textAlign: "center", marginTop: "4rem" }}>
             <div style={{ display: "inline-block", padding: "1.5rem 2.5rem", background: "rgba(100, 255, 218, 0.1)", borderRadius: "12px", border: "1px dashed var(--accent)" }}>
               <p className="mono-text" style={{ color: "var(--accent)", margin: 0, fontSize: "1rem" }}>
-                🎓 🛡️ <strong>SECURITY_MAINTENANCE:</strong> Active monitoring and hosting protocols available for all systems post-deployment.
+                🛡️ <strong>Mantenimiento:</strong> Monitorización activa y hosting disponible para todos los proyectos.
               </p>
             </div>
           </div>
         </div>
       </motion.section>
 
-      <motion.section 
-        id="briefing-form" 
+      <motion.section
+        id="faq"
         className="section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -826,119 +736,47 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <h2 className="section-title">Configura tu Proyecto</h2>
-          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
-            Cuéntanos tu idea y sube tus archivos. Nos pondremos en contacto en menos de 24h.
-          </p>
-          <div className={`terminal-window ${isSubmitted ? 'terminal-success-neon' : ''}`}>
-            <div className="terminal-header">
-              <div className="terminal-title">{isSubmitted ? '[SYSTEM_REPORT: SUCCESS]' : '[COMMAND_PROMPT: BRIEFING_INIT_V.01]'}</div>
-              <div className="terminal-controls">
-                <div className="terminal-dot"></div>
-                <div className="terminal-dot"></div>
-                <div className="terminal-dot"></div>
-              </div>
-            </div>
-            
-            <div className="terminal-body">
-              {!isSubmitted ? (
-                <form name="briefing-mc" method="POST" action="/success" data-netlify="true" onSubmit={handleSubmit}>
-                  <input type="hidden" name="form-name" value="briefing-mc" />
-                  
-                  <div className="terminal-row">
-                    <span className="terminal-prompt">[INPUT_USER] &gt; NAME:</span>
-                    <input type="text" name="nombre" required placeholder="_type_here..." className="terminal-input" />
-                  </div>
-
-                  <div className="terminal-row">
-                    <span className="terminal-prompt">[INPUT_USER] &gt; CONTACT:</span>
-                    <input type="tel" name="telefono" required placeholder="_whatsapp_or_phone..." className="terminal-input" />
-                  </div>
-
-                  <div className="terminal-row">
-                    <span className="terminal-prompt">[INPUT_USER] &gt; EMAIL:</span>
-                    <input type="email" name="email" required placeholder="_secure_connection_at..." className="terminal-input" />
-                  </div>
-
-                  <div className="terminal-row">
-                    <span className="terminal-prompt">[INPUT_USER] &gt; SERVICE_CATALOG:</span>
-                    <select name="paquete" defaultValue="" className="terminal-input" style={{ cursor: 'pointer' }} required>
-                      <option value="" disabled>_select_engineering_module...</option>
-                      <optgroup label="[WEB_ENGINEERING]">
-                        <option value="web-basica">Web Básica: €299-€399 (48h)</option>
-                        <option value="web-profesional">Web Pro: €499-€799 (7d)</option>
-                        <option value="e-commerce">E-Commerce: €999+ (15d)</option>
-                      </optgroup>
-                      <optgroup label="[DATA_DASHBOARDS]">
-                        <option value="analytics-hub">Analytics Hub: €599+ (7d)</option>
-                        <option value="ai-integration">AI Pipeline: €899+ (10d)</option>
-                      </optgroup>
-                      <optgroup label="[BRAND_ID]">
-                        <option value="visual-identity">Visual Identity: €399+ (5d)</option>
-                        <option value="ui-ux-audit">UI/UX Engineering: €299 (48h)</option>
-                      </optgroup>
-                    </select>
-                  </div>
-
-                  <div className="terminal-row" style={{ flexDirection: 'column', gap: '10px' }}>
-                    <span className="terminal-prompt">[INPUT_USER] &gt; PROJECT_DESCRIPTION:</span>
-                    <textarea name="descripcion" rows={4} required placeholder="_abstract_of_your_vision..." className="terminal-input" style={{ resize: 'none' }}></textarea>
-                  </div>
-
-                  <label className="terminal-checkbox-wrapper">
-                    <input type="checkbox" name="maintenance-shield" className="terminal-checkbox" />
-                    <span className="terminal-checkbox-label">[ ] ACTIVATE_SHIELD: Add 24/7 Security &amp; Hosting? (+39€/mo)</span>
-                  </label>
-
-                  <div style={{ margin: "1.5rem 0", padding: "1rem", border: "1px dashed rgba(100, 255, 218, 0.2)", borderRadius: "4px" }}>
-                    <p className="mono-text" style={{ fontSize: "0.75rem", color: "rgba(100, 255, 218, 0.6)", marginBottom: "5px" }}>[SYSTEM] &gt; ENCRYPTION_ENABLED</p>
-                    <p style={{ fontSize: "0.80rem", color: "var(--text-muted)", lineHeight: 1.5, margin: 0 }}>
-                      Handshake security active. M&amp;C protocols ensure end-to-end data integrity.
-                    </p>
-                  </div>
-
-                  <button type="submit" className="terminal-execute-btn">
-                    EXECUTE_STRATEGY_INITIALIZATION
-                  </button>
-
-                  <div className="terminal-status-msg">
-                    [SYSTEM] &gt; Standby for secure handshake...
-                  </div>
-                </form>
-              ) : (
-                <div className="success-sequence">
-                  <div className="success-progress-container">
-                    <span className="success-progress-text">HANDSHAKE_SEQUENCE... 100%</span>
-                    <div className="success-progress-bar-wrapper">
-                      <div className="success-progress-fill"></div>
-                    </div>
-                  </div>
-
-                  <div className="success-terminal-log" style={{ animationDelay: '0.2s' }}>
-                    [SYSTEM] &gt; VALIDATING_DATA... DONE.
-                  </div>
-                  <div className="success-terminal-log" style={{ animationDelay: '0.4s' }}>
-                    [SYSTEM] &gt; ENCRYPTING_BRIEFING... DONE.
-                  </div>
-                  <div className="success-terminal-log" style={{ animationDelay: '0.6s' }}>
-                    [SYSTEM] &gt; PACKET_SENT_TO_M&amp;C_SERVERS.
-                  </div>
-                  <div className="success-terminal-log" style={{ animationDelay: '0.8s', marginTop: '1rem' }}>
-                    [MESSAGE] &gt; ¡Recibido, Marc y Juan se pondrán en contacto contigo en menos de 24h!<span className="terminal-cursor"></span>
-                  </div>
-
-                  <div style={{ marginTop: '2.5rem', textAlign: 'center' }}>
-                    <button 
-                      onClick={() => setIsSubmitted(false)} 
-                      className="mono-text" 
-                      style={{ background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}
-                    >
-                      RETURN_TO_BASE_INTERFACE
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+          <h2 className="section-title">Preguntas frecuentes</h2>
+          <div style={{ maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[
+              {
+                q: '¿Cómo funciona el proceso?',
+                a: 'Rellenas un briefing de 5 minutos, te enviamos una propuesta en 24h, y en 48h-7 días tienes tu web lista.'
+              },
+              {
+                q: '¿Qué incluye el precio?',
+                a: 'Diseño personalizado, adaptado a móvil, formulario de contacto, SEO básico, Google Analytics y hosting gratuito.'
+              },
+              {
+                q: '¿Y si quiero cambios después?',
+                a: 'Incluimos 2 rondas de revisiones sin coste. Cambios adicionales tienen un coste de 50€ por ronda.'
+              },
+              {
+                q: '¿Necesito saber de tecnología?',
+                a: 'No. Nosotros nos encargamos de todo. Solo necesitamos tu logo, tus fotos y saber qué quieres transmitir.'
+              },
+              {
+                q: '¿Qué pasa con el mantenimiento?',
+                a: 'El hosting es gratuito. Si quieres actualizaciones, soporte y copias de seguridad, ofrecemos un plan de 39€/mes.'
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                style={{
+                  background: 'var(--bg-light)',
+                  borderRadius: '12px',
+                  padding: '1.5rem 2rem',
+                  border: '1px solid rgba(100, 255, 218, 0.08)'
+                }}
+              >
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.5rem' }}>❓ {item.q}</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>{item.a}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>
@@ -966,11 +804,11 @@ export default function Home() {
           <img src="/logo.svg" alt="M&C Logo" className="footer-logo" style={{ height: '160px', width: 'auto', marginBottom: '1.5rem' }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem', background: 'rgba(100, 255, 218, 0.05)', padding: '6px 12px', borderRadius: '50px', border: '1px solid rgba(100, 255, 218, 0.1)' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#64FFDA', boxShadow: '0 0 10px #64FFDA', animation: 'pulse 2s infinite' }}></span>
-            <span className="mono-text" style={{ fontSize: '0.65rem', color: 'var(--accent)', letterSpacing: '1px' }}>SYSTEM STATUS: OPTIMAL</span>
+            <span className="mono-text" style={{ fontSize: '0.65rem', color: 'var(--accent)', letterSpacing: '1px' }}>Disponibles para tu proyecto</span>
           </div>
           <p className="mono-text" style={{ fontSize: "0.8rem", opacity: 0.7 }}>
-            Ingeniería aplicada al diseño web. <br />
-            Diseñado & Construido por <strong>M&C Web Solutions</strong> © 2026
+            Diseño web profesional para tu negocio. <br />
+            Diseñado &amp; Construido por <strong>M&amp;C Web Solutions</strong> © 2026
           </p>
         </div>
       </footer>
