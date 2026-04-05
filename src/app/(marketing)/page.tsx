@@ -560,35 +560,65 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container" style={{ position: 'relative' }}>
-          <h2 className="section-title">
+          <h2 className="section-title text-center mb-16">
             Transparencia total
           </h2>
           
-          <div className="specs-table-container">
-            <div className="verified-stamp">Verificado 2026</div>
-            
-            <div className="specs-row">
-              <span className="specs-key">Rapidez:</span>
-              <span className="specs-value">Entrega estándar en 1-7 días según la complejidad del proyecto.</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            {/* CARD 1: WEB BÁSICA */}
+            <div className="pricing-card" style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: '16px', border: '1px solid rgba(100, 255, 218, 0.05)', display: 'flex', flexDirection: 'column' }}>
+              <h3 className="mono-text" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1rem', letterSpacing: '2px' }}>WEB BÁSICA</h3>
+              <div className="price-value" style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '2rem' }}>
+                <span style={{ fontSize: '1rem', verticalAlign: 'middle', fontWeight: 600, color: 'var(--text-muted)' }}>Desde</span> 299€
+              </div>
+              <ul className="pricing-features" style={{ flex: 1, marginBottom: '2.5rem', listStyle: 'none', padding: 0 }}>
+                {['1-3 páginas', 'Entrega en 48 horas', 'Diseño responsive', 'Formulario de contacto', 'SEO básico'].map((feature, i) => (
+                  <li key={feature} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    <span style={{ color: 'var(--accent)' }}>✔</span> {feature}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/briefing" className="btn btn-outline" style={{ textAlign: 'center', width: '100%', fontSize: '0.85rem' }}>Empezar por 299€</Link>
             </div>
-            
-            <div className="specs-row">
-              <span className="specs-key">Precios cerrados:</span>
-              <span className="specs-value">Precio fijo acordado antes de empezar. Sin costes ocultos ni sorpresas.</span>
+
+            {/* CARD 2: WEB PRO (HIGHLIGHTED) */}
+            <div className="pricing-card featured" style={{ background: 'rgba(100, 255, 218, 0.03)', padding: '2.5rem', borderRadius: '16px', border: '2px solid var(--accent)', boxShadow: '0 0 30px rgba(100, 255, 218, 0.1)', position: 'relative', transform: 'scale(1.05)', display: 'flex', flexDirection: 'column', zIndex: 10 }}>
+              <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#000', padding: '4px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>Recomendado</div>
+              <h3 className="mono-text" style={{ fontSize: '0.85rem', color: 'var(--accent)', marginBottom: '1rem', letterSpacing: '2px' }}>WEB PRO</h3>
+              <div className="price-value" style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '2rem' }}>
+                <span style={{ fontSize: '1rem', verticalAlign: 'middle', fontWeight: 600, color: 'var(--text-muted)' }}>Desde</span> 499€
+              </div>
+              <ul className="pricing-features" style={{ flex: 1, marginBottom: '2.5rem', listStyle: 'none', padding: 0 }}>
+                {['4-8 páginas', 'Entrega en 7 días', 'Todo lo de Web Básica +', 'Google Maps', 'Blog integrado', 'Google Analytics'].map((feature, i) => (
+                  <li key={feature} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem', fontSize: '0.9rem', color: i > 1 ? 'var(--text-main)' : 'var(--text-muted)' }}>
+                    <span style={{ color: 'var(--accent)' }}>✔</span> {feature}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/briefing" className="btn btn-solid" style={{ textAlign: 'center', width: '100%', fontSize: '0.85rem' }}>Empezar por 499€</Link>
             </div>
-            
-            <div className="specs-row">
-              <span className="specs-key">Soporte directo:</span>
-              <span className="specs-value">Acceso directo a Marc y Juan para cualquier duda o actualización.</span>
+
+            {/* CARD 3: E-COMMERCE */}
+            <div className="pricing-card" style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: '16px', border: '1px solid rgba(100, 255, 218, 0.05)', display: 'flex', flexDirection: 'column' }}>
+              <h3 className="mono-text" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1rem', letterSpacing: '2px' }}>E-COMMERCE</h3>
+              <div className="price-value" style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '2rem' }}>
+                <span style={{ fontSize: '1rem', verticalAlign: 'middle', fontWeight: 600, color: 'var(--text-muted)' }}>Desde</span> 999€
+              </div>
+              <ul className="pricing-features" style={{ flex: 1, marginBottom: '2.5rem', listStyle: 'none', padding: 0 }}>
+                {['Tienda online completa', 'Entrega en 15 días', 'Catálogo de productos', 'Pasarela de pago', 'Panel de gestión'].map((feature, i) => (
+                  <li key={feature} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    <span style={{ color: 'var(--accent)' }}>✔</span> {feature}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/briefing" className="btn btn-outline" style={{ textAlign: 'center', width: '100%', fontSize: '0.85rem' }}>Solicitar presupuesto</Link>
             </div>
           </div>
 
           <div style={{ textAlign: "center", marginTop: "4rem" }}>
-            <div style={{ display: "inline-block", padding: "1.5rem 2.5rem", background: "rgba(100, 255, 218, 0.1)", borderRadius: "12px", border: "1px dashed var(--accent)" }}>
-              <p className="mono-text" style={{ color: "var(--accent)", margin: 0, fontSize: "1rem" }}>
-                🛡️ <strong>Mantenimiento:</strong> Monitorización activa y hosting disponible para todos los proyectos.
-              </p>
-            </div>
+             <p className="mono-text" style={{ color: "var(--text-muted)", margin: 0, fontSize: "0.9rem", opacity: 0.8 }}>
+               + Mantenimiento opcional: 39€/mes
+             </p>
           </div>
         </div>
       </motion.section>
