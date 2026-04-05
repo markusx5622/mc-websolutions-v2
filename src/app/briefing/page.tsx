@@ -655,17 +655,21 @@ export default function BriefingPage() {
         ::selection { background: rgba(0,229,160,0.25); }
       `}</style>
 
-      {/* Sticky full-width header */}
-      <div className="w-full px-6 md:px-12 pt-6 pb-4 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>M&C<span style={{ color: "#00e5a0" }}>.</span> <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span></a>
-            </div>
-            <span style={{ fontSize: 12, color: "#6b7080", fontFamily: "var(--font-jetbrains-mono)", background: "rgba(255,255,255,0.05)", padding: "4px 10px", borderRadius: 8 }}>Paso {step + 1} de {STEPS.length}</span>
+      {/* Sticky full-width header with high-fidelity centering */}
+      <div className="w-full px-8 md:px-16 lg:px-24 py-8 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        {/* Left: Logo */}
+        <div className="relative z-20 flex-shrink-0">
+          <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
+            M&C<span style={{ color: "#00e5a0" }}>.</span> <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span>
+          </a>
+        </div>
+
+        {/* Center: Progress & Category Pills */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center w-full max-w-sm md:max-w-md lg:max-w-lg">
+          <div className="w-full mb-2">
+            <ProgressBar current={step} total={totalSteps} />
           </div>
-          <ProgressBar current={step} total={totalSteps} />
-          <div style={{ display: "flex", gap: 6, marginTop: 14, overflowX: "auto", paddingBottom: 4, scrollbarWidth: "none" }}>
+          <div className="hidden md:flex gap-3 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
             {SECTIONS.map((sec) => {
               const secSteps = STEPS.filter(st => st.section === sec.id);
               const firstIdx = STEPS.indexOf(secSteps[0]);
@@ -673,12 +677,19 @@ export default function BriefingPage() {
               const isActive = step >= firstIdx && step <= lastIdx;
               const isDone = step > lastIdx;
               return (
-                <span key={sec.id} style={{ fontSize: 11, padding: "6px 12px", borderRadius: 15, whiteSpace: "nowrap", background: isActive ? "rgba(0,229,160,0.15)" : isDone ? "rgba(0,229,160,0.08)" : "rgba(255,255,255,0.03)", color: isActive ? "#00e5a0" : isDone ? "#4a6a5a" : "#4a4d57", border: `1.5px solid ${isActive ? "rgba(0,229,160,0.3)" : "rgba(255,255,255,0.05)"}`, fontFamily: "var(--font-jetbrains-mono)", fontWeight: 600, transition: "all 0.3s" }}>
+                <span key={sec.id} style={{ fontSize: 10, padding: "5px 10px", borderRadius: 15, whiteSpace: "nowrap", background: isActive ? "rgba(0,229,160,0.15)" : isDone ? "rgba(0,229,160,0.08)" : "rgba(255,255,255,0.03)", color: isActive ? "#00e5a0" : isDone ? "#4a6a5a" : "#4a4d57", border: `1px solid ${isActive ? "rgba(0,229,160,0.3)" : "rgba(255,255,255,0.05)"}`, fontFamily: "var(--font-jetbrains-mono)", fontWeight: 600, transition: "all 0.3s" }}>
                   {sec.icon} {sec.label}
                 </span>
               );
             })}
           </div>
+        </div>
+
+        {/* Right: Step Counter */}
+        <div className="relative z-20 flex-shrink-0">
+          <span style={{ fontSize: 12, color: "#6b7080", fontFamily: "var(--font-jetbrains-mono)", background: "rgba(255,255,255,0.05)", padding: "6px 12px", borderRadius: 8 }}>
+            Paso {step + 1} de {STEPS.length}
+          </span>
         </div>
       </div>
 
