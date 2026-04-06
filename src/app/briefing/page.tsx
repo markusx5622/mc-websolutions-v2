@@ -650,7 +650,7 @@ export default function BriefingPage() {
         ::selection { background: rgba(0,229,160,0.25); }
       `}</style>
 
-      {/* Sticky full-width header with high-fidelity centering */}
+      {/* Sticky full-width header with precision vertical spacing */}
       <div className="w-full px-8 md:px-16 lg:px-24 py-24 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         {/* Left: Logo */}
         <div className="relative z-20 flex-shrink-0">
@@ -659,21 +659,22 @@ export default function BriefingPage() {
           </a>
         </div>
 
-        {/* Center: Progress & Category Pills (Vertical Stack) */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4 w-full max-w-sm md:max-w-md lg:max-w-lg">
-          {/* Top: Progress Text */}
-          <div className="flex justify-between w-full px-1" style={{ fontSize: 11, color: "#8a8f98", fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 1, fontWeight: 600 }}>
-            <span>PROGRESO</span>
-            <span>{Math.round((step / totalSteps) * 100)}%</span>
-          </div>
-
-          {/* Middle: Progress Bar */}
+        {/* Center: Progress & Category Pills (Precision Vertical Stack) */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-3 w-full max-w-2xl">
+          {/* Top: Un-interrupted Progress Line */}
           <div className="w-full">
             <ProgressBar current={step} total={totalSteps} />
           </div>
 
-          {/* Bottom: Category Icons */}
-          <div className="hidden md:flex gap-3 mt-2 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
+          {/* Middle: Progress Text (Comfortably below the line) */}
+          <div className="flex flex-col items-center mt-6">
+            <span className="text-xs text-gray-400 mt-3" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 2, fontWeight: 600 }}>
+              PROGRESO {Math.round((step / totalSteps) * 100)}%
+            </span>
+          </div>
+
+          {/* Bottom: Category Pills (Moved down significantly) */}
+          <div className="hidden md:flex gap-4 mt-12 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
             {SECTIONS.map((sec) => {
               const secSteps = STEPS.filter(st => st.section === sec.id);
               const firstIdx = STEPS.indexOf(secSteps[0]);
@@ -681,7 +682,7 @@ export default function BriefingPage() {
               const isActive = step >= firstIdx && step <= lastIdx;
               const isDone = step > lastIdx;
               return (
-                <span key={sec.id} style={{ fontSize: 10, padding: "5px 10px", borderRadius: 15, whiteSpace: "nowrap", background: isActive ? "rgba(0,229,160,0.15)" : isDone ? "rgba(0,229,160,0.08)" : "rgba(255,255,255,0.03)", color: isActive ? "#00e5a0" : isDone ? "#4a6a5a" : "#4a4d57", border: `1px solid ${isActive ? "rgba(0,229,160,0.3)" : "rgba(255,255,255,0.05)"}`, fontFamily: "var(--font-jetbrains-mono)", fontWeight: 600, transition: "all 0.3s" }}>
+                <span key={sec.id} style={{ fontSize: 10, padding: "6px 12px", borderRadius: 15, whiteSpace: "nowrap", background: isActive ? "rgba(0,229,160,0.15)" : isDone ? "rgba(0,229,160,0.08)" : "rgba(255,255,255,0.03)", color: isActive ? "#00e5a0" : isDone ? "#4a6a5a" : "#4a4d57", border: `1px solid ${isActive ? "rgba(0,229,160,0.3)" : "rgba(255,255,255,0.05)"}`, fontFamily: "var(--font-jetbrains-mono)", fontWeight: 600, transition: "all 0.3s" }}>
                   {sec.icon} {sec.label}
                 </span>
               );
