@@ -706,6 +706,13 @@ export default function Home() {
             Diseño web profesional para tu negocio. <br />
             Diseñado &amp; Construido por <strong>M&amp;C Web Solutions</strong> © 2026
           </p>
+          <p style={{ marginTop: "1rem", fontSize: "0.75rem", color: "#8a8f98" }}>
+            <a href="/aviso-legal" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Aviso Legal</a>
+            {" · "}
+            <a href="/privacidad" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Privacidad</a>
+            {" · "}
+            <a href="/cookies" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Cookies</a>
+          </p>
         </div>
       </footer>
     </>
