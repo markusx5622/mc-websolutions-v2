@@ -651,7 +651,7 @@ export default function BriefingPage() {
       `}</style>
 
       {/* Sticky full-width header with high-fidelity centering */}
-      <div className="w-full px-8 md:px-16 lg:px-24 py-16 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <div className="w-full px-8 md:px-16 lg:px-24 py-24 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         {/* Left: Logo */}
         <div className="relative z-20 flex-shrink-0">
           <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
