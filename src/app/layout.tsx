@@ -8,8 +8,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "M&C Web Solutions | Tu web profesional en 48 horas",
-  description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+  title: {
+    default: "M&C Web Solutions",
+    template: "%s | M&C Web Solutions",
+  },
+  description: "Diseño y desarrollo web profesional en 48 horas con IA avanzada. Ingeniería digital premium en Valencia, España.",
 };
 
 export default function RootLayout({
