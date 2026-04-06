@@ -288,7 +288,7 @@ export default function Home() {
 
       <header id="header">
         <div className="container header-content">
-          <Link href="/" className="brand-wrapper">
+          <Link href="/" className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline">
             <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" />
             <div className="brand-info">
               <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>

@@ -16,7 +16,7 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glassmorphism px-6 py-4 flex items-center justify-between"
     >
       <div className="flex items-center gap-2">
-        <Link href="/" className="text-xl font-black tracking-widest text-white uppercase">
+        <Link href="/" className="text-xl font-black tracking-widest text-white uppercase cursor-pointer hover:opacity-90 transition-opacity no-underline">
           M&C<span className="text-cyan-400">.</span> <span className="text-zinc-500 font-medium tracking-tight">Web Solutions</span>
         </Link>
       </div>

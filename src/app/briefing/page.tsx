@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { ReactNode } from "react";
 import Script from "next/script";
+import Link from "next/link";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxI6BUgFReyKA1tNdApd981fUDGKIs3xFqPp0j8-PR0bwPcT5DUkqNi7pxKhzhaDZ28Zg/exec";
@@ -697,9 +698,9 @@ export default function BriefingPage() {
         
         {/* Left: Logo (Vertically aligned with Row 1) */}
         <div className="flex-shrink-0 mt-2">
-          <a href="/" className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.5)] hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.9)] hover:scale-105 transition-all duration-300 cursor-pointer select-none" style={{ textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
+          <Link href="/" className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.5)] hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.9)] hover:scale-105 transition-all duration-300 cursor-pointer select-none no-underline hover:opacity-90" style={{ textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
             M&C. Briefing
-          </a>
+          </Link>
         </div>
 
         {/* Center: The Harmonious Progress Block */}
