@@ -650,47 +650,69 @@ export default function BriefingPage() {
         ::selection { background: rgba(0,229,160,0.25); }
       `}</style>
 
-      {/* Sticky full-width header with explicit vertical margins */}
-      <div className="w-full px-8 md:px-16 lg:px-24 py-16 min-h-[160px] flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        {/* Left: Logo */}
-        <div className="relative z-20 flex-shrink-0">
+      {/* The Harmonious Header - Masterpiece Layout */}
+      <div className="w-full flex justify-between items-start px-8 md:px-12 lg:px-16 py-10 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.95)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        
+        {/* Left: Logo (Vertically aligned with Row 1) */}
+        <div className="flex-shrink-0 mt-2">
           <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
             M&C<span style={{ color: "#00e5a0" }}>.</span> <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span>
           </a>
         </div>
 
-        {/* Center: Progress & Category Pills (Forced Vertical Flow) */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-full max-w-2xl px-4">
-          {/* Element 1: Progress Text (Top) */}
-          <span className="text-xs text-gray-400 mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 2, fontWeight: 600 }}>
-            PROGRESO {Math.round((step / totalSteps) * 100)}%
-          </span>
-
-          {/* Element 2: Progress Line (Middle) */}
-          <div className="w-full h-1 bg-transparent">
-             <ProgressBar current={step} total={totalSteps} />
+        {/* Center: The Harmonious Progress Block */}
+        <div className="flex flex-col items-center w-full max-w-3xl mx-8 gap-5">
+          {/* Row 1: Text flanked by lines */}
+          <div className="w-full flex items-center gap-4">
+            <div className="flex-grow border-t border-gray-700/50"></div>
+            <span className="text-sm font-semibold tracking-widest text-gray-400" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
+              PROGRESO {Math.round((step / totalSteps) * 100)}%
+            </span>
+            <div className="flex-grow border-t border-gray-700/50"></div>
           </div>
 
-          {/* Element 3: Category Pills (Bottom - Moved down significantly) */}
-          <div className="hidden md:flex gap-4 mt-10 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
+          {/* Row 2: Thick Glowing Progress Bar */}
+          <div className="w-full h-3 bg-gray-800/80 rounded-full overflow-hidden shadow-[0_0_15px_rgba(34,211,238,0.15)] border border-gray-700/30">
+            <div 
+              className="h-full bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(34,211,238,0.4)] transition-all duration-500 ease-out" 
+              style={{ width: `${Math.round((step / totalSteps) * 100)}%` }}
+            ></div>
+          </div>
+
+          {/* Row 3: Category Pills (Centered) */}
+          <div className="hidden md:flex flex-wrap justify-center gap-3">
             {SECTIONS.map((sec) => {
               const secSteps = STEPS.filter(st => st.section === sec.id);
               const firstIdx = STEPS.indexOf(secSteps[0]);
               const lastIdx = STEPS.indexOf(secSteps[secSteps.length - 1]);
               const isActive = step >= firstIdx && step <= lastIdx;
               const isDone = step > lastIdx;
+              const statusColor = isActive ? "#22d3ee" : isDone ? "#2d4a52" : "#374151";
+              const bgColor = isActive ? "rgba(34,211,238,0.12)" : isDone ? "rgba(34,211,238,0.04)" : "rgba(255,255,255,0.02)";
+              
               return (
-                <span key={sec.id} style={{ fontSize: 10, padding: "6px 12px", borderRadius: 15, whiteSpace: "nowrap", background: isActive ? "rgba(0,229,160,0.15)" : isDone ? "rgba(0,229,160,0.08)" : "rgba(255,255,255,0.03)", color: isActive ? "#00e5a0" : isDone ? "#4a6a5a" : "#4a4d57", border: `1px solid ${isActive ? "rgba(0,229,160,0.3)" : "rgba(255,255,255,0.05)"}`, fontFamily: "var(--font-jetbrains-mono)", fontWeight: 600, transition: "all 0.3s" }}>
-                  {sec.icon} {sec.label}
+                <span key={sec.id} style={{ 
+                  fontSize: 10, 
+                  padding: "5px 12px", 
+                  borderRadius: 20, 
+                  whiteSpace: "nowrap", 
+                  background: bgColor, 
+                  color: isActive ? "#22d3ee" : isDone ? "#16677a" : "#4b5563", 
+                  border: `1px solid ${isActive ? "rgba(34,211,238,0.3)" : "rgba(255,255,255,0.05)"}`, 
+                  fontFamily: "var(--font-jetbrains-mono)", 
+                  fontWeight: 600, 
+                  transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" 
+                }}>
+                  {sec.icon} <span className="ml-1">{sec.label}</span>
                 </span>
               );
             })}
           </div>
         </div>
 
-        {/* Right: Step Counter */}
-        <div className="relative z-20 flex-shrink-0">
-          <span style={{ fontSize: 12, color: "#6b7080", fontFamily: "var(--font-jetbrains-mono)", background: "rgba(255,255,255,0.05)", padding: "6px 12px", borderRadius: 8 }}>
+        {/* Right: Step Counter (Vertically aligned with Row 1) */}
+        <div className="flex-shrink-0 mt-2">
+          <span style={{ fontSize: 13, color: "#6b7080", fontFamily: "var(--font-jetbrains-mono)", background: "rgba(255,255,255,0.04)", padding: "6px 14px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.05)" }}>
             Paso {step + 1} de {STEPS.length}
           </span>
         </div>
