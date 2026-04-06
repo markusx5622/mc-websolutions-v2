@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import type { ReactNode } from "react";
+import Script from "next/script";
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxI6BUgFReyKA1tNdApd981fUDGKIs3xFqPp0j8-PR0bwPcT5DUkqNi7pxKhzhaDZ28Zg/exec";
@@ -294,7 +295,25 @@ export default function BriefingPage() {
   }, []);
 
   const initParticles = () => {
-    // particles.js logic removed in favor of CSS background layer
+    if (typeof window !== 'undefined' && (window as any).particlesJS) {
+      (window as any).particlesJS("particles-js", {
+        "particles": {
+          "number": { "value": 45, "density": { "enable": true, "value_area": 1000 } },
+          "color": { "value": "#64FFDA" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.2, "random": false },
+          "size": { "value": 2, "random": true },
+          "line_linked": { "enable": true, "distance": 150, "color": "#64FFDA", "opacity": 0.1, "width": 1 },
+          "move": { "enable": true, "speed": 0.8, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
+          "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.4 } } }
+        },
+        "retina_detect": true
+      });
+    }
   };
 
   const set = (field: keyof FormData) => (val: string | string[]) =>
@@ -584,26 +603,22 @@ export default function BriefingPage() {
 
   if (submitted) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-space-grotesk)", padding: 24, position: "relative" }}>
-        {/* New Fixed Aesthetic Background Layer */}
-        <div className="fixed inset-0 z-[-10] min-h-screen w-full bg-[#0a192f] overflow-hidden" style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.05) 0%, transparent 40%),
-            radial-gradient(circle, transparent 30%, #0a192f 100%),
-            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' fill='none' stroke='rgba(100, 255, 218, 0.03)' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(100, 255, 218, 0.08)'/%3E%3C/svg%3E")
-          `,
-          backgroundSize: "100% 100%, 100% 100%, 100% 100%, 60px 60px"
-        }}>
-          {/* Subtle Dynamic Nodes (CSS Only) */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute top-[10%] left-[20%] w-[2px] h-[2px] bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee] animate-pulse"></div>
-            <div className="absolute top-[60%] left-[80%] w-[1.5px] h-[1.5px] bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee] animate-pulse" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute top-[40%] left-[50%] w-[1px] h-[1px] bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee] animate-pulse" style={{ animationDelay: '2s' }}></div>
-          </div>
+      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-space-grotesk)", padding: 24, backgroundColor: "#0A192F", backgroundImage: "radial-gradient(circle at center, #112240 0%, #0A192F 100%)", position: "relative", overflow: "hidden" }}>
+        <Script 
+          src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" 
+          onLoad={initParticles}
+        />
+        <div id="particles-js" suppressHydrationWarning style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}></div>
+        
+        {/* Background Layers */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+          <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full blur-[120px]" style={{ background: 'rgba(100, 255, 218, 0.04)', animation: 'float 20s ease-in-out infinite' }}></div>
+          <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px]" style={{ background: 'rgba(30, 144, 255, 0.03)', animation: 'float 25s ease-in-out infinite alternate' }}></div>
         </div>
 
-        <div style={{ textAlign: "center", maxWidth: 480, position: "relative", zIndex: 1 }}>
+        <div style={{ textAlign: "center", maxWidth: 480, position: "relative", zIndex: 1, background: "rgba(10, 25, 47, 0.7)", padding: "40px", borderRadius: "24px", border: "1px solid rgba(255,255,255,0.05)", backdropFilter: "blur(12px)" }}>
           <div style={{ fontSize: 80, marginBottom: 20 }}>🎉</div>
           <h1 style={{ fontSize: 32, fontWeight: 800, color: "#f0f1f3", margin: "0 0 16px" }}>¡Briefing enviado!</h1>
           <p style={{ fontSize: 17, color: "#8a8f98", lineHeight: 1.6, marginBottom: 36 }}>
@@ -629,19 +644,47 @@ export default function BriefingPage() {
   // ─── Main form ────────────────────────────────────────────────────────────
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative" }} onKeyDown={handleKeyDown}>
-      {/* New Fixed Aesthetic Background Layer */}
-      <div className="fixed inset-0 z-[-10] min-h-screen w-full bg-[#0a192f] overflow-hidden" style={{
-        backgroundImage: `
-          radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.04) 0%, transparent 30%),
-          radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.04) 0%, transparent 30%),
-          radial-gradient(circle, transparent 40%, #0a192f 100%),
-          url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='0.5' fill='rgba(100, 255, 218, 0.1)'/%3E%3Cpath d='M0 50L100 50M50 0L50 100' fill='none' stroke='rgba(100, 255, 218, 0.02)' stroke-width='0.5'/%3E%3C/svg%3E")
-        `,
-        backgroundSize: "100% 100%, 100% 100%, 100% 100%, 100px 100px"
-      }}></div>
+    <div style={{ 
+      minHeight: "100vh", 
+      display: "flex", 
+      flexDirection: "column",
+      backgroundColor: "#0A192F",
+      backgroundImage: "radial-gradient(circle at center, #112240 0%, #0A192F 100%)",
+      position: "relative",
+      overflow: "hidden"
+    }} onKeyDown={handleKeyDown}>
+      <Script 
+        src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" 
+        onLoad={initParticles}
+      />
+      <div id="particles-js" suppressHydrationWarning style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}></div>
+      
+      {/* Background Layers */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Grid Overlay */}
+        <div className="absolute inset-0" style={{ 
+          backgroundImage: 'linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px)',
+          backgroundSize: '80px 80px'
+        }}></div>
+        
+        {/* Dot Pattern Overlay */}
+        <div className="absolute inset-0" style={{ 
+          backgroundImage: 'radial-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px)',
+          backgroundSize: '30px 30px'
+        }}></div>
+
+        {/* Animated Blobs */}
+        <div className="absolute top-[15%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px]" style={{ background: 'rgba(100, 255, 218, 0.04)', animation: 'float 22s ease-in-out infinite' }}></div>
+        <div className="absolute bottom-[10%] left-[-5%] w-[500px] h-[500px] rounded-full blur-[100px]" style={{ background: 'rgba(30, 144, 255, 0.03)', animation: 'float 28s ease-in-out infinite alternate' }}></div>
+      </div>
+
       <style>{`
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float {
+          0% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(3%, 3%) scale(1.05); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
         * { box-sizing: border-box; }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -650,7 +693,7 @@ export default function BriefingPage() {
       `}</style>
 
       {/* The Harmonious Header - Masterpiece Layout */}
-      <div className="w-full flex justify-between items-start px-12 md:px-20 lg:px-32 py-10 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.95)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="w-full flex justify-between items-start px-12 md:px-20 lg:px-32 py-10 relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         
         {/* Left: Logo (Vertically aligned with Row 1) */}
         <div className="flex-shrink-0 mt-2">
@@ -720,22 +763,15 @@ export default function BriefingPage() {
       {/* Scroll anchor */}
       <div ref={topRef} />
 
-      {/* Center form area with subtle container backdrop */}
-      <div style={{ flex: 1, display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "80px 24px 120px" }}>
-        <div className="w-full max-w-4xl p-10 md:p-14 rounded-3xl" style={{ 
-          background: "rgba(13, 30, 58, 0.4)", 
-          backdropFilter: "blur(20px)", 
-          border: "1px solid rgba(255, 255, 255, 0.05)",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
-        }}>
-          <div style={{ width: "100%", maxWidth: 800, margin: "0 auto" }}>
-            {renderStep()}
-          </div>
+      {/* Content wrapper with vertical centering */}
+      <div style={{ flex: 1, display: "flex", alignItems: "center", padding: "40px 20px 160px", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", width: "100%", background: "rgba(10, 25, 47, 0.4)", padding: "30px", borderRadius: "24px", border: "1px solid rgba(255,255,255,0.03)", backdropFilter: "blur(8px)" }}>
+          {renderStep()}
         </div>
       </div>
 
       {/* Fixed bottom nav */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 10, background: "rgba(10,25,47,0.95)", backdropFilter: "blur(16px)", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "24px" }}>
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 20, background: "rgba(10,25,47,0.9)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.06)", padding: "24px" }}>
         <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", gap: 16, alignItems: "center" }}>
           {step > 0 && (
             <button onClick={prev} style={{ padding: "16px 20px", borderRadius: 12, border: "1.5px solid #2a2d37", background: "#0D1E3A", color: "#c5c8ce", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "var(--font-space-grotesk)", flexShrink: 0, transition: "all 0.2s" }}>←</button>
