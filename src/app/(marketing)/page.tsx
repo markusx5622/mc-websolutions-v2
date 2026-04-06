@@ -295,7 +295,7 @@ export default function Home() {
               <span className="brand-tagline">Web Solutions</span>
             </div>
           </Link>
-          <a href="#contact" className="btn btn-primary" style={{ padding: "0.5rem 1rem", fontSize: "0.8rem" }}>Empieza ya</a>
+          <Link href="/briefing" className="btn btn-primary" style={{ padding: "0.5rem 1rem", fontSize: "0.8rem" }}>Empieza ya</Link>
         </div>
       </header>
 
@@ -319,7 +319,7 @@ export default function Home() {
                 <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
                   Convertimos tus ideas en presencia digital profesional en 48 horas utilizando Inteligencia Artificial avanzada. Soluciones rápidas, estéticas e ultra-asequibles para emprendedores.
                 </p>
-                <a href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</a>
+                <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
               </div>
               <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
