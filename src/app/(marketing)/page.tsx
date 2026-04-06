@@ -85,50 +85,201 @@ function SpeedAuditWidget() {
   );
 }
 
-const MODULAR_ENGINEERING_DEMOS = [
+const PREMIUM_PROJECTS = [
   {
-    title: "Nano Banana Engineering",
-    subtitle: "Web de una página · Máxima conversión",
-    description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    link: "/demo-speed"
+    url: "https://the-aetheris-experience.vercel.app/",
+    category: "AGENCIA CREATIVA",
+    name: "The Aetheris Experience",
+    description: "Portfolio inmersivo para una agencia de diseño digital. Experiencia no lineal con procesamiento de datos en tiempo real, cronología interactiva y archivo de proyectos con transiciones cinematográficas.",
+    tags: ["Next.js", "React", "Framer Motion", "Diseño Inmersivo"],
+    accentColor: "#8B5CF6",
+    mockupContent: {
+      bg: "#0a0a0a",
+      text: "ÆTHERIS",
+      style: "minimal"
+    }
   },
   {
-    title: "Web B2B / Industria",
-    subtitle: "Empresas · Catálogo de productos",
-    description: "Web para empresas con catálogo de productos, logística y formulario de contacto profesional.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
-    link: "/demo-creative"
+    url: "https://aether-insights.vercel.app/",
+    category: "DASHBOARD EMPRESARIAL",
+    name: "Aether Insights",
+    description: "Panel de inteligencia empresarial con análisis multidimensional en tiempo real. Incluye motor predictivo, mapa global, simulador financiero y más de 8 módulos de análisis interconectados.",
+    tags: ["Next.js", "TypeScript", "Data Visualization", "Analytics"],
+    accentColor: "#3B82F6",
+    mockupContent: {
+      bg: "#0f172a",
+      text: "AETHER",
+      style: "dashboard"
+    }
   },
   {
-    title: "Negocio local",
-    subtitle: "Cafeterías y comercios · SEO local",
-    description: "Web para cafeterías y comercios de barrio con posicionamiento en Google Maps y SEO local.",
-    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
-    link: "/demo-local"
+    url: "https://kinetia-kinetic-experience.vercel.app/",
+    category: "WEB EXPERIENCE",
+    name: "Kinetia Kinetic",
+    description: "Experiencia web cinética donde el movimiento es el protagonista. Diseño basado en física, interacciones gestuales y transiciones fluidas que responden al comportamiento del usuario en tiempo real.",
+    tags: ["Next.js", "Canvas API", "Animaciones", "Diseño Cinético"],
+    accentColor: "#F59E0B",
+    mockupContent: {
+      bg: "#000000",
+      text: "KINETIA",
+      style: "kinetic"
+    }
   },
   {
-    title: "Centro de bienestar",
-    subtitle: "Spas · Yoga · Salud",
-    description: "Web premium para spas, centros de yoga y bienestar con reservas online y diseño exclusivo.",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
-    link: "/demo-premium"
+    url: "https://kinetia-origins.vercel.app/",
+    category: "STORYTELLING DIGITAL",
+    name: "Kinetia Origins",
+    description: "Narrativa digital interactiva que cuenta la historia de una marca a través de scroll-driven animations. Cada desplazamiento revela un nuevo capítulo con transiciones cinematográficas y composiciones visuales únicas.",
+    tags: ["Next.js", "Scroll Animations", "Narrativa", "Branding"],
+    accentColor: "#10B981",
+    mockupContent: {
+      bg: "#050505",
+      text: "ORIGINS",
+      style: "storytelling"
+    }
   },
   {
-    title: "Artesanía Digital Valencia",
-    subtitle: "Moda · Diseño · Gestión de citas",
-    description: "Web para moda y diseño con catálogo de colecciones y sistema de gestión de citas.",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
-    link: "/demo-sastre"
-  },
-  {
-    title: "Elite Padel System",
-    subtitle: "Clubes de pádel · Reservas online",
-    description: "Web para clubes de pádel con reserva de pistas online, estadísticas y comunidad deportiva.",
-    image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
-    link: "/demo-padel"
+    url: "https://gamma-reaction.vercel.app/",
+    category: "EXPERIENCIA INTERACTIVA",
+    name: "Gamma Reaction",
+    description: "Simulador interactivo de reacciones nucleares con telemetría cuántica en tiempo real, terminal de control integrada y visualizaciones de datos en vivo. Una demostración de lo que es posible cuando el diseño web se encuentra con la ciencia.",
+    tags: ["Next.js", "Real-time Data", "WebSockets", "Terminal UI"],
+    accentColor: "#EF4444",
+    mockupContent: {
+      bg: "#020202",
+      text: "GAMMA_",
+      style: "terminal"
+    }
   }
 ];
+
+function BrowserMockup({ project }: { project: typeof PREMIUM_PROJECTS[0] }) {
+  return (
+    <div className="relative group cursor-pointer w-full max-w-[650px] mx-auto" style={{ transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+      {/* Glow Effect */}
+      <div 
+        className="absolute -inset-1 rounded-[20px] blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+        style={{ background: project.accentColor }}
+      />
+      
+      <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] transform group-hover:scale-[1.02] transition-transform duration-500">
+        {/* Browser Header */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-[#1a1a1a] border-bottom border-white/5">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+          </div>
+          <div className="flex-1 mx-4 h-6 rounded-md bg-white/5 flex items-center px-3">
+            <div className="w-full h-2 rounded-full bg-white/10 max-w-[150px]" />
+          </div>
+        </div>
+
+        {/* Content Area */}
+        <div className="relative h-[300px] sm:h-[400px] overflow-hidden flex items-center justify-center" style={{ background: project.mockupContent.bg }}>
+          {project.mockupContent.style === 'minimal' && (
+             <div className="flex flex-col items-center">
+                <div 
+                  className="text-4xl md:text-6xl font-serif tracking-widest mb-4 opacity-80" 
+                  style={{ color: 'white' }}
+                >
+                  {project.mockupContent.text}
+                </div>
+                <div className="w-24 h-0.5" style={{ background: project.accentColor }} />
+             </div>
+          )}
+
+          {project.mockupContent.style === 'dashboard' && (
+            <div className="w-full h-full p-6 flex gap-4">
+              <div className="w-16 h-full bg-white/5 rounded-lg flex flex-col gap-4 p-3 items-center">
+                {[1,2,3,4].map(i => <div key={i} className="w-8 h-8 rounded-md bg-white/10" />)}
+              </div>
+              <div className="flex-1 flex flex-col gap-4">
+                <div className="w-1/3 h-8 bg-white/10 rounded-md mb-2 flex items-center px-3 text-[10px] text-white/40 font-mono">
+                  {project.mockupContent.text}
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                   {[1,2,3].map(i => <div key={i} className="h-20 bg-white/5 rounded-lg border border-white/5" />)}
+                </div>
+                <div className="flex-1 bg-white/5 rounded-lg border border-white/5 p-4 relative overflow-hidden">
+                   <div className="absolute bottom-4 left-4 right-4 h-1/2 flex items-end gap-1">
+                      {[15,35,25,45,65,40,75,55,85].map((h, i) => (
+                        <div key={i} className="flex-1 rounded-t-sm" style={{ height: `${h}%`, background: project.accentColor, opacity: 0.6 }} />
+                      ))}
+                   </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {project.mockupContent.style === 'kinetic' && (
+            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+               {/* Kinetic lines */}
+               {[...Array(8)].map((_, i) => (
+                 <div 
+                   key={i} 
+                   className="absolute w-[200%] h-px rotate-[30deg] opacity-20"
+                   style={{ 
+                     background: `linear-gradient(90deg, transparent, ${project.accentColor}, transparent)`,
+                     top: `${10 + i * 15}%`,
+                     left: '-50%'
+                   }}
+                 />
+               ))}
+               <div className="text-5xl md:text-7xl font-black italic tracking-tighter mix-blend-difference" style={{ color: project.accentColor }}>
+                 {project.mockupContent.text}
+               </div>
+            </div>
+          )}
+
+          {project.mockupContent.style === 'storytelling' && (
+            <div className="w-full h-full p-10 flex flex-col items-center justify-center text-center relative">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-black/80" />
+              <div className="relative z-10">
+                <h4 className="text-xs uppercase tracking-[0.5em] mb-6 opacity-60">Digital Narrative</h4>
+                <div className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">{project.mockupContent.text}</div>
+                {/* Visual particles */}
+                <div className="flex gap-2 justify-center">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="w-2 h-2 rounded-full" style={{ background: project.accentColor, opacity: 0.2 + (i * 0.1) }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {project.mockupContent.style === 'terminal' && (
+            <div className="w-full h-full p-6 font-mono text-[10px] md:text-sm flex flex-col">
+              <div className="flex justify-between mb-4 border-b border-white/10 pb-2">
+                 <div style={{ color: project.accentColor }}>{project.mockupContent.text}</div>
+                 <div className="flex gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_5px_red]" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                 </div>
+              </div>
+              <div className="flex-1 flex flex-col gap-2 overflow-hidden opacity-80">
+                 <div>$ initialization_sequence --verbose</div>
+                 <div>[OK] calibrating quantum telemetry...</div>
+                 <div>[OK] link established via MC_PROTOCOL</div>
+                 <div className="mt-4 flex items-center gap-2">
+                    <div className="w-20 h-4 bg-white/10 rounded" />
+                    <div className="flex-1 h-1 bg-white/10">
+                       <div className="h-full w-2/3" style={{ background: project.accentColor }} />
+                    </div>
+                 </div>
+                 <div className="grid grid-cols-2 gap-4 mt-6">
+                    <div className="p-3 border border-white/10 rounded-lg">DATA_STREAM_A: ACTIVE</div>
+                    <div className="p-3 border border-white/10 rounded-lg">REACTOR_STATUS: STABLE</div>
+                 </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   useEffect(() => {
@@ -489,67 +640,115 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
+      <section 
         id="portfolio" 
-        className="section"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        className="section py-32 bg-[#050505]"
       >
-        <div className="container">
-          <h2 className="section-title">Nuestro Portfolio</h2>
-          <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "3rem", marginTop: "-2rem" }}>
-            Explora nuestros proyectos de alto rendimiento diseñados para máxima escalabilidad y conversión.
-          </p>
+        <div className="container px-4">
+          <motion.div 
+            className="text-center mb-32"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="section-title">Nuestro Portfolio</h2>
+            <p className="max-w-2xl mx-auto text-zinc-400 text-lg sm:text-xl">
+              Proyectos reales que demuestran lo que podemos crear para tu negocio. Cada uno diseñado, desarrollado y desplegado por M&C Web Solutions.
+            </p>
+          </motion.div>
 
-          <div className="portfolio-grid grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-            {MODULAR_ENGINEERING_DEMOS.map((demo, idx) => (
-              <div key={idx} className="portfolio-card demo-isolate group" style={{ background: 'var(--bg-card)', borderRadius: '12px', border: '1px solid rgba(100, 255, 218, 0.1)', overflow: 'hidden', position: 'relative' }}>
-                <div className="browser-frame" style={{ background: '#111', padding: '10px', display: 'flex', gap: '5px', borderBottom: '1px solid #222' }}>
-                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                  <div className="dot" style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27c93f' }}></div>
-                </div>
-                <div className="portfolio-item transform-gpu relative w-full h-full min-h-[250px] overflow-hidden">
-                  {idx === 5 ? (
-                    <img 
-                      src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800" 
-                      alt="Club deportivo - Reserva de pistas de pádel" 
-                      style={{ 
-                        opacity: 1, 
-                        visibility: 'visible', 
-                        display: 'block', 
-                        position: 'absolute', 
-                        inset: 0, 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover', 
-                        zIndex: 1 
-                      }} 
-                    />
-                  ) : (
-                    <img 
-                      src={demo.image} 
-                      alt={demo.title} 
-                      className="absolute inset-0 w-full h-full object-cover z-0 opacity-100 visible grayscale group-hover:grayscale-0 transition-all duration-500" 
-                    />
-                  )}
-                  <div 
-                    className={`portfolio-overlay absolute inset-0 bg-black/${idx === 5 ? '40' : '60'} opacity-100 flex flex-col justify-center items-center p-6 text-center transform translate-y-0 group-hover:bg-black/40 transition-all`} 
-                    style={{ zIndex: 2 }}
+          <div className="flex flex-col gap-32 sm:gap-48 overflow-hidden">
+            {PREMIUM_PROJECTS.map((project, idx) => (
+              <motion.div 
+                key={project.name}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}
+              >
+                {/* LADO IMAGEN (MOCKUP) */}
+                <div className="w-full lg:w-3/5">
+                  <motion.div
+                    initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: (idx * 0.1) + 0.2 }}
                   >
-                    <h3 className="portfolio-title text-xl font-bold mb-2 uppercase">{demo.title}</h3>
-                    <span className="mono-text text-accent text-xs mb-4">{demo.subtitle}</span>
-                    <p className="text-sm text-zinc-400 mb-6 max-w-[250px]">{demo.description}</p>
-                    <a href={demo.link} target="_blank" className="btn btn-primary transform-gpu" style={{ padding: '0.6rem 1.2rem', fontSize: '0.7rem' }}>[VER_PROYECTO]</a>
-                  </div>
+                    <BrowserMockup project={project} />
+                  </motion.div>
                 </div>
-              </div>
+
+                {/* LADO TEXTO */}
+                <div className="w-full lg:w-2/5 flex flex-col items-start text-left">
+                  <motion.span 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.3 }}
+                    className="text-[#64FFDA] text-xs font-mono uppercase tracking-[0.3em] mb-4"
+                  >
+                    {project.category}
+                  </motion.span>
+                  
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.4 }}
+                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight"
+                  >
+                    {project.name}
+                  </motion.h3>
+
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.5 }}
+                    className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-xl"
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* TAGS */}
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {project.tags.map((tag, tIdx) => (
+                      <motion.span 
+                        key={tag}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: (idx * 0.1) + 0.6 + (tIdx * 0.05) }}
+                        className="px-3 py-1 rounded-full text-[10px] font-mono border border-white/10 text-zinc-300 bg-white/5"
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.8 }}
+                  >
+                    <a 
+                      href={project.url} 
+                      target="_blank" 
+                      className="group flex items-center gap-3 px-8 py-4 rounded-lg border border-[#64FFDA] text-[#64FFDA] font-mono text-sm hover:bg-[#64FFDA] hover:text-[#0a192f] transition-all duration-300"
+                    >
+                      Ver proyecto en vivo 
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                  </motion.div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* ═══ CASO DE ÉXITO — KINETIA ═══ */}
       <motion.section
