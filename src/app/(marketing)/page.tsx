@@ -29,15 +29,15 @@ function SpeedAuditWidget() {
     <div className="aether-highlight" style={{ minHeight: '300px' }}>
       <div className="flex flex-col items-center">
         {status === 'idle' && (
-           <div className="text-center">
-             <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; X-RAY_SPEED_ANALYZER</h3>
-             <button onClick={startAudit} className="terminal-execute-btn" style={{ padding: '1rem 3rem' }}>
-                EXECUTE_X-RAY_AUDIT
-             </button>
-             <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-               Hacemos que tu web cargue en la mitad de tiempo o te devolvemos el dinero.
-             </p>
-           </div>
+          <div className="text-center">
+            <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '2rem' }}>&gt; X-RAY_SPEED_ANALYZER</h3>
+            <button onClick={startAudit} className="terminal-execute-btn" style={{ padding: '1rem 3rem' }}>
+              EXECUTE_X-RAY_AUDIT
+            </button>
+            <p style={{ marginTop: '2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+              Hacemos que tu web cargue en la mitad de tiempo o te devolvemos el dinero.
+            </p>
+          </div>
         )}
 
         {status === 'scanning' && (
@@ -52,13 +52,13 @@ function SpeedAuditWidget() {
         )}
 
         {status === 'results' && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="w-full text-center"
           >
             <h3 className="mono-text" style={{ color: 'var(--accent)', marginBottom: '3rem' }}>AUDIT_REPORT_V.01: HANDSHAKE_SECURITY_READY</h3>
-            
+
             <div className="flex justify-center gap-12 flex-wrap items-center">
               <div className="result-before text-center">
                 <div className="score-circle" style={{ color: '#ff4d4d', margin: '0 auto 1rem' }}>42</div>
@@ -74,9 +74,9 @@ function SpeedAuditWidget() {
             </div>
 
             <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: 'var(--accent)', fontWeight: 600 }}>OPTIMIZATION_DELTA: +138% PERFORMANCE_GAIN</p>
-            
+
             <button onClick={() => setStatus('idle')} className="mono-text" style={{ marginTop: '2rem', background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline', opacity: 0.6 }}>
-               RESTART_AUDIT
+              RESTART_AUDIT
             </button>
           </motion.div>
         )}
@@ -185,7 +185,7 @@ export default function Home() {
     const points = document.querySelectorAll('.hexagon-point');
     const hexTitle = document.getElementById('hex-title');
     const hexDesc = document.getElementById('hex-desc');
-    
+
     if (hexTitle && hexDesc) {
       hexTitle.style.transition = 'opacity 0.3s ease';
       hexDesc.style.transition = 'opacity 0.3s ease';
@@ -195,11 +195,11 @@ export default function Home() {
       const point = e.currentTarget as HTMLElement;
       points.forEach(p => p.classList.remove('active'));
       point.classList.add('active');
-      
+
       if (hexTitle && hexDesc) {
         hexTitle.style.opacity = '0';
         hexDesc.style.opacity = '0';
-        
+
         setTimeout(() => {
           hexTitle.innerText = point.getAttribute('data-title') || '';
           hexDesc.innerText = point.getAttribute('data-desc') || '';
@@ -262,7 +262,7 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+
     try {
       await fetch("/", {
         method: "POST",
@@ -279,11 +279,11 @@ export default function Home() {
 
   return (
     <>
-      <Script 
-        src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" 
+      <Script
+        src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
         onLoad={initParticles}
       />
-      
+
       <div id="particles-js" suppressHydrationWarning></div>
 
       <header id="header">
@@ -299,7 +299,7 @@ export default function Home() {
         </div>
       </header>
 
-      <motion.section 
+      <motion.section
         className="hero"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -327,7 +327,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.div 
+      <motion.div
         className="container"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -354,8 +354,8 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <motion.section 
-        id="methodology" 
+      <motion.section
+        id="methodology"
         className="section"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -365,17 +365,17 @@ export default function Home() {
       >
         <div className="container">
           <h2 className="section-title">Nuestra Metodología de Trabajo</h2>
-          
+
           <div className="pipeline-container">
             <div className="pipeline-line">
-              <motion.div 
+              <motion.div
                 className="pipeline-fill"
                 style={{ height: lineHeight }}
               />
             </div>
 
             {/* STEP 1 */}
-            <motion.div 
+            <motion.div
               className="pipeline-step"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -391,7 +391,7 @@ export default function Home() {
             </motion.div>
 
             {/* STEP 2 */}
-            <motion.div 
+            <motion.div
               className="pipeline-step"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -407,7 +407,7 @@ export default function Home() {
             </motion.div>
 
             {/* STEP 3 */}
-            <motion.div 
+            <motion.div
               className="pipeline-step"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -425,8 +425,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
-        id="dna" 
+      <motion.section
+        id="dna"
         className="hexagon-section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -438,7 +438,7 @@ export default function Home() {
           <p style={{ textAlign: "center", color: "var(--text-muted)", marginBottom: "4rem", marginTop: "-2rem" }}>
             Nuestro logo no es solo una forma; es la estructura de nuestra ingeniería. Interactúa con sus vértices para descubrir nuestra esencia.
           </p>
-          
+
           <div className="hexagon-container">
             <div className="hexagon-bg-text">ENGINEERING</div>
             <div className="hexagon-wrapper">
@@ -466,8 +466,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
-        id="about" 
+      <motion.section
+        id="about"
         className="section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -480,15 +480,10 @@ export default function Home() {
             <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2rem" }}>
               M&C Web Solutions nace en las aulas de la <span style={{ color: "var(--accent)", fontWeight: 600 }}>Universidad Europea de Valencia</span>. Somos ingenieros especializados en diseño web que combinamos tecnología, estética y velocidad para darte la web que tu negocio merece.
             </p>
-            <div style={{ background: "rgba(100, 255, 218, 0.05)", padding: "2.5rem", borderRadius: "12px", border: "1px dashed var(--accent)" }}>
-              <p style={{ color: "var(--text-main)", lineHeight: 1.8 }}>
-                Usamos las mismas tecnologías que <strong>Netflix, Uber y Airbnb</strong>. Tu web será rápida, segura, moderna y siempre visible en Google. <br />
-                <strong style={{ color: "var(--accent)" }}>Tu web en 48 horas. Sin sorpresas de precio.</strong>
-              </p>
-            </div>
+
             <div style={{ marginTop: "4rem" }}>
               <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Tecnología que usamos</p>
-              
+
               <div className="tech-card" style={{ justifyContent: 'center', textAlign: 'center', padding: '2rem', flexDirection: 'column', gap: '1rem' }}>
                 <div className="flex gap-6 justify-center flex-wrap" style={{ fontSize: '2rem' }}>
                   <span title="Next.js">⚛️</span>
@@ -507,8 +502,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
-        id="portfolio" 
+      <motion.section
+        id="portfolio"
         className="section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -594,7 +589,7 @@ export default function Home() {
                         <>
                           <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 50, background: 'rgba(255,255,255,0.03)', borderRight: '1px solid rgba(255,255,255,0.05)' }} />
                           <div style={{ position: 'absolute', top: 20, left: 65, right: 20, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
-                            {[1,2,3].map(i => (
+                            {[1, 2, 3].map(i => (
                               <div key={i} style={{ height: 50, borderRadius: 8, background: `${project.accent}10`, border: `1px solid ${project.accent}20` }} />
                             ))}
                           </div>
@@ -863,8 +858,8 @@ export default function Home() {
                 boxShadow: '0 0 60px rgba(100, 255, 218, 0.08)',
                 transition: 'box-shadow 0.4s ease',
               }}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 80px rgba(100, 255, 218, 0.16), 0 25px 50px rgba(0,0,0,0.4)')}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 60px rgba(100, 255, 218, 0.08)')}
+                onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 80px rgba(100, 255, 218, 0.16), 0 25px 50px rgba(0,0,0,0.4)')}
+                onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 60px rgba(100, 255, 218, 0.08)')}
               >
                 {/* Browser chrome */}
                 <div style={{ background: '#111318', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
@@ -965,8 +960,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
-        id="pricing" 
+      <motion.section
+        id="pricing"
         className="section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -977,7 +972,7 @@ export default function Home() {
           <h2 className="section-title text-center mb-16">
             Transparencia total
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {/* CARD 1: WEB BÁSICA */}
             <div className="pricing-card" style={{ background: 'var(--bg-card)', padding: '2.5rem', borderRadius: '16px', border: '1px solid rgba(100, 255, 218, 0.05)', display: 'flex', flexDirection: 'column' }}>
@@ -1030,9 +1025,9 @@ export default function Home() {
           </div>
 
           <div style={{ textAlign: "center", marginTop: "4rem" }}>
-             <p className="mono-text" style={{ color: "var(--text-muted)", margin: 0, fontSize: "0.9rem", opacity: 0.8 }}>
-               + Mantenimiento opcional: 39€/mes
-             </p>
+            <p className="mono-text" style={{ color: "var(--text-muted)", margin: 0, fontSize: "0.9rem", opacity: 0.8 }}>
+              + Mantenimiento opcional: 39€/mes
+            </p>
           </div>
         </div>
       </motion.section>
@@ -1091,8 +1086,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section 
-        id="contact" 
+      <motion.section
+        id="contact"
         className="section"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
