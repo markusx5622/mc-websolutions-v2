@@ -134,13 +134,8 @@ const initialData: FormData = {
 function ProgressBar({ current, total }: { current: number; total: number }) {
   const pct = Math.round((current / total) * 100);
   return (
-    <div style={{ width: "100%", paddingBottom: 8 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, fontSize: 11, color: "#8a8f98", fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 1 }}>
-        <span>PROGRESO</span><span>{pct}%</span>
-      </div>
-      <div style={{ width: "100%", height: 3, background: "#1e2028", borderRadius: 2, overflow: "hidden" }}>
-        <div style={{ width: `${pct}%`, height: "100%", background: "linear-gradient(90deg, #00e5a0, #00c2ff)", borderRadius: 2, transition: "width 0.5s cubic-bezier(.4,0,.2,1)" }} />
-      </div>
+    <div style={{ width: "100%", height: 4, background: "#1e2028", borderRadius: 2, overflow: "hidden" }}>
+      <div style={{ width: `${pct}%`, height: "100%", background: "linear-gradient(90deg, #00e5a0, #00c2ff)", borderRadius: 2, transition: "width 0.5s cubic-bezier(.4,0,.2,1)" }} />
     </div>
   );
 }
@@ -656,7 +651,7 @@ export default function BriefingPage() {
       `}</style>
 
       {/* Sticky full-width header with high-fidelity centering */}
-      <div className="w-full px-8 md:px-16 lg:px-24 py-8 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <div className="w-full px-8 md:px-16 lg:px-24 py-12 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         {/* Left: Logo */}
         <div className="relative z-20 flex-shrink-0">
           <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
@@ -664,12 +659,21 @@ export default function BriefingPage() {
           </a>
         </div>
 
-        {/* Center: Progress & Category Pills */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center w-full max-w-sm md:max-w-md lg:max-w-lg">
-          <div className="w-full mb-2">
+        {/* Center: Progress & Category Pills (Vertical Stack) */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4 w-full max-w-sm md:max-w-md lg:max-w-lg">
+          {/* Top: Progress Text */}
+          <div className="flex justify-between w-full px-1" style={{ fontSize: 11, color: "#8a8f98", fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 1, fontWeight: 600 }}>
+            <span>PROGRESO</span>
+            <span>{Math.round((step / totalSteps) * 100)}%</span>
+          </div>
+
+          {/* Middle: Progress Bar */}
+          <div className="w-full">
             <ProgressBar current={step} total={totalSteps} />
           </div>
-          <div className="hidden md:flex gap-3 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
+
+          {/* Bottom: Category Icons */}
+          <div className="hidden md:flex gap-3 mt-2 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
             {SECTIONS.map((sec) => {
               const secSteps = STEPS.filter(st => st.section === sec.id);
               const firstIdx = STEPS.indexOf(secSteps[0]);
