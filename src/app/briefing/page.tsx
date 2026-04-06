@@ -651,12 +651,12 @@ export default function BriefingPage() {
       `}</style>
 
       {/* The Harmonious Header - Masterpiece Layout */}
-      <div className="w-full flex justify-between items-start px-8 md:px-12 lg:px-16 py-10 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.95)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="w-full flex justify-between items-start px-12 md:px-20 lg:px-32 py-10 relative z-10" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.95)", backdropFilter: "blur(14px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         
         {/* Left: Logo (Vertically aligned with Row 1) */}
         <div className="flex-shrink-0 mt-2">
-          <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
-            M&C<span style={{ color: "#00e5a0" }}>.</span> <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span>
+          <a href="/" className="text-2xl md:text-3xl font-bold tracking-tight whitespace-nowrap hover:opacity-80 transition-opacity" style={{ color: "#f0f1f3", textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
+            <span style={{ color: "#22d3ee" }}>M&C</span>. <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span>
           </a>
         </div>
 
@@ -712,7 +712,7 @@ export default function BriefingPage() {
 
         {/* Right: Step Counter (Vertically aligned with Row 1) */}
         <div className="flex-shrink-0 mt-2">
-          <span style={{ fontSize: 13, color: "#6b7080", fontFamily: "var(--font-jetbrains-mono)", background: "rgba(255,255,255,0.04)", padding: "6px 14px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.05)" }}>
+          <span className="text-sm md:text-base font-medium text-gray-400 bg-gray-800/50 px-4 py-2 rounded-full border border-gray-700/50" style={{ fontFamily: "var(--font-jetbrains-mono)" }}>
             Paso {step + 1} de {STEPS.length}
           </span>
         </div>
