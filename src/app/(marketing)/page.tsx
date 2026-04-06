@@ -85,201 +85,68 @@ function SpeedAuditWidget() {
   );
 }
 
-const PREMIUM_PROJECTS = [
+const PREMIUM_PORTFOLIO_PROJECTS = [
   {
-    url: "https://the-aetheris-experience.vercel.app/",
-    category: "AGENCIA CREATIVA",
-    name: "The Aetheris Experience",
-    description: "Portfolio inmersivo para una agencia de diseño digital. Experiencia no lineal con procesamiento de datos en tiempo real, cronología interactiva y archivo de proyectos con transiciones cinematográficas.",
-    tags: ["Next.js", "React", "Framer Motion", "Diseño Inmersivo"],
-    accentColor: "#8B5CF6",
-    mockupContent: {
-      bg: "#0a0a0a",
-      text: "ÆTHERIS",
-      style: "minimal"
-    }
+    category: 'AGENCIA CREATIVA',
+    title: 'The Aetheris Experience',
+    description: 'Portfolio inmersivo para una agencia de diseño digital. Experiencia no lineal con procesamiento de datos en tiempo real, cronología interactiva y archivo de proyectos con transiciones cinematográficas.',
+    tags: ['Next.js', 'React', 'Framer Motion', 'Diseño Inmersivo'],
+    url: 'https://the-aetheris-experience.vercel.app/',
+    accent: '#8B5CF6',
+    mockupBg: '#0a0a0a',
+    mockupTitle: 'ÆTHERIS',
+    mockupFont: 'serif',
+    mockupDecor: 'line',
   },
   {
-    url: "https://aether-insights.vercel.app/",
-    category: "DASHBOARD EMPRESARIAL",
-    name: "Aether Insights",
-    description: "Panel de inteligencia empresarial con análisis multidimensional en tiempo real. Incluye motor predictivo, mapa global, simulador financiero y más de 8 módulos de análisis interconectados.",
-    tags: ["Next.js", "TypeScript", "Data Visualization", "Analytics"],
-    accentColor: "#3B82F6",
-    mockupContent: {
-      bg: "#0f172a",
-      text: "AETHER",
-      style: "dashboard"
-    }
+    category: 'DASHBOARD EMPRESARIAL',
+    title: 'Aether Insights',
+    description: 'Panel de inteligencia empresarial con análisis multidimensional en tiempo real. Incluye motor predictivo, mapa global, simulador financiero y más de 8 módulos de análisis interconectados.',
+    tags: ['Next.js', 'TypeScript', 'Data Visualization', 'Analytics'],
+    url: 'https://aether-insights.vercel.app/',
+    accent: '#3B82F6',
+    mockupBg: '#0c1220',
+    mockupTitle: 'AETHER',
+    mockupFont: 'sans-serif',
+    mockupDecor: 'dashboard',
   },
   {
-    url: "https://kinetia-kinetic-experience.vercel.app/",
-    category: "WEB EXPERIENCE",
-    name: "Kinetia Kinetic",
-    description: "Experiencia web cinética donde el movimiento es el protagonista. Diseño basado en física, interacciones gestuales y transiciones fluidas que responden al comportamiento del usuario en tiempo real.",
-    tags: ["Next.js", "Canvas API", "Animaciones", "Diseño Cinético"],
-    accentColor: "#F59E0B",
-    mockupContent: {
-      bg: "#000000",
-      text: "KINETIA",
-      style: "kinetic"
-    }
+    category: 'WEB EXPERIENCE',
+    title: 'Kinetia Kinetic',
+    description: 'Experiencia web cinética donde el movimiento es el protagonista. Diseño basado en física, interacciones gestuales y transiciones fluidas que responden al comportamiento del usuario en tiempo real.',
+    tags: ['Next.js', 'Canvas API', 'Animaciones', 'Diseño Cinético'],
+    url: 'https://kinetia-kinetic-experience.vercel.app/',
+    accent: '#F59E0B',
+    mockupBg: '#000000',
+    mockupTitle: 'KINETIA',
+    mockupFont: 'sans-serif',
+    mockupDecor: 'diagonal',
   },
   {
-    url: "https://kinetia-origins.vercel.app/",
-    category: "STORYTELLING DIGITAL",
-    name: "Kinetia Origins",
-    description: "Narrativa digital interactiva que cuenta la historia de una marca a través de scroll-driven animations. Cada desplazamiento revela un nuevo capítulo con transiciones cinematográficas y composiciones visuales únicas.",
-    tags: ["Next.js", "Scroll Animations", "Narrativa", "Branding"],
-    accentColor: "#10B981",
-    mockupContent: {
-      bg: "#050505",
-      text: "ORIGINS",
-      style: "storytelling"
-    }
+    category: 'STORYTELLING DIGITAL',
+    title: 'Kinetia Origins',
+    description: 'Narrativa digital interactiva que cuenta la historia de una marca a través de scroll-driven animations. Cada desplazamiento revela un nuevo capítulo con transiciones cinematográficas y composiciones visuales únicas.',
+    tags: ['Next.js', 'Scroll Animations', 'Narrativa', 'Branding'],
+    url: 'https://kinetia-origins.vercel.app/',
+    accent: '#10B981',
+    mockupBg: '#0a0f0a',
+    mockupTitle: 'ORIGINS',
+    mockupFont: 'serif',
+    mockupDecor: 'particles',
   },
   {
-    url: "https://gamma-reaction.vercel.app/",
-    category: "EXPERIENCIA INTERACTIVA",
-    name: "Gamma Reaction",
-    description: "Simulador interactivo de reacciones nucleares con telemetría cuántica en tiempo real, terminal de control integrada y visualizaciones de datos en vivo. Una demostración de lo que es posible cuando el diseño web se encuentra con la ciencia.",
-    tags: ["Next.js", "Real-time Data", "WebSockets", "Terminal UI"],
-    accentColor: "#EF4444",
-    mockupContent: {
-      bg: "#020202",
-      text: "GAMMA_",
-      style: "terminal"
-    }
-  }
+    category: 'EXPERIENCIA INTERACTIVA',
+    title: 'Gamma Reaction',
+    description: 'Simulador interactivo de reacciones nucleares con telemetría cuántica en tiempo real, terminal de control integrada y visualizaciones de datos en vivo. Una demostración de lo que es posible cuando el diseño web se encuentra con la ciencia.',
+    tags: ['Next.js', 'Real-time Data', 'WebSockets', 'Terminal UI'],
+    url: 'https://gamma-reaction.vercel.app/',
+    accent: '#EF4444',
+    mockupBg: '#0a0a0a',
+    mockupTitle: 'GAMMA_',
+    mockupFont: 'monospace',
+    mockupDecor: 'terminal',
+  },
 ];
-
-function BrowserMockup({ project }: { project: typeof PREMIUM_PROJECTS[0] }) {
-  return (
-    <div className="relative group cursor-pointer w-full max-w-[650px] mx-auto" style={{ transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' }}>
-      {/* Glow Effect */}
-      <div 
-        className="absolute -inset-1 rounded-[20px] blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-        style={{ background: project.accentColor }}
-      />
-      
-      <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] transform group-hover:scale-[1.02] transition-transform duration-500">
-        {/* Browser Header */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-[#1a1a1a] border-bottom border-white/5">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-            <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-          </div>
-          <div className="flex-1 mx-4 h-6 rounded-md bg-white/5 flex items-center px-3">
-            <div className="w-full h-2 rounded-full bg-white/10 max-w-[150px]" />
-          </div>
-        </div>
-
-        {/* Content Area */}
-        <div className="relative h-[300px] sm:h-[400px] overflow-hidden flex items-center justify-center" style={{ background: project.mockupContent.bg }}>
-          {project.mockupContent.style === 'minimal' && (
-             <div className="flex flex-col items-center">
-                <div 
-                  className="text-4xl md:text-6xl font-serif tracking-widest mb-4 opacity-80" 
-                  style={{ color: 'white' }}
-                >
-                  {project.mockupContent.text}
-                </div>
-                <div className="w-24 h-0.5" style={{ background: project.accentColor }} />
-             </div>
-          )}
-
-          {project.mockupContent.style === 'dashboard' && (
-            <div className="w-full h-full p-6 flex gap-4">
-              <div className="w-16 h-full bg-white/5 rounded-lg flex flex-col gap-4 p-3 items-center">
-                {[1,2,3,4].map(i => <div key={i} className="w-8 h-8 rounded-md bg-white/10" />)}
-              </div>
-              <div className="flex-1 flex flex-col gap-4">
-                <div className="w-1/3 h-8 bg-white/10 rounded-md mb-2 flex items-center px-3 text-[10px] text-white/40 font-mono">
-                  {project.mockupContent.text}
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                   {[1,2,3].map(i => <div key={i} className="h-20 bg-white/5 rounded-lg border border-white/5" />)}
-                </div>
-                <div className="flex-1 bg-white/5 rounded-lg border border-white/5 p-4 relative overflow-hidden">
-                   <div className="absolute bottom-4 left-4 right-4 h-1/2 flex items-end gap-1">
-                      {[15,35,25,45,65,40,75,55,85].map((h, i) => (
-                        <div key={i} className="flex-1 rounded-t-sm" style={{ height: `${h}%`, background: project.accentColor, opacity: 0.6 }} />
-                      ))}
-                   </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {project.mockupContent.style === 'kinetic' && (
-            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-               {/* Kinetic lines */}
-               {[...Array(8)].map((_, i) => (
-                 <div 
-                   key={i} 
-                   className="absolute w-[200%] h-px rotate-[30deg] opacity-20"
-                   style={{ 
-                     background: `linear-gradient(90deg, transparent, ${project.accentColor}, transparent)`,
-                     top: `${10 + i * 15}%`,
-                     left: '-50%'
-                   }}
-                 />
-               ))}
-               <div className="text-5xl md:text-7xl font-black italic tracking-tighter mix-blend-difference" style={{ color: project.accentColor }}>
-                 {project.mockupContent.text}
-               </div>
-            </div>
-          )}
-
-          {project.mockupContent.style === 'storytelling' && (
-            <div className="w-full h-full p-10 flex flex-col items-center justify-center text-center relative">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-black/80" />
-              <div className="relative z-10">
-                <h4 className="text-xs uppercase tracking-[0.5em] mb-6 opacity-60">Digital Narrative</h4>
-                <div className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">{project.mockupContent.text}</div>
-                {/* Visual particles */}
-                <div className="flex gap-2 justify-center">
-                  {[...Array(5)].map((_, i) => (
-                    <div key={i} className="w-2 h-2 rounded-full" style={{ background: project.accentColor, opacity: 0.2 + (i * 0.1) }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {project.mockupContent.style === 'terminal' && (
-            <div className="w-full h-full p-6 font-mono text-[10px] md:text-sm flex flex-col">
-              <div className="flex justify-between mb-4 border-b border-white/10 pb-2">
-                 <div style={{ color: project.accentColor }}>{project.mockupContent.text}</div>
-                 <div className="flex gap-2">
-                    <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_5px_red]" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                 </div>
-              </div>
-              <div className="flex-1 flex flex-col gap-2 overflow-hidden opacity-80">
-                 <div>$ initialization_sequence --verbose</div>
-                 <div>[OK] calibrating quantum telemetry...</div>
-                 <div>[OK] link established via MC_PROTOCOL</div>
-                 <div className="mt-4 flex items-center gap-2">
-                    <div className="w-20 h-4 bg-white/10 rounded" />
-                    <div className="flex-1 h-1 bg-white/10">
-                       <div className="h-full w-2/3" style={{ background: project.accentColor }} />
-                    </div>
-                 </div>
-                 <div className="grid grid-cols-2 gap-4 mt-6">
-                    <div className="p-3 border border-white/10 rounded-lg">DATA_STREAM_A: ACTIVE</div>
-                    <div className="p-3 border border-white/10 rounded-lg">REACTOR_STATUS: STABLE</div>
-                 </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Home() {
   useEffect(() => {
@@ -640,115 +507,257 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <section 
+      <motion.section 
         id="portfolio" 
-        className="section py-32 bg-[#050505]"
+        className="section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        style={{ paddingBottom: '2rem' }}
       >
-        <div className="container px-4">
-          <motion.div 
-            className="text-center mb-32"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="section-title">Nuestro Portfolio</h2>
-            <p className="max-w-2xl mx-auto text-zinc-400 text-lg sm:text-xl">
-              Proyectos reales que demuestran lo que podemos crear para tu negocio. Cada uno diseñado, desarrollado y desplegado por M&C Web Solutions.
-            </p>
-          </motion.div>
+        <div className="container" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem' }}>
+          <h2 className="section-title">Nuestro Portfolio</h2>
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '5rem', marginTop: '-2rem', maxWidth: 650, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7 }}>
+            Proyectos reales que demuestran lo que podemos crear para tu negocio. Cada uno diseñado, desarrollado y desplegado por M&C Web Solutions.
+          </p>
 
-          <div className="flex flex-col gap-32 sm:gap-48 overflow-hidden">
-            {PREMIUM_PROJECTS.map((project, idx) => (
-              <motion.div 
-                key={project.name}
-                initial={{ opacity: 0, y: 50 }}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5rem' }}>
+            {PREMIUM_PORTFOLIO_PROJECTS.map((project, idx) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: idx * 0.1 }}
-                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20`}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, delay: idx * 0.1 }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '3rem',
+                  alignItems: 'center',
+                }}
+                className="md:!grid-cols-2"
               >
-                {/* LADO IMAGEN (MOCKUP) */}
-                <div className="w-full lg:w-3/5">
-                  <motion.div
-                    initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: (idx * 0.1) + 0.2 }}
+                {/* MOCKUP SIDE */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 + 0.15 }}
+                  style={{ order: idx % 2 === 0 ? 1 : 2 }}
+                  className={idx % 2 !== 0 ? 'md:!order-2' : 'md:!order-1'}
+                >
+                  <div
+                    style={{
+                      borderRadius: 16,
+                      overflow: 'hidden',
+                      border: `1px solid ${project.accent}25`,
+                      background: '#0a0e17',
+                      boxShadow: `0 8px 40px rgba(0,0,0,0.3)`,
+                      transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+                      cursor: 'pointer',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.boxShadow = `0 12px 50px ${project.accent}30, 0 0 30px ${project.accent}15`;
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.3)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
                   >
-                    <BrowserMockup project={project} />
-                  </motion.div>
-                </div>
+                    {/* Browser chrome */}
+                    <div style={{ background: '#111318', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f56' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#27c93f' }} />
+                      <div style={{ flex: 1, marginLeft: 12, background: 'rgba(255,255,255,0.06)', borderRadius: 6, padding: '4px 12px', fontSize: '0.6rem', color: '#6b7080', fontFamily: 'var(--font-mono)' }}>
+                        {project.url.replace('https://', '')}
+                      </div>
+                    </div>
+                    {/* Visual mockup content */}
+                    <div style={{
+                      background: project.mockupBg,
+                      height: 280,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}>
+                      {/* Decorative elements based on project type */}
+                      {project.mockupDecor === 'line' && (
+                        <div style={{ position: 'absolute', top: '50%', left: '10%', right: '10%', height: 2, background: `linear-gradient(90deg, transparent, ${project.accent}, transparent)`, transform: 'translateY(30px)' }} />
+                      )}
+                      {project.mockupDecor === 'dashboard' && (
+                        <>
+                          <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 50, background: 'rgba(255,255,255,0.03)', borderRight: '1px solid rgba(255,255,255,0.05)' }} />
+                          <div style={{ position: 'absolute', top: 20, left: 65, right: 20, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
+                            {[1,2,3].map(i => (
+                              <div key={i} style={{ height: 50, borderRadius: 8, background: `${project.accent}10`, border: `1px solid ${project.accent}20` }} />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {project.mockupDecor === 'diagonal' && (
+                        <>
+                          <div style={{ position: 'absolute', top: -40, right: -20, width: 200, height: 2, background: project.accent, transform: 'rotate(-35deg)', opacity: 0.4 }} />
+                          <div style={{ position: 'absolute', bottom: -20, left: -20, width: 150, height: 2, background: project.accent, transform: 'rotate(-35deg)', opacity: 0.3 }} />
+                          <div style={{ position: 'absolute', top: 40, right: 30, width: 100, height: 2, background: project.accent, transform: 'rotate(-35deg)', opacity: 0.2 }} />
+                        </>
+                      )}
+                      {project.mockupDecor === 'particles' && (
+                        <>
+                          {[...Array(8)].map((_, i) => (
+                            <div key={i} style={{
+                              position: 'absolute',
+                              width: 4 + Math.random() * 4,
+                              height: 4 + Math.random() * 4,
+                              borderRadius: '50%',
+                              background: project.accent,
+                              opacity: 0.15 + Math.random() * 0.25,
+                              top: `${15 + Math.random() * 70}%`,
+                              left: `${10 + Math.random() * 80}%`,
+                            }} />
+                          ))}
+                          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: `linear-gradient(180deg, transparent 0%, ${project.accent}08 50%, transparent 100%)` }} />
+                        </>
+                      )}
+                      {project.mockupDecor === 'terminal' && (
+                        <>
+                          <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#EF4444', boxShadow: '0 0 6px #EF4444' }} />
+                            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 6px #22C55E' }} />
+                            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#EAB308', boxShadow: '0 0 6px #EAB308' }} />
+                            <span style={{ fontSize: '0.55rem', color: '#6b7080', fontFamily: 'monospace', marginLeft: 8 }}>REACTOR_STATUS: ONLINE</span>
+                          </div>
+                          <div style={{ position: 'absolute', bottom: 25, left: 20, right: 20 }}>
+                            <div style={{ height: 1, background: 'rgba(239,68,68,0.2)', marginBottom: 6 }} />
+                            <div style={{ height: 1, background: 'rgba(239,68,68,0.1)' }} />
+                          </div>
+                        </>
+                      )}
+                      {/* Main title text */}
+                      <span style={{
+                        fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                        fontWeight: 800,
+                        fontFamily: project.mockupFont,
+                        color: project.accent,
+                        letterSpacing: project.mockupFont === 'monospace' ? '0.15em' : '0.05em',
+                        textShadow: `0 0 40px ${project.accent}40`,
+                        zIndex: 1,
+                      }}>
+                        {project.mockupTitle}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
 
-                {/* LADO TEXTO */}
-                <div className="w-full lg:w-2/5 flex flex-col items-start text-left">
-                  <motion.span 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.3 }}
-                    className="text-[#64FFDA] text-xs font-mono uppercase tracking-[0.3em] mb-4"
-                  >
+                {/* TEXT SIDE */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? 30 : -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 + 0.05 }}
+                  style={{
+                    order: idx % 2 === 0 ? 2 : 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                  }}
+                  className={idx % 2 !== 0 ? 'md:!order-1' : 'md:!order-2'}
+                >
+                  <span style={{
+                    fontSize: '0.7rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.2em',
+                    color: '#64FFDA',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 600,
+                  }}>
                     {project.category}
-                  </motion.span>
-                  
-                  <motion.h3 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.4 }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight"
-                  >
-                    {project.name}
-                  </motion.h3>
-
-                  <motion.p 
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.5 }}
-                    className="text-zinc-400 text-lg leading-relaxed mb-8 max-w-xl"
-                  >
+                  </span>
+                  <h3 style={{
+                    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                    fontWeight: 800,
+                    color: 'var(--text-main)',
+                    margin: 0,
+                    lineHeight: 1.2,
+                  }}>
+                    {project.title}
+                  </h3>
+                  <p style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}>
                     {project.description}
-                  </motion.p>
-
-                  {/* TAGS */}
-                  <div className="flex flex-wrap gap-2 mb-10">
-                    {project.tags.map((tag, tIdx) => (
-                      <motion.span 
+                  </p>
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.25rem' }}>
+                    {project.tags.map((tag, tagIdx) => (
+                      <motion.span
                         key={tag}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: (idx * 0.1) + 0.6 + (tIdx * 0.05) }}
-                        className="px-3 py-1 rounded-full text-[10px] font-mono border border-white/10 text-zinc-300 bg-white/5"
+                        transition={{ delay: idx * 0.1 + 0.3 + tagIdx * 0.05 }}
+                        style={{
+                          fontSize: '0.7rem',
+                          padding: '4px 12px',
+                          borderRadius: 50,
+                          border: '1px solid rgba(100, 255, 218, 0.15)',
+                          color: 'var(--text-muted)',
+                          fontFamily: 'var(--font-mono)',
+                          background: 'rgba(100, 255, 218, 0.03)',
+                          letterSpacing: '0.5px',
+                        }}
                       >
                         {tag}
                       </motion.span>
                     ))}
                   </div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: (idx * 0.1) + 0.8 }}
-                  >
-                    <a 
-                      href={project.url} 
-                      target="_blank" 
-                      className="group flex items-center gap-3 px-8 py-4 rounded-lg border border-[#64FFDA] text-[#64FFDA] font-mono text-sm hover:bg-[#64FFDA] hover:text-[#0a192f] transition-all duration-300"
+                  {/* CTA */}
+                  <div style={{ marginTop: '0.75rem' }}>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-block',
+                        padding: '0.75rem 1.75rem',
+                        border: '1px solid #64FFDA',
+                        borderRadius: 8,
+                        color: '#64FFDA',
+                        fontSize: '0.85rem',
+                        fontWeight: 600,
+                        fontFamily: 'var(--font-mono)',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease',
+                        background: 'transparent',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = '#64FFDA';
+                        e.currentTarget.style.color = '#0A192F';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(100, 255, 218, 0.3)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = '#64FFDA';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     >
-                      Ver proyecto en vivo 
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      Ver proyecto en vivo →
                     </a>
-                  </motion.div>
-                </div>
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ═══ CASO DE ÉXITO — KINETIA ═══ */}
       <motion.section
