@@ -650,8 +650,8 @@ export default function BriefingPage() {
         ::selection { background: rgba(0,229,160,0.25); }
       `}</style>
 
-      {/* Sticky full-width header with precision vertical spacing */}
-      <div className="w-full px-8 md:px-16 lg:px-24 py-24 flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      {/* Sticky full-width header with explicit vertical margins */}
+      <div className="w-full px-8 md:px-16 lg:px-24 py-16 min-h-[160px] flex items-center justify-between relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         {/* Left: Logo */}
         <div className="relative z-20 flex-shrink-0">
           <a href="/" style={{ fontSize: 16, fontWeight: 700, color: "#f0f1f3", letterSpacing: 0.5, textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
@@ -659,22 +659,20 @@ export default function BriefingPage() {
           </a>
         </div>
 
-        {/* Center: Progress & Category Pills (Precision Vertical Stack) */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-3 w-full max-w-2xl">
-          {/* Top: Un-interrupted Progress Line */}
-          <div className="w-full">
-            <ProgressBar current={step} total={totalSteps} />
+        {/* Center: Progress & Category Pills (Forced Vertical Flow) */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center w-full max-w-2xl px-4">
+          {/* Element 1: Progress Text (Top) */}
+          <span className="text-xs text-gray-400 mb-4" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 2, fontWeight: 600 }}>
+            PROGRESO {Math.round((step / totalSteps) * 100)}%
+          </span>
+
+          {/* Element 2: Progress Line (Middle) */}
+          <div className="w-full h-1 bg-transparent">
+             <ProgressBar current={step} total={totalSteps} />
           </div>
 
-          {/* Middle: Progress Text (Comfortably below the line) */}
-          <div className="flex flex-col items-center mt-6">
-            <span className="text-xs text-gray-400 mt-3" style={{ fontFamily: "var(--font-jetbrains-mono)", letterSpacing: 2, fontWeight: 600 }}>
-              PROGRESO {Math.round((step / totalSteps) * 100)}%
-            </span>
-          </div>
-
-          {/* Bottom: Category Pills (Moved down significantly) */}
-          <div className="hidden md:flex gap-4 mt-12 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
+          {/* Element 3: Category Pills (Bottom - Moved down significantly) */}
+          <div className="hidden md:flex gap-4 mt-10 overflow-x-auto no-scrollbar scroll-smooth" style={{ scrollbarWidth: "none" }}>
             {SECTIONS.map((sec) => {
               const secSteps = STEPS.filter(st => st.section === sec.id);
               const firstIdx = STEPS.indexOf(secSteps[0]);
