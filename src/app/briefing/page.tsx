@@ -697,8 +697,8 @@ export default function BriefingPage() {
         
         {/* Left: Logo (Vertically aligned with Row 1) */}
         <div className="flex-shrink-0 mt-2">
-          <a href="/" className="text-2xl md:text-3xl font-bold tracking-tight whitespace-nowrap hover:opacity-80 transition-opacity" style={{ color: "#f0f1f3", textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
-            <span style={{ color: "#22d3ee" }}>M&C</span>. <span style={{ color: "#8a8f98", fontWeight: 500 }}>Briefing</span>
+          <a href="/" className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.5)] hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.9)] hover:scale-105 transition-all duration-300 cursor-pointer select-none" style={{ textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
+            M&C. Briefing
           </a>
         </div>
 
