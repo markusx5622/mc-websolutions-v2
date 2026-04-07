@@ -242,6 +242,14 @@ header {
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+}
+
 /* Selection Color */
 ::selection {
     background: var(--accent);
@@ -1047,13 +1055,17 @@ footer {
 
 @media (max-width: 768px) {
     .hero-main-flex {
-        flex-direction: column-reverse !important;
+        flex-direction: column !important; /* Logo on top */
         justify-content: center !important;
-        gap: 40px;
+        gap: 30px;
+        text-align: center;
     }
     .hero-dna-logo {
-        width: 250px !important;
-        height: 250px !important;
+        width: 180px !important;
+        height: 180px !important;
+    }
+    .hero-text-block {
+        text-align: center !important;
     }
 }
 

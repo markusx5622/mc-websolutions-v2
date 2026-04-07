@@ -283,7 +283,7 @@ export default function Home() {
         <div className="container" style={{ maxWidth: '1350px', padding: '0 5%' }}>
           <div className="hero-content active">
             <div className="hero-main-flex">
-              <div className="hero-text-block" style={{ textAlign: 'left', flex: '1' }}>
+              <div className="hero-text-block">
                 <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px', fontSize: '0.8rem' }}>M&C WEB SOLUTIONS</span>
                 <h1 className="hero-title" style={{ margin: '0 0 1.5rem 0', lineHeight: '1.1' }}>
                   <span className="typewriter">Tu Idea</span> + <br />

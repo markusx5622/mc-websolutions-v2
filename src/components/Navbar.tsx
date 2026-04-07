@@ -120,7 +120,12 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-[#112240] shadow-2xl z-[1000] p-8 md:hidden flex flex-col"
+              style={{ 
+                backgroundColor: '#112240', 
+                zIndex: 1001,
+                boxShadow: '-10px 0 30px rgba(0,0,0,0.5)'
+              }}
+              className="fixed top-0 right-0 h-full w-[280px] p-8 md:hidden flex flex-col"
             >
               <div className="flex justify-end mb-12">
                 <button onClick={() => setIsMenuOpen(false)} className="text-accent">
