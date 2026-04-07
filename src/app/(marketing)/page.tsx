@@ -1043,13 +1043,25 @@ export default function Home() {
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ 
+                  y: -5, 
+                  borderColor: 'var(--accent)', 
+                  boxShadow: '0 12px 30px -10px rgba(100, 255, 218, 0.12)' 
+                }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ 
+                  delay: i * 0.1,
+                  y: { duration: 0.2 },
+                  borderColor: { duration: 0.2 },
+                  boxShadow: { duration: 0.2 }
+                }}
                 style={{
                   background: 'var(--bg-light)',
                   borderRadius: '12px',
                   padding: '1.5rem 2rem',
-                  border: '1px solid rgba(100, 255, 218, 0.08)'
+                  border: '1px solid rgba(100, 255, 218, 0.08)',
+                  cursor: 'default',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--accent)', marginBottom: '0.5rem' }}>❓ {item.q}</h3>
