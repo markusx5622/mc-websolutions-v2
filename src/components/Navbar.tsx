@@ -49,7 +49,7 @@ const Navbar = () => {
             {[
               { name: 'ADN', hash: '/#dna' },
               { name: 'MÉTODO', hash: '/#methodology' },
-              { name: 'DEMOS', hash: '/#demos' },
+              { name: 'DEMOS', hash: '/#portfolio' },
               { name: 'PRECIOS', hash: '/#pricing' },
               { name: 'CONTACTO', hash: '/#contact' }
             ].map((item) => (
