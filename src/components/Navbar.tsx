@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -18,53 +17,71 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-[1000] glassmorphism transition-all duration-300 px-6 ${
-        scrolled ? 'py-3 shadow-[0_10px_30px_-10px_rgba(2,12,27,0.7)]' : 'py-5 shadow-none'
-      } flex items-center justify-between`}
+    <header 
+      id="header" 
+      style={{
+        padding: scrolled ? "1rem 0" : "1.5rem 0",
+        boxShadow: scrolled ? "0 10px 30px -10px rgba(2, 12, 27, 0.7)" : "none",
+        transition: "all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)"
+      }}
     >
-      <div className="flex items-center gap-2">
-        <Link 
-          href="/" 
-          onClick={(e) => {
-            if (pathname === '/') {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}
-          className="text-xl font-black tracking-widest text-white uppercase cursor-pointer hover:opacity-90 transition-opacity no-underline"
-        >
-          M&C<span className="text-cyan-400">.</span> <span className="text-zinc-500 font-medium tracking-tight">Web Solutions</span>
-        </Link>
-      </div>
-      
-      <div className="hidden md:flex items-center gap-8">
-        {[
-          { name: 'ADN', hash: '#dna' },
-          { name: 'Método', hash: '#methodology' },
-          { name: 'Demos', hash: '#demos' },
-          { name: 'Precios', hash: '#pricing' },
-          { name: 'Contacto', hash: '#contact' }
-        ].map((item) => (
+      <div className="container header-content">
+        <div className="flex items-center gap-12">
           <Link 
-            key={item.hash}
-            href={item.hash} 
-            className="text-[10px] font-black uppercase tracking-widest text-zinc-500 hover:text-cyan-400 transition-all"
+            href="/" 
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline"
           >
-            {item.name}
+            <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" />
+            <div className="brand-info">
+              <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
+              <span className="brand-tagline">Web Solutions</span>
+            </div>
           </Link>
-        ))}
-      </div>
 
-      <div className="flex items-center gap-4">
-        <Link href="/briefing" className="px-6 py-2 text-[10px] items-center gap-2 font-black uppercase tracking-[0.2em] rounded-full bg-cyan-500 text-background hover:shadow-[0_0_20px_rgba(100,255,218,0.4)] transition-all">
-          Iniciar proyecto
+          {/* New navigation sections - styled to match brand-tagline/btn */}
+          <nav className="hidden md:flex items-center gap-8">
+            {[
+              { name: 'ADN', hash: '/#dna' },
+              { name: 'MÉTODO', hash: '/#methodology' },
+              { name: 'DEMOS', hash: '/#demos' },
+              { name: 'PRECIOS', hash: '/#pricing' },
+              { name: 'CONTACTO', hash: '/#contact' }
+            ].map((item) => (
+              <Link 
+                key={item.hash}
+                href={item.hash} 
+                className="mono-text"
+                style={{ 
+                  fontSize: '0.75rem', 
+                  letterSpacing: '2px', 
+                  fontWeight: 500,
+                  opacity: 0.8,
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '0.8')}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <Link 
+          href="/briefing" 
+          className="btn btn-primary" 
+          style={{ padding: "0.5rem 1rem", fontSize: "0.8rem" }}
+        >
+          Empieza ya
         </Link>
       </div>
-    </motion.nav>
+    </header>
   );
 };
 
