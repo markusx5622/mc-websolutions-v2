@@ -284,7 +284,7 @@ export default function Home() {
           <div className="hero-content active">
             <div className="hero-main-flex">
               <div className="hero-text-block" style={{ textAlign: 'left', flex: '1' }}>
-                <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px' }}>M&C WEB SOLUTIONS</span>
+                <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px', fontSize: '0.8rem' }}>M&C WEB SOLUTIONS</span>
                 <h1 className="hero-title" style={{ margin: '0 0 1.5rem 0', lineHeight: '1.1' }}>
                   <span className="typewriter">Tu Idea</span> + <br />
                   Nuestra IA = <br />
@@ -1000,7 +1000,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ 
                   y: -10,
-                  scale: pack.recommended ? 1.07 : 1.03,
+                  scale: (pack.recommended && typeof window !== 'undefined' && window.innerWidth > 768) ? 1.07 : 1.03,
                   borderColor: 'var(--accent)',
                   boxShadow: '0 20px 40px -15px rgba(100, 255, 218, 0.15)'
                 }}
@@ -1008,13 +1008,12 @@ export default function Home() {
                 transition={{ duration: 0.4 }}
                 style={{
                   background: pack.recommended ? 'rgba(100, 255, 218, 0.03)' : 'var(--bg-card)',
-                  padding: '2.5rem',
+                  padding: '2rem',
                   borderRadius: '16px',
                   border: pack.recommended ? '2px solid var(--accent)' : '1px solid rgba(100, 255, 218, 0.05)',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
-                  transform: pack.recommended ? 'scale(1.05)' : 'none',
                   zIndex: pack.recommended ? 10 : 1,
                   cursor: 'default'
                 }}
@@ -1104,7 +1103,7 @@ export default function Home() {
                 style={{
                   background: 'var(--bg-light)',
                   borderRadius: '12px',
-                  padding: '1.5rem 2rem',
+                  padding: '1.25rem 1.5rem',
                   border: '1px solid rgba(100, 255, 218, 0.08)',
                   cursor: 'default',
                   transition: 'all 0.3s ease'
