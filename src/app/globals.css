@@ -1061,12 +1061,14 @@ footer {
         text-align: center;
     }
     .hero-dna-logo {
-        width: 80px !important;
-        height: 80px !important;
+        width: 180px !important;
+        height: 180px !important;
     }
     .hero-text-block {
         text-align: center !important;
     }
+    .hexagon-wrapper { width: 260px; }
+    .hexagon-container { min-height: 450px; }
 }
 
 /* Terminal Form Styles */
@@ -1482,6 +1484,26 @@ select.terminal-input option {
         margin-bottom: 20px;
         transform: rotate(0);
     }
+    
+    /* Interactive ADN Hexagon Mobile */
+    .hexagon-container {
+        min-height: 450px;
+    }
+    .hexagon-wrapper {
+        width: 260px;
+        height: 260px;
+    }
+    .hexagon-info-title {
+        font-size: 1.2rem;
+    }
+    .hexagon-info-desc {
+        font-size: 0.8rem;
+    }
+    .point-label {
+        font-size: 0.65rem;
+    }
+    .l2, .l3 { left: 102%; }
+    .l5, .l6 { right: 102%; }
 }
 
 /* Success Progress Bar Styling */

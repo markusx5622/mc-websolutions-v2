@@ -295,12 +295,7 @@ export default function Home() {
                 </p>
                 <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
               </div>
-              <img 
-                src="/logo.svg" 
-                alt="DNA Hexagon" 
-                id="mobile-dna-logo"
-                style={{ width: '80px !important', height: '80px !important', maxWidth: '80px !important' } as any} 
-              />
+              <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
           </div>
         </div>
@@ -605,7 +600,6 @@ export default function Home() {
                               position: 'absolute',
                               width: 4 + Math.random() * 4,
                               height: 4 + Math.random() * 4,
-                              borderRadius: '50%',
                               background: project.accent,
                               opacity: 0.15 + Math.random() * 0.25,
                               top: `${15 + Math.random() * 70}%`,
