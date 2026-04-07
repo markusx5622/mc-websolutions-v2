@@ -697,15 +697,15 @@ export default function BriefingPage() {
       <div className="w-full flex justify-between items-start px-12 md:px-20 lg:px-32 py-10 relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         
         {/* Left: Logo (Original Style) */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 mt-3">
           <Link 
             href="/" 
             className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline"
           >
-            <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" style={{ height: '50px' }} />
+            <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" style={{ height: '65px' }} />
             <div className="brand-info">
-              <span className="brand-name" style={{ fontSize: '1.5rem' }}>M&C<span style={{ color: "var(--accent)" }}>.</span></span>
-              <span className="brand-tagline" style={{ fontSize: '0.65rem' }}>Briefing</span>
+              <span className="brand-name" style={{ fontSize: '1.8rem' }}>M&C<span style={{ color: "var(--accent)" }}>.</span></span>
+              <span className="brand-tagline" style={{ fontSize: '0.75rem' }}>Briefing</span>
             </div>
           </Link>
         </div>
