@@ -1487,31 +1487,31 @@ select.terminal-input option {
     
     /* Interactive ADN Hexagon Mobile */
     .hexagon-container {
-        min-height: 380px;
+        min-height: 360px;
     }
     .hexagon-wrapper {
-        width: 215px;
-        height: 215px;
+        width: 207px;
+        height: 207px;
     }
     .hexagon-content {
-        width: 135px;
+        width: 130px;
     }
     .hexagon-info-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
         letter-spacing: 1px;
     }
     .hexagon-info-desc {
-        font-size: 0.65rem;
-        line-height: 1.25;
+        font-size: 0.6rem;
+        line-height: 1.2;
     }
     .point-label {
-        font-size: 0.55rem;
+        font-size: 0.52rem;
     }
-    .l1 { top: -25px; }
-    .l4 { bottom: -25px; }
-    .l2, .l3 { left: 108%; }
-    .l5, .l6 { right: 108%; }
+    .l1 { top: -22px; }
+    .l4 { bottom: -22px; }
+    .l2, .l3 { left: 110%; }
+    .l5, .l6 { right: 110%; }
 }
 
 /* Success Progress Bar Styling */
