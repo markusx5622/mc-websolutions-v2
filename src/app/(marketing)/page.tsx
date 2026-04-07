@@ -308,7 +308,24 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="stats-bar">
+        <motion.div 
+          className="stats-bar"
+          whileHover={{ 
+            y: -5, 
+            borderColor: 'var(--accent)', 
+            boxShadow: '0 10px 30px -10px rgba(100, 255, 218, 0.15)' 
+          }}
+          transition={{ 
+            duration: 0.3,
+            borderColor: { duration: 0.2 },
+            boxShadow: { duration: 0.2 }
+          }}
+          style={{
+            border: '1px solid rgba(100, 255, 218, 0.05)',
+            borderRadius: '20px',
+            transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
+          }}
+        >
           <div style={{ textAlign: "center" }}>
             <span className="stat-number">48h</span>
             <span className="stat-label">Tiempo Medio de Entrega</span>
@@ -325,7 +342,7 @@ export default function Home() {
             <span className="stat-number">IA+</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.section
