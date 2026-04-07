@@ -47,10 +47,11 @@ const Navbar = () => {
           {/* New navigation sections - styled to match brand-tagline/btn */}
           <nav className="hidden md:flex items-center gap-8">
             {[
-              { name: 'ADN', hash: '/#dna' },
               { name: 'MÉTODO', hash: '/#methodology' },
+              { name: 'ADN', hash: '/#dna' },
               { name: 'DEMOS', hash: '/#portfolio' },
               { name: 'PRECIOS', hash: '/#pricing' },
+              { name: 'FAQ', hash: '/#faq' },
               { name: 'CONTACTO', hash: '/#contact' }
             ].map((item) => (
               <Link 
