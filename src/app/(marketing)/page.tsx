@@ -295,7 +295,12 @@ export default function Home() {
                 </p>
                 <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
               </div>
-              <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
+              <img 
+                src="/logo.svg" 
+                alt="DNA Hexagon" 
+                id="mobile-dna-logo"
+                style={{ width: '80px !important', height: '80px !important', maxWidth: '80px !important' } as any} 
+              />
             </div>
           </div>
         </div>
