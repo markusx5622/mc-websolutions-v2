@@ -696,10 +696,17 @@ export default function BriefingPage() {
       {/* The Harmonious Header - Masterpiece Layout */}
       <div className="w-full flex justify-between items-start px-12 md:px-20 lg:px-32 py-10 relative z-20" style={{ position: "sticky", top: 0, background: "rgba(10,25,47,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         
-        {/* Left: Logo (Vertically aligned with Row 1) */}
-        <div className="flex-shrink-0 mt-2">
-          <Link href="/" className="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(34,211,238,0.5)] hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.9)] hover:scale-105 transition-all duration-300 cursor-pointer select-none no-underline hover:opacity-90" style={{ textDecoration: "none", fontFamily: "var(--font-space-grotesk)" }}>
-            M&C. Briefing
+        {/* Left: Logo (Original Style) */}
+        <div className="flex-shrink-0">
+          <Link 
+            href="/" 
+            className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline"
+          >
+            <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" style={{ height: '50px' }} />
+            <div className="brand-info">
+              <span className="brand-name" style={{ fontSize: '1.5rem' }}>M&C<span style={{ color: "var(--accent)" }}>.</span></span>
+              <span className="brand-tagline" style={{ fontSize: '0.65rem' }}>Briefing</span>
+            </div>
           </Link>
         </div>
 
