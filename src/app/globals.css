@@ -1061,8 +1061,7 @@ footer {
         text-align: center;
     }
     .hero-dna-logo {
-        width: 180px !important;
-        height: 180px !important;
+        display: none !important;
     }
     .hero-text-block {
         text-align: center !important;
