@@ -10,44 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacidadPage() {
   return (
     <div style={{ maxWidth: 800, margin: "0 auto", padding: "3rem 1.5rem 6rem" }}>
-      {/* Mini nav */}
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "3rem",
-          paddingBottom: "1.5rem",
-          borderBottom: "1px solid rgba(100,255,218,0.08)",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            fontSize: "1.25rem",
-            fontWeight: 700,
-            color: "#f0f1f3",
-            textDecoration: "none",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          <span style={{ color: "#64FFDA" }}>M&C</span>
-          <span style={{ color: "#8a8f98", fontWeight: 400 }}> Web Solutions</span>
-        </Link>
-        <Link
-          href="/"
-          style={{
-            fontSize: "0.875rem",
-            color: "#64FFDA",
-            textDecoration: "none",
-            border: "1px solid rgba(100,255,218,0.25)",
-            padding: "0.45rem 1rem",
-            borderRadius: "8px",
-          }}
-        >
-          ← Volver
-        </Link>
-      </nav>
+      {/* Content */}
 
       {/* Content */}
       <h1
@@ -192,16 +155,6 @@ export default function PrivacidadPage() {
         </p>
       </Section>
 
-      <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.06)", textAlign: "center" }}>
-        <Link href="/" style={{ color: "#64FFDA", fontSize: "0.875rem", textDecoration: "none" }}>
-          ← Volver a la página principal
-        </Link>
-        <p style={{ marginTop: "1rem", fontSize: "0.75rem", color: "#4a4d57" }}>
-          · <Link href="/aviso-legal" style={{ color: "#4a4d57", textDecoration: "none" }}>Aviso Legal</Link>
-          {" "}·{" "}
-          <Link href="/cookies" style={{ color: "#4a4d57", textDecoration: "none" }}>Cookies</Link> ·
-        </p>
-      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function MarketingLayout({
   children,
@@ -9,7 +10,10 @@ export default function MarketingLayout({
     <>
       <div className="grid-background" aria-hidden="true" />
       <Navbar />
-      {children}
+      <main className="relative z-10">
+        {children}
+      </main>
+      <Footer />
     </>
   );
 }

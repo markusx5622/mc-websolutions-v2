@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -22,7 +24,11 @@ export default function CookiesLayout({ children }: { children: React.ReactNode 
         color: "#c5c8ce",
       }}
     >
-      {children}
+      <Navbar />
+      <main style={{ paddingTop: "100px", position: "relative", zIndex: 10 }}>
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

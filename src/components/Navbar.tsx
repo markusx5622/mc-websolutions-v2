@@ -1,19 +1,30 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.nav 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glassmorphism px-6 py-4 flex items-center justify-between"
+      className={`fixed top-0 left-0 right-0 z-[1000] glassmorphism transition-all duration-300 px-6 ${
+        scrolled ? 'py-3 shadow-[0_10px_30px_-10px_rgba(2,12,27,0.7)]' : 'py-5 shadow-none'
+      } flex items-center justify-between`}
     >
       <div className="flex items-center gap-2">
         <Link 

@@ -151,19 +151,7 @@ const PREMIUM_PORTFOLIO_PROJECTS = [
 export default function Home() {
   useEffect(() => {
     // Header Scroll Effect
-    const handleScroll = () => {
-      const header = document.getElementById("header");
-      if (header) {
-        if (window.scrollY > 50) {
-          header.style.boxShadow = "0 10px 30px -10px rgba(2, 12, 27, 0.7)";
-          header.style.padding = "1rem 0";
-        } else {
-          header.style.boxShadow = "none";
-          header.style.padding = "1.5rem 0";
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+    // Typewriter Effect (Consolidated to prevent text duplication)
 
     // Typewriter Effect (Consolidated to prevent text duplication)
     const textStr = "Tu Idea";
@@ -219,7 +207,6 @@ export default function Home() {
     }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       points.forEach(point => point.removeEventListener('mouseenter', handleMouseEnter));
     };
   }, []);
@@ -285,26 +272,6 @@ export default function Home() {
       />
 
       <div id="particles-js" suppressHydrationWarning></div>
-
-      <header id="header">
-        <div className="container header-content">
-          <Link 
-            href="/" 
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline"
-          >
-            <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" />
-            <div className="brand-info">
-              <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
-              <span className="brand-tagline">Web Solutions</span>
-            </div>
-          </Link>
-          <Link href="/briefing" className="btn btn-primary" style={{ padding: "0.5rem 1rem", fontSize: "0.8rem" }}>Empieza ya</Link>
-        </div>
-      </header>
 
       <motion.section
         className="hero"
@@ -1110,27 +1077,6 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
-
-      <footer style={{ borderTop: "1px solid rgba(100, 255, 218, 0.05)", paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <img src="/logo.svg" alt="M&C Logo" className="footer-logo" style={{ height: '160px', width: 'auto', marginBottom: '1.5rem' }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem', background: 'rgba(100, 255, 218, 0.05)', padding: '6px 12px', borderRadius: '50px', border: '1px solid rgba(100, 255, 218, 0.1)' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#64FFDA', boxShadow: '0 0 10px #64FFDA', animation: 'pulse 2s infinite' }}></span>
-            <span className="mono-text" style={{ fontSize: '0.65rem', color: 'var(--accent)', letterSpacing: '1px' }}>Disponibles para tu proyecto</span>
-          </div>
-          <p className="mono-text" style={{ fontSize: "0.8rem", opacity: 0.7 }}>
-            Diseño web profesional para tu negocio. <br />
-            Diseñado &amp; Construido por <strong>M&amp;C Web Solutions</strong> © 2026
-          </p>
-          <p style={{ marginTop: "1rem", fontSize: "0.75rem", color: "#8a8f98" }}>
-            <a href="/aviso-legal" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Aviso Legal</a>
-            {" · "}
-            <a href="/privacidad" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Privacidad</a>
-            {" · "}
-            <a href="/cookies" style={{ color: "#8a8f98", textDecoration: "none" }} onMouseEnter={e => (e.currentTarget.style.color = "#c5c8ce")} onMouseLeave={e => (e.currentTarget.style.color = "#8a8f98")}>Cookies</a>
-          </p>
-        </div>
-      </footer>
     </>
   );
 }
