@@ -469,9 +469,9 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto", marginBottom: '4rem' }}>
+          <div className="text-center max-w-2xl mx-auto mb-20">
             <h2 className="section-title">Ingeniería con rostro humano</h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--text-muted)" }}>
+            <p className="text-muted text-lg leading-relaxed">
               Detrás de cada línea de código en <span className="text-accent">M&C Web Solutions</span> estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
             </p>
           </div>
@@ -479,11 +479,11 @@ export default function Home() {
           <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto">
             {/* MARC */}
             <motion.div 
-              className="tech-card"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="tech-card !flex-col !items-center w-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ padding: '2rem', textAlign: 'center' }}
+              style={{ padding: '3rem', textAlign: 'center' }}
             >
               <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -498,11 +498,11 @@ export default function Home() {
 
             {/* JUAN */}
             <motion.div 
-              className="tech-card"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="tech-card !flex-col !items-center w-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ padding: '2rem', textAlign: 'center' }}
+              style={{ padding: '3rem', textAlign: 'center' }}
             >
               <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
                 <div className="absolute inset-0 flex items-center justify-center">
