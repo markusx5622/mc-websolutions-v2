@@ -471,7 +471,7 @@ export default function Home() {
         <div className="w-full max-w-4xl px-6 flex flex-col items-center">
           <div className="w-full mb-24 flex flex-col items-center text-center">
             <h2 className="section-title !mb-10 text-center">Ingeniería con rostro humano</h2>
-            <p className="text-text-muted text-xl leading-relaxed max-w-2xl text-center font-light">
+            <p className="text-xl leading-relaxed max-w-2xl text-center font-light" style={{ color: 'var(--text-muted)' }}>
               Detrás de cada línea de código en M&C Web Solutions estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
             </p>
           </div>
@@ -500,7 +500,7 @@ export default function Home() {
               </div>
               <h3 className="text-accent text-3xl font-bold mb-3 text-center uppercase tracking-tighter">Marc</h3>
               <p className="mono-text text-accent/60 text-xs letter-spacing-[4px] mb-8 font-semibold text-center uppercase">PRODUCCIÓN & CÓDIGO</p>
-              <p className="text-text-muted text-center text-lg leading-relaxed max-w-md font-light">
+              <p className="text-center text-lg leading-relaxed max-w-md font-light" style={{ color: 'var(--text-muted)' }}>
                 Responsable de que tu web sea una obra de arte técnica. Si es rápido, robusto y moderno, Marc lo ha construido desde cero.
               </p>
             </motion.div>
@@ -527,7 +527,7 @@ export default function Home() {
               </div>
               <h3 className="text-accent text-3xl font-bold mb-3 text-center uppercase tracking-tighter">Juan</h3>
               <p className="mono-text text-accent/60 text-xs letter-spacing-[4px] mb-8 font-semibold text-center uppercase">MARKETING & LEGAL</p>
-              <p className="text-text-muted text-center text-lg leading-relaxed max-w-md font-light">
+              <p className="text-center text-lg leading-relaxed max-w-md font-light" style={{ color: 'var(--text-muted)' }}>
                 Garante de que tu negocio cumpla todas las normativas y de que tu web esté estratégicamente orientada a vender más.
               </p>
             </motion.div>
