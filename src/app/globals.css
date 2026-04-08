@@ -1527,10 +1527,11 @@ select.terminal-input option {
     .point-label {
         font-size: 0.5rem;
     }
-    .l1 { top: -20px; }
-    .l4 { bottom: -20px; }
+    .l1 { top: -26px; }
+    .l4 { bottom: -26px; }
     .l2, .l3 { left: 112%; }
-    .l5, .l6 { right: 112%; }
+    .l5 { right: 112%; }
+    .l6 { right: 106%; }
 }
 
 /* Success Progress Bar Styling */
