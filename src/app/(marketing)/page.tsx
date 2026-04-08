@@ -471,7 +471,7 @@ export default function Home() {
         <div className="w-full max-w-4xl px-6 flex flex-col items-center">
           <div className="w-full mb-24 flex flex-col items-center text-center">
             <h2 className="section-title !mb-10 text-center">Ingeniería con rostro humano</h2>
-            <p className="text-xl leading-relaxed max-w-2xl text-center font-light" style={{ color: 'var(--text-muted)' }}>
+            <p className="text-lg leading-relaxed max-w-2xl text-center font-light" style={{ color: 'var(--text-muted)' }}>
               Detrás de cada línea de código en M&C Web Solutions estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
             </p>
           </div>
