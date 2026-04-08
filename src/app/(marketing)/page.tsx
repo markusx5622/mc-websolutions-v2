@@ -460,63 +460,67 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section
-        id="about"
-        className="section"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+      <motion.section 
+        id="nosotros" 
+        className="w-full py-40 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="section-title">Ingeniería con rostro humano</h2>
-            <p className="text-muted text-lg leading-relaxed">
-              Detrás de cada línea de código en <span className="text-accent">M&C Web Solutions</span> estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
+        <div className="w-full max-w-4xl px-6 flex flex-col items-center">
+          <div className="text-center w-full mb-24">
+            <h2 className="section-title !mb-10 text-center">Ingeniería con rostro humano</h2>
+            <p className="text-muted text-xl leading-relaxed max-w-2xl mx-auto text-center font-light">
+              Detrás de cada línea de código en <span className="text-accent font-medium">M&C Web Solutions</span> estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto">
+          <div className="flex flex-col items-center gap-20 w-full">
             {/* MARC */}
             <motion.div 
-              className="tech-card !flex-col !items-center w-full"
-              initial={{ opacity: 0, y: 30 }}
+              className="tech-card !flex-col !items-center w-full max-w-2xl backdrop-blur-3xl border border-accent/20"
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ padding: '3rem', textAlign: 'center' }}
+              style={{ padding: '5rem 4rem', textAlign: 'center' }}
             >
-              <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
+              <div className="w-56 h-56 rounded-full bg-accent/5 mx-auto mb-12 border-2 border-accent/50 overflow-hidden relative shrink-0 shadow-2xl shadow-accent/10">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/marc.jpg" alt="Marc" className="w-full h-full object-cover" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
-                  <span className="mono-text text-5xl opacity-20 hidden">M</span>
+                  <img src="/marc.jpg" alt="Marc" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text text-6xl opacity-20 hidden">M</span>
                 </div>
               </div>
-              <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Marc</h3>
-              <p className="mono-text" style={{ fontSize: '0.7rem', letterSpacing: '2px', opacity: 0.6, marginBottom: '1.5rem' }}>PRODUCCIÓN & CÓDIGO</p>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Responsable de que tu web sea una obra de arte técnica. Si es rápido y moderno, Marc lo ha construido.</p>
+              <h3 className="text-accent text-3xl font-bold mb-3 text-center uppercase tracking-tighter">Marc</h3>
+              <p className="mono-text text-accent/60 text-xs letter-spacing-[4px] mb-8 font-semibold text-center uppercase">PRODUCCIÓN & CÓDIGO</p>
+              <p className="text-text-muted text-center text-lg leading-relaxed max-w-md font-light">
+                Responsable de que tu web sea una obra de arte técnica. Si es rápido, robusto y moderno, Marc lo ha construido desde cero.
+              </p>
             </motion.div>
 
             {/* JUAN */}
             <motion.div 
-              className="tech-card !flex-col !items-center w-full"
-              initial={{ opacity: 0, y: 30 }}
+              className="tech-card !flex-col !items-center w-full max-w-2xl backdrop-blur-3xl border border-accent/20"
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              style={{ padding: '3rem', textAlign: 'center' }}
+              style={{ padding: '5rem 4rem', textAlign: 'center' }}
             >
-              <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
+              <div className="w-56 h-56 rounded-full bg-accent/5 mx-auto mb-12 border-2 border-accent/50 overflow-hidden relative shrink-0 shadow-2xl shadow-accent/10">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/juan.jpg" alt="Juan" className="w-full h-full object-cover" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
-                  <span className="mono-text text-5xl opacity-20 hidden">J</span>
+                  <img src="/juan.jpg" alt="Juan" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text text-6xl opacity-20 hidden">J</span>
                 </div>
               </div>
-              <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Juan</h3>
-              <p className="mono-text" style={{ fontSize: '0.7rem', letterSpacing: '2px', opacity: 0.6, marginBottom: '1.5rem' }}>MARKETING & LEGAL</p>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Garante de que tu negocio cumpla todas las normativas y de que tu web esté orientada a vender más.</p>
+              <h3 className="text-accent text-3xl font-bold mb-3 text-center uppercase tracking-tighter">Juan</h3>
+              <p className="mono-text text-accent/60 text-xs letter-spacing-[4px] mb-8 font-semibold text-center uppercase">MARKETING & LEGAL</p>
+              <p className="text-text-muted text-center text-lg leading-relaxed max-w-md font-light">
+                Garante de que tu negocio cumpla todas las normativas y de que tu web esté estratégicamente orientada a vender más.
+              </p>
             </motion.div>
           </div>
 
-          <div className="mt-[25rem] text-center flex justify-center w-full">
+          <div className="mt-40 text-center flex justify-center w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
