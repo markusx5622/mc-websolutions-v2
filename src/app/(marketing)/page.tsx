@@ -520,7 +520,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-64 text-center flex justify-center w-full">
+          <div className="mt-96 text-center flex justify-center w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
