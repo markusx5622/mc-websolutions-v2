@@ -5,7 +5,7 @@ import Script from 'next/script';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Zap, Shield, Cpu, Globe, Gauge, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 function SpeedAuditWidget() {
   const [status, setStatus] = React.useState('idle');
@@ -532,64 +532,6 @@ export default function Home() {
               </p>
             </motion.div>
           </div>
-        </div>
-      </motion.section>
-
-      <motion.section 
-        id="tecnologia"
-        className="w-full pt-48 pb-64 mt-32 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="w-full max-w-6xl px-6 flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative overflow-hidden py-24 px-8 md:px-20 w-full backdrop-blur-3xl bg-white/[0.02] rounded-[4rem] border border-accent/20 flex flex-col items-center text-center shadow-[0_0_80px_-20px_rgba(var(--accent-rgb),0.1)]"
-          >
-            {/* Background Glows */}
-            <div className="absolute -top-1/2 -left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute -bottom-1/2 -right-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-
-            <div className="relative z-10 w-full flex flex-col items-center">
-              <h2 className="section-title !mb-12">
-                Tecnología de Élite
-              </h2>
-              <p className="text-text-muted text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-20 font-light">
-                Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="inline-block text-[#64FFDA] font-bold drop-shadow-[0_0_15px_rgba(100,255,218,0.6)] px-2">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-16 w-full">
-                {[
-                  { icon: <Zap size={28} />, label: "Velocidad", sub: "Next.js 15" },
-                  { icon: <Shield size={28} />, label: "Seguridad", sub: "Enterprise Ready" },
-                  { icon: <Cpu size={28} />, label: "Potencia", sub: "React Engine" },
-                  { icon: <Gauge size={28} />, label: "Optimización", sub: "Core Web Vitals" },
-                  { icon: <Globe size={28} />, label: "Despliegue", sub: "Vercel Edge" }
-                ].map((tech, i) => (
-                  <motion.div
-                    key={tech.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 + (i * 0.05) }}
-                    whileHover={{ y: -5 }}
-                    className="group flex flex-col items-center"
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center text-accent transition-all duration-500 group-hover:bg-accent/10 group-hover:border-accent/40 group-hover:shadow-[0_0_30px_-5px_rgba(var(--accent-rgb),0.3)] mb-6"
-                    >
-                      {tech.icon}
-                    </div>
-                    <p className="text-xs text-accent/80 font-bold uppercase tracking-widest mb-2">{tech.label}</p>
-                    <p className="mono-text text-[0.65rem] text-text-muted/60 uppercase letter-spacing-[1px]">{tech.sub}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </motion.section>
 
