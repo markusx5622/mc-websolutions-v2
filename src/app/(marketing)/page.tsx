@@ -416,49 +416,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section
-        id="checklist"
-        className="section"
-        style={{ background: 'rgba(100, 255, 218, 0.02)', borderTop: '1px solid rgba(100, 255, 218, 0.05)', borderBottom: '1px solid rgba(100, 255, 218, 0.05)' }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-      >
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h1 className="section-title">Lo que otros no te dan</h1>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-              Cada una de nuestras webs es una solución de ingeniería completa. <span className="text-accent" style={{ color: 'var(--accent)', fontWeight: 600 }}>Todo incluido.</span>
-            </p>
-          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            {[
-              { title: "SEO Google Ready", desc: "Configuración técnica para que tus clientes te encuentren en los primeros puestos.", icon: "🌐" },
-              { title: "Botón WhatsApp", desc: "Integración directa para que tus clientes te escriban con un solo clic.", icon: "💬" },
-              { title: "Seguridad SSL", desc: "Certificado de seguridad incluido para proteger los datos y dar confianza.", icon: "🛡️" },
-              { title: "Leyes LSSI/RGPD", desc: "Textos legales y avisos de cookies adaptados a la normativa española.", icon: "⚖️" },
-              { title: "Speed Optimization", desc: "Carga ultra-rápida (Lighthouse > 90) para no perder ni un solo visitante.", icon: "⚡" },
-              { title: "Hosting & Dominio", desc: "Nosotros nos encargamos de que tu web esté siempre online sin que tú hagas nada.", icon: "☁️" }
-            ].map((feat, i) => (
-              <motion.div
-                key={feat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="tech-card"
-                style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start', background: 'rgba(100, 255, 218, 0.03)' }}
-              >
-                <span style={{ fontSize: '2rem' }}>{feat.icon}</span>
-                <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1rem', fontWeight: 700 }}>{feat.title}</h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{feat.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
 
       <motion.section
         id="dna"
@@ -1026,42 +984,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section
-        id="testimonials"
-        className="section"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container">
-          <h2 className="section-title">Confianza de nuestros clientes</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {[
-              { name: "Carlos J.", role: "Dueño de Restaurante", text: "Me sorprendió la velocidad. En menos de dos días ya tenía mi menú online y mis clientes reservando por WhatsApp. Muy recomendables.", city: "Valencia" },
-              { name: "Elena Ramos", role: "Directora Clínica Dental", text: "Buscaba algo profesional y serio. Marc y Juan entendieron perfectamente el ADN de mi clínica y lo plasmaron en una web limpia y moderna.", city: "Paterna" },
-              { name: "Jordi G.", role: "Entrenador Personal", text: "La web vuela. El test de velocidad que me pasaron dio 100/100. Mis clientes notan la diferencia y yo he ganado en imagen de marca.", city: "Algemesí" }
-            ].map((test, i) => (
-              <motion.div
-                key={test.name}
-                className="tech-card"
-                style={{ padding: '2.5rem', position: 'relative', border: '1px solid rgba(100, 255, 218, 0.1)' }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-              >
-                <div style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '1.2rem' }}>★★★★★</div>
-                <p style={{ fontStyle: 'italic', color: 'var(--text-main)', marginBottom: '2rem', lineHeight: 1.7 }}>"{test.text}"</p>
-                <div>
-                  <p className="mono-text" style={{ fontSize: '0.9rem', color: 'var(--accent)', fontWeight: 700, marginBottom: '0.2rem' }}>{test.name}</p>
-                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{test.role} · {test.city}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+
 
       <motion.section
         id="pricing"
