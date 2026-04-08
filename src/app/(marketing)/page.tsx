@@ -485,10 +485,10 @@ export default function Home() {
               viewport={{ once: true }}
               style={{ padding: '2rem', textAlign: 'center' }}
             >
-              <div style={{ width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(100, 255, 218, 0.1)', margin: '0 auto 2rem', border: '2px solid var(--accent)', overflow: 'hidden', position: 'relative' }}>
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/marc.jpg" alt="Marc" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
-                  <span className="mono-text" style={{ fontSize: '3rem', opacity: 0.2, display: 'none' }}>M</span>
+              <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img src="/marc.jpg" alt="Marc" className="w-full h-full object-cover" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text text-5xl opacity-20 hidden">M</span>
                 </div>
               </div>
               <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Marc</h3>
@@ -504,10 +504,10 @@ export default function Home() {
               viewport={{ once: true }}
               style={{ padding: '2rem', textAlign: 'center' }}
             >
-              <div style={{ width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(100, 255, 218, 0.1)', margin: '0 auto 2rem', border: '2px solid var(--accent)', overflow: 'hidden', position: 'relative' }}>
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/juan.jpg" alt="Juan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
-                  <span className="mono-text" style={{ fontSize: '3rem', opacity: 0.2, display: 'none' }}>J</span>
+              <div className="w-40 h-40 rounded-full bg-accent/10 mx-auto mb-8 border-2 border-accent overflow-hidden relative shrink-0 shadow-lg shadow-accent/20">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img src="/juan.jpg" alt="Juan" className="w-full h-full object-cover" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text text-5xl opacity-20 hidden">J</span>
                 </div>
               </div>
               <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Juan</h3>
@@ -516,29 +516,24 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-80 text-center flex justify-center w-full">
+          <div className="mt-[25rem] text-center flex justify-center w-full">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden py-24 px-8 md:px-20 max-w-5xl w-full backdrop-blur-xl bg-opacity-40 rounded-3xl border border-accent border-opacity-10 flex flex-col items-center text-center"
-              style={{ 
-                background: 'rgba(10, 25, 47, 0.4)',
-              }}
+              className="relative overflow-hidden py-24 px-8 md:px-20 max-w-6xl w-full backdrop-blur-3xl bg-light/30 rounded-[3rem] border border-accent/10 flex flex-col items-center text-center shadow-2xl"
             >
               {/* Background Glow */}
-              <div className="absolute top-[-50%] left-[-20%] w-[400px] h-[400px] bg-radial-glow pointer-events-none opacity-20" 
-                   style={{ background: 'radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%)' }} 
-              />
+              <div className="absolute -top-1/2 -left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
               <div className="relative z-10 w-full flex flex-col items-center">
-                <p className="mb-6 text-accent text-xs tracking-[0.3em] uppercase font-bold">
-                  Tecnología de élite
+                <p className="mb-4 text-accent text-sm tracking-[0.4em] uppercase font-bold">
+                  Infraestructura
                 </p>
-                <h3 className="text-3xl md:text-5xl font-extrabold text-main mb-8 max-w-3xl mx-auto leading-tight">
-                  Stack Tecnológico de Nivel Mundial
-                </h3>
-                <p className="text-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20">
+                <h2 className="section-title !mb-12">
+                  Tecnología de Élite
+                </h2>
+                <p className="text-muted text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-16">
                   Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
                 </p>
 
