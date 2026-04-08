@@ -520,50 +520,51 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-40 text-center flex justify-center w-full">
+          <div className="mt-64 text-center flex justify-center w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden py-24 px-8 md:px-20 max-w-6xl w-full backdrop-blur-3xl bg-light/30 rounded-[3rem] border border-accent/10 flex flex-col items-center text-center shadow-2xl"
+              className="relative overflow-hidden py-24 px-8 md:px-20 max-w-6xl w-full backdrop-blur-3xl bg-white/[0.02] rounded-[4rem] border border-accent/20 flex flex-col items-center text-center shadow-[0_0_80px_-20px_rgba(var(--accent-rgb),0.1)]"
             >
-              {/* Background Glow */}
+              {/* Background Glows */}
               <div className="absolute -top-1/2 -left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+              <div className="absolute -bottom-1/2 -right-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
               <div className="relative z-10 w-full flex flex-col items-center">
-                <p className="mb-4 text-accent text-sm tracking-[0.4em] uppercase font-bold">
+                <p className="mono-text text-accent/60 text-[0.6rem] letter-spacing-[4px] mb-6 font-semibold uppercase">
                   Infraestructura
                 </p>
                 <h2 className="section-title !mb-12">
                   Tecnología de Élite
                 </h2>
-                <p className="text-muted text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-16">
+                <p className="text-text-muted text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-20 font-light">
                   Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-16 w-full">
                   {[
-                    { icon: <Zap size={32} />, label: "Velocidad", sub: "Next.js 15" },
-                    { icon: <Shield size={32} />, label: "Seguridad", sub: "Enterprise Ready" },
-                    { icon: <Cpu size={32} />, label: "Potencia", sub: "React Engine" },
-                    { icon: <Gauge size={32} />, label: "Optimización", sub: "Core Web Vitals" },
-                    { icon: <Globe size={32} />, label: "Despliegue", sub: "Vercel Edge" }
+                    { icon: <Zap size={28} />, label: "Velocidad", sub: "Next.js 15" },
+                    { icon: <Shield size={28} />, label: "Seguridad", sub: "Enterprise Ready" },
+                    { icon: <Cpu size={28} />, label: "Potencia", sub: "React Engine" },
+                    { icon: <Gauge size={28} />, label: "Optimización", sub: "Core Web Vitals" },
+                    { icon: <Globe size={28} />, label: "Despliegue", sub: "Vercel Edge" }
                   ].map((tech, i) => (
                     <motion.div
                       key={tech.label}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.2 + (i * 0.1) }}
-                      whileHover={{ y: -10 }}
-                      className="group cursor-default"
+                      transition={{ delay: 0.1 + (i * 0.05) }}
+                      whileHover={{ y: -5 }}
+                      className="group flex flex-col items-center"
                     >
-                      <div className="w-[70px] h-[70px] rounded-2xl bg-accent bg-opacity-5 border border-accent border-opacity-20 mx-auto mb-6 flex items-center justify-center text-accent shadow-glow-sm transition-all duration-300 group-hover:shadow-glow group-hover:border-opacity-100"
+                      <div className="w-16 h-16 rounded-2xl bg-accent/5 border border-accent/10 flex items-center justify-center text-accent transition-all duration-500 group-hover:bg-accent/10 group-hover:border-accent/40 group-hover:shadow-[0_0_30px_-5px_rgba(var(--accent-rgb),0.3)] mb-6"
                       >
                         {tech.icon}
                       </div>
-                      <p className="text-sm text-main mb-1 font-bold">{tech.label}</p>
-                      <p className="text-[10px] text-muted uppercase tracking-wider">{tech.sub}</p>
+                      <p className="text-xs text-accent/80 font-bold uppercase tracking-widest mb-2">{tech.label}</p>
+                      <p className="mono-text text-[0.65rem] text-text-muted/60 uppercase letter-spacing-[1px]">{tech.sub}</p>
                     </motion.div>
                   ))}
                 </div>
