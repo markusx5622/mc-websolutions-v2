@@ -50,7 +50,7 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 w-full h-[100dvh] z-[5000] md:hidden flex flex-col items-center justify-start overflow-y-auto pt-32 pb-12 overscroll-contain"
+          className="fixed inset-0 w-full h-[100dvh] z-[5000] md:hidden flex flex-col items-center justify-start overflow-y-auto pt-48 pb-12 overscroll-contain"
           style={{ 
             backgroundColor: '#020c1b',
             backgroundImage: 'linear-gradient(135deg, #0a192f 0%, #020c1b 100%)',
@@ -60,7 +60,7 @@ const Navbar = () => {
           <div className="absolute inset-0 backdrop-blur-xl pointer-events-none" />
 
           {/* Top Bar inside Menu (Sticky-like for easy access) */}
-          <div className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-[5001] bg-[#020c1b]/80 backdrop-blur-md">
+          <div className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-[5001] bg-[#020c1b]/80 backdrop-blur-md border-b border-white/5">
             <Link href="/" onClick={() => setIsMenuOpen(false)} className="brand-wrapper !opacity-100">
               <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
             </Link>
@@ -74,7 +74,10 @@ const Navbar = () => {
           </div>
 
           {/* Scrollable Navigation Area */}
-          <div className="relative z-10 w-full flex flex-col items-center">
+          <div className="relative z-10 w-full flex flex-col items-center px-6">
+            {/* Safety Spacer to ensure Protocol 01 is always below the header bar */}
+            <div className="h-4 w-full" />
+
             <nav className="flex flex-col items-center gap-8 w-full max-w-xs">
               {navLinks.map((item, i) => (
                 <motion.div
@@ -89,10 +92,10 @@ const Navbar = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="mono-text group flex flex-col items-center py-2"
                   >
-                    <span className="text-accent text-[0.6rem] tracking-[0.4em] mb-2 opacity-50 uppercase font-bold">Protocolo 0{i+1}</span>
+                    <span className="text-accent text-[0.65rem] tracking-[0.4em] mb-2 opacity-50 uppercase font-black">Protocolo 0{i+1}</span>
                     <span className="text-3xl font-extrabold tracking-[0.25em] relative uppercase text-white hover:text-accent transition-colors">
                       {item.name}
-                      <span className="block h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full mx-auto mt-1 shadow-[0_0_10px_var(--accent)]"></span>
+                      <span className="block h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full mx-auto mt-1 shadow-[0_0_15px_var(--accent)]"></span>
                     </span>
                   </Link>
                 </motion.div>
