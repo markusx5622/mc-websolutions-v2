@@ -1019,6 +1019,27 @@ footer {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+  .hexagon-wrapper {
+    width: 195px !important;
+    height: 195px !important;
+  }
+
+  /* Ajuste de tipografía interna para 195px */
+  .hex-content-inner {
+    width: 120px !important;
+  }
+
+  .hex-title {
+    font-size: 0.8rem !important;
+  }
+
+  .hex-description {
+    font-size: 0.55rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
 @media (min-width: 768px) {
     .hero-flex-layout {
         flex-direction: row;
