@@ -1655,3 +1655,16 @@ select.terminal-input option {
         padding: 1.5rem;
     }
 }
+
+/* Custom Glow Utilities */
+.shadow-glow-sm {
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.05);
+}
+
+.shadow-glow {
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.25);
+}
+
+.bg-radial-glow {
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+}

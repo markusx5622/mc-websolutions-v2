@@ -5,6 +5,7 @@ import Script from 'next/script';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Zap, Shield, Cpu, Globe, Gauge, CheckCircle2 } from 'lucide-react';
 
 function SpeedAuditWidget() {
   const [status, setStatus] = React.useState('idle');
@@ -515,14 +516,61 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div style={{ marginTop: "6rem", textAlign: 'center' }}>
-            <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Tecnología de élite</p>
-            <div className="tech-card" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.8 }}>
-                Usamos las mismas tecnologías que <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Netflix, Uber y Airbnb</span>. 
-                Tu web será rápida, segura y preparada para durar años.
-              </p>
-            </div>
+          <div className="mt-32 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="tech-card relative overflow-hidden py-16 px-6 md:px-12 max-w-5xl mx-auto backdrop-blur-md bg-opacity-40 border-opacity-10"
+              style={{ 
+                background: 'rgba(10, 25, 47, 0.4)',
+                border: '1px solid rgba(100, 255, 218, 0.1)'
+              }}
+            >
+              {/* Background Glow */}
+              <div className="absolute top-[-50%] left-[-20%] w-[300px] height-[300px] bg-radial-glow pointer-events-none opacity-20" 
+                   style={{ background: 'radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%)' }} 
+              />
+
+              <div className="relative z-10">
+                <p className="mono-text mb-6 text-accent text-xs tracking-[0.25em] uppercase">
+                  Tecnología de élite
+                </p>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-main mb-6">
+                  Stack Tecnológico de Nivel Mundial
+                </h3>
+                <p className="text-muted text-lg leading-relaxed max-w-2xl mx-auto mb-16">
+                  Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
+                </p>
+
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-8">
+                  {[
+                    { icon: <Zap size={32} />, label: "Velocidad", sub: "Next.js 15" },
+                    { icon: <Shield size={32} />, label: "Seguridad", sub: "Enterprise Ready" },
+                    { icon: <Cpu size={32} />, label: "Potencia", sub: "React Engine" },
+                    { icon: <Gauge size={32} />, label: "Optimización", sub: "Core Web Vitals" },
+                    { icon: <Globe size={32} />, label: "Despliegue", sub: "Vercel Edge" }
+                  ].map((tech, i) => (
+                    <motion.div
+                      key={tech.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + (i * 0.1) }}
+                      whileHover={{ y: -10 }}
+                      className="group cursor-default"
+                    >
+                      <div className="w-[70px] h-[70px] rounded-2xl bg-accent bg-opacity-5 border border-accent border-opacity-20 mx-auto mb-6 flex items-center justify-center text-accent shadow-glow-sm transition-all duration-300 group-hover:shadow-glow group-hover:border-opacity-100"
+                      >
+                        {tech.icon}
+                      </div>
+                      <p className="mono-text text-sm text-main mb-1 font-bold">{tech.label}</p>
+                      <p className="text-[10px] text-muted uppercase tracking-wider">{tech.sub}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.section>
