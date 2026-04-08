@@ -516,30 +516,29 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-64 text-center">
+          <div className="mt-80 text-center flex justify-center w-full">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="tech-card relative overflow-hidden py-16 px-6 md:px-12 max-w-5xl mx-auto backdrop-blur-md bg-opacity-40 border-opacity-10"
+              className="relative overflow-hidden py-24 px-8 md:px-20 max-w-5xl w-full backdrop-blur-xl bg-opacity-40 rounded-3xl border border-accent border-opacity-10 flex flex-col items-center text-center"
               style={{ 
                 background: 'rgba(10, 25, 47, 0.4)',
-                border: '1px solid rgba(100, 255, 218, 0.1)'
               }}
             >
               {/* Background Glow */}
-              <div className="absolute top-[-50%] left-[-20%] w-[300px] height-[300px] bg-radial-glow pointer-events-none opacity-20" 
+              <div className="absolute top-[-50%] left-[-20%] w-[400px] h-[400px] bg-radial-glow pointer-events-none opacity-20" 
                    style={{ background: 'radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%)' }} 
               />
 
-              <div className="relative z-10">
-                <p className="mb-6 text-accent text-xs tracking-[0.25em] uppercase font-semibold">
+              <div className="relative z-10 w-full flex flex-col items-center">
+                <p className="mb-6 text-accent text-xs tracking-[0.3em] uppercase font-bold">
                   Tecnología de élite
                 </p>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-main mb-6 px-4">
+                <h3 className="text-3xl md:text-5xl font-extrabold text-main mb-8 max-w-3xl mx-auto leading-tight">
                   Stack Tecnológico de Nivel Mundial
                 </h3>
-                <p className="text-muted text-lg leading-relaxed max-w-2xl mx-auto mb-16 px-4">
+                <p className="text-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-20">
                   Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
                 </p>
 
