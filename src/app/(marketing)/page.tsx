@@ -417,6 +417,50 @@ export default function Home() {
       </motion.section>
 
       <motion.section
+        id="checklist"
+        className="section"
+        style={{ background: 'rgba(100, 255, 218, 0.02)', borderTop: '1px solid rgba(100, 255, 218, 0.05)', borderBottom: '1px solid rgba(100, 255, 218, 0.05)' }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h1 className="section-title">Lo que otros no te dan</h1>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
+              Cada una de nuestras webs es una solución de ingeniería completa. <span className="text-accent" style={{ color: 'var(--accent)', fontWeight: 600 }}>Todo incluido.</span>
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            {[
+              { title: "SEO Google Ready", desc: "Configuración técnica para que tus clientes te encuentren en los primeros puestos.", icon: "🌐" },
+              { title: "Botón WhatsApp", desc: "Integración directa para que tus clientes te escriban con un solo clic.", icon: "💬" },
+              { title: "Seguridad SSL", desc: "Certificado de seguridad incluido para proteger los datos y dar confianza.", icon: "🛡️" },
+              { title: "Leyes LSSI/RGPD", desc: "Textos legales y avisos de cookies adaptados a la normativa española.", icon: "⚖️" },
+              { title: "Speed Optimization", desc: "Carga ultra-rápida (Lighthouse > 90) para no perder ni un solo visitante.", icon: "⚡" },
+              { title: "Hosting & Dominio", desc: "Nosotros nos encargamos de que tu web esté siempre online sin que tú hagas nada.", icon: "☁️" }
+            ].map((feat, i) => (
+              <motion.div
+                key={feat.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="tech-card"
+                style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start', background: 'rgba(100, 255, 218, 0.03)' }}
+              >
+                <span style={{ fontSize: '2rem' }}>{feat.icon}</span>
+                <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1rem', fontWeight: 700 }}>{feat.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{feat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
         id="dna"
         className="hexagon-section"
         initial={{ opacity: 0, y: 20 }}
@@ -466,28 +510,60 @@ export default function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container">
-          <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}>
-            <h2 className="section-title">¿Quiénes somos?</h2>
-            <p style={{ fontSize: "1.1rem", color: "var(--text-muted)", marginBottom: "2rem" }}>
-              M&C Web Solutions nace en las aulas de la <span style={{ color: "var(--accent)", fontWeight: 600 }}>Universidad Europea de Valencia</span>. Somos ingenieros especializados en diseño web que combinamos tecnología, estética y velocidad para darte la web que tu negocio merece.
+          <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto", marginBottom: '4rem' }}>
+            <h2 className="section-title">Ingeniería con rostro humano</h2>
+            <p style={{ fontSize: "1.1rem", color: "var(--text-muted)" }}>
+              Detrás de cada línea de código en <span className="text-accent">M&C Web Solutions</span> estamos nosotros. Estudiantes de Ingeniería, apasionados por la tecnología y comprometidos con tu éxito.
             </p>
+          </div>
 
-            <div style={{ marginTop: "4rem" }}>
-              <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Tecnología que usamos</p>
-
-              <div className="tech-card" style={{ justifyContent: 'center', textAlign: 'center', padding: '2rem', flexDirection: 'column', gap: '1rem' }}>
-                <div className="flex gap-6 justify-center flex-wrap" style={{ fontSize: '2rem' }}>
-                  <span title="Next.js">⚛️</span>
-                  <span title="React">🔷</span>
-                  <span title="Vercel">▲</span>
-                  <span title="TypeScript">🛡️</span>
-                  <span title="OpenAI">🤖</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', maxWidth: '1000px', margin: '0 auto' }}>
+            {/* MARC */}
+            <motion.div 
+              className="tech-card"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              style={{ padding: '2rem', textAlign: 'center' }}
+            >
+              <div style={{ width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(100, 255, 218, 0.1)', margin: '0 auto 2rem', border: '2px solid var(--accent)', overflow: 'hidden', position: 'relative' }}>
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src="/marc.jpg" alt="Marc" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text" style={{ fontSize: '3rem', opacity: 0.2, display: 'none' }}>M</span>
                 </div>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.8 }}>
-                  Usamos las mismas tecnologías que <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Netflix, Uber y Airbnb</span>.
-                  Tu web será rápida, segura y moderna.
-                </p>
               </div>
+              <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Marc</h3>
+              <p className="mono-text" style={{ fontSize: '0.7rem', letterSpacing: '2px', opacity: 0.6, marginBottom: '1.5rem' }}>PRODUCCIÓN & CÓDIGO</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Responsable de que tu web sea una obra de arte técnica. Si es rápido y moderno, Marc lo ha construido.</p>
+            </motion.div>
+
+            {/* JUAN */}
+            <motion.div 
+              className="tech-card"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              style={{ padding: '2rem', textAlign: 'center' }}
+            >
+              <div style={{ width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(100, 255, 218, 0.1)', margin: '0 auto 2rem', border: '2px solid var(--accent)', overflow: 'hidden', position: 'relative' }}>
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src="/juan.jpg" alt="Juan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                  <span className="mono-text" style={{ fontSize: '3rem', opacity: 0.2, display: 'none' }}>J</span>
+                </div>
+              </div>
+              <h3 className="mono-text" style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '0.5rem' }}>Juan</h3>
+              <p className="mono-text" style={{ fontSize: '0.7rem', letterSpacing: '2px', opacity: 0.6, marginBottom: '1.5rem' }}>MARKETING & LEGAL</p>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Garante de que tu negocio cumpla todas las normativas y de que tu web esté orientada a vender más.</p>
+            </motion.div>
+          </div>
+
+          <div style={{ marginTop: "6rem", textAlign: 'center' }}>
+            <p className="mono-text" style={{ marginBottom: "1.5rem", opacity: 0.6, fontSize: "0.9rem", letterSpacing: 4, textTransform: 'uppercase' }}>Tecnología de élite</p>
+            <div className="tech-card" style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.8 }}>
+                Usamos las mismas tecnologías que <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Netflix, Uber y Airbnb</span>. 
+                Tu web será rápida, segura y preparada para durar años.
+              </p>
             </div>
           </div>
         </div>
@@ -946,6 +1022,43 @@ export default function Home() {
                 Desarrollado con Next.js · Desplegado en Vercel · Diseñado por M&C
               </p>
             </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="testimonials"
+        className="section"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="container">
+          <h2 className="section-title">Confianza de nuestros clientes</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {[
+              { name: "Carlos J.", role: "Dueño de Restaurante", text: "Me sorprendió la velocidad. En menos de dos días ya tenía mi menú online y mis clientes reservando por WhatsApp. Muy recomendables.", city: "Valencia" },
+              { name: "Elena Ramos", role: "Directora Clínica Dental", text: "Buscaba algo profesional y serio. Marc y Juan entendieron perfectamente el ADN de mi clínica y lo plasmaron en una web limpia y moderna.", city: "Paterna" },
+              { name: "Jordi G.", role: "Entrenador Personal", text: "La web vuela. El test de velocidad que me pasaron dio 100/100. Mis clientes notan la diferencia y yo he ganado en imagen de marca.", city: "Algemesí" }
+            ].map((test, i) => (
+              <motion.div
+                key={test.name}
+                className="tech-card"
+                style={{ padding: '2.5rem', position: 'relative', border: '1px solid rgba(100, 255, 218, 0.1)' }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+              >
+                <div style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '1.2rem' }}>★★★★★</div>
+                <p style={{ fontStyle: 'italic', color: 'var(--text-main)', marginBottom: '2rem', lineHeight: 1.7 }}>"{test.text}"</p>
+                <div>
+                  <p className="mono-text" style={{ fontSize: '0.9rem', color: 'var(--accent)', fontWeight: 700, marginBottom: '0.2rem' }}>{test.name}</p>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0 }}>{test.role} · {test.city}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.section>
