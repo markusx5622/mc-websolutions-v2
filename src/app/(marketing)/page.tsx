@@ -462,7 +462,7 @@ export default function Home() {
 
       <motion.section 
         id="nosotros" 
-        className="w-full py-64 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
+        className="w-full pt-64 pb-32 mb-32 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -524,7 +524,7 @@ export default function Home() {
 
       <motion.section 
         id="tecnologia"
-        className="w-full py-64 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
+        className="w-full pt-48 pb-64 mt-32 flex flex-col items-center justify-center relative overflow-hidden bg-bg-color"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -546,7 +546,7 @@ export default function Home() {
                 Tecnología de Élite
               </h2>
               <p className="text-text-muted text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-20 font-light">
-                Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold drop-shadow-[0_0_20px_rgba(100,255,218,0.8)] px-1">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
+                Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="inline-block text-[#64FFDA] font-bold drop-shadow-[0_0_15px_rgba(100,255,218,0.6)] px-2">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-16 w-full">
