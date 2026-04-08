@@ -476,7 +476,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="flex flex-col items-center gap-12 max-w-2xl mx-auto">
             {/* MARC */}
             <motion.div 
               className="tech-card"
