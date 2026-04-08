@@ -102,73 +102,84 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.4, ease: [0.6, 0.05, -0.01, 0.9] }}
+            className="fixed inset-0 w-full h-full z-[2000] md:hidden flex flex-col items-center justify-center"
+            style={{ 
+              background: 'linear-gradient(135deg, #0a192f 0%, #020c1b 100%)',
+              backdropFilter: 'blur(15px)'
+            }}
+          >
+            {/* Top Bar inside Menu */}
+            <div className="absolute top-0 left-0 w-full p-8 flex justify-between items-center">
+              <Link href="/" onClick={() => setIsMenuOpen(false)} className="brand-wrapper !opacity-100">
+                <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
+              </Link>
+              <button 
+                onClick={() => setIsMenuOpen(false)} 
+                className="text-accent p-2 hover:bg-white/5 rounded-full transition-colors"
+                aria-label="Cerrar Menú"
+              >
+                <X size={32} />
+              </button>
+            </div>
+
+            {/* Centered Navigation */}
+            <nav className="flex flex-col items-center gap-6 py-12">
+              {navLinks.map((item, i) => (
+                <motion.div
+                  key={item.hash}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.08 }}
+                  className="overflow-hidden"
+                >
+                  <Link 
+                    href={item.hash}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="mono-text group flex items-center justify-center flex-col"
+                  >
+                    <span className="text-accent text-[0.6rem] tracking-[0.3em] mb-2 opacity-60">0{i+1}</span>
+                    <span className="text-3xl font-bold tracking-[0.2em] relative">
+                      {item.name}
+                      <span className="block h-[1px] w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
+                    </span>
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Bottom Actions */}
+            <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[999] md:hidden"
-            />
-            {/* Sidebar */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              style={{ 
-                backgroundColor: '#112240', 
-                zIndex: 1001,
-                boxShadow: '-10px 0 30px rgba(0,0,0,0.5)'
-              }}
-              className="fixed top-0 right-0 h-full w-[280px] p-8 md:hidden flex flex-col"
+              transition={{ delay: 0.6 }}
+              className="mt-8 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
-              <div className="flex justify-end mb-12">
-                <button onClick={() => setIsMenuOpen(false)} className="text-accent">
-                  <X size={32} />
-                </button>
-              </div>
-
-              <div className="flex flex-col gap-8 flex-1">
-                {navLinks.map((item, i) => (
-                  <motion.div
-                    key={item.hash}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.05 }}
-                  >
-                    <Link 
-                      href={item.hash}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="mono-text block text-xl"
-                      style={{ letterSpacing: '4px' }}
-                    >
-                      <span className="text-accent text-sm mr-4">0{i+1}.</span>
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-auto border-t border-white/5 pt-8">
-                <Link 
-                  href="/briefing" 
-                  onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-solid w-full block text-center"
-                >
-                  Iniciar Proyecto
-                </Link>
-                <div className="flex justify-center gap-6 mt-8 text-muted text-sm">
-                   <span>ES</span>
-                   <span className="opacity-30">EN</span>
-                </div>
+              <Link 
+                href="/briefing" 
+                onClick={() => setIsMenuOpen(false)}
+                className="btn btn-solid w-full block text-center !py-4 text-sm tracking-widest"
+              >
+                PROYECTO_START
+              </Link>
+              
+              <div className="flex gap-8 text-muted/60 text-[0.7rem] mono-text tracking-widest font-bold">
+                 <span className="text-accent cursor-pointer">ES_EUROPA</span>
+                 <span className="hover:text-accent transition-colors cursor-pointer">GLOBAL_EN</span>
               </div>
             </motion.div>
-          </>
+
+            {/* Background Decoration */}
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -top-20 -left-20 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

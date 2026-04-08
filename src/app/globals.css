@@ -1055,10 +1055,11 @@ footer {
 
 @media (max-width: 768px) {
     .hero-main-flex {
-        flex-direction: column !important; /* Logo on top */
+        flex-direction: column !important;
         justify-content: center !important;
-        gap: 30px;
+        gap: 0;
         text-align: center;
+        margin-bottom: 4rem; /* Separación extra para el botón CTA */
     }
     .hero-dna-logo {
         display: none !important;
@@ -1066,8 +1067,6 @@ footer {
     .hero-text-block {
         text-align: center !important;
     }
-    .hexagon-wrapper { width: 260px; }
-    .hexagon-container { min-height: 450px; }
 }
 
 /* Terminal Form Styles */
@@ -1486,31 +1485,31 @@ select.terminal-input option {
     
     /* Interactive ADN Hexagon Mobile */
     .hexagon-container {
-        min-height: 360px;
+        min-height: 350px;
     }
     .hexagon-wrapper {
-        width: 207px;
-        height: 207px;
+        width: 200px;
+        height: 200px;
     }
     .hexagon-content {
-        width: 130px;
+        width: 125px;
     }
     .hexagon-info-title {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
         letter-spacing: 1px;
     }
     .hexagon-info-desc {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
         line-height: 1.2;
     }
     .point-label {
-        font-size: 0.52rem;
+        font-size: 0.5rem;
     }
-    .l1 { top: -22px; }
-    .l4 { bottom: -22px; }
-    .l2, .l3 { left: 110%; }
-    .l5, .l6 { right: 110%; }
+    .l1 { top: -20px; }
+    .l4 { bottom: -20px; }
+    .l2, .l3 { left: 112%; }
+    .l5, .l6 { right: 112%; }
 }
 
 /* Success Progress Bar Styling */
