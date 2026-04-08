@@ -516,7 +516,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-32 text-center">
+          <div className="mt-64 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -533,13 +533,13 @@ export default function Home() {
               />
 
               <div className="relative z-10">
-                <p className="mono-text mb-6 text-accent text-xs tracking-[0.25em] uppercase">
+                <p className="mb-6 text-accent text-xs tracking-[0.25em] uppercase font-semibold">
                   Tecnología de élite
                 </p>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-main mb-6">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-main mb-6 px-4">
                   Stack Tecnológico de Nivel Mundial
                 </h3>
-                <p className="text-muted text-lg leading-relaxed max-w-2xl mx-auto mb-16">
+                <p className="text-muted text-lg leading-relaxed max-w-2xl mx-auto mb-16 px-4">
                   Construimos tu plataforma sobre los mismos cimientos tecnológicos que impulsan a gigantes como <span className="text-accent font-bold">Netflix, Uber y Airbnb</span>. Rendimiento extremo y seguridad sin concesiones.
                 </p>
 
@@ -564,7 +564,7 @@ export default function Home() {
                       >
                         {tech.icon}
                       </div>
-                      <p className="mono-text text-sm text-main mb-1 font-bold">{tech.label}</p>
+                      <p className="text-sm text-main mb-1 font-bold">{tech.label}</p>
                       <p className="text-[10px] text-muted uppercase tracking-wider">{tech.sub}</p>
                     </motion.div>
                   ))}
