@@ -486,8 +486,15 @@ export default function Home() {
               style={{ padding: '5rem 4rem', textAlign: 'center' }}
             >
               <div className="w-56 h-56 rounded-full bg-accent/5 mx-auto mb-12 border-2 border-accent/50 overflow-hidden relative shrink-0 shadow-2xl shadow-accent/10">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/marc.jpg" alt="Marc" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-full">
+                  <Image 
+                    src="/MARCia.png" 
+                    alt="Marc - Producción & Código" 
+                    fill
+                    className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                    sizes="224px"
+                    priority
+                  />
                   <span className="mono-text text-6xl opacity-20 hidden">M</span>
                 </div>
               </div>
@@ -507,8 +514,14 @@ export default function Home() {
               style={{ padding: '5rem 4rem', textAlign: 'center' }}
             >
               <div className="w-56 h-56 rounded-full bg-accent/5 mx-auto mb-12 border-2 border-accent/50 overflow-hidden relative shrink-0 shadow-2xl shadow-accent/10">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/juan.jpg" alt="Juan" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" onError={(e) => { (e.target as any).style.display = 'none'; (e.target as any).nextSibling.style.display = 'block' }} />
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-full">
+                  <Image 
+                    src="/JUANia.png" 
+                    alt="Juan - Marketing & Legal" 
+                    fill
+                    className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                    sizes="224px"
+                  />
                   <span className="mono-text text-6xl opacity-20 hidden">J</span>
                 </div>
               </div>
