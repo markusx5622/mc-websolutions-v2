@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -85,6 +85,51 @@ function SpeedAuditWidget() {
     </div>
   );
 }
+
+const BUSINESS_SOLUTIONS_PROJECTS = [
+  {
+    title: "Nano Banana",
+    category: "ONE-PAGE / LANDING",
+    description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    url: "https://mc-websolutions-v2.vercel.app/demo-speed"
+  },
+  {
+    title: "Web B2B / Industria",
+    category: "CATÁLOGO DIGITAL",
+    description: "Plataforma para empresas con catálogo de productos, gestión de leads y formulario de contacto profesional avanzado.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    url: "https://mc-websolutions-v2.vercel.app/demo-creative"
+  },
+  {
+    title: "Negocio Local",
+    category: "POSICIONAMIENTO MAPS",
+    description: "Ecosistema para cafeterías y pequeños comercios de barrio. Enfocado en posicionamiento en Google Maps y SEO local.",
+    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
+    url: "https://mc-websolutions-v2.vercel.app/demo-local"
+  },
+  {
+    title: "Aura Wellness",
+    category: "CLÍNICA / BIENESTAR",
+    description: "Identidad premium para centros de yoga y salud. Incluye flujos de reservas online y experiencia visual exclusiva.",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
+    url: "https://mc-websolutions-v2.vercel.app/demo-premium"
+  },
+  {
+    title: "Atelier Valencia",
+    category: "MODA / ARTESANÍA",
+    description: "Escaparate para moda y diseño con catálogo elegante de colecciones y sistema automatizado de gestión de citas.",
+    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
+    url: "https://mc-websolutions-v2.vercel.app/demo-sastre"
+  },
+  {
+    title: "Elite Padel",
+    category: "CLUB DEPORTIVO",
+    description: "Sistema para clubes deportivos con integración para reserva de pistas, eventos y desarrollo de comunidad.",
+    image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
+    url: "https://mc-websolutions-v2.vercel.app/demo-padel"
+  }
+];
 
 const PREMIUM_PORTFOLIO_PROJECTS = [
   {
@@ -245,6 +290,7 @@ export default function Home() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [activePortfolioLayer, setActivePortfolioLayer] = React.useState<'business' | 'engineering'>('business');
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -546,12 +592,114 @@ export default function Home() {
       >
         <div className="container" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem' }}>
           <h2 className="section-title">Nuestro Portfolio</h2>
-          <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '5rem', marginTop: '-2rem', maxWidth: 650, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7 }}>
+          <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '4rem', marginTop: '-2rem', maxWidth: 650, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7 }}>
             Proyectos reales que demuestran lo que podemos crear para tu negocio. Cada uno diseñado, desarrollado y desplegado por M&C Web Solutions.
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '5rem' }}>
-            {PREMIUM_PORTFOLIO_PROJECTS.map((project, idx) => (
+          {/* LAYER SELECTOR */}
+          <div className="flex justify-center mb-16 relative z-20">
+            <div className="bg-[#112240]/80 backdrop-blur-md p-1.5 rounded-full border border-[rgba(100,255,218,0.1)] flex flex-col md:flex-row shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+              <button 
+                onClick={() => setActivePortfolioLayer('business')}
+                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+              >
+                {activePortfolioLayer === 'business' && (
+                  <motion.div 
+                    layoutId="portfolioTabBg" 
+                    className="absolute inset-0 bg-gradient-to-r from-[#64FFDA] to-[#00c2ff] rounded-full shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                    initial={false}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-2">
+                  <CheckCircle2 size={16} className={activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'hidden'} />
+                  BUSINESS SOLUTIONS
+                </span>
+              </button>
+              <button 
+                onClick={() => setActivePortfolioLayer('engineering')}
+                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+              >
+                {activePortfolioLayer === 'engineering' && (
+                  <motion.div 
+                    layoutId="portfolioTabBg" 
+                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full shadow-[0_0_15px_rgba(192,132,252,0.3)]"
+                    initial={false}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10 font-mono tracking-wider flex items-center gap-2">
+                  <span className={activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-purple-400 opacity-60'}>{`</>`}</span> ENGINEERING SHOWCASE
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div className="relative min-h-[800px]">
+            <AnimatePresence mode="wait">
+              {activePortfolioLayer === 'business' ? (
+                <motion.div
+                  key="business"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {BUSINESS_SOLUTIONS_PROJECTS.map((project, idx) => (
+                    <motion.div 
+                      key={project.title}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-50px' }}
+                      transition={{ delay: idx * 0.1, duration: 0.5 }}
+                    >
+                      <Link href={project.url} className="group block h-full">
+                        <div className="h-full rounded-2xl overflow-hidden border border-[rgba(100,255,218,0.1)] bg-[#0a0e17] transition-all duration-500 group-hover:border-[#64FFDA]/30 group-hover:shadow-[0_15px_40px_rgba(100,255,218,0.1)] group-hover:-translate-y-2 flex flex-col">
+                          {/* Browser Mockup Chrome */}
+                          <div className="bg-[#111318] px-4 py-3 flex items-center gap-2 border-b border-[rgba(255,255,255,0.05)] shrink-0">
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                          </div>
+                          {/* Dribbble Style Image Container */}
+                          <div className="bg-[rgba(255,255,255,0.02)] p-4 md:p-6 flex items-center justify-center shrink-0">
+                            <div className="w-full aspect-[16/10] rounded-lg overflow-hidden shadow-2xl border border-[rgba(255,255,255,0.05)] relative bg-[#0a0e17]">
+                              <Image 
+                                src={project.image} 
+                                alt={project.title} 
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              />
+                            </div>
+                          </div>
+                          {/* Details */}
+                          <div className="p-6 bg-gradient-to-b from-[#0a0e17] to-[#0A192F] flex-1 flex flex-col items-start border-t border-[rgba(255,255,255,0.02)]">
+                            <span className="text-[0.65rem] font-bold tracking-[0.2em] text-[#64FFDA] font-mono mb-2 block uppercase">{project.category}</span>
+                            <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#64FFDA] transition-colors">{project.title}</h3>
+                            <p className="text-sm text-gray-400 leading-relaxed font-light flex-1">{project.description}</p>
+                            
+                            <div className="mt-6 border-t border-[rgba(255,255,255,0.05)] pt-4 w-full flex items-center justify-between text-sm font-semibold">
+                              <span className="text-white/70 group-hover:text-white transition-colors">Explorar demo</span>
+                              <span className="text-[#64FFDA] group-hover:translate-x-1 transition-transform">→</span>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="engineering"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: '5rem' }}
+                >
+                  {PREMIUM_PORTFOLIO_PROJECTS.map((project, idx) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 40 }}
@@ -782,6 +930,9 @@ export default function Home() {
                 </motion.div>
               </motion.div>
             ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.section>
