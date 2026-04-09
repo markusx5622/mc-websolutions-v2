@@ -609,7 +609,7 @@ export default function Home() {
           </p>
 
           {/* LAYER SELECTOR */}
-          <div className="flex justify-center mb-64 relative z-20">
+          <div className="flex justify-center mb-80 relative z-20">
             <div className="bg-[#0A192F]/60 backdrop-blur-xl p-2.5 rounded-full border border-[rgba(255,255,255,0.05)] flex flex-col md:flex-row gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
               <button 
                 onClick={() => setActivePortfolioLayer('business')}
@@ -647,7 +647,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[800px]">
+          <div style={{ height: '140px' }} className="hidden md:block" />
+          <div style={{ height: '80px' }} className="md:hidden" />
+
+          <div className="relative min-h-[800px] mt-32">
             <AnimatePresence mode="wait">
               {activePortfolioLayer === 'business' ? (
                 <motion.div
