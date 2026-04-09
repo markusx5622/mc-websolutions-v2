@@ -91,7 +91,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Nano Banana",
     category: "ONE-PAGE / LANDING",
     description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "/demos/nano-banana.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-speed",
     accent: '#00E5FF',
     tags: ['Conversión', 'Landing', 'Layout Rapido']
@@ -100,7 +100,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Web B2B / Industria",
     category: "CATÁLOGO DIGITAL",
     description: "Plataforma para empresas con catálogo de productos, gestión de leads y formulario de contacto profesional avanzado.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    image: "/demos/b2b-industria.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-creative",
     accent: '#3B82F6',
     tags: ['B2B', 'Catálogo', 'Leads']
@@ -109,7 +109,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Negocio Local",
     category: "POSICIONAMIENTO MAPS",
     description: "Ecosistema para cafeterías y pequeños comercios de barrio. Enfocado en posicionamiento en Google Maps y SEO local.",
-    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
+    image: "/demos/negocio-local.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-local",
     accent: '#10B981',
     tags: ['SEO Local', 'Google Maps', 'Negocios']
@@ -118,7 +118,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Aura Wellness",
     category: "CLÍNICA / BIENESTAR",
     description: "Identidad premium para centros de yoga y salud. Incluye flujos de reservas online y experiencia visual exclusiva.",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
+    image: "/demos/aura-wellness.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-premium",
     accent: '#D946EF',
     tags: ['Premium', 'Reservas', 'Wellness']
@@ -127,7 +127,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Atelier Valencia",
     category: "MODA / ARTESANÍA",
     description: "Escaparate para moda y diseño con catálogo elegante de colecciones y sistema automatizado de gestión de citas.",
-    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
+    image: "/demos/atelier-valencia.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-sastre",
     accent: '#F59E0B',
     tags: ['Moda', 'Calendario', 'Diseño']
@@ -136,7 +136,7 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     title: "Elite Padel",
     category: "CLUB DEPORTIVO",
     description: "Sistema para clubes deportivos con integración para reserva de pistas, eventos y desarrollo de comunidad.",
-    image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
+    image: "/demos/elite-padel.png",
     url: "https://mc-websolutions-v2.vercel.app/demo-padel",
     accent: '#EF4444',
     tags: ['Deportes', 'Comunidad', 'Reservas']
@@ -609,39 +609,39 @@ export default function Home() {
           </p>
 
           {/* LAYER SELECTOR */}
-          <div className="flex justify-center mb-16 relative z-20">
-            <div className="bg-[#112240]/90 backdrop-blur-md p-2 rounded-full border border-[rgba(100,255,218,0.2)] flex flex-col md:flex-row shadow-[0_10px_40px_rgba(0,0,0,0.4)]">
+          <div className="flex justify-center mb-32 relative z-20">
+            <div className="bg-[#0A192F]/60 backdrop-blur-xl p-2.5 rounded-full border border-[rgba(255,255,255,0.05)] flex flex-col md:flex-row gap-2 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
               <button 
                 onClick={() => setActivePortfolioLayer('business')}
-                className={`relative px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 ${activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+                className={`relative px-10 py-5 rounded-full text-lg font-bold tracking-wide transition-all duration-500 ease-out ${activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
               >
                 {activePortfolioLayer === 'business' && (
                   <motion.div 
                     layoutId="portfolioTabBg" 
-                    className="absolute inset-0 bg-gradient-to-r from-[#64FFDA] to-[#00c2ff] rounded-full shadow-[0_0_20px_rgba(100,255,218,0.4)]"
+                    className="absolute inset-0 bg-[#64FFDA] rounded-full shadow-[0_0_25px_rgba(100,255,218,0.4)]"
                     initial={false}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   />
                 )}
-                <span className="relative z-10 flex items-center gap-2">
-                  <CheckCircle2 size={18} className={activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'hidden'} />
-                  BUSINESS SOLUTIONS
+                <span className="relative z-10 flex items-center gap-3">
+                  <CheckCircle2 size={20} className={activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'hidden'} />
+                  SOLUCIONES COMERCIALES
                 </span>
               </button>
               <button 
                 onClick={() => setActivePortfolioLayer('engineering')}
-                className={`relative px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 ${activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+                className={`relative px-10 py-5 rounded-full text-lg font-bold tracking-wide transition-all duration-500 ease-out ${activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
               >
                 {activePortfolioLayer === 'engineering' && (
                   <motion.div 
                     layoutId="portfolioTabBg" 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full shadow-[0_0_20px_rgba(192,132,252,0.4)]"
+                    className="absolute inset-0 bg-[#64FFDA] rounded-full shadow-[0_0_25px_rgba(100,255,218,0.4)]"
                     initial={false}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   />
                 )}
-                <span className="relative z-10 font-mono tracking-wider flex items-center gap-2">
-                  <span className={activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-purple-400 opacity-60'}>{`</>`}</span> ENGINEERING SHOWCASE
+                <span className="relative z-10 font-mono flex items-center gap-3">
+                  <span className={activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-[#64FFDA] opacity-60'}>{`</>`}</span> INGENIERÍA EXPERIMENTAL
                 </span>
               </button>
             </div>
