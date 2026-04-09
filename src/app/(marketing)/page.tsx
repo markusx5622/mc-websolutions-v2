@@ -92,42 +92,54 @@ const BUSINESS_SOLUTIONS_PROJECTS = [
     category: "ONE-PAGE / LANDING",
     description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    url: "https://mc-websolutions-v2.vercel.app/demo-speed"
+    url: "https://mc-websolutions-v2.vercel.app/demo-speed",
+    accent: '#00E5FF',
+    tags: ['Conversión', 'Landing', 'Layout Rapido']
   },
   {
     title: "Web B2B / Industria",
     category: "CATÁLOGO DIGITAL",
     description: "Plataforma para empresas con catálogo de productos, gestión de leads y formulario de contacto profesional avanzado.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
-    url: "https://mc-websolutions-v2.vercel.app/demo-creative"
+    url: "https://mc-websolutions-v2.vercel.app/demo-creative",
+    accent: '#3B82F6',
+    tags: ['B2B', 'Catálogo', 'Leads']
   },
   {
     title: "Negocio Local",
     category: "POSICIONAMIENTO MAPS",
     description: "Ecosistema para cafeterías y pequeños comercios de barrio. Enfocado en posicionamiento en Google Maps y SEO local.",
     image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800",
-    url: "https://mc-websolutions-v2.vercel.app/demo-local"
+    url: "https://mc-websolutions-v2.vercel.app/demo-local",
+    accent: '#10B981',
+    tags: ['SEO Local', 'Google Maps', 'Negocios']
   },
   {
     title: "Aura Wellness",
     category: "CLÍNICA / BIENESTAR",
     description: "Identidad premium para centros de yoga y salud. Incluye flujos de reservas online y experiencia visual exclusiva.",
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
-    url: "https://mc-websolutions-v2.vercel.app/demo-premium"
+    url: "https://mc-websolutions-v2.vercel.app/demo-premium",
+    accent: '#D946EF',
+    tags: ['Premium', 'Reservas', 'Wellness']
   },
   {
     title: "Atelier Valencia",
     category: "MODA / ARTESANÍA",
     description: "Escaparate para moda y diseño con catálogo elegante de colecciones y sistema automatizado de gestión de citas.",
     image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1000&auto=format&fit=crop&v=1",
-    url: "https://mc-websolutions-v2.vercel.app/demo-sastre"
+    url: "https://mc-websolutions-v2.vercel.app/demo-sastre",
+    accent: '#F59E0B',
+    tags: ['Moda', 'Calendario', 'Diseño']
   },
   {
     title: "Elite Padel",
     category: "CLUB DEPORTIVO",
     description: "Sistema para clubes deportivos con integración para reserva de pistas, eventos y desarrollo de comunidad.",
     image: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&q=80&w=800",
-    url: "https://mc-websolutions-v2.vercel.app/demo-padel"
+    url: "https://mc-websolutions-v2.vercel.app/demo-padel",
+    accent: '#EF4444',
+    tags: ['Deportes', 'Comunidad', 'Reservas']
   }
 ];
 
@@ -598,32 +610,32 @@ export default function Home() {
 
           {/* LAYER SELECTOR */}
           <div className="flex justify-center mb-16 relative z-20">
-            <div className="bg-[#112240]/80 backdrop-blur-md p-1.5 rounded-full border border-[rgba(100,255,218,0.1)] flex flex-col md:flex-row shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+            <div className="bg-[#112240]/90 backdrop-blur-md p-2 rounded-full border border-[rgba(100,255,218,0.2)] flex flex-col md:flex-row shadow-[0_10px_40px_rgba(0,0,0,0.4)]">
               <button 
                 onClick={() => setActivePortfolioLayer('business')}
-                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+                className={`relative px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 ${activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
               >
                 {activePortfolioLayer === 'business' && (
                   <motion.div 
                     layoutId="portfolioTabBg" 
-                    className="absolute inset-0 bg-gradient-to-r from-[#64FFDA] to-[#00c2ff] rounded-full shadow-[0_0_15px_rgba(100,255,218,0.3)]"
+                    className="absolute inset-0 bg-gradient-to-r from-[#64FFDA] to-[#00c2ff] rounded-full shadow-[0_0_20px_rgba(100,255,218,0.4)]"
                     initial={false}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
-                  <CheckCircle2 size={16} className={activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'hidden'} />
+                  <CheckCircle2 size={18} className={activePortfolioLayer === 'business' ? 'text-[#0A192F]' : 'hidden'} />
                   BUSINESS SOLUTIONS
                 </span>
               </button>
               <button 
                 onClick={() => setActivePortfolioLayer('engineering')}
-                className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
+                className={`relative px-8 py-4 rounded-full text-base font-bold tracking-wide transition-all duration-300 ${activePortfolioLayer === 'engineering' ? 'text-[#0A192F]' : 'text-gray-400 hover:text-white'}`}
               >
                 {activePortfolioLayer === 'engineering' && (
                   <motion.div 
                     layoutId="portfolioTabBg" 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full shadow-[0_0_15px_rgba(192,132,252,0.3)]"
+                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full shadow-[0_0_20px_rgba(192,132,252,0.4)]"
                     initial={false}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
@@ -644,51 +656,180 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  className="flex flex-col gap-20"
                 >
                   {BUSINESS_SOLUTIONS_PROJECTS.map((project, idx) => (
-                    <motion.div 
-                      key={project.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: '-50px' }}
-                      transition={{ delay: idx * 0.1, duration: 0.5 }}
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, delay: idx * 0.1 }}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: '3rem',
+                  alignItems: 'center',
+                }}
+                className="md:!grid-cols-2"
+              >
+                {/* MOCKUP SIDE */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 + 0.15 }}
+                  style={{ order: idx % 2 === 0 ? 1 : 2 }}
+                  className={idx % 2 !== 0 ? 'md:!order-2' : 'md:!order-1'}
+                >
+                  <Link href={project.url} target="_blank" className="block">
+                    <div
+                      style={{
+                        borderRadius: 16,
+                        overflow: 'hidden',
+                        border: `1px solid ${project.accent}25`,
+                        background: '#0a0e17',
+                        boxShadow: `0 8px 40px rgba(0,0,0,0.3)`,
+                        transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+                        cursor: 'pointer',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.boxShadow = `0 12px 50px ${project.accent}30, 0 0 30px ${project.accent}15`;
+                        e.currentTarget.style.transform = 'scale(1.02)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.3)';
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
                     >
-                      <Link href={project.url} className="group block h-full">
-                        <div className="h-full rounded-2xl overflow-hidden border border-[rgba(100,255,218,0.1)] bg-[#0a0e17] transition-all duration-500 group-hover:border-[#64FFDA]/30 group-hover:shadow-[0_15px_40px_rgba(100,255,218,0.1)] group-hover:-translate-y-2 flex flex-col">
-                          {/* Browser Mockup Chrome */}
-                          <div className="bg-[#111318] px-4 py-3 flex items-center gap-2 border-b border-[rgba(255,255,255,0.05)] shrink-0">
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
-                          </div>
-                          {/* Dribbble Style Image Container */}
-                          <div className="bg-[rgba(255,255,255,0.02)] p-4 md:p-6 flex items-center justify-center shrink-0">
-                            <div className="w-full aspect-[16/10] rounded-lg overflow-hidden shadow-2xl border border-[rgba(255,255,255,0.05)] relative bg-[#0a0e17]">
-                              <Image 
-                                src={project.image} 
-                                alt={project.title} 
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              />
-                            </div>
-                          </div>
-                          {/* Details */}
-                          <div className="p-6 bg-gradient-to-b from-[#0a0e17] to-[#0A192F] flex-1 flex flex-col items-start border-t border-[rgba(255,255,255,0.02)]">
-                            <span className="text-[0.65rem] font-bold tracking-[0.2em] text-[#64FFDA] font-mono mb-2 block uppercase">{project.category}</span>
-                            <h3 className="text-xl font-bold text-white mb-3 tracking-tight group-hover:text-[#64FFDA] transition-colors">{project.title}</h3>
-                            <p className="text-sm text-gray-400 leading-relaxed font-light flex-1">{project.description}</p>
-                            
-                            <div className="mt-6 border-t border-[rgba(255,255,255,0.05)] pt-4 w-full flex items-center justify-between text-sm font-semibold">
-                              <span className="text-white/70 group-hover:text-white transition-colors">Explorar demo</span>
-                              <span className="text-[#64FFDA] group-hover:translate-x-1 transition-transform">→</span>
-                            </div>
-                          </div>
+                      {/* Browser Mockup Chrome */}
+                      <div className="bg-[#111318] px-4 py-3 flex items-center gap-2 border-b border-[rgba(255,255,255,0.05)] shrink-0">
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                        <div style={{ flex: 1, marginLeft: 12, background: 'rgba(255,255,255,0.06)', borderRadius: 6, padding: '4px 12px', fontSize: '0.6rem', color: '#6b7080', fontFamily: 'var(--font-mono)' }}>
+                          {project.url.replace('https://', '')}
                         </div>
-                      </Link>
-                    </motion.div>
-                  ))}
+                      </div>
+                      {/* Dribbble Style Image Container */}
+                      <div className="bg-[rgba(255,255,255,0.02)] p-4 md:p-8 flex items-center justify-center shrink-0">
+                        <div className="w-full aspect-[16/10] rounded-lg overflow-hidden shadow-2xl border border-[rgba(255,255,255,0.05)] relative bg-[#0a0e17]">
+                          <Image 
+                            src={project.image} 
+                            alt={project.title} 
+                            fill
+                            className="object-cover" 
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                {/* TEXT SIDE */}
+                <motion.div
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? 30 : -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 + 0.05 }}
+                  style={{
+                    order: idx % 2 === 0 ? 2 : 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.25rem',
+                  }}
+                  className={idx % 2 !== 0 ? 'md:!order-1' : 'md:!order-2'}
+                >
+                  <span style={{
+                    fontSize: '0.8rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.2em',
+                    color: project.accent,
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 600,
+                  }}>
+                    {project.category}
+                  </span>
+                  <h3 style={{
+                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                    fontWeight: 800,
+                    color: 'var(--text-main)',
+                    margin: 0,
+                    lineHeight: 1.2,
+                  }}>
+                    {project.title}
+                  </h3>
+                  <p style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}>
+                    {project.description}
+                  </p>
+                  
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '0.5rem' }}>
+                    {project.tags.map((tag, tagIdx) => (
+                      <motion.span
+                        key={tag}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 + 0.3 + tagIdx * 0.05 }}
+                        style={{
+                          fontSize: '0.8rem',
+                          padding: '6px 16px',
+                          borderRadius: 50,
+                          border: `1px solid ${project.accent}30`,
+                          color: 'var(--text-muted)',
+                          fontFamily: 'var(--font-mono)',
+                          background: `${project.accent}10`,
+                          letterSpacing: '0.5px',
+                        }}
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div style={{ marginTop: '1.5rem' }}>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-block',
+                        padding: '1rem 2rem',
+                        border: `1px solid ${project.accent}`,
+                        borderRadius: 8,
+                        color: project.accent,
+                        fontSize: '0.95rem',
+                        fontWeight: 600,
+                        fontFamily: 'var(--font-mono)',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease',
+                        background: 'transparent',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = project.accent;
+                        e.currentTarget.style.color = '#0A192F';
+                        e.currentTarget.style.boxShadow = `0 4px 20px ${project.accent}40`;
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = project.accent;
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      Explorar demo →
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
                 </motion.div>
               ) : (
                 <motion.div
