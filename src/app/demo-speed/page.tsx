@@ -2,507 +2,495 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Zap, 
-  Shield, 
-  Cpu, 
-  Globe, 
-  CheckCircle2, 
-  ArrowRight, 
-  Menu, 
-  X,
-  Plus,
-  Minus,
-  BarChart3,
-  Clock,
-  Layout,
-  Play
-} from 'lucide-react';
 
-// --- Types ---
-interface PlanProps {
-  name: string;
-  price: string;
-  features: string[];
-  recommended?: boolean;
-}
-
-interface FeatureProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-// --- Components ---
-
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function DemoSpeedPage() {
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Reveal on Scroll
+    const handleReveal = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleReveal);
+    handleReveal(); // Trigger on load
+
+    // Navbar Scroll
+    const handleNavScroll = () => {
+      const nav = document.getElementById('navbar');
+      if (nav) {
+        if (window.pageYOffset > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', handleNavScroll);
+
+    // Comparison Slider Logic
+    const comparison = document.getElementById('comparison');
+    const compAfter = document.getElementById('compAfter');
+    
+    if (comparison && compAfter) {
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = comparison.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        compAfter.style.width = `${percent}%`;
+      };
+      comparison.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        comparison.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleReveal);
+      window.removeEventListener('scroll', handleNavScroll);
+    };
   }, []);
 
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'bg-[#050505]/80 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-[#00D1FF] rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-            <Zap className="text-black fill-current" size={18} />
-          </div>
-          <span className="text-xl font-black tracking-tighter text-white uppercase italic">Velocis</span>
-        </Link>
+  useEffect(() => {
+    // Terminal Simulation
+    const terminalLines = [
+      "Initializing M&C Optimization Engine...",
+      "Scanning DOM structure...",
+      "Found 42 unoptimized assets.",
+      "Compressing images (WebP)... DONE",
+      "Minifying CSS/JS bundles... DONE",
+      "Implementing Critical CSS path...",
+      "Optimizing Time to Interactive...",
+      "Final Score: 99/100",
+      "Ready for deployment."
+    ];
+    let lineIdx = 0;
+    const terminalContent = document.getElementById('terminal-content');
+    
+    const addLine = () => {
+      if (terminalContent && lineIdx < terminalLines.length) {
+        const line = document.createElement('div');
+        line.className = 't-line';
+        line.style.cssText = `margin-bottom: 5px; opacity: 0; transform: translateX(-10px); animation: tIn 0.5s forwards; color: ${lineIdx % 2 === 0 ? '#fff' : '#00D1FF'};`;
+        line.textContent = `> ${terminalLines[lineIdx]}`;
+        terminalContent.appendChild(line);
+        lineIdx++;
+        setTimeout(addLine, 800);
+      }
+    };
+    const timer = setTimeout(addLine, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-10">
-          {['Tecnología', 'Impacto', 'Testimonios', 'Precios'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[#00D1FF] transition-colors">{item}</a>
-          ))}
-          <Link href="#contact" className="px-5 py-2 bg-[#00D1FF] text-black text-xs font-bold uppercase tracking-widest rounded-full hover:shadow-[0_0_20px_rgba(0,209,255,0.4)] transition-all">Empezar</Link>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-[#050505] border-b border-white/5 p-6 md:hidden flex flex-col gap-6"
-          >
-            {['Tecnología', 'Impacto', 'Testimonios', 'Precios'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-lg font-medium text-white/70" onClick={() => setMobileMenuOpen(false)}>{item}</a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-};
-
-const FeatureCard = ({ icon, title, description }: FeatureProps) => (
-  <motion.div 
-    whileHover={{ y: -10 }}
-    className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 backdrop-blur-3xl hover:border-[#00D1FF]/30 transition-all duration-500"
-  >
-    <div className="w-12 h-12 rounded-xl bg-[#00D1FF]/10 flex items-center justify-center mb-6 text-[#00D1FF]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-    <p className="text-sm text-white/50 leading-relaxed">{description}</p>
-  </motion.div>
-);
-
-const PricingPlan = ({ name, price, features, recommended }: PlanProps) => (
-  <div className={`p-8 rounded-3xl border ${recommended ? 'border-[#00D1FF] bg-[#00D1FF]/5' : 'border-white/5 bg-white/[0.02]'} flex flex-col items-start relative`}>
-    {recommended && (
-      <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#00D1FF] text-black text-[10px] font-black uppercase tracking-widest rounded-full">Recomendado</span>
-    )}
-    <h4 className="text-xs font-bold uppercase tracking-[4px] text-[#00D1FF] mb-4">{name}</h4>
-    <div className="flex items-baseline gap-1 mb-8">
-      <span className="text-4xl font-black text-white">{price}</span>
-      <span className="text-sm text-white/40">/mes</span>
-    </div>
-    <div className="flex flex-col gap-4 mb-10 w-full">
-      {features.map((f, i) => (
-        <div key={i} className="flex gap-3 text-sm text-white/70">
-          <CheckCircle2 size={16} className="text-[#00D1FF] shrink-0" />
-          <span>{f}</span>
-        </div>
-      ))}
-    </div>
-    <button className={`w-full py-4 rounded-xl font-bold transition-all ${recommended ? 'bg-[#00D1FF] text-black hover:shadow-[0_0_30px_rgba(0,209,255,0.4)]' : 'bg-white/5 text-white hover:bg-white/10'}`}>
-      Seleccionar Plan
-    </button>
-  </div>
-);
-
-const AccordionItem = ({ title, content }: { title: string; content: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border-b border-white/5 py-6">
-      <button 
-        className="w-full flex justify-between items-center text-left gap-4"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className="text-lg font-bold text-white">{title}</span>
-        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-45 text-[#00D1FF]' : 'text-white/40'}`}>
-          <Plus size={20} />
-        </div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden"
-          >
-            <p className="pt-4 text-white/50 text-sm leading-relaxed">{content}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-// --- Page Main ---
-
-export default function VelocisPage() {
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [activeTab, setActiveTab] = useState('speed');
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowSuccess(true);
+  };
 
   return (
-    <div className="bg-[#050505] text-[#E0E0E0] selection:bg-[#00D1FF] selection:text-black">
-      <Navbar />
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes tIn { to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-        {/* Abstract BG */}
-        <div className="absolute top-0 right-0 w-[50%] h-full bg-[#00D1FF]/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[30%] h-[50%] bg-[#00D1FF]/3 blur-[120px] rounded-full pointer-events-none" />
+        .demo-speed-body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #E0E0E0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-20">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8"
-            >
-              <div className="w-2 h-2 rounded-full bg-[#00FF94] animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#00FF94]">Infrastructure version 4.2.0 deployed</span>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-black tracking-tight text-white mb-8 leading-[0.9]"
-            >
-              Carga al Instante.<br />
-              <span className="text-[#00D1FF] italic">Venta Directa.</span>
-            </motion.h1>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
-            >
-              Velocis es la infraestructura de optimización definitiva. Reducimos el tiempo de carga de 3.5s a 0.8s, eliminando la fricción y maximizando el ROI de tu tráfico.
-            </motion.p>
+        /* Navigation */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link href="#contact" className="px-10 py-5 bg-[#00D1FF] text-black font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all shadow-[0_20px_50px_rgba(0,209,255,0.2)]">
-                Optimizar mi web
-              </Link>
-              <a href="#tecnologia" className="px-10 py-5 bg-white/5 text-white font-black uppercase tracking-widest text-sm rounded-2xl hover:bg-white/10 transition-all border border-white/10">
-                Ver tecnología
-              </a>
-            </motion.div>
-          </div>
+        #navbar.scrolled {
+            background: rgba(5, 5, 5, 0.8);
+            padding: 15px 0;
+        }
 
-          {/* Hero Visual Mockup */}
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="relative max-w-5xl mx-auto group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
-            <div className="rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-black relative z-0">
-               <Image 
-                src="/demos/velocis-hero.png" 
-                alt="Velocis Dashboard" 
-                width={1200} 
-                height={800} 
-                className="w-full h-auto grayscale-[30%] hover:grayscale-0 transition-all duration-1000"
-              />
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-speed {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-speed span {
+            color: #00D1FF;
+        }
+
+        .logo-speed::before {
+            content: '←';
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo-speed:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #E0E0E0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.7;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #00D1FF;
+        }
+
+        /* Hero Section */
+        .hero-speed {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=90');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-speed-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-speed h1 {
+            font-size: 4.5rem;
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #fff, #00D1FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-speed p {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        /* Terminal */
+        .terminal {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .t-red { background: #ff5f56; }
+        .t-yellow { background: #ffbd2e; }
+        .t-green { background: #27c93f; }
+
+        /* Comparison Slider */
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: ew-resize;
+        }
+
+        .comp-side {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .comp-before { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=10&blur=50');
+            background-size: cover;
+            background-position: center;
+            color: #fff; 
+            z-index: 1; 
+        }
+        .comp-after { 
+            background: linear-gradient(rgba(0, 209, 255, 0.2), rgba(0, 209, 255, 0.2)), 
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=90');
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            z-index: 2; 
+            width: 50%; 
+            border-right: 2px solid #00D1FF; 
+        }
+
+        /* Score Widget */
+        .score-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #111111;
+            border: 1px solid #00D1FF;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .score-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #00FF94;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #00FF94;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-speed {
+            display: inline-block;
+            padding: 18px 35px;
+            background: #00D1FF;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+      `}} />
+
+      <div className="demo-speed-body">
+        <div className="score-widget" id="scoreWidget">
+            <div className="score-circle">98</div>
+            <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 600 }}>
+                Optimization Score
             </div>
-            {/* Float Stats overlay */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-10 -right-6 md:right-10 p-6 bg-[#111] border border-[#00FF94]/30 rounded-2xl shadow-2xl z-20"
-            >
-              <div className="flex items-center gap-4 mb-2">
-                <div className="w-10 h-10 rounded-full border-4 border-[#00FF94] flex items-center justify-center text-[#00FF94] font-black text-xs">99</div>
-                <div className="text-left">
-                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold">Lighthouse</div>
-                  <div className="text-white font-bold">Performance</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+        </div>
 
-          {/* Logo Bar */}
-          <div className="mt-32 pt-20 border-t border-white/5">
-            <p className="text-[10px] text-center uppercase tracking-[5px] text-white/30 font-bold mb-12">Infraestructura probada en</p>
-            <div className="flex flex-wrap justify-center gap-16 md:gap-32 opacity-30 grayscale items-center">
-              {['TECH_CORE', 'VALENCIA_LUXE', 'HEALTH_SYNC', 'B2B_CONNECT', 'ESTATE_GO'].map((l) => (
-                <span key={l} className="text-lg font-black italic tracking-tighter">{l}</span>
-              ))}
+        <nav id="navbar">
+            <div className="container nav-content">
+                <Link href="/#portfolio" className="logo-speed" title="Volver a M&C">SPEED<span>FLOW</span></Link>
+                <ul className="nav-links">
+                    <li><a href="#features">Tecnología</a></li>
+                    <li><a href="#ab-test">A/B Testing</a></li>
+                    <li><a href="#pricing">Planes</a></li>
+                    <li><a href="#contact">Empezar</a></li>
+                </ul>
             </div>
-          </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* Feature Bento Section */}
-      <section id="tecnologia" className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <div className="max-w-2xl mb-20">
-            <h2 className="text-xs font-bold uppercase tracking-[6px] text-[#00D1FF] mb-4">Ingeniería de Flujo</h2>
-            <p className="text-4xl font-bold text-white tracking-tight leading-tight">La velocidad no es solo un número, es una estrategia de retención.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FeatureCard 
-              icon={<Globe size={24} />} 
-              title="Global Edge" 
-              description="Despliegue automático en 64 regiones con latencia sub-20ms mediante nuestro motor de replicación inteligente."
-            />
-            <FeatureCard 
-              icon={<Cpu size={24} />} 
-              title="Image Crush" 
-              description="Procesamiento en tiempo real que reduce el peso de los assets en un 90% sin pérdida perceptible de calidad."
-            />
-            <FeatureCard 
-              icon={<Shield size={24} />} 
-              title="Smart Cache" 
-              description="Algoritmos de precarga predictivos que anticipan el movimiento del usuario, cargando contenido antes del click."
-            />
-            <FeatureCard 
-              icon={<Zap size={24} />} 
-              title="Core Clean" 
-              description="Reducción drástica del JavaScript bloqueante para alcanzar tiempos de CPU Interactiva inigualables."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Slider Section */}
-      <section id="impacto" className="py-32 bg-white/[0.01] border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-20 items-center">
-             <div className="w-full md:w-1/2">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Menos rebote,<br />más rentabilidad.</h2>
-                <div className="space-y-8">
-                   <div className="flex gap-4">
-                      <div className="w-1.5 h-12 bg-[#00FF94] rounded-full" />
-                      <div>
-                        <div className="text-sm font-bold text-white/40 uppercase tracking-widest mb-1">Impacto Directo</div>
-                        <p className="text-lg text-white/80 font-medium">Un aumento del 40% en conversiones al reducir solo 0.5s en dispositivos móviles.</p>
-                      </div>
-                   </div>
-                   <div className="flex gap-4">
-                      <div className="w-1.5 h-12 bg-[#00D1FF] rounded-full" />
-                      <div>
-                        <div className="text-sm font-bold text-white/40 uppercase tracking-widest mb-1">SEO Boost</div>
-                        <p className="text-lg text-white/80 font-medium">Mejora inmediata en los rankings de búsqueda al superar todos los Core Web Vitals.</p>
-                      </div>
-                   </div>
+        <section className="hero-speed">
+            <div className="container">
+                <div className="hero-speed-grid">
+                    <div className="hero-speed-content">
+                        <h1 className="reveal">Velocidad que Convierte.</h1>
+                        <p className="reveal">Optimizamos cada milisegundo de tu embudo de ventas. Menos rebote, más ingresos. Garantizado por ingeniería.</p>
+                        <a href="#contact" className="btn-speed reveal">Optimizar mi Web</a>
+                        
+                        <div className="stats-grid reveal" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "30px", marginTop: "80px" }}>
+                            <div className="stat-card" style={{ background: "#111111", padding: "30px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                                <span className="stat-value" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "2.5rem", color: "#00FF94", display: "block", marginBottom: "10px" }}>+45%</span>
+                                <span className="stat-label" style={{ fontSize: "0.9rem", opacity: 0.6, textTransform: "uppercase", letterSpacing: "1px" }}>Conversión Media</span>
+                            </div>
+                            <div className="stat-card" style={{ background: "#111111", padding: "30px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                                <span className="stat-value" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "2.5rem", color: "#00FF94", display: "block", marginBottom: "10px" }}>-0.8s</span>
+                                <span className="stat-label" style={{ fontSize: "0.9rem", opacity: 0.6, textTransform: "uppercase", letterSpacing: "1px" }}>Tiempo de Carga</span>
+                            </div>
+                            <div className="stat-card" style={{ background: "#111111", padding: "30px", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                                <span className="stat-value" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "2.5rem", color: "#00FF94", display: "block", marginBottom: "10px" }}>99.9</span>
+                                <span className="stat-label" style={{ fontSize: "0.9rem", opacity: 0.6, textTransform: "uppercase", letterSpacing: "1px" }}>Score Lighthouse</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="hero-visual reveal">
+                        <div className="terminal" id="terminal">
+                            <div className="terminal-header">
+                                <div className="t-dot t-red"></div>
+                                <div className="t-dot t-yellow"></div>
+                                <div className="t-dot t-green"></div>
+                            </div>
+                            <div id="terminal-content">
+                                <div className="t-line" style={{ color: "#00D1FF", marginBottom: "5px" }}>{"> mc-engine --analyze https://client-site.com"}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="mt-12 flex gap-4">
-                   <div className="p-4 bg-white/5 rounded-2xl border border-white/5 flex-1">
-                      <div className="text-3xl font-black text-white mb-1">0.6s</div>
-                      <div className="text-[10px] uppercase text-white/40 tracking-wider">FCP Promedio</div>
-                   </div>
-                   <div className="p-4 bg-white/5 rounded-2xl border border-white/5 flex-1">
-                      <div className="text-3xl font-black text-[#00FF94] mb-1">100%</div>
-                      <div className="text-[10px] uppercase text-white/40 tracking-wider">Uptime Garantizado</div>
-                   </div>
+            </div>
+        </section>
+
+        <section className="section" style={{ padding: "120px 0" }}>
+            <div className="container">
+                <h2 className="section-title reveal" style={{ fontSize: "3rem", fontWeight: 800, marginBottom: "60px", textAlign: "center" }}>Impacto Visual Inmediato</h2>
+                <div className="comparison-container reveal" id="comparison">
+                    <div className="comp-side comp-before">
+                        WEB ESTÁNDAR (LENTA)
+                        <div className="comp-label label-before" style={{ position: "absolute", bottom: "20px", left: "20px", padding: "5px 15px", borderRadius: "4px", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", background: "#222" }}>Antes</div>
+                    </div>
+                    <div className="comp-side comp-after" id="compAfter">
+                        OPTIMIZADA POR M&C
+                        <div className="comp-label label-after" style={{ position: "absolute", bottom: "20px", right: "20px", padding: "5px 15px", borderRadius: "4px", fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "2px", background: "#00D1FF", color: "#000" }}>Después</div>
+                    </div>
                 </div>
-             </div>
-             
-             {/* Simple Comparison Grid instead of manual slider for professional look */}
-             <div className="w-full md:w-1/2 grid grid-cols-2 gap-4 h-[400px]">
-                <div className="bg-[#111] rounded-2xl border border-white/5 overflow-hidden flex flex-col p-6 items-center justify-center text-center gap-4 relative">
-                   <div className="absolute top-4 left-4 text-[10px] font-bold text-white/20 tracking-tighter uppercase">Web Estándar</div>
-                   <Clock className="text-white/10" size={64} />
-                   <div className="text-3xl font-black text-rose-500 opacity-50">3.8s</div>
-                   <p className="text-xs text-white/30 uppercase tracking-widest">Pérdida de usuarios crítica</p>
+            </div>
+        </section>
+
+        <section id="ab-test" className="section" style={{ padding: "120px 0" }}>
+            <div className="container">
+                <h2 className="section-title reveal" style={{ fontSize: "3rem", fontWeight: 800, marginBottom: "60px", textAlign: "center" }}>El Poder del A/B Testing</h2>
+                <div className="ab-container reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", background: "#111111", padding: "40px", borderRadius: "20px", border: "1px solid rgba(255,255,255,0.05)" }}>
+                    <div className="ab-side" style={{ padding: "30px", borderRadius: "12px", background: "rgba(255,255,255,0.02)", textAlign: "center" }}>
+                        <h3 style={{ marginBottom: "15px" }}>Versión A (Control)</h3>
+                        <div style={{ height: "150px", background: "#222", borderRadius: "8px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <button style={{ padding: "10px 20px", background: "#444", border: "none", color: "white" }}>Comprar</button>
+                        </div>
+                        <p style={{ fontFamily: "var(--font-mono)", color: "#666" }}>Tasa de Conversión: 2.1%</p>
+                    </div>
+                    <div className="ab-side winner" style={{ padding: "30px", borderRadius: "12px", background: "rgba(255,255,255,0.02)", textAlign: "center", border: "1px solid #00FF94", position: "relative" }}>
+                        <div className="winner-badge" style={{ position: "absolute", top: "-15px", right: "-15px", background: "#00FF94", color: "#000", padding: "5px 15px", borderRadius: "20px", fontSize: "0.7rem", fontWeight: 800 }}>GANADOR +320%</div>
+                        <h3 style={{ marginBottom: "15px" }}>Versión B (M&C Engine)</h3>
+                        <div style={{ height: "150px", background: "#222", borderRadius: "8px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <button style={{ padding: "12px 25px", background: "#00D1FF", border: "none", color: "#000", fontWeight: 800, boxShadow: "0 0 15px #00D1FF" }}>¡LO QUIERO!</button>
+                        </div>
+                        <p style={{ fontFamily: "var(--font-mono)", color: "#00FF94" }}>Tasa de Conversión: 8.8%</p>
+                    </div>
                 </div>
-                <div className="bg-[#00D1FF]/5 rounded-2xl border border-[#00D1FF]/30 overflow-hidden flex flex-col p-6 items-center justify-center text-center gap-4 relative">
-                   <div className="absolute top-4 left-4 text-[10px] font-bold text-[#00D1FF] tracking-tighter uppercase">Velocis Infra</div>
-                   <Zap className="text-[#00D1FF]" size={64} fill="currentColor" />
-                   <div className="text-4xl font-black text-[#00D1FF] shadow-[0_0_20px_rgba(0,209,255,0.4)]">0.7s</div>
-                   <p className="text-xs text-[#00D1FF] uppercase tracking-widest font-black">Satisfacción Instantánea</p>
+            </div>
+        </section>
+
+        <section id="contact" className="section" style={{ padding: "120px 0" }}>
+            <div className="container">
+                <h2 className="section-title reveal" style={{ fontSize: "3rem", fontWeight: 800, marginBottom: "60px", textAlign: "center" }}>Empieza a Escalar</h2>
+                <div className="form-box reveal" style={{ maxWidth: "600px", margin: "0 auto", background: "#111111", padding: "50px", borderRadius: "20px" }}>
+                    <form id="speedForm" onSubmit={handleFormSubmit}>
+                        <input type="text" placeholder="Tu Nombre" required style={{ width: "100%", padding: "15px", background: "#1a1a1a", border: "1px solid #333", borderRadius: "8px", color: "white", marginBottom: "20px" }} />
+                        <input type="url" placeholder="URL de tu Web Actual" required style={{ width: "100%", padding: "15px", background: "#1a1a1a", border: "1px solid #333", borderRadius: "8px", color: "white", marginBottom: "20px" }} />
+                        <select required style={{ width: "100%", padding: "15px", background: "#1a1a1a", border: "1px solid #333", borderRadius: "8px", color: "white", marginBottom: "20px" }}>
+                            <option value="">Objetivo Principal</option>
+                            <option>Más Ventas</option>
+                            <option>Menos Rebote</option>
+                            <option>Mejor SEO</option>
+                        </select>
+                        <button type="submit" className="btn-speed" style={{ width: "100%" }}>Analizar mi Web Gratis</button>
+                    </form>
                 </div>
-             </div>
-          </div>
-        </div>
-      </section>
+            </div>
+        </section>
 
-      {/* Testimonials */}
-      <section id="testimonios" className="py-32">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-xs font-bold uppercase tracking-[8px] text-[#00D1FF] mb-20">Voces de Autoridad</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { 
-                text: "Velocis no solo mejoró nuestra carga, redujo nuestro gasto en servidor a la mitad. Es una herramienta de ingeniería pura.", 
-                author: "M. Rodríguez", 
-                role: "CTO @ TechFlow",
-                sector: "Sinergia Tecnológica"
-              },
-              { 
-                text: "La experiencia de compra ahora es instantánea. Nuestras ventas en móvil han subido un 28% en el primer mes de integración.", 
-                author: "Elena Sanz", 
-                role: "Marketing Director @ LuxeWear",
-                sector: "E-Commerce Premium"
-              },
-              { 
-                text: "Habíamos probado todo para mejorar el SEO. Velocis fue el único que nos puso en verde en todos los indicadores.", 
-                author: "Dr. Roberto Gil", 
-                role: "Founder @ HealthSync",
-                sector: "Salud Digital"
-              }
-            ].map((t, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 text-left relative h-full flex flex-col">
-                <span className="text-4xl text-[#00D1FF] font-black absolute top-5 right-8 opacity-20">"</span>
-                <p className="text-lg text-white/80 leading-relaxed italic mb-8 flex-1">"{t.text}"</p>
-                <div>
-                  <div className="font-bold text-white">{t.author}</div>
-                  <div className="text-xs text-white/40 uppercase tracking-widest mt-1">{t.role}</div>
-                  <div className="mt-4 px-3 py-1 bg-[#00D1FF]/10 text-[#00D1FF] text-[9px] font-black inline-block rounded-md tracking-widest uppercase">{t.sector}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section className="return-section reveal" style={{ padding: "100px 0", textAlign: "center", background: "linear-gradient(to bottom, transparent, rgba(0, 209, 255, 0.05))" }}>
+            <div className="container">
+                <h2 style={{ fontSize: "2.5rem", marginBottom: "30px" }}>¿Listo para transformar tu negocio?</h2>
+                <p style={{ marginBottom: "50px", opacity: 0.7, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
+                    Esta demo es solo una pequeña muestra de lo que nuestra ingeniería puede hacer por tu presencia digital.
+                </p>
+                <Link href="/#portfolio" className="btn-speed" style={{ borderRadius: "50px", display: "inline-flex", alignItems: "center", gap: "15px", background: "transparent", border: "1px solid #00D1FF", color: "#00D1FF" }}>
+                    <span>← Volver a M&C Web Solutions</span>
+                </Link>
+            </div>
+        </section>
 
-      {/* Pricing Section */}
-      <section id="precios" className="py-32 bg-white/[0.01]">
-        <div className="container mx-auto px-6 max-w-6xl">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Escalabilidad Garantizada</h2>
-            <p className="text-white/50 max-w-xl mx-auto">Selecciona el plan que mejor se adapte a tu volumen de tráfico y necesidades técnicas.</p>
-          </div>
+        <footer style={{ padding: "60px 0", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center", opacity: 0.6, fontSize: "0.9rem" }}>
+            <div className="container">
+                <p>Demo técnica de Optimización de Conversión por <Link href="/" style={{ color: "#00D1FF", textDecoration: "none" }}>M&C Web Solutions</Link>.</p>
+            </div>
+        </footer>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <PricingPlan 
-              name="Starter"
-              price="49€"
-              features={['Hasta 50k visitas/mes', 'Optimización Automática', 'CDN Global (Basic)', 'Soporte vía Ticket']}
-            />
-            <PricingPlan 
-              recommended
-              name="Professional"
-              price="149€"
-              features={['Hasta 500k visitas/mes', 'Prioridad de CPU en Edge', 'Compresión Multi-formato', 'A/B Testing Integrado', 'Soporte 24/7']}
-            />
-            <PricingPlan 
-              name="Enterprise"
-              price="Custom"
-              features={['Tráfico Ilimitado', 'Multicloud Infrastructure', 'Ingeniero Dedicado', 'SLA 99.99%', 'Auditoría Mensual']}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-32">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <h2 className="text-center text-4xl font-bold text-white mb-20">Consultas Comunes</h2>
-          <div className="flex flex-col">
-            <AccordionItem 
-              title="¿Cuánto tiempo tarda la integración?" 
-              content="En la mayoría de los casos, la configuración inicial toma menos de 48 horas. Una vez activado, los resultados de rendimiento son visibles de forma inmediata en herramientas como PageSpeed Insights." 
-            />
-            <AccordionItem 
-              title="¿Es compatible con mi plataforma actual?" 
-              content="Velocis es agnóstico a la tecnología de origen. Funciona a nivel de infraestructura, por lo que es compatible con WordPress, Next.js, Shopify, Laravel y desarrollos a medida." 
-            />
-            <AccordionItem 
-              title="¿Cómo afecta esto a mi SEO?" 
-              content="Google utiliza la velocidad de carga (Core Web Vitals) como un factor de ranking directo. Velocis asegura que tu web cumpla con todos los requisitos técnicos para maximizar tu visibilidad orgánica." 
-            />
-            <AccordionItem 
-              title="¿Hay compromiso de permanencia?" 
-              content="Nuestros planes estándar son mensuales y puedes cancelarlos en cualquier momento sin penalización. Creemos en la fidelización a través de resultados técnicos excepcionales." 
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Contact */}
-      <section id="contact" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#00D1FF] opacity-5 saturate-[0.5] mix-blend-overlay pointer-events-none" />
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[40px] bg-gradient-to-b from-white/[0.05] to-transparent border border-white/10 backdrop-blur-3xl shadow-2xl">
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-10 leading-tight">¿Hablamos de Rendimiento?</h2>
-            <form className="max-w-lg mx-auto flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); setShowSuccess(true); }}>
-              <input type="email" placeholder="email@compañia.com" required className="w-full px-6 py-5 bg-black/40 border border-white/10 rounded-2xl text-white focus:border-[#00D1FF] outline-none transition-all placeholder:text-white/20" />
-              <button type="submit" className="w-full py-5 bg-[#00D1FF] text-black font-black uppercase tracking-widest text-sm rounded-2xl hover:scale-105 transition-all">
-                Reserva Análisis Gratuito
-              </button>
-            </form>
-            <p className="mt-8 text-white/30 text-xs font-bold uppercase tracking-widest">Recibe un reporte de performance completo en 24h</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom Return To Agency */}
-      <div className="py-20 text-center border-t border-white/5 opacity-50 hover:opacity-100 transition-opacity">
-        <Link href="/#portfolio" className="text-white/40 hover:text-[#00D1FF] flex items-center justify-center gap-2 group text-sm font-bold tracking-widest uppercase">
-          <ArrowRight className="rotate-180 group-hover:-translate-x-2 transition-transform" size={16} />
-          Volver a Portfolio Principal
-        </Link>
-      </div>
-
-      <footer className="py-12 text-center text-[10px] font-bold uppercase tracking-[4px] text-white/20">
-        <div className="container mx-auto px-6">
-          <p>© 2026 Velocis Performance. Todos los derechos reservados.</p>
-        </div>
-      </footer>
-
-      {/* Success Modal */}
-      <AnimatePresence>
         {showSuccess && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] bg-[#050505]/95 backdrop-blur-2xl flex items-center justify-center p-6 text-center"
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              className="max-w-md w-full"
-            >
-              <div className="w-20 h-20 bg-[#00FF94]/10 rounded-3xl flex items-center justify-center text-[#00FF94] mx-auto mb-8 mx-auto">
-                <CheckCircle2 size={40} />
+          <div id="successOverlay" style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(5, 5, 5, 0.98)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2000, textAlign: "center" }}>
+              <div className="success-content">
+                  <h2 style={{ fontSize: "3.5rem", color: "#00FF94", marginBottom: "20px" }}>¡Análisis Iniciado!</h2>
+                  <p>Hemos detectado 12 puntos de mejora crítica. Así es como tus leads verán tu eficiencia.</p>
+                  <button onClick={() => setShowSuccess(false)} className="btn-speed" style={{ marginTop: "30px" }}>Cerrar Demo</button>
               </div>
-              <h2 className="text-4xl font-black text-white mb-4 leading-tight italic">Análisis en Proceso.</h2>
-              <p className="text-white/60 text-lg font-medium leading-relaxed mb-10">
-                Hemos recibido tu solicitud. Uno de nuestros ingenieros de rendimiento revisará tu infraestructura y contactará contigo en menos de 24 horas.
-              </p>
-              <button 
-                onClick={() => setShowSuccess(false)}
-                className="w-full py-5 bg-white text-black font-black uppercase tracking-widest text-sm rounded-2xl"
-              >
-                Cerrar Notificación
-              </button>
-            </motion.div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </div>
+      </div>
+    </>
   );
 }
