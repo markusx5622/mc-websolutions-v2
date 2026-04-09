@@ -88,7 +88,7 @@ function SpeedAuditWidget() {
 
 const BUSINESS_SOLUTIONS_PROJECTS = [
   {
-    title: "Nano Banana",
+    title: "Velocis Performance",
     category: "ONE-PAGE / LANDING",
     description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
     image: "/demos/nano-banana.png",
