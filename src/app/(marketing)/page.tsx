@@ -88,58 +88,58 @@ function SpeedAuditWidget() {
 
 const BUSINESS_SOLUTIONS_PROJECTS = [
   {
-    title: "Bocados Peludos",
-    category: "E-COMMERCE / TIENDA",
-    description: "Plataforma de repostería y boutique para mascotas. Con carrito interactivo, navegación visual fluida y foco en el storytelling y la estética artesanal.",
-    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=80&w=800",
-    url: "/demo-mascotas",
-    accent: '#B88B5D',
-    tags: ['E-commerce', 'Boutique', 'Storytelling']
+    title: "Nano Banana",
+    category: "ONE-PAGE / LANDING",
+    description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
+    image: "/demos/nano-banana.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-creative",
+    accent: '#00E5FF',
+    tags: ['Conversión', 'Landing', 'Layout Rapido']
   },
   {
-    title: "Speedflow Engine",
-    category: "SAAS / LANDING B2B",
-    description: "Landing page técnica enfocada a la alta conversión. Terminal interactiva, simulación de optimizaciones en tiempo real y componentes UX persuasivos.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=90",
-    url: "/demo-speed",
-    accent: '#00D1FF',
-    tags: ['SaaS API', 'Conversión', 'A/B Testing']
+    title: "Web B2B / Industria",
+    category: "CATÁLOGO DIGITAL",
+    description: "Plataforma para empresas con catálogo de productos, gestión de leads y formulario de contacto profesional avanzado.",
+    image: "/demos/b2b-industria.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-speed",
+    accent: '#3B82F6',
+    tags: ['B2B', 'Catálogo', 'Leads']
   },
   {
-    title: "Café Origen",
-    category: "HOSTELERÍA / LOCAL",
-    description: "Ecosistema digital diseñado para cafeterías y comercio local. Destaca su diseño cálido, integración de menú digital y flujo de recogida express (Take Away).",
-    image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800&auto=format&fit=crop",
-    url: "/demo-local",
-    accent: '#D4A373',
-    tags: ['SEO Local', 'Take Away', 'Diseño Culinario']
+    title: "Negocio Local",
+    category: "POSICIONAMIENTO MAPS",
+    description: "Ecosistema para cafeterías y pequeños comercios de barrio. Enfocado en posicionamiento en Google Maps y SEO local.",
+    image: "/demos/negocio-local.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-local",
+    accent: '#10B981',
+    tags: ['SEO Local', 'Google Maps', 'Negocios']
   },
   {
     title: "Aura Wellness",
     category: "CLÍNICA / BIENESTAR",
-    description: "Identidad premium para centros de paz, spa y salud. Minimalismo inmersivo con calculadora de presupuestos interactiva y sistema de citas privadas.",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop",
-    url: "/demo-premium",
-    accent: '#C5A059',
-    tags: ['Premium', 'Calculadora Citas', 'Salud']
+    description: "Identidad premium para centros de yoga y salud. Incluye flujos de reservas online y experiencia visual exclusiva.",
+    image: "/demos/aura-wellness.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-premium",
+    accent: '#D946EF',
+    tags: ['Premium', 'Reservas', 'Wellness']
   },
   {
     title: "Atelier Valencia",
-    category: "MODA / ALTA COSTURA",
-    description: "Escaparate de sastrería y moda con diseño editorial impecable. Integración de visual display de tejidos, tipografía clásica y reservas bespoke.",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
-    url: "/demo-sastre",
-    accent: '#1A1A1B',
-    tags: ['Moda Lujo', 'Editorial', 'Bespoke']
+    category: "MODA / ARTESANÍA",
+    description: "Escaparate para moda y diseño con catálogo elegante de colecciones y sistema automatizado de gestión de citas.",
+    image: "/demos/atelier-valencia.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-sastre",
+    accent: '#F59E0B',
+    tags: ['Moda', 'Calendario', 'Diseño']
   },
   {
-    title: "Studio Architects",
-    category: "PORTFOLIO / ESTUDIOS",
-    description: "La belleza de lo simple. Portfolio interactivo con custom-cursor reactivo, filtrado dinámico de proyectos de arquitectura, y scroll parallax asimétrico.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
-    url: "/demo-portfolio",
-    accent: '#D4AF37',
-    tags: ['Creativos', 'Parallax', 'Interactivo']
+    title: "Elite Padel",
+    category: "CLUB DEPORTIVO",
+    description: "Sistema para clubes deportivos con integración para reserva de pistas, eventos y desarrollo de comunidad.",
+    image: "/demos/elite-padel.png",
+    url: "https://mc-websolutions-v2.vercel.app/demo-padel",
+    accent: '#EF4444',
+    tags: ['Deportes', 'Comunidad', 'Reservas']
   }
 ];
 
