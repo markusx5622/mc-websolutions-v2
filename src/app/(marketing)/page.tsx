@@ -705,17 +705,22 @@ export default function Home() {
                           {project.url.replace('https://', '')}
                         </div>
                       </div>
-                      {/* Dribbble Style Image Container */}
-                      <div className="bg-[rgba(255,255,255,0.02)] p-4 md:p-8 flex items-center justify-center shrink-0">
-                        <div className="w-full aspect-[16/10] rounded-lg overflow-hidden shadow-2xl border border-[rgba(255,255,255,0.05)] relative bg-[#0a0e17]">
-                          <Image 
-                            src={project.image} 
-                            alt={project.title} 
-                            fill
-                            className="object-cover" 
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
-                        </div>
+                      {/* Preview */}
+                      <div style={{ position: 'relative', width: '100%', height: 380, overflow: 'hidden', background: '#080c14' }}>
+                        <iframe
+                          src={project.url}
+                          title={`${project.title} — Demo`}
+                          style={{
+                            width: '166.67%',
+                            height: '166.67%',
+                            border: 'none',
+                            transform: 'scale(0.6)',
+                            transformOrigin: 'top left',
+                            pointerEvents: 'none',
+                          }}
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin"
+                        />
                       </div>
                     </div>
                   </Link>
