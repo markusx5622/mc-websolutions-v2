@@ -8,8 +8,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mcwebsolutions.dev"),
   title: "M&C Web Solutions | Tu web profesional en 48 horas",
   description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+  openGraph: {
+    title: "M&C Web Solutions | Tu web profesional en 48 horas",
+    description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+    url: "https://mcwebsolutions.dev",
+    siteName: "M&C Web Solutions",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "M&C Web Solutions - Diseño Web Profesional",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "M&C Web Solutions | Tu web profesional en 48 horas",
+    description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
