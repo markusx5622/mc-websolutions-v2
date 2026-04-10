@@ -1506,18 +1506,18 @@ export default function Home() {
               {
                 id: 'basic',
                 name: 'WEB BÁSICA',
-                price: '299€',
+                price: '199€',
                 features: ['1-3 páginas', 'Entrega en 48 horas', 'Diseño responsive', 'Formulario de contacto', 'SEO básico'],
-                cta: 'Empezar por 299€',
+                cta: 'Empezar por 199€',
                 recommended: false,
                 btnClass: 'btn-outline'
               },
               {
                 id: 'pro',
                 name: 'WEB PRO',
-                price: '499€',
+                price: '399€',
                 features: ['4-8 páginas', 'Entrega en 7 días', 'Todo lo de Web Básica +', 'Google Maps', 'Blog integrado', 'Google Analytics'],
-                cta: 'Empezar por 499€',
+                cta: 'Empezar por 399€',
                 recommended: true,
                 btnClass: 'btn-solid'
               },
@@ -1582,7 +1582,7 @@ export default function Home() {
 
           <div style={{ textAlign: "center", marginTop: "4rem" }}>
             <p className="mono-text" style={{ color: "var(--text-muted)", margin: 0, fontSize: "0.9rem", opacity: 0.8 }}>
-              + Mantenimiento opcional: 39€/mes
+              + Mantenimiento opcional: 10€/mes
             </p>
           </div>
         </div>
@@ -1618,7 +1618,7 @@ export default function Home() {
               },
               {
                 q: '¿Qué pasa con el mantenimiento?',
-                a: 'El hosting es gratuito. Si quieres actualizaciones, soporte y copias de seguridad, ofrecemos un plan de 39€/mes.'
+                a: 'El hosting es gratuito. Si quieres actualizaciones, soporte y copias de seguridad, ofrecemos un plan de 10€/mes.'
               }
             ].map((item, i) => (
               <motion.div
