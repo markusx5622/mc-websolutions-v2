@@ -1278,6 +1278,209 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ═══ CASO DE ÉXITO — NEXUS PADEL HUB ═══ */}
+      <motion.section
+        id="caso-exito-nexus"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        style={{
+          position: 'relative',
+          padding: '6rem 0',
+          background: 'linear-gradient(180deg, #0A192F 0%, #0D2137 50%, #0A192F 100%)',
+          borderBottom: '1px solid rgba(16, 185, 129, 0.15)',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Ambient glow */}
+        <div style={{ position: 'absolute', top: '20%', left: '-10%', width: 500, height: 500, borderRadius: '50%', background: 'rgba(16, 185, 129, 0.04)', filter: 'blur(120px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '10%', right: '-10%', width: 400, height: 400, borderRadius: '50%', background: 'rgba(56, 189, 248, 0.03)', filter: 'blur(100px)', pointerEvents: 'none' }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: 1200, margin: '0 auto', padding: '0 2rem' }}>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            style={{ textAlign: 'center', marginBottom: '1.5rem' }}
+          >
+            <span style={{
+              display: 'inline-block',
+              fontSize: '0.7rem',
+              letterSpacing: 4,
+              textTransform: 'uppercase',
+              color: '#10B981',
+              background: 'linear-gradient(90deg, rgba(16,185,129,0.15), rgba(56,189,248,0.1), rgba(16,185,129,0.15))',
+              backgroundSize: '200% auto',
+              animation: 'shimmer 3s linear infinite',
+              border: '1px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: 50,
+              padding: '6px 20px',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 600,
+            }}>
+              ✦ CASO DE ÉXITO ESTELAR
+            </span>
+          </motion.div>
+
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            style={{ textAlign: 'center', marginBottom: '4rem' }}
+          >
+            <h2 style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+              fontWeight: 800,
+              margin: '0 0 0.8rem',
+              background: 'linear-gradient(135deg, #10B981, #38BDF8)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              lineHeight: 1.1,
+            }}>
+              Nexus Padel Hub
+            </h2>
+            <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', margin: 0 }}>
+              El ecosistema definitivo para clubes deportivos
+            </p>
+          </motion.div>
+
+          {/* Two-column layout (Altered order for zigzag effect) */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem', alignItems: 'center' }} className="md:!grid-cols-[1fr_1.5fr]">
+
+            {/* Left: Copy + Stats + CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', order: 1 }}
+              className="md:!order-1"
+            >
+              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.8, margin: 0 }}>
+                Nexus Padel Hub requería una presencia digital dinámica que estuviera al nivel de sus modernas instalaciones. El objetivo era crear <strong style={{ color: 'var(--text-main)' }}>un ecosistema ágil y vibrante</strong> que atrajera nuevos jugadores y conectara a la comunidad del club.
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.8, margin: 0 }}>
+                Desplegamos una arquitectura visual inmersiva orientada a la acción. Mediante interfaces intuitivas y un diseño que respira deporte, logramos una plataforma que <strong style={{ color: '#10B981' }}>conecta directamente con la adrenalina de la pista</strong>.
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.8, margin: 0 }}>
+                Una experiencia de usuario veloz, diseñada en dark mode, y estructurada para impactar desde el primer click.
+              </p>
+
+              {/* Mini Stats */}
+              <div style={{ display: 'flex', gap: '2rem', margin: '0.5rem 0', flexWrap: 'wrap' }}>
+                {[
+                  { number: '100', label: 'Rendimiento UX' },
+                  { number: '<1s', label: 'Tiempo de carga' },
+                  { number: 'A+', label: 'Diseño Visual' },
+                ].map((stat) => (
+                  <div key={stat.label} style={{ textAlign: 'left' }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#10B981', fontFamily: 'var(--font-mono)', lineHeight: 1 }}>
+                      {stat.number}
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: '#8a8f98', marginTop: 4, fontFamily: 'var(--font-mono)', letterSpacing: 1 }}>
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div style={{ marginTop: '0.5rem' }}>
+                <a
+                  href="https://nexus-padel-hub.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    padding: '1rem 2.5rem',
+                    background: 'linear-gradient(135deg, #10B981, #38BDF8)',
+                    color: '#0A192F',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    borderRadius: 12,
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                    animation: 'ctaPulseNexus 3s ease-in-out infinite',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    fontFamily: 'var(--font-mono)',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.03)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  Ver proyecto en vivo →
+                </a>
+              </div>
+              <style>{`
+                @keyframes ctaPulseNexus {
+                  0%, 100% { box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+                  50% { box-shadow: 0 8px 50px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.15); }
+                }
+              `}</style>
+
+              <p style={{ fontSize: '0.75rem', color: '#8a8f98', margin: 0, marginTop: '1rem', fontFamily: 'var(--font-mono)' }}>
+                Desarrollado con Next.js · Desplegado en Vercel · Diseñado por M&C
+              </p>
+            </motion.div>
+
+            {/* Right: Browser Mockup */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              style={{ order: 2 }}
+              className="md:!order-2"
+            >
+              <div style={{
+                borderRadius: 16,
+                overflow: 'hidden',
+                border: '1px solid rgba(16, 185, 129, 0.15)',
+                background: '#0a0e17',
+                boxShadow: '0 0 60px rgba(16, 185, 129, 0.08)',
+                transition: 'box-shadow 0.4s ease',
+              }}
+                onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 80px rgba(16, 185, 129, 0.16), 0 25px 50px rgba(0,0,0,0.4)')}
+                onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 60px rgba(16, 185, 129, 0.08)')}
+              >
+                {/* Browser chrome */}
+                <div style={{ background: '#111318', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f56' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#27c93f' }} />
+                  <div style={{ flex: 1, marginLeft: 12, background: 'rgba(255,255,255,0.06)', borderRadius: 6, padding: '4px 12px', fontSize: '0.65rem', color: '#6b7080', fontFamily: 'var(--font-mono)' }}>
+                    nexus-padel-hub.vercel.app
+                  </div>
+                </div>
+                {/* Preview */}
+                <div style={{ position: 'relative', width: '100%', height: 380, overflow: 'hidden', background: '#080c14' }}>
+                  <iframe
+                    src="https://nexus-padel-hub.vercel.app/"
+                    title="Nexus Padel Hub — Caso de éxito de M&C Web Solutions"
+                    style={{
+                      width: '166.67%',
+                      height: '166.67%',
+                      border: 'none',
+                      transform: 'scale(0.6)',
+                      transformOrigin: 'top left',
+                      pointerEvents: 'none',
+                    }}
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </motion.section>
+
 
 
       <motion.section
