@@ -10,10 +10,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mcwebsolutions.dev"),
   title: "M&C Web Solutions | Tu web profesional en 48 horas",
-  description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+  description: "Creamos tu página web en Valencia desde 199€. Diseño moderno, optimizada para Google y lista en 48 horas. ¡Impulsa tu negocio hoy mismo!",
   openGraph: {
     title: "M&C Web Solutions | Tu web profesional en 48 horas",
-    description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+    description: "Creamos tu página web en Valencia desde 199€. Diseño moderno, optimizada para Google y lista en 48 horas. ¡Impulsa tu negocio hoy mismo!",
     url: "https://mcwebsolutions.dev",
     siteName: "M&C Web Solutions",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "M&C Web Solutions | Tu web profesional en 48 horas",
-    description: "Creamos páginas web profesionales para tu negocio en 48 horas desde 299€. Diseño moderno, precio cerrado, sin complicaciones. Valencia, España.",
+    description: "Creamos tu página web en Valencia desde 199€. Diseño moderno, optimizada para Google y lista en 48 horas. ¡Impulsa tu negocio hoy mismo!",
     images: ["/og-image.png"],
   },
 };
