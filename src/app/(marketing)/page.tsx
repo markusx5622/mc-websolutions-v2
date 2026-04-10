@@ -88,58 +88,49 @@ function SpeedAuditWidget() {
 
 const BUSINESS_SOLUTIONS_PROJECTS = [
   {
-    title: "Nano Banana",
-    category: "ONE-PAGE / LANDING",
-    description: "Web de una página diseñada para maximizar conversiones en campañas de publicidad y simplificar la experiencia de usuario.",
-    image: "/demos/nano-banana.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-creative",
-    accent: '#00E5FF',
-    tags: ['Conversión', 'Landing', 'Layout Rapido']
-  },
-  {
-    title: "Web B2B / Industria",
-    category: "CATÁLOGO DIGITAL",
-    description: "Plataforma para empresas con catálogo de productos, gestión de leads y formulario de contacto profesional avanzado.",
-    image: "/demos/b2b-industria.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-speed",
-    accent: '#3B82F6',
-    tags: ['B2B', 'Catálogo', 'Leads']
-  },
-  {
-    title: "Negocio Local",
-    category: "POSICIONAMIENTO MAPS",
-    description: "Ecosistema para cafeterías y pequeños comercios de barrio. Enfocado en posicionamiento en Google Maps y SEO local.",
-    image: "/demos/negocio-local.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-local",
-    accent: '#10B981',
-    tags: ['SEO Local', 'Google Maps', 'Negocios']
-  },
-  {
-    title: "Aura Wellness",
-    category: "CLÍNICA / BIENESTAR",
-    description: "Identidad premium para centros de yoga y salud. Incluye flujos de reservas online y experiencia visual exclusiva.",
-    image: "/demos/aura-wellness.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-premium",
-    accent: '#D946EF',
-    tags: ['Premium', 'Reservas', 'Wellness']
-  },
-  {
-    title: "Atelier Valencia",
-    category: "MODA / ARTESANÍA",
-    description: "Escaparate para moda y diseño con catálogo elegante de colecciones y sistema automatizado de gestión de citas.",
-    image: "/demos/atelier-valencia.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-sastre",
-    accent: '#F59E0B',
-    tags: ['Moda', 'Calendario', 'Diseño']
-  },
-  {
-    title: "Elite Padel",
-    category: "CLUB DEPORTIVO",
-    description: "Sistema para clubes deportivos con integración para reserva de pistas, eventos y desarrollo de comunidad.",
-    image: "/demos/elite-padel.png",
-    url: "https://mc-websolutions-v2.vercel.app/demo-padel",
+    title: "Brasería El Molino",
+    category: "RESTAURANTE / GASTRONOMÍA",
+    description: "Plataforma digital para restaurantes y hostelería con enfoque en la experiencia visual. Diseñada para atraer comensales y facilitar la información del establecimiento.",
+    image: "/demos/braseria-el-molino.png",
+    url: "https://demo-braseria-el-molino.vercel.app/",
     accent: '#EF4444',
-    tags: ['Deportes', 'Comunidad', 'Reservas']
+    tags: ['Restaurante', 'Hostelería', 'Presencia Digital']
+  },
+  {
+    title: "Sonrisa Natural",
+    category: "SALUD / CLÍNICA DENTAL",
+    description: "Portal profesional para centros médicos y clínicas. Transmite limpieza, rigor médico y confianza al paciente, destacando los servicios y especialidades.",
+    image: "/demos/clinica-dental.png",
+    url: "https://clinica-dental-sonrisa-natural.vercel.app/",
+    accent: '#00E5FF',
+    tags: ['Salud', 'Clínica', 'Profesional']
+  },
+  {
+    title: "L'Essence",
+    category: "BELLEZA / ESTÉTICA",
+    description: "Diseño premium para centros de belleza y bienestar. Refleja exclusividad y tranquilidad, resaltando la calidad de los tratamientos y el ambiente del salón.",
+    image: "/demos/essence-estetica.png",
+    url: "https://l-essence-estetica.vercel.app/",
+    accent: '#D946EF',
+    tags: ['Estética', 'Premium', 'Wellness']
+  },
+  {
+    title: "Sastrería Monforte",
+    category: "MODA / ARTESANÍA",
+    description: "Escaparate digital elegante para moda a medida y oficios artesanales. Transmite tradición, atención al detalle y un servicio altamente personalizado.",
+    image: "/demos/sastreria-monforte.png",
+    url: "https://sastreria-monforte.vercel.app/",
+    accent: '#F59E0B',
+    tags: ['Sastrería', 'Elegancia', 'Tradición']
+  },
+  {
+    title: "Grano y Barrio",
+    category: "CAFETERÍA / PANADERÍA",
+    description: "Identidad cercana para comercios de barrio. Visualmente atractiva y optimizada para destacar productos artesanales y conectar con la comunidad local.",
+    image: "/demos/grano-barrio.png",
+    url: "https://grano-y-barrio.vercel.app/",
+    accent: '#10B981',
+    tags: ['Cafetería', 'Local', 'Artesanal']
   }
 ];
 
