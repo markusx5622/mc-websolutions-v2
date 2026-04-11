@@ -389,7 +389,7 @@ export default function Home() {
             <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
           <div style={{ textAlign: "center" }}>
-            <span className="stat-number">IA+</span>
+            <span className="stat-number">NEXT 14</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
         </motion.div>
