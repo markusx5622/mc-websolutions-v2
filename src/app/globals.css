@@ -980,7 +980,7 @@ footer {
 
 .stats-bar {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     background: linear-gradient(90deg, rgba(17, 34, 64, 0.5), rgba(10, 25, 47, 0.5));
     padding: 3rem 2rem;
@@ -990,6 +990,12 @@ footer {
     z-index: 10;
     border: 1px solid rgba(100, 255, 218, 0.1);
     backdrop-filter: blur(5px);
+}
+
+@media (min-width: 768px) {
+    .stats-bar {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); display: block; }

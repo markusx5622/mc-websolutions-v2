@@ -376,23 +376,23 @@ export default function Home() {
             transition: 'border-color 0.3s ease, box-shadow 0.3s ease'
           }}
         >
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", gridColumn: "span 1", gridColumnStart: "unset" }} className="md:!col-start-2">
             <span className="stat-number">48h</span>
             <span className="stat-label">Tiempo Medio de Entrega</span>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center" }} className="md:!col-start-3">
             <span className="stat-number">100%</span>
             <span className="stat-label">Optimización Responsive</span>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center" }} className="md:!col-start-4">
             <span className="stat-number">0€</span>
             <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center" }} className="md:!col-start-1 md:!row-start-2">
             <span className="stat-number">NEXT 14</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center" }} className="md:!col-start-5 md:!row-start-2">
             <span className="stat-number">SEO+</span>
             <span className="stat-label">VISIBILIDAD MÁXIMA EN GOOGLE Y BUSCADORES</span>
           </div>
