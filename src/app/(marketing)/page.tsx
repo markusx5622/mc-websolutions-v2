@@ -430,8 +430,8 @@ export default function Home() {
               <div className="pipeline-node"></div>
               <div className="pipeline-content">
                 <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                <h3 className="pipeline-title">01. BRIEFING EXPRESS</h3>
-                <p className="pipeline-desc">Captura de requisitos técnicos en 5 minutos. Ingeniería de requisitos optimizada para la velocidad.</p>
+                <h3 className="pipeline-title">01. INGENIERÍA DE REQUISITOS</h3>
+                <p className="pipeline-desc">Captura técnica de necesidades para definir la arquitectura de información óptima. Transformamos tu visión en un plano de ingeniería detallado antes de escribir una sola línea de código</p>
               </div>
             </motion.div>
 
@@ -446,8 +446,8 @@ export default function Home() {
               <div className="pipeline-node"></div>
               <div className="pipeline-content">
                 <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <h3 className="pipeline-title">02. GENERACIÓN IA</h3>
-                <p className="pipeline-desc">Nuestros modelos procedimentales generan el 90% del código y diseño en segundos, reduciendo drásticamente los plazos.</p>
+                <h3 className="pipeline-title">02. DESARROLLO DE ALTO RENDIMIENTO</h3>
+                <p className="pipeline-desc">Construimos tu infraestructura digital utilizando Next.js 14, TypeScript y Tailwind CSS. Implementamos código limpio, escalable y modular siguiendo los estándares más exigentes de la ingeniería de software actual.</p>
               </div>
             </motion.div>
 
@@ -462,8 +462,8 @@ export default function Home() {
               <div className="pipeline-node"></div>
               <div className="pipeline-content">
                 <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <h3 className="pipeline-title">03. DESPLIEGUE & CURACIÓN</h3>
-                <p className="pipeline-desc">Supervisión humana experta para el pulido de precisión y despliegue global en 48 horas.</p>
+                <h3 className="pipeline-title">03. AUDITORÍA TÉCNICA (QA) & DESPLIEGUE</h3>
+                <p className="pipeline-desc">Sometemos el proyecto a una auditoría de calidad exhaustiva (QA). Optimizamos cada activo para garantizar un rendimiento superior (Lighthouse &gt;90) y un despliegue global seguro en 48 horas.</p>
               </div>
             </motion.div>
           </div>
