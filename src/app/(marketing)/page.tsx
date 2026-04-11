@@ -203,7 +203,7 @@ export default function Home() {
     // Typewriter Effect (Consolidated to prevent text duplication)
 
     // Typewriter Effect (Consolidated to prevent text duplication)
-    const textStr = "Tu Visión";
+    const textStr = "Tu Idea";
     const el = document.querySelector('.typewriter');
     if (el) {
       let i = 0;
@@ -336,8 +336,8 @@ export default function Home() {
               <div className="hero-text-block">
                 <span className="mono-text hero-greeting" style={{ display: 'block', marginBottom: '1rem', letterSpacing: '4px', fontSize: '0.8rem' }}>M&C WEB SOLUTIONS</span>
                 <h1 className="hero-title" style={{ margin: '0 0 1.5rem 0', lineHeight: '1.1' }}>
-                  <span className="typewriter">Tu Visión</span> + <br />
-                  Ingeniería + IA = <br />
+                  <span className="typewriter">Tu Idea</span> + <br />
+                  Ingeniería = <br />
                   <span className="gradient-text">Tu Web Mañana.</span>
                 </h1>
                 <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
@@ -389,8 +389,8 @@ export default function Home() {
             <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
           <div style={{ textAlign: "center" }}>
-            <span className="stat-number">IA+H</span>
-            <span className="stat-label">Ingeniería Aumentada Humano-IA</span>
+            <span className="stat-number">IA+</span>
+            <span className="stat-label">Tecnología de última generación</span>
           </div>
         </motion.div>
       </motion.div>
@@ -442,8 +442,8 @@ export default function Home() {
               <div className="pipeline-node"></div>
               <div className="pipeline-content">
                 <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <h3 className="pipeline-title">02. INGENIERÍA AUMENTADA</h3>
-                <p className="pipeline-desc">Optimizamos cada proceso con IA para potenciar nuestra creatividad, garantizando una base técnica impecable en tiempo récord.</p>
+                <h3 className="pipeline-title">02. GENERACIÓN IA</h3>
+                <p className="pipeline-desc">Nuestros modelos procedimentales generan el 90% del código y diseño en segundos, reduciendo drásticamente los plazos.</p>
               </div>
             </motion.div>
 
@@ -458,8 +458,8 @@ export default function Home() {
               <div className="pipeline-node"></div>
               <div className="pipeline-content">
                 <svg className="pipeline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <h3 className="pipeline-title">03. ARTESANÍA DIGITAL</h3>
-                <p className="pipeline-desc">Refinamos cada detalle con precisión de ingenieros para asegurar que tu web no solo funcione, sino que destaque bajo supervisión experta.</p>
+                <h3 className="pipeline-title">03. DESPLIEGUE & CURACIÓN</h3>
+                <p className="pipeline-desc">Supervisión humana experta para el pulido de precisión y despliegue global en 48 horas.</p>
               </div>
             </motion.div>
           </div>
@@ -492,7 +492,7 @@ export default function Home() {
               <span className="point-label l1">Precisión</span>
               <div className="hexagon-point p2" data-title="Velocidad" data-desc="Entregas en 48 horas reales. Optimizamos procesos para que tu negocio no espere."></div>
               <span className="point-label l2">Velocidad</span>
-               <div className="hexagon-point p3" data-title="Innovación" data-desc="Fusión de talento humano y asistentes de IA para alcanzar un nivel de ejecución técnica superior."></div>
+              <div className="hexagon-point p3" data-title="Innovación" data-desc="IA de vanguardia integrada en el flujo de trabajo para resultados imposibles hace un año."></div>
               <span className="point-label l3">Innovación</span>
               <div className="hexagon-point p4" data-title="Eficiencia" data-desc="Máximo valor con el mínimo desperdicio de recursos. Ingeniería de organización pura."></div>
               <span className="point-label l4">Eficiencia</span>
