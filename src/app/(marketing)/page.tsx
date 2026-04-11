@@ -380,15 +380,15 @@ export default function Home() {
             <span className="stat-number">48h</span>
             <span className="stat-label">Tiempo Medio de Entrega</span>
           </div>
-          <div style={{ textAlign: "center" }} className="md:!col-start-3">
+          <div style={{ textAlign: "center" }} className="md:!col-start-4">
             <span className="stat-number">100%</span>
             <span className="stat-label">Optimización Responsive</span>
           </div>
-          <div style={{ textAlign: "center" }} className="md:!col-start-4">
+          <div style={{ textAlign: "center" }} className="md:!col-start-6">
             <span className="stat-number">0€</span>
             <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
-          <div style={{ textAlign: "center" }} className="md:!col-start-1 md:!row-start-2">
+          <div style={{ textAlign: "center" }} className="md:!col-start-3 md:!row-start-2">
             <span className="stat-number">NEXT 14</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
