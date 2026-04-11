@@ -392,6 +392,10 @@ export default function Home() {
             <span className="stat-number">NEXT 14</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
+          <div style={{ textAlign: "center" }}>
+            <span className="stat-number">SEO+</span>
+            <span className="stat-label">VISIBILIDAD MÁXIMA EN GOOGLE Y BUSCADORES</span>
+          </div>
         </motion.div>
       </motion.div>
 
