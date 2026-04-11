@@ -341,7 +341,7 @@ export default function Home() {
                   <span className="gradient-text">Tu Web Mañana.</span>
                 </h1>
                 <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
-                  Tu web profesional lista en 48 horas. Diseño moderno, precio cerrado, sin complicaciones.
+                  Aplicamos ingeniería de alto rendimiento para digitalizar tu negocio en tiempo récord. Desde landings en 48h hasta infraestructuras complejas a medida.
                 </p>
                 <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
               </div>
