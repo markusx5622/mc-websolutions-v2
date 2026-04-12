@@ -1096,6 +1096,39 @@ footer {
     }
 }
 
+/* Optimización para Tablets (iPad / Tablets pro) */
+@media (min-width: 769px) and (max-width: 1279px) {
+    header {
+        padding: 1rem 0 !important;
+    }
+
+    .hero {
+        padding-top: 160px !important;
+        min-height: auto !important;
+        padding-bottom: 120px !important; /* Espacio de seguridad para el stats-bar */
+    }
+
+    .hero-main-flex {
+        gap: 30px !important;
+        width: 90vw !important;
+    }
+
+    .hero-dna-logo {
+        width: 380px !important;
+        height: 380px !important;
+    }
+
+    .hero-title {
+        font-size: 3.2rem !important; /* Ajuste fino para tablets */
+    }
+
+    .stats-bar {
+        margin-top: -40px !important; /* Menos agresivo el solapamiento en tablet */
+        z-index: 20 !important;
+    }
+}
+
+
 /* Terminal Form Styles */
 .terminal-window {
     background: #020C1B;
