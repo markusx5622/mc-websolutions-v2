@@ -11,15 +11,25 @@ const Navbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const navLinks = [
@@ -169,9 +179,35 @@ const Navbar = () => {
               }}
               className="brand-wrapper cursor-pointer hover:opacity-90 transition-opacity no-underline"
             >
-              <img src="/logo.svg" alt="M&C Logo" className="brand-logo-img" />
+              <motion.img 
+                src="/logo.svg" 
+                alt="M&C Logo" 
+                className="brand-logo-img" 
+                animate={{ 
+                  rotate: isMobile ? 360 : 0,
+                  filter: isMobile 
+                    ? ["drop-shadow(0 0 2px var(--accent))", "drop-shadow(0 0 10px var(--accent))", "drop-shadow(0 0 2px var(--accent))"] 
+                    : "drop-shadow(0 0 8px rgba(100, 255, 218, 0.3))"
+                }}
+                transition={{ 
+                  rotate: { duration: 12, repeat: Infinity, ease: "linear" },
+                  filter: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+              />
               <div className="brand-info">
-                <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
+                <motion.span 
+                  className="brand-name"
+                  animate={isMobile ? {
+                    textShadow: [
+                      "0 0 0px var(--accent)",
+                      "0 0 20px var(--accent)",
+                      "0 0 0px var(--accent)"
+                    ]
+                  } : {}}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  M&C<span style={{ color: "var(--accent)" }}>.</span>
+                </motion.span>
                 <span className="brand-tagline">Web Solutions</span>
               </div>
             </Link>
