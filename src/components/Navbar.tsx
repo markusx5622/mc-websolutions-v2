@@ -107,7 +107,7 @@ const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.45 }}
-              className="mt-12 px-8 w-full max-w-xs flex flex-col items-center gap-8"
+              className="mt-20 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
               <Link 
                 href="/briefing" 
@@ -117,10 +117,7 @@ const Navbar = () => {
                 PROYECTO_START 🚀
               </Link>
               
-              <div className="flex gap-10 text-muted/40 text-[0.7rem] mono-text tracking-[0.4em] font-black italic">
-                 <span className="text-accent cursor-pointer">ES_INTL</span>
-                 <span className="hover:text-accent transition-colors cursor-pointer">GLOBAL_EN</span>
-              </div>
+
             </motion.div>
           </div>
 
