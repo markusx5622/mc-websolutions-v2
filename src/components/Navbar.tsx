@@ -200,10 +200,8 @@ const Navbar = () => {
                 alt="M&C Logo" 
                 className="brand-logo-img" 
                 animate={{ 
-                  rotate: isMobile ? 360 : 0,
-                  filter: isMobile 
-                    ? ["drop-shadow(0 0 2px var(--accent))", "drop-shadow(0 0 10px var(--accent))", "drop-shadow(0 0 2px var(--accent))"] 
-                    : "drop-shadow(0 0 8px rgba(100, 255, 218, 0.3))"
+                  rotate: 360,
+                  filter: ["drop-shadow(0 0 2px var(--accent))", "drop-shadow(0 0 10px var(--accent))", "drop-shadow(0 0 2px var(--accent))"]
                 }}
                 transition={{ 
                   rotate: { duration: 12, repeat: Infinity, ease: "linear" },
@@ -213,13 +211,13 @@ const Navbar = () => {
               <div className="brand-info">
                 <motion.span 
                   className="brand-name"
-                  animate={isMobile ? {
+                  animate={{
                     textShadow: [
                       "0 0 0px var(--accent)",
                       "0 0 20px var(--accent)",
                       "0 0 0px var(--accent)"
                     ]
-                  } : {}}
+                  }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 >
                   M&C<span style={{ color: "var(--accent)" }}>.</span>
