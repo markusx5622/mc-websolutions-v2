@@ -152,7 +152,7 @@ const Navbar = () => {
                 <Link 
                   href="/briefing" 
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-solid w-full block text-center !py-4 text-sm tracking-[0.3em] uppercase font-black"
+                  className="btn btn-solid w-full block text-center !py-4 text-[0.7rem] tracking-[0.2em] uppercase font-black whitespace-nowrap"
                 >
                   INICIAR MI PROYECTO 🚀
                 </Link>
