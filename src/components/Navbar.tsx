@@ -125,7 +125,7 @@ const Navbar = () => {
               ))}
             </nav>
             
-            <div className="h-24 w-full" aria-hidden="true" />
+            <div className="h-[70px] w-full" aria-hidden="true" />
 
             {/* Actions Section */}
             <motion.div 
