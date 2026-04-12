@@ -139,15 +139,17 @@ const Navbar = () => {
                 whileTap={{ scale: 0.98 }}
                 animate={{ 
                   boxShadow: [
-                    "0 0 10px rgba(100, 255, 218, 0.3)",
-                    "0 0 25px rgba(100, 255, 218, 0.6)",
-                    "0 0 10px rgba(100, 255, 218, 0.3)"
+                    "0 0 10px rgba(100, 255, 218, 0.2)",
+                    "0 0 25px rgba(100, 255, 218, 0.5)",
+                    "0 0 10px rgba(100, 255, 218, 0.2)"
                   ]
                 }}
                 transition={{ 
-                  boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
-                className="w-full rounded-lg overflow-hidden"
+                className="w-full rounded-lg"
               >
                 <Link 
                   href="/briefing" 
@@ -157,6 +159,7 @@ const Navbar = () => {
                   INICIAR MI PROYECTO 🚀
                 </Link>
               </motion.div>
+
               
 
             </motion.div>
@@ -250,13 +253,39 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link 
-              href="/briefing" 
-              className="btn btn-primary hidden sm:inline-block" 
-              style={{ padding: "0.5rem 1rem", fontSize: "0.8rem" }}
+            <motion.div
+              animate={{ 
+                boxShadow: [
+                  "0 0 5px rgba(100, 255, 218, 0.2)",
+                  "0 0 15px rgba(100, 255, 218, 0.4)",
+                  "0 0 5px rgba(100, 255, 218, 0.2)"
+                ],
+                borderColor: [
+                  "rgba(100, 255, 218, 0.3)",
+                  "rgba(100, 255, 218, 0.6)",
+                  "rgba(100, 255, 218, 0.3)"
+                ]
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="hidden sm:inline-block rounded-lg"
             >
-              Empieza ya
-            </Link>
+              <Link 
+                href="/briefing" 
+                className="btn btn-primary" 
+                style={{ 
+                  padding: "0.5rem 1rem", 
+                  fontSize: "0.8rem",
+                  border: "1px solid transparent"
+                }}
+              >
+                INICIAR PROYECTO
+              </Link>
+            </motion.div>
+
 
             {/* Hamburger Menu Trigger */}
             <button 

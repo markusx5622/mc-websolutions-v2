@@ -343,7 +343,23 @@ export default function Home() {
                 <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 0 2.5rem 0' }}>
                   Aplicamos ingeniería de alto rendimiento para digitalizar tu negocio en tiempo récord. Desde landings en 48h hasta infraestructuras complejas a medida.
                 </p>
-                <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
+                <motion.div
+                  animate={{ 
+                    boxShadow: [
+                      "0 0 10px rgba(100, 255, 218, 0.2)",
+                      "0 0 30px rgba(100, 255, 218, 0.5)",
+                      "0 0 10px rgba(100, 255, 218, 0.2)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="inline-block rounded-lg"
+                >
+                  <Link href="/briefing" className="btn btn-solid" style={{ padding: "1.2rem 2.5rem" }}>🚀 Iniciar Mi Proyecto</Link>
+                </motion.div>
               </div>
               <img src="/logo.svg" alt="DNA Hexagon" className="hero-dna-logo" />
             </div>
