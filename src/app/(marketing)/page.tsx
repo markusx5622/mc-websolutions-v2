@@ -389,7 +389,7 @@ export default function Home() {
             <span className="stat-label">Sin cuotas obligatorias</span>
           </div>
           <div style={{ textAlign: "center" }} className="md:!col-start-3 md:!row-start-2">
-            <span className="stat-number">NEXT 14</span>
+            <span className="stat-number">NEXT.JS</span>
             <span className="stat-label">Tecnología de última generación</span>
           </div>
           <div style={{ textAlign: "center" }} className="md:!col-start-5 md:!row-start-2">
