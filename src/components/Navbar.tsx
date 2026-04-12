@@ -129,7 +129,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="btn btn-solid w-full block text-center !py-4 text-sm tracking-[0.3em] uppercase font-black"
               >
-                PROYECTO_START 🚀
+                INICIAR PROYECTO 🚀
               </Link>
               
 
