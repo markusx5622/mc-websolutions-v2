@@ -61,7 +61,20 @@ const Navbar = () => {
 
           {/* Top Bar inside Menu (Sticky-like for easy access) */}
           <div className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-[5001] bg-[#020c1b]/95 backdrop-blur-md border-b border-white/10">
-            <Link href="/" onClick={() => setIsMenuOpen(false)} className="brand-wrapper !opacity-100">
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="brand-wrapper !opacity-100 flex items-center gap-3">
+              <motion.img 
+                src="/logo.svg" 
+                alt="Logo" 
+                className="w-10 h-10"
+                animate={{ 
+                  rotate: 360,
+                  filter: ["drop-shadow(0 0 2px var(--accent))", "drop-shadow(0 0 10px var(--accent))", "drop-shadow(0 0 2px var(--accent))"]
+                }}
+                transition={{ 
+                  rotate: { duration: 12, repeat: Infinity, ease: "linear" },
+                  filter: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+              />
               <span className="brand-name">M&C<span style={{ color: "var(--accent)" }}>.</span></span>
             </Link>
             <button 
@@ -101,13 +114,15 @@ const Navbar = () => {
                 </motion.div>
               ))}
             </nav>
+            
+            <div className="h-24 w-full" aria-hidden="true" />
 
             {/* Actions Section */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.45 }}
-              className="mt-24 px-8 w-full max-w-xs flex flex-col items-center gap-8"
+              className="mt-32 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
               <Link 
                 href="/briefing" 
