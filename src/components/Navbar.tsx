@@ -101,13 +101,15 @@ const Navbar = () => {
                 </motion.div>
               ))}
             </nav>
+            
+            <div className="h-24 w-full" aria-hidden="true" />
 
             {/* Actions Section */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.45 }}
-              className="mt-20 px-8 w-full max-w-xs flex flex-col items-center gap-8"
+              className="mt-32 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
               <Link 
                 href="/briefing" 
