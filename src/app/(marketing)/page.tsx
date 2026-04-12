@@ -147,18 +147,7 @@ const PREMIUM_PORTFOLIO_PROJECTS = [
     mockupFont: 'serif',
     mockupDecor: 'line',
   },
-  {
-    category: 'DASHBOARD EMPRESARIAL',
-    title: 'Aether Insights',
-    description: 'Panel de inteligencia empresarial con análisis multidimensional en tiempo real. Incluye motor predictivo, mapa global, simulador financiero y más de 8 módulos de análisis interconectados.',
-    tags: ['Next.js', 'TypeScript', 'Data Visualization', 'Analytics'],
-    url: 'https://aether-insights.vercel.app/',
-    accent: '#3B82F6',
-    mockupBg: '#0c1220',
-    mockupTitle: 'AETHER',
-    mockupFont: 'sans-serif',
-    mockupDecor: 'dashboard',
-  },
+
   {
     category: 'WEB EXPERIENCE',
     title: 'Kinetia Kinetic',
