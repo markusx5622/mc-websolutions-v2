@@ -115,7 +115,7 @@ const Navbar = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="mono-text group flex flex-col items-center py-2"
                   >
-                    <span className="text-accent text-[0.65rem] tracking-[0.5em] mb-3 opacity-60 uppercase font-black">PROTOCOLO 0{i+1}</span>
+                    <span className="text-accent text-[0.65rem] tracking-[0.5em] mb-3 opacity-60 uppercase font-black">SECCIÓN 0{i+1}</span>
                     <span className="text-4xl font-extrabold tracking-[0.25em] relative uppercase text-white hover:text-accent transition-colors leading-tight">
                       {item.name}
                       <span className="block h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full mx-auto mt-2 shadow-[0_0_20px_var(--accent)]"></span>
@@ -134,13 +134,29 @@ const Navbar = () => {
               transition={{ delay: 0.45 }}
               className="mt-12 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
-              <Link 
-                href="/briefing" 
-                onClick={() => setIsMenuOpen(false)}
-                className="btn btn-solid w-full block text-center !py-4 text-sm tracking-[0.3em] uppercase font-black"
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                animate={{ 
+                  boxShadow: [
+                    "0 0 10px rgba(100, 255, 218, 0.3)",
+                    "0 0 25px rgba(100, 255, 218, 0.6)",
+                    "0 0 10px rgba(100, 255, 218, 0.3)"
+                  ]
+                }}
+                transition={{ 
+                  boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="w-full rounded-lg overflow-hidden"
               >
-                INICIAR PROYECTO 🚀
-              </Link>
+                <Link 
+                  href="/briefing" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="btn btn-solid w-full block text-center !py-4 text-sm tracking-[0.3em] uppercase font-black"
+                >
+                  INICIAR MI PROYECTO 🚀
+                </Link>
+              </motion.div>
               
 
             </motion.div>
