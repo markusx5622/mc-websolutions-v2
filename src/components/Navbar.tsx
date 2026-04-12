@@ -132,7 +132,7 @@ const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.45 }}
-              className="mt-24 px-8 w-full max-w-xs flex flex-col items-center gap-8"
+              className="mt-12 px-8 w-full max-w-xs flex flex-col items-center gap-8"
             >
               <Link 
                 href="/briefing" 
